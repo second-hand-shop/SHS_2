@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/windows,macos,java,maven
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,java,maven
+# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,java,maven
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,java,maven
 
 ### Java ###
 # Compiled class file
@@ -96,4 +96,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,macos,java,maven
+# End of https://www.toptal.com/developers/gitignore/api/macos,windows,java,maven
