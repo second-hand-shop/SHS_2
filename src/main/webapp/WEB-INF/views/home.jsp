@@ -1,16 +1,14 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-	<title>Home</title>
+<c:import url="./template/bootStrap.jsp"></c:import>
+<title>아웃오브라인 OUT OF LINE</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+	<div id="wrap">
+		<c:import url="./template/header.jsp"></c:import>
+	</div>
 
-<P>  The time on the server is ${serverTime}. </P>
-
-<a href="./test/testList">TEST</a>
 </body>
 </html>
