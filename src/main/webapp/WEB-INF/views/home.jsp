@@ -7,7 +7,17 @@
 </head>
 <body>
 	<div id="wrap">
-		<c:import url="./template/header.jsp"></c:import>
+		<div id="header">
+			<c:import url="./template/header.jsp"></c:import>
+		</div>
+	<div id="container">
+	
+	</div>
+	
+	<div id="footer">
+	
+	</div>
+		
 	</div>
 
 </body>
