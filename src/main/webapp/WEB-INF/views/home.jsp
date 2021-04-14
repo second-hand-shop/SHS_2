@@ -10,15 +10,18 @@
 		<div id="header">
 			<c:import url="./template/header.jsp"></c:import>
 		</div>
-	<div id="container">
-	
-	</div>
-	
-	<div id="footer">
-	
-	</div>
+		<div id="container">
 		
+		</div>
+
+		<div id="footer"></div>
+
 	</div>
 
 </body>
+<link rel="stylesheet" href="./resources/css/common.css">
+<script type="text/javascript" src="./resources/js/common.js"></script>
+<script type="text/javascript" src="./resources/js/cid.generate.js?vs=434b064cd2303c3c5af7880db4566f39.js"></script>
+<script type="text/javascript" src="./resources/js/main.js"></script>
+<script type="text/javascript" src="./resources/js/cfa.js?v=1618387407893.js"></script>
 </html>
