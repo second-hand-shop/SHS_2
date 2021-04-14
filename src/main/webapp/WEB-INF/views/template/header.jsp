@@ -1,23 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<div id="header">
+	<div class="header">
+		<div class="Left_menu" id="drop_menu">
+			<div class="nav_left">
+				<ul id="nav">
+					<li><a href="#" class="top_link">BOARD</a>
+						<ul>
+							<li><a href="/front/php/b/board_list.php?board_no=1">NOTICE</a></li>
+							<li><a href="/front/php/b/board_list.php?board_no=6">Q &amp; A</a></li>
+							<li><a href="/front/php/b/board_list.php?board_no=4">REVIEW</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--//nav_left -->
+		</div>
+		<!-- //LEFR_MENU-->
 
-	<!-- Links -->
-	<ul class="navbar-nav">
-		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/bankbook/bankbookList">Bankbook</a></li>
-		<c:if test="${empty member }">
-			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/member/memberJoinCheck">Join</a></li>
-			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/member/memberLogin">Login</a></li>
-		</c:if>
-		<c:if test="${not empty member }">
-			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/member/memberPage">Page</a></li>
-			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/member/memberLogout">Logout</a></li>
-		</c:if>
-		<!-- Dropdown -->
-		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Board </a>
-			<div class="dropdown-menu">
-				<a class="dropdown-item" href="${pageContext.request.contextPath }/notice/noticeList">Notice</a> <a class="dropdown-item" href="${pageContext.request.contextPath }/qna/qnaList">QnA</a> <a class="dropdown-item" href="#">Link 3</a>
-			</div></li>
-	</ul>
-</nav>
+		<div class="right_menu" id="drop_menu">
+			<div class="nav_right">
+				<ul id="nav">
+					<li><a href="#" class="top_link">MEMBER</a>
+						<ul>
+							<li class="xans-element- xans-layout xans-layout-statelogoff "><a href="/member/login.html">LOGIN</a></li>
+							<li class="xans-element- xans-layout xans-layout-statelogoff "><a href="/member/join.html">REGISTER</a></li>
+
+							<li><a href="/myshop/order/list.html">ORDER TRACKING</a></li>
+							<li><a href="/myshop/index.html">MY ACCOUNT</a></li>
+							<li></li>
+							<li class="cart_ct"><a href="/order/basket.html" class="xans-element- xans-layout xans-layout-orderbasketcount ">0 <img src="/web/upload/category/editor/2016/03/20/f8d382e596a1b7e805c22461e4e5e803.png" /></a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+		<!--//RIGHT_MENU -->
+
+		<div class="center_menu">
+			<ul class="logo">
+				<li><a href="/index.html">SECOND HAND<br />SELECT STORE<br />
+					<br />
+					<img src="/web/upload/category/editor/2019/03/04/0ee8d395ba465fb958d9446c41013eec.png" /></a></li>
+			</ul>
+			<ul class="menu_list">
+				<li class="menu_list_shop"><a href="/product/list.html?cate_no=24">SECOND HAND</a></li>
+				<li class="menu_list_shop2"><a href="/product/list2.html?cate_no=47">SELECT</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+	<!--// .header -->
