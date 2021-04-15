@@ -6,5 +6,7 @@
 <configuration>
  	<typeAliases>
 		<typeAlias type="com.shs.s1.test.TestDTO" alias="TestDTO"/>
+		<typeAlias type="com.shs.s1.board.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.shs.s1.board.BoardDTO" alias="BoardDTO"/>
 	</typeAliases>
 </configuration>
