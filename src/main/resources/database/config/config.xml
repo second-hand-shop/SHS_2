@@ -6,5 +6,8 @@
 <configuration>
  	<typeAliases>
 		<typeAlias type="com.shs.s1.test.TestDTO" alias="TestDTO"/>
+		<typeAlias type="com.shs.s1.product.ProductDTO" alias="ProductDTO"/>
+		
+		
 	</typeAliases>
 </configuration>
