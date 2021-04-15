@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+#add {
+	display: none;
+}
+</style>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <meta charset="UTF-8">
 <title>couponList</title>
@@ -22,6 +27,9 @@
 				</tr>
 			</thead>
 			<tbody>
+				<tr id="insert">
+				
+				</tr>
 				<c:forEach items="${list }" var="DTO">
 					<tr>
 						<td>${DTO.couponNum }</td>
@@ -31,12 +39,21 @@
 						<td>${DTO.usage }</td>
 					</tr>
 				</c:forEach>
-				
 			</tbody>
 		</table>
 	</div>
-
-
-
+<!-------- table END --------------->
+<input type="button" class="btn btn-primary" id="addBtn" value="+">
+	<div id="add">
+		<form action="./couponInsert" method="post">
+			<td><input type="text" name="couponNum"></td>
+			<td><input type="text" name="id"></td>
+			<td><input type="text" name="disRate"></td>
+			<td><input type="text" name="disPrice"></td>
+			<td><input type="text" name="usage"></td>
+			<td><button class="btn btn-primary">+</button></td>
+		</form>
+	</div>
 </body>
+<script type="text/javascript" src="../resources/jquery/coupon/couponInsert.js"></script>
 </html>
