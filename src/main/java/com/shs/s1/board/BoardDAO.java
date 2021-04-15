@@ -1,5 +1,19 @@
 package com.shs.s1.board;
 
-public class BoardDAO {
+import java.util.List;
 
+public interface BoardDAO {
+	
+	//Board List
+	 public List<BoardDTO> getList(BoardDTO boardDTO) throws Exception;
+	 
+	//Board Insert
+	 public int setInsert(BoardDTO boardDTO) throws Exception;
+	 
+	 //Board Update
+	 public int setUpdate(BoardDTO boardDTO) throws Exception;
+	 
+	 //Board Delete
+	 public int setDelete(BoardDTO boardDTO) throws Exception;
+	
 }
