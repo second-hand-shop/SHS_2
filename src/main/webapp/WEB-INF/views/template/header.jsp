@@ -8,9 +8,9 @@
 				<ul id="nav">
 					<li><a href="#" class="top_link">BOARD</a>
 						<ul class="c1">
-							<li><a href="/front/php/b/board_list.php?board_no=1">NOTICE</a></li>
-							<li><a href="/front/php/b/board_list.php?board_no=6">Q &amp; A</a></li>
-							<li><a href="/front/php/b/board_list.php?board_no=4">REVIEW</a></li>
+							<li><a href="${pageContext.request.contextPath}/notice/noticeList">NOTICE</a></li>
+							<li><a href="${pageContext.request.contextPath}/qna/qnaList">Q &amp; A</a></li>
+							<li><a href="${pageContext.request.contextPath}/review/reviewList">REVIEW</a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -23,13 +23,14 @@
 				<ul id="nav">
 					<li><a href="#" class="top_link">MEMBER</a>
 						<ul>
-							<li class="xans-element- xans-layout xans-layout-statelogoff "><a href="/member/login.html">LOGIN</a></li>
-							<li class="xans-element- xans-layout xans-layout-statelogoff "><a href="/member/join.html">REGISTER</a></li>
-
-							<li><a href="/myshop/order/list.html">ORDER TRACKING</a></li>
-							<li><a href="/myshop/index.html">MY ACCOUNT</a></li>
+							<li class="xans-element- xans-layout xans-layout-statelogoff "><a href="${pageContext.request.contextPath}/member/memberLogin">LOGIN</a></li>
+							<li class="xans-element- xans-layout xans-layout-statelogoff "><a href="${pageContext.request.contextPath}/member/memberJoin">JOIN</a></li>
+							<!-- 로그인 시 나타나게 if -->
+							<li><a href="#">ORDER TRACKING</a></li>
+							<li><a href="#">MY ACCOUNT</a></li>
+							<!-- if END -->
 							<li></li>
-							<li class="cart_ct"><a href="/order/basket.html" class="xans-element- xans-layout xans-layout-orderbasketcount ">0 <img src="/web/upload/category/editor/2016/03/20/f8d382e596a1b7e805c22461e4e5e803.png" /></a></li>
+							<li class="cart_ct"><a href="#" class="xans-element- xans-layout xans-layout-orderbasketcount ">0</a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -38,15 +39,29 @@
 
 		<div class="center_menu">
 			<ul class="logo">
-				<li><a href="/index.html">SECOND HAND<br />SELECT STORE<br />
-					<br />
-					<img src="/web/upload/category/editor/2019/03/04/0ee8d395ba465fb958d9446c41013eec.png" /></a></li>
+				<li><a href="${pageContext.request.contextPath}/">SECOND HAND<br />SELECT STORE<br /> <br /> <img src="../resources/images/OutOfLine_logo.png" /></a></li>
 			</ul>
 			<ul class="menu_list">
-				<li class="menu_list_shop"><a href="/product/list.html?cate_no=24">SECOND HAND</a></li>
-				<li class="menu_list_shop2"><a href="/product/list2.html?cate_no=47">SELECT</a></li>
+				<li class="menu_list_shop"><a href="${pageContext.request.contextPath}/product/productList">SECOND HAND</a></li>
+				<li class="menu_list_shop2"><a href="#">SELECT</a></li>
 			</ul>
+		</div>
+		<!-- ABOUT_MENU -->
+		<div class="Left_nav">
+			<a href="#modal-1" class="cd-btn cd-modal-trigger">ABOUT</a>
+		</div>
+		<div class="cd-modal" id="modal-1">
+			<div class="modal-content">
+				<div class="about_wrap">
+					<ul class="left">
+						<img src="#" />
+					</ul>
+					<ul class="right">
+						<li></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
-	<!--// .header -->
+<!--// .header -->
