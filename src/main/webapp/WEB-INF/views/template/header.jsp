@@ -7,7 +7,7 @@
 			<div class="nav_left">
 				<ul id="nav">
 					<li><a href="#" class="top_link">BOARD</a>
-						<ul>
+						<ul class="c1">
 							<li><a href="/front/php/b/board_list.php?board_no=1">NOTICE</a></li>
 							<li><a href="/front/php/b/board_list.php?board_no=6">Q &amp; A</a></li>
 							<li><a href="/front/php/b/board_list.php?board_no=4">REVIEW</a></li>

@@ -3,16 +3,15 @@
 <html>
 <head>
 <c:import url="./template/bootStrap.jsp"></c:import>
-<title>아웃오브라인 OUT OF LINE</title>
+<title>SHS</title>
 </head>
 <body>
 	<div id="wrap">
 		<div id="header">
 			<c:import url="./template/header.jsp"></c:import>
 		</div>
-		<div id="container">
-		
-		</div>
+		<!-- header END -->
+		<div id="container"></div>
 
 		<div id="footer"></div>
 
@@ -24,4 +23,5 @@
 <script type="text/javascript" src="./resources/js/cid.generate.js?vs=434b064cd2303c3c5af7880db4566f39.js"></script>
 <script type="text/javascript" src="./resources/js/main.js"></script>
 <script type="text/javascript" src="./resources/js/cfa.js?v=1618387407893.js"></script>
+<script type="text/javascript" src="./resources/js/dropdown.js"></script>
 </html>
