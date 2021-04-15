@@ -10,6 +10,9 @@ public interface BoardDAO {
 	//Board Insert
 	 public int setInsert(BoardDTO boardDTO) throws Exception;
 	 
+	//Board Select
+	 public BoardDTO getSelect(BoardDTO boardDTO) throws Exception;
+	 
 	 //Board Update
 	 public int setUpdate(BoardDTO boardDTO) throws Exception;
 	 

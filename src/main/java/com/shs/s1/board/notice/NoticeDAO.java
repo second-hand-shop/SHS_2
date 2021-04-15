@@ -22,6 +22,11 @@ public class NoticeDAO implements BoardDAO{
 	public List<BoardDTO> getList(BoardDTO boardDTO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getList", boardDTO);
 	}
+	
+	@Override
+	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getSelect", boardDTO);
+	}
 
 	@Override
 	public int setInsert(BoardDTO boardDTO) throws Exception {
