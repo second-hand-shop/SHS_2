@@ -6,24 +6,24 @@
 <mapper namespace="com.shs.s1.board.notice.NoticeDAO">
     
     <!-- Notice List -->
-    <select id="getList" resultType="NoticeDTO">
+    <select id="getList" parameterType="BoardDTO" resultType="BoardDTO">
     	select * from notice
     </select>
     
     <!-- Notice Insert -->
-    <insert id="setInsert" parameterType="NoticeDTO">
+    <insert id="setInsert" parameterType="BoardDTO">
     	insert into notice values (notice_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0)
     </insert>
     
     <!-- Notice Update -->
-    <update id="setUpdate" parameterType="NoticeDTO">
+    <update id="setUpdate" parameterType="BoardDTO">
     	update notice set title = #{title}, writer = #{writer}, contents = #{contents}, hit = #{hit}, regdate = sysdate 
     	where num = #{num}
     </update>
     
     
     <!-- Notice Delete -->
-    <delete id="setDelete" parameterType="NoticeDTO">
+    <delete id="setDelete" parameterType="BoardDTO">
     	delete notice where num = #{num}
     </delete>
     
