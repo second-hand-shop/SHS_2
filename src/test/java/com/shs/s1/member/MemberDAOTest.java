@@ -25,4 +25,13 @@ public class MemberDAOTest extends MyAbstractTest {
 		assertEquals(1, result);
 	}
 
+	@Test
+	public void memberLoginTest() throws Exception {
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("id1");
+		memberDTO.setPw("pw1");
+		memberDTO = memberDAO.memberLogin(memberDTO);
+		
+		assertNotNull(memberDTO);
+	}
 }
