@@ -58,4 +58,10 @@ public class MemberController {
 		session.setAttribute("member", memberDTO);
 		return "redirect:../";
 	}
+	
+	@GetMapping("memberLogout")
+	public String memberLogout(HttpSession session) throws Exception {
+		session.invalidate();
+		return "redirect:../";
+	}
 }
