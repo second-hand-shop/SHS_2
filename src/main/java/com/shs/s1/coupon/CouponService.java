@@ -20,4 +20,9 @@ public class CouponService {
 	public int setInsert(CouponDTO couponDTO) throws Exception {
 		return couponDAO.setInsert(couponDTO);
 	}
+	
+	// setDelete ===================================================
+	public int setDelete(CouponDTO couponDTO) throws Exception {
+		return couponDAO.setDelete(couponDTO);
+	}
 }

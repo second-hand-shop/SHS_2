@@ -7,6 +7,10 @@
 #add {
 	display: none;
 }
+
+tbody tr td input {
+	width: 70%;
+}
 </style>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <meta charset="UTF-8">
@@ -15,6 +19,7 @@
 <body>
 
 	<h2>쿠폰 목록</h2>
+
 	<div class="table-responsive">
 		<table class="table table-striped table-sm">
 			<thead>
@@ -24,36 +29,35 @@
 					<th>할인율</th>
 					<th>할인금액</th>
 					<th>사용유무</th>
+					<th>etc</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr id="insert">
-				
+				<tr>
+					<td><input type="text" name="couponNum" id="couponNum"></td>
+					<td><input type="text" name="id" id="id"></td>
+					<td><input type="text" name="disRate" id="disRate"></td>
+					<td><input type="text" name="disPrice" id="disPrice"></td>
+					<td><input type="text" name="usage" id="usage"></td>
+					<td><button class="btn btn-dark insert">+</button></td>
 				</tr>
 				<c:forEach items="${list }" var="DTO">
-					<tr>
-						<td>${DTO.couponNum }</td>
+					<tr id="tr">
+						<td id="delNum">${DTO.couponNum }</td>
 						<td>${DTO.id }</td>
 						<td>${DTO.disRate }</td>
 						<td>${DTO.disPrice }</td>
 						<td>${DTO.usage }</td>
+						<td><button class="btn btn-danger delete" title="${DTO.couponNum }">-</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
-<!-------- table END --------------->
-<input type="button" class="btn btn-primary" id="addBtn" value="+">
-	<div id="add">
-		<form action="./couponInsert" method="post">
-			<td><input type="text" name="couponNum"></td>
-			<td><input type="text" name="id"></td>
-			<td><input type="text" name="disRate"></td>
-			<td><input type="text" name="disPrice"></td>
-			<td><input type="text" name="usage"></td>
-			<td><button class="btn btn-primary">+</button></td>
-		</form>
-	</div>
+
+	<!-------- table END --------------->
+	<input type="button" class="btn btn-primary" id="addBtn" value="+">
+
 </body>
-<script type="text/javascript" src="../resources/jquery/coupon/couponInsert.js"></script>
+<script type="text/javascript" src="../resources/jquery/coupon/couponList.js"></script>
 </html>

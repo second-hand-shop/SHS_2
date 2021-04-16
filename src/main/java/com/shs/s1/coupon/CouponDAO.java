@@ -23,4 +23,9 @@ public class CouponDAO {
 	public int setInsert(CouponDTO couponDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setInsert", couponDTO);
 	}
+	
+	// setDelete ===================================================
+	public int setDelete(CouponDTO couponDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"setDelete", couponDTO);
+	}
 }
