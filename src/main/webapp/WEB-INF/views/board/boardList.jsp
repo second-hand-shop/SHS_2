@@ -8,15 +8,37 @@
 <title>${board} List</title>
 
 <style>
-
+	
+	/* Page 이름 */
 	#title_center{
 		margin: 8% 0 0 0;
 		text-align: center;
 	}
 	
-	.line{
-		border:1;
-		bordercolor:"gray";
+	/* table 전체 */
+	#line{
+		margin-left: auto; margin-right: auto;
+		margin-top: 5%;
+		width: 75%;
+		border: 1px solid #d3d3d3;
+	}
+	
+	/* table 내부 선, cell-padding, 글자 정렬 */
+	.lines{
+		border: 1px solid #d3d3d3;	
+		padding: 1%;
+		text-align: center;
+	}
+	
+	/* 2번째 줄 정렬 */
+	td:nth-child(2){
+		text-align: left;
+	}
+	
+	/* th 글자 굵기와 정렬 */
+	th{
+		text-align: center;
+		font-weight: 400;
 	}
 
 
@@ -31,27 +53,31 @@
 	</div>
 
 	
-	<h1 id="title_center">${board}</h1>
+	<h2 id="title_center">${board}</h2>
 	
-	<table class="line">
-		<th>
-			<td>NO</td>
-			<td>SUBJECT</td>
-			<td>WRITER</td>
-			<td>DATE</td>
-			<td>HIT</td>
-		</th>
+	<table id="line">
+		<tr>
+			<th class="lines" width="4%">NO</td>
+			<th class="lines" width="69%">SUBJECT</td>
+			<th class="lines" width="9%">WRITER</td>
+			<th class="lines" width="9%">DATE</td>
+			<th class="lines" width="9%">HIT</td>
+		</tr>
 		
 		<c:forEach items="${list}" var="board">
 			<tr>
-				<td>${board.num}</td>
-				<td>${board.title}</td>
-				<td>${board.writer}</td>
-				<td>${board.regdate}</td>
-				<td>${board.hit}</td>
+				<td class="lines">${board.num}</td>
+				<td class="lines">${board.title}</td>
+				<td class="lines">${board.writer}</td>
+				<td class="lines">${board.regdate}</td>
+				<td class="lines">${board.hit}</td>
 			</tr>
 		</c:forEach>
-	
+		
+		<tr>
+			<td class="lines" colspan="5"></td>
+		</tr>
+		
 	</table>
 	
 	
