@@ -10,8 +10,12 @@ public class MemberService {
 
 	@Autowired
 	private MemberDAO memberDAO;
-	
+		
 	public int memberJoin(MemberDTO memberDTO, HttpSession session) throws Exception {
 		return memberDAO.memberJoin(memberDTO);
+	}
+	
+	public MemberDTO memberIdCheck(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberIdCheck(memberDTO);
 	}
 }

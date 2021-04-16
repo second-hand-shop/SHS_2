@@ -5,8 +5,11 @@
     
 <mapper namespace="com.shs.s1.member.MemberDAO">
 
-	<insert id="memberJoin" parameterType="memberDTO">
+	<insert id="memberJoin" parameterType="MemberDTO">
 		insert into member values (member_seq.nextval, #{id}, #{pw}, #{name}, #{phone}, #{email})
 	</insert>
 
+	<select id="memberIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
+		select id from member where id=#{id}
+	</select>
 </mapper>

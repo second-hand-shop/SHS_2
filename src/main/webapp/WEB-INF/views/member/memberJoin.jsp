@@ -14,16 +14,16 @@
 		<div id="container">
 			<div id="contents">
 				<h2>REGISTER</h2>
-				<form id="joinform" action="./memberJoin" method="post" enctype="multipart/form-data"></form>
+				<form id="joinform" action="./memberJoin" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 				<label for="id">ID</label> 
 				<input type="text" class="form-control" id="id" name="id" aria-describedby="idHelp"> 
-				<h4 id="idResult"></h4>
+				<h2 id="idResult"></h2>
 			</div>
 			<div class="form-group">
 				<label for="pw">PW</label> 
 				<input type="password" class="form-control" id="pw" name="pw">
-				<h4 id="pwResult"></h4>
+				<h2 id="pwResult"></h2>
 			</div>
 			<div class="form-group">
 				<label for="pw">PW CHECK</label> 
@@ -43,6 +43,7 @@
 			</div>
 			<input type="submit" id ="btn" value="JOIN" class="btn btn-primary">
 			</div>
+			</form>
 			<!-- footer -->
 			<c:import url="../template/footer.jsp"></c:import>
 		</div>
