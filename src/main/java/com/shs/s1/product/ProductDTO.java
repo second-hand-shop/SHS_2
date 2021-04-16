@@ -8,6 +8,10 @@ public class ProductDTO {
 	private long price;
 	private String productName;
 	private long amount;
+	
+
+	
+	
 	public long getProductNum() {
 		return productNum;
 	}

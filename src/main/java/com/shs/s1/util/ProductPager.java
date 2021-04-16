@@ -3,8 +3,8 @@ package com.shs.s1.util;
 public class ProductPager {
 
 	
-	private long perList;
 	private long perPage;
+	private long perBlock;
 	private long curPage;
 	
 	private long startRow;
@@ -13,16 +13,16 @@ public class ProductPager {
 	
 	public ProductPager() {
 		// TODO Auto-generated constructor stub
-		perList=12;
-		perPage=10;
+		perPage=12;
+		perBlock=5;
 		curPage=1;
 	}
 	
 	
 	public void makeRow() {
 		
-		long startRow= (curPage-1)*(perList)+1;
-		long lastRow= curPage *perList;
+		this.startRow= (curPage-1)*(perPage)+1;
+		this.lastRow= curPage *perPage;
 		
 	}
 	
@@ -49,23 +49,23 @@ public class ProductPager {
 		}
 		
 		//총 블록
-		totalBlock= totalPage/perPage;
-		if(totalPage%perPage!=0) {
-			totalPage++;
+		totalBlock= totalPage/perBlock;
+		if(totalPage%perBlock!=0) {
+			totalBlock++;
 			
 		}
 		
 		
 		//현 블록
-		curBlock = curPage/perPage;
-		if(curPage%perPage!=0) {
+		curBlock = curPage/perBlock;
+		if(curPage%perBlock!=0) {
 			curBlock++;
 		}
 		
 		
 		
-		startNum=perPage*(curBlock-1)+1;
-		lastNum=curBlock * perPage;
+		startNum=perBlock*(curBlock-1)+1;
+		lastNum=curBlock * perBlock;
 		
 		//마지막 블럭 정리
 		if(curBlock==totalBlock) {
@@ -84,22 +84,22 @@ public class ProductPager {
 
 
 	public long getPerList() {
-		return perList;
-	}
-
-
-	public void setPerList(long perList) {
-		this.perList = perList;
-	}
-
-
-	public long getPerPage() {
 		return perPage;
 	}
 
 
+	public void setPerList(long perList) {
+		this.perPage = perList;
+	}
+
+
+	public long getPerPage() {
+		return perBlock;
+	}
+
+
 	public void setPerPage(long perPage) {
-		this.perPage = perPage;
+		this.perBlock = perPage;
 	}
 
 

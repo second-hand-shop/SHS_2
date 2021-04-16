@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.shs.s1.MyAbstractTest;
+import com.shs.s1.util.ProductPager;
 
 
 public class ProductListTest extends MyAbstractTest{
@@ -17,9 +18,9 @@ public class ProductListTest extends MyAbstractTest{
 	private ProductDAO productDAO;
 	
 	@Ignore
-	public void productListTest() throws Exception{
+	public void productListTest(ProductPager pager) throws Exception{
 		
-	List<ProductDTO> ar = productDAO.getList();
+	List<ProductDTO> ar = productDAO.getList(pager);
 	assertNotNull(ar);
 		
 	}
