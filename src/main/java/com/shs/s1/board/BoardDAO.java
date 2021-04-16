@@ -18,5 +18,8 @@ public interface BoardDAO {
 	 
 	 //Board Delete
 	 public int setDelete(BoardDTO boardDTO) throws Exception;
+	 
+	 //Board Hit Update
+	 public int setHitUpdate(BoardDTO boardDTO) throws Exception;
 	
 }

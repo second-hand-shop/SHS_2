@@ -4,9 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <c:import url="../template/bootStrap.jsp"></c:import>
-<title>${board} Select</title>
+<title>${board} Update</title>
 
 <style>
 
@@ -62,33 +61,47 @@
 		<c:import url="../template/header.jsp"></c:import>
 	</div>
 	
+	<!-- Notice Update Contents -->
+	<form id="form" action="./${board}Update" method="post" enctype="multipart/form-data">	
 	
-	<div id="table-border" style="border: 1px solid #d3d3d3;">
+		<div id="table-border" style="border: 1px solid #d3d3d3;">	
+			<ul>
+				<li><input type="hidden" name="num" value="${param.num}"></li>
+				
+				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
+					<input type="text" class="form-control"
+					id="title" name="title" value="${dto.title}" aria-describedby="titleHelp">
+				</li>
+				
+				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
+					<input type="text"
+					class="form-control" readonly="readonly" id="writer" name="writer" value="${dto.writer}">
+					<span style="float: right;">
+						<input type="text" readonly="readonly"  name="regdate" value="${dto.regdate}">
+					</span>
+				</li>
+				
+				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
+					<label for="hit">Hit</label> 
+					<input type="text" readonly="readonly"  name="hit" value="${dto.hit}">
+				</li>
+				
+				<li class="lines">
+					<textarea class="form-control" rows="5" name="contents" id="contents" row="5">
+					${dto.contents}
+				</textarea>
+				</li>
+			
+			</ul>
+			
+			<div id="botton-div">
+				<input type="submit" value="수정" class="" id="btn">
+			</div>
 	
-		<ul>
-		
-			<li class="lines" style="border-bottom: 1px solid #d3d3d3;"> ${dto.title} </li>
-			
-			<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
-				${dto.writer}
-				<span style="float: right;">${dto.regdate}</span>
-			</li>
-			
-			<li class="lines" style="border-bottom: 1px solid #d3d3d3;"> HIT ${dto.hit} </li>
-			
-			<li class="lines"> ${dto.contents} </li>
-		
-		</ul>
-		
-		<div id="botton-div">
-			<a href="./${board}List" class="button-style">목록</a>
-			<a href="./${board}Update?num=${dto.num}" class="button-style">수정</a>
-			<a href="./${board}Delete?num=${dto.num}" class="button-style">삭제</a>
 		</div>
-	
-	</div>
-	
-	
+	</form>
+
+
 	<!-- footer -->
 	<c:import url="../template/footer.jsp"></c:import>
 

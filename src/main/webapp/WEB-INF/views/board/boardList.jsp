@@ -11,14 +11,17 @@
 	
 	/* Page 이름 */
 	#title_center{
-		margin: 8% 0 0 0;
+		margin: 6% 0 0 0;
 		text-align: center;
+		font-size: 14px;
+		font-weight: 500;
+		text-transform: uppercase;
 	}
 	
 	/* table 전체 */
 	#line{
 		margin-left: auto; margin-right: auto;
-		margin-top: 5%;
+		margin-top: 4%;
 		width: 75%;
 		border: 1px solid #d3d3d3;
 	}
@@ -40,6 +43,23 @@
 		text-align: center;
 		font-weight: 400;
 	}
+	
+	/* 공지 작성 버튼이 들어있는 div */
+	#botton-div{
+		margin-top: 1%;
+		margin-bottom: 5%;
+		margin-left: 5%;
+		margin-right: 2%;
+	}
+	
+	/* 공지 작성 button css */
+	.button-style{
+		float: right;
+		border: 1px solid black;
+		padding: 0.8% 2.5% 0.8% 2.5%;
+	}
+	
+
 
 
 </style>
@@ -53,7 +73,7 @@
 	</div>
 
 	
-	<h2 id="title_center">${board}</h2>
+	<p id="title_center">${board}</p>
 	
 	<table id="line">
 		<tr>
@@ -75,7 +95,11 @@
 		</c:forEach>
 		
 		<tr>
-			<td class="lines" colspan="5"></td>
+			<td class="lines" colspan="5">
+				<div id="botton-div">
+					<a href="./${board}Insert?num=${dto.num}" class="button-style">작성</a>
+				</div>
+			</td>
 		</tr>
 		
 	</table>

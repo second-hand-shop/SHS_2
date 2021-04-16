@@ -35,6 +35,10 @@
     </delete>
     
     
+    <!-- Notice Hit Update -->
+    <update id="setHitUpdate" parameterType="BoardDTO">
+    	update notice set hit=hit+1 where num=#{num}
+    </update>
     
-    
+
 </mapper>
