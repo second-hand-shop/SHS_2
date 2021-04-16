@@ -47,10 +47,15 @@ public class MemberController {
 		return "common/ajaxResult";
 	}
 	
-	@PostMapping("memberLogin")
+	@GetMapping("memberLogin")
 	public void memberLogin() throws Exception {
 		
 	}
 	
-
+	@PostMapping("memberLogin")
+	public String memberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
+		memberDTO = memberService.memberLogin(memberDTO);
+		session.setAttribute("member", memberDTO);
+		return "redirect:../";
+	}
 }
