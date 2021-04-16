@@ -38,7 +38,7 @@ $(".insert").click(function(){
 // couponDelete =================================================
 //===============================================================
 
-$(".delete").click(function(){
+/*$(".delete").click(function(){
 	let check = confirm("삭제하시겠습니까?");
 	if(check){
 		let couponNum = $(".delete").attr("title");
@@ -59,9 +59,19 @@ $(".delete").click(function(){
 		});
 		
 	}
-}); //-------------------------------
+});*/ //-------------------------------
 
+// couponSelect =================================================
+//===============================================================
+// modal로 데이터 넘기기
+	function couponSelect() {
+		$("#couponSelect").click(function(){
+		let couponNum = $("#couponSelect").html();
+		$(".modal-title").html(couponNum);
+	});
+}
 
+couponSelect();
 
 
 

@@ -47,6 +47,14 @@ public class CouponController {
 		return mv;
 	}
 	
-	
+	// setUpdate ===================================================	
+	@PostMapping("couponUpdate")
+	public void setUpdate(CouponDTO couponDTO) throws Exception {
+		System.out.println(couponDTO.getCouponNum());
+		System.out.println(couponDTO.getId());
+		System.out.println(couponDTO.getDisRate());
+		System.out.println(couponDTO.getDisPrice());
+		System.out.println(couponDTO.getUsage());
+	}
 	
 }

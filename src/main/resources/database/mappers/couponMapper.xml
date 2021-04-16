@@ -5,7 +5,7 @@
     
  <mapper namespace="com.shs.s1.coupon.CouponDAO">
  	<select id="getList" resultType="CouponDTO">
- 		select * from COUPON
+ 		select * from COUPON order by couponNum desc
  	</select>
  	<insert id="setInsert" parameterType="CouponDTO">
  		insert into COUPON values(#{couponNum}, #{id}, #{disRate}, #{disPrice}, #{usage})
