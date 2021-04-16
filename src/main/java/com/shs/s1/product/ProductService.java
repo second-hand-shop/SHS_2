@@ -14,6 +14,11 @@ public class ProductService {
 	
 	public List<ProductDTO> getList() throws Exception{
 		
+	
+		
+		
+		
+		
 		return productDAO.getList();
 		
 	}

@@ -21,6 +21,16 @@
   select * from product where productNum=#{productNum}
  </select>
  
+ 
+ <select id="getTotalCount" resultType="java.lang.Long">
+ 
+ select count(productNum) from product
+ 
+ </select>
+ 
+ 
+ 
+ 
 
 <insert id="setInsert" parameterType="ProductDTO">
 	insert into product values(product_seq.nextval,#{kinds},#{contents},#{price},#{productName},#{amount})
