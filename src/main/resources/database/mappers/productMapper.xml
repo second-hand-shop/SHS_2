@@ -11,9 +11,15 @@
  
  
  
- <select id="getList" resultType="ProductDTO"> 
+ <select id="getList" parameterType="ProductPager" resultType="ProductDTO"> 
  
- select * from product  order by productNum desc
+ select * from
+(select rownum R, P.*
+from (select * from product
+ order by productNum desc) P)
+ where R between #{startRow} and #{lastRow}
+ 
+ 
  
  </select>
  

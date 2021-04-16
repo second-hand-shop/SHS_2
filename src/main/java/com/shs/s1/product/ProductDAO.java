@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.shs.s1.util.ProductPager;
+
 @Repository
 public class ProductDAO {
 
@@ -15,9 +17,9 @@ public class ProductDAO {
 	
 	final String NAMESPACE="com.shs.s1.product.ProductDAO.";
 	
-	public List<ProductDTO> getList() throws Exception {
+	public List<ProductDTO> getList(ProductPager pager) throws Exception {
 		
-		return sqlSession.selectList(NAMESPACE+"getList");
+		return sqlSession.selectList(NAMESPACE+"getList",pager);
 	}
 	
 	public ProductDTO getSelect(ProductDTO productDTO)throws Exception{

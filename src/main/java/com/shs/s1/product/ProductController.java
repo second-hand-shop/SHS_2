@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.shs.s1.util.ProductPager;
+
 @Controller
 @RequestMapping("/product/**")
 public class ProductController {
@@ -22,11 +24,16 @@ public class ProductController {
 	private ProductService productService;
 	
 	@GetMapping("productList")
-	public String getList(Model model) throws Exception{
+	public String getList(Model model,ProductPager pager) throws Exception{
 		
-		List<ProductDTO> ar = productService.getList();
+		List<ProductDTO> ar = productService.getList(pager);
 		model.addAttribute("list", ar);
+		model.addAttribute("pager", pager);
+		
 		return "product/productList";
+		
+		
+		
 	}
 	
 	@GetMapping("detail")
