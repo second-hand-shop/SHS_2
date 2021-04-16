@@ -73,20 +73,24 @@ public class NoticeController {
 	//update 버튼을 눌러 값을 보내면 실행!
 	//앞에서 보낸 ModelAndView값을 받아옴
 	@PostMapping("noticeUpdate")
-	public void setUpdate(BoardDTO boardDTO, ModelAndView mv) throws Exception{
+	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv) throws Exception{
 		
 		int result = noticeService.setUpdate(boardDTO);
 		
 		//실행이 되었다면
 		if(result>0) {
-							// 왜 redirect를 썻을까?
-			mv.setViewName("redirect:./boardList");
+			//앞에서 실행되어 수정이 되었다면, 수정된 값을 boardlist로 보여주기 위해 redirect를 이용해  
+			//다시 boardlist로 주소값을 보내준다.
+			mv.setViewName("redirect:./noticeList");
 		}
 		
-		//실행이 되지 않았다면
+		//실행 되지 않았다면
 		else {
-			
+			System.out.println("수정 실패!!");
+			mv.setViewName("redirect:./noticeList");
 		}
+		
+		return mv;
 		
 	}
 	
