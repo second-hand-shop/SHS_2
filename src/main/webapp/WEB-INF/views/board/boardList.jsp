@@ -64,13 +64,13 @@
 			<th class="lines" width="9%">HIT</td>
 		</tr>
 		
-		<c:forEach items="${list}" var="board">
+		<c:forEach items="${list}" var="dto">
 			<tr>
-				<td class="lines">${board.num}</td>
-				<td class="lines">${board.title}</td>
-				<td class="lines">${board.writer}</td>
-				<td class="lines">${board.regdate}</td>
-				<td class="lines">${board.hit}</td>
+				<td class="lines">${dto.num}</td>
+				<td class="lines"><a href="./${board}Select?num=${dto.num}">${dto.title}</a></td>
+				<td class="lines">${dto.writer}</td>
+				<td class="lines">${dto.regdate}</td>
+				<td class="lines">${dto.hit}</td>
 			</tr>
 		</c:forEach>
 		
