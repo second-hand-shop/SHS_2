@@ -12,4 +12,8 @@
 	<select id="memberIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
 		select id from member where id=#{id}
 	</select>
+	
+	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
+		select * from member where id=#{id} and pw=#{pw}
+	</select>
 </mapper>

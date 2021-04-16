@@ -46,4 +46,11 @@ public class MemberController {
 		model.addAttribute("result", result);
 		return "common/ajaxResult";
 	}
+	
+	@PostMapping("memberLogin")
+	public void memberLogin() throws Exception {
+		
+	}
+	
+
 }
