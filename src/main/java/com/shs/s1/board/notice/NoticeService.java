@@ -25,8 +25,8 @@ public class NoticeService implements BoardService{
 	}
 
 	@Override
-	public int getSelect(BoardDTO boardDTO) throws Exception {
-		return 0;
+	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
+		return noticeDAO.getSelect(boardDTO);
 	}
 
 	@Override

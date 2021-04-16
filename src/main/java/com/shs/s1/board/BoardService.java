@@ -11,7 +11,7 @@ public interface BoardService {
 	public int setInsert(BoardDTO boardDTO) throws Exception;
 	
 	//Board Select
-	public int getSelect(BoardDTO boardDTO) throws Exception;
+	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception;
 	
 	//Board Update
 	public int setUpdate(BoardDTO boardDTO) throws Exception;

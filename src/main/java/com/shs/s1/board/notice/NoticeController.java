@@ -17,6 +17,7 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	//Notice List
 	@GetMapping("noticeList")
 	public ModelAndView getList(BoardDTO boardDTO) throws Exception{
 		
@@ -26,8 +27,25 @@ public class NoticeController {
 		
 		mv.addObject("list", ar);
 		mv.setViewName("board/boardList");
-		mv.addObject("board", "NOTICE");
+		mv.addObject("board", "notice");
 		
+		return mv;
+		
+	}
+	
+	
+	//Notice Select
+	@GetMapping("noticeSelect")
+	public ModelAndView getSelect(BoardDTO boardDTO) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		boardDTO = noticeService.getSelect(boardDTO);
+		
+		mv.addObject("dto", boardDTO);
+		mv.setViewName("board/boardSelect");
+		mv.addObject("board", "notice");
+
 		return mv;
 		
 	}
