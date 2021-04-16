@@ -35,17 +35,19 @@ public class ProductListTest extends MyAbstractTest{
 		
 	}
 	
-	@Ignore
+	@Test
 	public void setInsertTEst() throws Exception{
+		
+		for(int i =101;i<150;i++) {
 		ProductDTO dto = new ProductDTO();
-		dto.setAmount(4);
-		dto.setContents("contestn4");
-		dto.setKinds("kind4");
-		dto.setPrice(4);
-		dto.setProductName("productName4");
-	
+		dto.setAmount(i);
+		dto.setContents("contents"+i);
+		dto.setKinds("kinds"+i);
+		dto.setPrice(i);
+		dto.setProductName("productName"+i);
 		int result = productDAO.setInsert(dto);
-		assertNotEquals(result, 0);
+		}
+		
 		
 		
 	}
@@ -65,7 +67,7 @@ public class ProductListTest extends MyAbstractTest{
 		
 	}
 	
-	@Test
+	@Ignore
 	public void setDeleteTEst() throws Exception{
 		ProductDTO dto = new ProductDTO();
 		dto.setProductNum(4);

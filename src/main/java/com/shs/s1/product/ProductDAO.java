@@ -27,6 +27,17 @@ public class ProductDAO {
 	}
 	
 	
+	public Long getTotalCount()throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	public int setInsert(ProductDTO productDTO)throws Exception{
 		
 		return sqlSession.insert(NAMESPACE+"setInsert", productDTO);
