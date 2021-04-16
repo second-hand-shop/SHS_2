@@ -18,4 +18,5 @@ public interface BoardService {
 	
 	//Board Delete
 	public int setDelect(BoardDTO boardDTO) throws Exception;
+	
 }
