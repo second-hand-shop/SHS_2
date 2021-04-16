@@ -7,7 +7,7 @@
     
     <!-- Notice List -->
     <select id="getList" parameterType="BoardDTO" resultType="NoticeDTO">
-    	select * from notice
+    	select * from notice order by num desc
     </select>
     
     <!-- Notice Insert -->
