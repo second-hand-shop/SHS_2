@@ -8,7 +8,10 @@
  		select * from COUPON
  	</select>
  	<insert id="setInsert" parameterType="CouponDTO">
- 		insert into coupon values(#{couponNum}, #{id}, #{disRate}, #{disPrice}, #{usage})
+ 		insert into COUPON values(#{couponNum}, #{id}, #{disRate}, #{disPrice}, #{usage})
  	</insert>
+ 	<delete id="setDelete" parameterType="CouponDTO">
+ 		delete from COUPON where couponNum=#{couponNum}
+ 	</delete>
  
  </mapper>

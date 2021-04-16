@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,12 +28,25 @@ public class CouponController {
 	}
 	
 	// setInsert ===================================================
-	@GetMapping("couponInsert")
+	@PostMapping("couponInsert")
 	public ModelAndView setInsert(CouponDTO couponDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = couponService.setInsert(couponDTO);
-		
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
+	
+	// setDelete ===================================================
+	@PostMapping("couponDelete")
+	public ModelAndView setDelete(CouponDTO couponDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = couponService.setDelete(couponDTO);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	
 	
 }
