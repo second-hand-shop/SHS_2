@@ -13,5 +13,10 @@
  	<delete id="setDelete" parameterType="CouponDTO">
  		delete from COUPON where couponNum=#{couponNum}
  	</delete>
+ 	<update id="setUpdate" parameterType="CouponDTO">
+ 		update set 
+ 		id=#{id}, disRate=#{disRate}, disPrice=#{disPrice}, usage=#{usage}
+ 		where couponNum=#{couponNum}
+ 	</update>
  
  </mapper>
