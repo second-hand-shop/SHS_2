@@ -78,9 +78,18 @@ public class ProductFileManager {
 		//원본이미지 메모리에 로딩
 		BufferedImage ogImg=ImageIO.read(new File(uploadRootPath+datePath,fileName));
 		//원본이미지 축
-		BufferedImage thumbImg = Scalr.res
+		BufferedImage thumbImg = Scalr.resize(ogImg,Scalr.Method.AUTOMATIC,Scalr.Mode.FIT_TO_HEIGHT,100);
+		//bufferdimage 객체, 너비,높이,reisize옵션
+		String thumbnailImgName = "s_"+fileName;
+		String fullPath = uploadRootPath+datePath+File.separator+thumbnailImgName;
 		
+		//썸네일 객체 생성
+		File newFile = new File(fullPath);
 		
+		String formatName = ProductMediaUtils.getFormatName(fileName);
+		ImageIO.write(thumbImg, formatName, newFile);
+		
+		return thumbnailImgName;
 		
 	}
 	
@@ -124,16 +133,16 @@ public class ProductFileManager {
 		//4. 이미지 파일일 경우 썸네일 생성
 		if(ProductMediaUtils.getMediaType(ogFileName)!=null) {
 			
-			
+			fileName = makeThumbnail(rootPath, datePath, fileName);
 		}
 		
 		
 		
 		
 		
-	//	String savedFilePath = datePath + File.separator+fileName;
+		String savedFilePath = datePath + File.separator+fileName;
 	
-	//	return savedFilePath;
+		return savedFilePath;
 	}
 	
 	
