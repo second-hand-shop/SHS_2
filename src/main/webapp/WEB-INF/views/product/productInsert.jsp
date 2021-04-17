@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
@@ -14,55 +13,27 @@
 		<!-- header END -->
 		<div id="container">
 			<div id="contents">
-
-				<h1>insert product</h1>
-
-				<form action="./productInsert" method="post">
-
-
-					kinds<input type="text" name="kinds"> contents<input
-						type="text" name="contents"> price<input type="text"
-						name="price"> productName<input type="text"
-						name="productName"> amount<input type="text" name="amount">
-
-
-
-					<div class="inputArea">
-					
-				 		<label for="clothesImg">이미지</label> 
-						<input type="file" id="clothesImg" name="file" />
-				<%-- 		<div class="select_img">
-							<img src="" />
-						</div> 
-
-						<script>
-									  $("#clothesImg").change(function(){
-									   if(this.files && this.files[0]) {
-									    var reader = new FileReader;
-									    reader.onload = function(data) {
-									     $(".select_img img").attr("src", data.target.result).width(500);        
-									    }
-									    reader.readAsDataURL(this.files[0]);
-									   }
-									  });
-					 </script> 
-  					<%=request.getRealPath("/") %>
- 
-					</div>
- --%>
-
-
-
-
-					<button>생성</button>
-
-				</form>
-
-
-
-
-
-
+		
+			<h1>insert product</h1>
+			
+			<form action="./productInsert" method="post">
+			
+			
+			kinds<input type="text" name="kinds">
+			contents<input type="text" name="contents">
+			price<input type="text" name="price">
+			productName<input type="text" name="productName">
+			amount<input type="text" name="amount">
+			
+			<button> 생성</button>
+			
+			</form>
+			
+			
+			
+			
+			
+			
 			</div>
 			<!-- footer -->
 			<c:import url="../template/footer.jsp"></c:import>
