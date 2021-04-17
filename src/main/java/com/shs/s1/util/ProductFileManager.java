@@ -13,11 +13,12 @@ import javax.servlet.http.HttpSession;
 
 import org.imgscalr.Scalr;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 
-
+@Component
 public class ProductFileManager {
 
 	
