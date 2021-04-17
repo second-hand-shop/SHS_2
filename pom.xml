@@ -26,8 +26,17 @@
 		</dependency>
 
 
-
-
+	<dependency>
+	<groupId>org.imgscalr</groupId>
+	<artifactId>imgscalr-lib</artifactId>
+	<version>4.2</version>
+	</dependency>
+	
+<dependency>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>2.4.3</version>
+</dependency>
 
 
 
