@@ -24,12 +24,12 @@ $(".insert").click(function(){
 			success: function(result){
 				result = result.trim();
 				if(result>0){
-					alert("추가 성공");
+					alert("Insert 성공");
 					location.reload();
 				}
 			},
 			error: function(result){
-				alert("추가 실패");
+				alert("Insert 실패");
 			}
 		});
 	}
@@ -49,12 +49,12 @@ $(".insert").click(function(){
 			success: function(result){
 				result=result.trim();
 				if(result>0){
-					alert("삭제 성공");
+					alert("Delete 성공");
 					location.reload();
 				}
 			},
 			error: function(result){
-				alert("삭제 실패");
+				alert("Delete 실패");
 			}
 		});
 		
@@ -72,6 +72,16 @@ $(".insert").click(function(){
 }
 
 couponSelect();
+
+
+
+
+// couponUpdate =================================================
+//===============================================================
+
+
+
+
 
 
 
