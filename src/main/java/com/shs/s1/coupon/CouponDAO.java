@@ -19,6 +19,11 @@ public class CouponDAO {
 		return sqlSession.selectList(NAMESPACE+"getList");
 	}
 	
+	// getSelect ===================================================
+	public CouponDTO getSelect(CouponDTO couponDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getSelect", couponDTO);
+	}
+	
 	// setInsert ===================================================
 	public int setInsert(CouponDTO couponDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setInsert", couponDTO);
