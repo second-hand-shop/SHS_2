@@ -16,6 +16,11 @@ public class CouponService {
 		return couponDAO.getList();
 	}
 	
+	// getSelect ===================================================
+	public CouponDTO getSelect(CouponDTO couponDTO) throws Exception {
+		return couponDAO.getSelect(couponDTO);
+	}
+	
 	// setInsert ===================================================
 	public int setInsert(CouponDTO couponDTO) throws Exception {
 		return couponDAO.setInsert(couponDTO);

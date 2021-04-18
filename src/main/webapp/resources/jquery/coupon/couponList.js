@@ -74,8 +74,6 @@ $(".insert").click(function(){
 	});
 }
 
-couponSelect();
-
 
 
 

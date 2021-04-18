@@ -27,6 +27,16 @@ public class CouponController {
 		return mv;
 	}
 	
+	// getSelect ===================================================
+	@GetMapping("couponSelect")
+	public ModelAndView getSelect(CouponDTO couponDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		couponDTO = couponService.getSelect(couponDTO);
+		mv.addObject("DTO", couponDTO);
+		mv.setViewName("coupon/couponSelect");
+		return mv;
+	}
+	
 	// setInsert ===================================================
 	@PostMapping("couponInsert")
 	public ModelAndView setInsert(CouponDTO couponDTO) throws Exception {

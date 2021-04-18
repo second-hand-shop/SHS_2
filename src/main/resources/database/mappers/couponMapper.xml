@@ -7,6 +7,9 @@
  	<select id="getList" resultType="CouponDTO">
  		select * from COUPON order by couponNum desc
  	</select>
+ 	<select id="getSelect" parameterType="CouponDTO" resultType="CouponDTO">
+ 		select * from COUPON where couponNum=#{couponNum}
+ 	</select>
  	<insert id="setInsert" parameterType="CouponDTO">
  		insert into COUPON values(#{couponNum}, #{id}, #{disRate}, #{disPrice}, #{usage})
  	</insert>

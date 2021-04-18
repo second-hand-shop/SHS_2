@@ -4,9 +4,6 @@
 <html>
 <head>
 <style type="text/css">
-#modal {
-	display: none;
-}
 
 tbody tr td input {
 	width: 70%;
@@ -43,7 +40,7 @@ tbody tr td input {
 				</tr>
 				<c:forEach items="${list }" var="DTO">
 					<tr id="tr">
-						<td id="delNum" title="${DTO.couponNum }"><a href="#myModal" data-toggle="modal" id="couponSelect">${DTO.couponNum }</a></td>
+						<td id="delNum"><a href="./couponSelect?couponNum=${DTO.couponNum }" data-toggle="modal" id="couponSelect">${DTO.couponNum }</a></td>
 						<td>${DTO.id }</td>
 						<td>${DTO.disRate }</td>
 						<td>${DTO.disPrice }</td>
@@ -59,52 +56,6 @@ tbody tr td input {
 	<input type="button" class="btn btn-primary" id="addBtn" value="+">
 	<!-------- ????????????????????????????? --------------->
 
-	<!---- The Modal ---------------------------->
-	<div class="modal" id="myModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title"></h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">
-					<form action="./couponUpdate" method="POST">
-						<div class="mb-3">
-							<label for="exampleInputEmail1" class="form-label">배정 ID</label>
-							<input type="text" class="form-control" name="id">
-						</div>
-						<div class="mb-3">
-							<label for="exampleInputPassword1" class="form-label">할인율</label>
-							<input type="number" class="form-control" name="disRate">
-						</div>
-						<div class="mb-3">
-							<label for="exampleInputPassword2" class="form-label">할인금액</label>
-							<input type="number" class="form-control" name="disPrice">
-						</div>
-						<span class="mb-3">
-      						<label class="form-label">사용유무</label>
-     						<select class="form-select" name="usage">
-     							<option>Y</option>
-     							<option>N</option>
-      						</select>
-    					</span>
-						<button type="submit" class="btn btn-primary">UPDATE</button>
-					</form>
-				</div>
-
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<!---- The Modal ---------------------------->
 </body>
 <script type="text/javascript" src="../resources/jquery/coupon/couponList.js"></script>
 </html>
