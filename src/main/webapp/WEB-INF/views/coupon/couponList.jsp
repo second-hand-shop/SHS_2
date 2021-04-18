@@ -43,7 +43,7 @@ tbody tr td input {
 				</tr>
 				<c:forEach items="${list }" var="DTO">
 					<tr id="tr">
-						<td id="delNum"><a href="#myModal" data-toggle="modal" id="couponSelect">${DTO.couponNum }</a></td>
+						<td id="delNum" title="${DTO.couponNum }"><a href="#myModal" data-toggle="modal" id="couponSelect">${DTO.couponNum }</a></td>
 						<td>${DTO.id }</td>
 						<td>${DTO.disRate }</td>
 						<td>${DTO.disPrice }</td>
