@@ -1,5 +1,6 @@
 package com.shs.s1.coupon;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,12 @@ public class CouponService {
 	
 	// setInsert ===================================================
 	public int setInsert(CouponDTO couponDTO) throws Exception {
+		Calendar calendar = Calendar.getInstance();
+		long time = calendar.getTimeInMillis();
+		String couponNum = time+"";
+		
+		couponDTO.setCouponNum(couponNum);
+		
 		return couponDAO.setInsert(couponDTO);
 	}
 	
