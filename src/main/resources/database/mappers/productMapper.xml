@@ -50,4 +50,14 @@ from (select * from product
 	Delete from product where productNum=#{productNum}
 </delete>
 
+
+
+
+
+
+
+
+
+
+
  </mapper>

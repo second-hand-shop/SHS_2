@@ -147,7 +147,22 @@ public class ProductFileManager {
 	
 	
 	
-	
+	public void deleteFile(String fileName, HttpServletRequest request) {
+		
+		String rootPath = getRootPath(fileName,request);
+		File file = new File(rootPath+File.separator+fileName);
+		
+		MediaType mediaType = ProductMediaUtils.getMediaType(fileName);
+		if(mediaType!=null) {
+			String ogImg = file.getAbsolutePath().replace("s_", "");
+			new File(ogImg).delete();
+			
+		}
+		
+		file.delete();
+		
+		
+	}
 	
 	
 	
