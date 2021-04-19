@@ -35,13 +35,11 @@ public class MemberDAOTest extends MyAbstractTest {
 		assertNotNull(memberDTO);
 	}
 	
-	@Test
-	public void memberIdFind() throws Exception {
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setName("name1");
-		memberDTO.setEmail("email1");
-		memberDTO = memberDAO.memberIdFind(memberDTO);
-		
-		assertNotNull(memberDTO);
-	}
+	/*
+	 * @Test public void memberIdFind() throws Exception { MemberDTO memberDTO = new
+	 * MemberDTO(); memberDTO.setName("name1"); memberDTO.setEmail("email1");
+	 * memberDTO = memberDAO.memberIdFind(memberDTO);
+	 * 
+	 * assertNotNull(memberDTO); }
+	 */
 }

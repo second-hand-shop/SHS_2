@@ -71,19 +71,13 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberIdFind")
-	public String memberIdFind(MemberDTO memberDTO) throws Exception {
-		memberDTO = memberService.memberIdFind(memberDTO);
-		String result ="";
-		
-		if(memberDTO != null) {
-			String res = memberDTO.getId();
-			
-			if(res.equals(null)) {
-				return "null";
-			} else {
-				result = memberDTO.getId();
-			}
+	public String memberIdFind(MemberDTO memberDTO, Model model) throws Exception {
+		memberDTO = memberService.memberIdCheck(memberDTO);
+		String result = "0";
+		if(memberDTO == null) {
+			result ="1";
 		}
-		return result;
+		model.addAttribute("result", result);
+		return "common/ajaxResult";
 	}
 }
