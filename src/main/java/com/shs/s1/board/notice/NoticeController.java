@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,40 @@ public class NoticeController {
 		return mv;
 		
 	}
+	
+	//Notice Insert
+	@GetMapping("noticeInsert")
+	public ModelAndView setInsert() throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		BoardDTO boardDTO = new BoardDTO();
+		
+		mv.addObject("dto", boardDTO);
+		mv.addObject("board", "notice");
+		mv.setViewName("board/boardInsert");
+
+		return mv;
+	}
+	
+	
+	@PostMapping("noticeInsert")
+	public String setInsert(BoardDTO boardDTO, Model model) throws Exception{
+
+		int result = noticeService.setInsert(boardDTO);
+		
+		String message="등록 실패";
+		
+		if(result>0) {
+			message="등록 성공";
+		}
+
+		model.addAttribute("msg", message);
+		model.addAttribute("path", "./noticeList");
+		
+		return "common/commonResult";
+		
+	}
+	
 	
 	
 	//Notice Select
@@ -86,7 +121,7 @@ public class NoticeController {
 		
 		//실행 되지 않았다면
 		else {
-			System.out.println("수정 실패!!");
+			System.out.println("수정 실패");
 			mv.setViewName("redirect:./noticeList");
 		}
 		
@@ -94,6 +129,28 @@ public class NoticeController {
 		
 	}
 	
+	//Notice Delete
+	@GetMapping("noticeDelete")
+	public ModelAndView setDelete(BoardDTO boardDTO) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		int result = noticeService.setDelect(boardDTO);
+		
+		String message="삭제 실패";
+		String path = "./noticeList";
+		
+		if(result > 0) {
+			message="삭제 성공";
+		}
+
+		mv.addObject("msg", message);
+		mv.addObject("path", path);
+		
+		mv.setViewName("common/commonResult");
+		
+		return mv;
+	}
 	
 	
 }

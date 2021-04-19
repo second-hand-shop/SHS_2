@@ -21,10 +21,11 @@ public class NoticeService implements BoardService{
 
 	@Override
 	public int setInsert(BoardDTO boardDTO) throws Exception {
-		return 0;
+		return noticeDAO.setInsert(boardDTO);
 	}
 
 	@Override
+	// hit이 지금 2번씩 입력됨.
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		int result = noticeDAO.setHitUpdate(boardDTO);
 		return noticeDAO.getSelect(boardDTO);
@@ -37,7 +38,11 @@ public class NoticeService implements BoardService{
 
 	@Override
 	public int setDelect(BoardDTO boardDTO) throws Exception {
-		return 0;
+		return noticeDAO.setDelete(boardDTO);
+	}
+	
+	public int setHitUpdate(BoardDTO boardDTO) throws Exception{
+		return noticeDAO.setHitUpdate(boardDTO);
 	}
 	
 
