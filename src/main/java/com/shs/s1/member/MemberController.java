@@ -64,4 +64,26 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:../";
 	}
+	
+	@GetMapping("memberIdFind")
+	public String memberIdFind() throws Exception {
+		return "member/memberIdFind";
+	}
+	
+	@PostMapping("memberIdFind")
+	public String memberIdFind(MemberDTO memberDTO) throws Exception {
+		memberDTO = memberService.memberIdFind(memberDTO);
+		String result ="";
+		
+		if(memberDTO != null) {
+			String res = memberDTO.getId();
+			
+			if(res.equals(null)) {
+				return "null";
+			} else {
+				result = memberDTO.getId();
+			}
+		}
+		return result;
+	}
 }
