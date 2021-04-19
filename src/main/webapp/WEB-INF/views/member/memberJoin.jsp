@@ -18,6 +18,7 @@
 				<div class="form-group">
 				<label for="id">ID</label> 
 				<input type="text" class="form-control" id="id" name="id" aria-describedby="idHelp"> 
+				<button type="button" id="idCheck" class="idCheck" value="N">아이디 중복확인</button>
 				<h2 id="idResult"></h2>
 			</div>
 			<div class="form-group">
