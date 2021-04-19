@@ -6,6 +6,7 @@ let id = document.getElementById("id");
 let pw = document.getElementById("pw");
 let pw2 = document.getElementById("pw2");
 let btn = document.getElementById("btn");
+let idCheck = document.getElementById("idCheck");
 let etc = document.getElementsByClassName("etc");
 
 //id check 결과
@@ -58,17 +59,21 @@ pw.addEventListener("change", function(){
 });
 
 //4. id 중복확인
-$("#id").blur(function(){
+//$("#id").blur(function(){
+idCheck.addEventListener("click", function(){
 	let id=$("#id").val();
 	$.get("./memberIdCheck?id="+id, function(result){
 		result = result.trim();
-		let str ="사용가능한 ID입니다.";
+		//let str ="사용가능한 ID입니다.";
+		
 		if(result=='0'){
-			str="중복 ID입니다.";
+			alert("사용가능한 아이디입니다.");
+		} else if(result =='1'){
+			alert("중복된 아이디입니다.");
 		}
-		$("idCheckResult").html(str);
+		//$("idCheckResult").html(str);
 	});
-}); 
+});
 
 
 //5. btn클릭시 join
@@ -82,7 +87,8 @@ btn.addEventListener("click", function(){
 	//조건 만족하면 submit 강제실행
 	if(idCheckResult && pwCheckResult && pwEqualResult && etcResult){
 		let joinform = document.getElementById("joinform");
-		joinform.submit();
+		/*joinform.submit();*/
+		alert("회원가입 진행");
 	} else {
 		alert("필수 항목을 입력하세요");
 	}
