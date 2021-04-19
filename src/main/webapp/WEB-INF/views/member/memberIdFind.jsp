@@ -22,11 +22,11 @@
 				<div class="w3-center w3-large w3-margin-top">
 					<h2>아이디 찾기</h2>
 				</div>
-				<div>
-					<p>
+				<div id="searchDIV">
+ 					<p>
 						<label>Name</label>
 						<input class="w3-input" type="text" id="name" name="name" required>
-					</p>
+					</p> 
 					<p>
 						<label>Email</label>
 						<input class="w3-input" type="text" id="email" name="email" required>
@@ -35,7 +35,7 @@
 						<button type="button" id="findBtn" onclick="findId()" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">find</button>
 						<button type="button" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">Login</button>
 					</p>
-					<span id="id-msg" class="id-msg" style="font-size: 14px; text-align: center;"></span>
+					<span id="resultId" class="id-msg" style="font-size: 14px; text-align: center;"></span>
 				</div>
 			</form>
 		</div>
