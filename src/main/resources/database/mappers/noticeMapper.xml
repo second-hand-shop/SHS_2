@@ -24,7 +24,7 @@
     
     <!-- Notice Update -->
     <update id="setUpdate" parameterType="BoardDTO">
-    	update notice set title = #{title}, writer = #{writer}, contents = #{contents}, hit = #{hit}, regdate = sysdate 
+    	update notice set title = #{title}, writer = #{writer}, contents = #{contents}, hit = 0, regdate = sysdate 
     	where num = #{num}
     </update>
     

@@ -4,8 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+
 <c:import url="../template/bootStrap.jsp"></c:import>
-<title>${board} Update</title>
+<title>${board} Insert</title>
 
 <style>
 
@@ -61,50 +63,51 @@
 		<c:import url="../template/header.jsp"></c:import>
 	</div>
 	
-	<!-- Notice Update Contents -->
+	
+	<!-- Notice Insert Contents -->
 	<!--  enctype="multipart/form-data" : notice에는 text만 넘어감 아직 빼기 -->
-	<form id="form" action="./${board}Update" method="post" enctype="multipart/form-data">	
+	<form id="form" action="./${board}Insert" method="post" enctype="multipart/form-data">	
 	
 		<div id="table-border" style="border: 1px solid #d3d3d3;">	
 			<ul>
-				<li><input type="hidden" name="num" value="${param.num}"></li>
+				<li><input type="hidden" name="num" value="${dto.num}"></li>
 				
 				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
+					<label for="title">Title</label> 
 					<input type="text" class="form-control"
-					id="title" name="title" value="${dto.title}" aria-describedby="titleHelp">
+					id="title" name="title" aria-describedby="titleHelp">
 				</li>
 				
 				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
+					<label for="writer">Writer</label> 
 					<input type="text"
-					class="form-control" readonly="readonly" id="writer" name="writer" value="${dto.writer}">
-					<span style="float: right;">
-						<input type="text" readonly="readonly"  name="regdate" value="${dto.regdate}">
-					</span>
+					class="form-control" id="writer" name="writer">
+
 				</li>
 				
 				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
 					<label for="hit">Hit</label> 
-					<input type="text" readonly="readonly"  name="hit" value="${dto.hit}">
 				</li>
 				
 				<li class="lines">
+					<label for="contents">Contents</label>
 					<textarea class="form-control" rows="5" name="contents" id="contents" row="5">
-					${dto.contents}
-				</textarea>
+					</textarea>
 				</li>
 			
 			</ul>
 			
 			<div id="botton-div">
-				<input type="submit" value="수정" class="button-style" id="btn">
+				<input type="submit" value="등록" class="button-style" id="btn">
 			</div>
 	
 		</div>
 	</form>
-
-
+	
+	
 	<!-- footer -->
 	<c:import url="../template/footer.jsp"></c:import>
+	
 
 </body>
 
