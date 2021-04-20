@@ -57,4 +57,38 @@ public class ProductDAO {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	public ProductImageDTO getFileSelect(ProductImageDTO productImageDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFileSelect", productImageDTO);
+	}
+	
+	
+	
+	public int setFileInsert(ProductImageDTO productImageDTO) throws Exception{
+		
+		return sqlSession.insert(NAMESPACE+"setFileInsert", productImageDTO);
+	}
+	
+	public int setFileDelete(ProductImageDTO productImageDTO) throws Exception{
+		
+		return sqlSession.delete(NAMESPACE+"setFileDelete", productImageDTO);
+	}
+	
+	
+	
+	
+	public long getProductNum() throws Exception{
+		
+		return sqlSession.selectOne(NAMESPACE+"getProductNum");
+		
+	}
+	
+	
+	
 }

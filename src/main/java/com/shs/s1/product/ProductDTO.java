@@ -1,5 +1,9 @@
 package com.shs.s1.product;
 
+import java.util.List;
+
+
+
 public class ProductDTO {
 
 	private long productNum;
@@ -8,10 +12,17 @@ public class ProductDTO {
 	private long price;
 	private String productName;
 	private long amount;
-	
+	private List<ProductImageDTO> productImages;
 
 	
 	
+	
+	public List<ProductImageDTO> getProductImages() {
+		return productImages;
+	}
+	public void setProductImages(List<ProductImageDTO> productImages) {
+		this.productImages = productImages;
+	}
 	public long getProductNum() {
 		return productNum;
 	}

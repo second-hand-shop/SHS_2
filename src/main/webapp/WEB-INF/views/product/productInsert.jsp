@@ -16,7 +16,7 @@
 		
 			<h1>insert product</h1>
 			
-			<form action="./productInsert" method="post">
+			<form action="./productInsert" method="post" enctype="multipart/form-data">
 			
 			
 			kinds<input type="text" name="kinds">
@@ -27,16 +27,17 @@
 			
 			<button> 생성</button>
 			
-			</form>
 			
 			
 			
 			
 			<div class="inputArea">
- <label for="gdsImg">이미지</label>
- <input type="file" id="gdsImg" name="file" />
- <div class="select_img"><img src="" /></div>
+ <!--  <label for="gdsImg">이미지</label> -->
+ <input type="file" id="gdsImg" name="files" multiple/>
+ <!--  <div class="select_img"><img src="" /></div> -->
  
+ 
+  <!-- 
  <script>
   $("#gdsImg").change(function(){
    if(this.files && this.files[0]) {
@@ -47,11 +48,15 @@
     reader.readAsDataURL(this.files[0]);
    }
   });
- </script>
+ </script>-->
  <%=request.getRealPath("/") %>
+ 
+ 
+ 
 </div>
 			
 			
+			</form>
 			
 			
 			

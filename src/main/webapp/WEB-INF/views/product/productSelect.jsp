@@ -37,6 +37,23 @@
 			
 			
 			
+				<div>
+	<c:forEach items="${dto.productImages}" var="file">
+		<%-- <a href="../resources/upload/images/${file.fileName}">${file.ogName}</a> --%>
+		<img src="../resources/upload/images/${file.thumbnail}">
+	</c:forEach>
+	</div>
+	
+	
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			</div>
 			<!-- footer -->
 			<c:import url="../template/footer.jsp"></c:import>

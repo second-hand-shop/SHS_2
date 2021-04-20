@@ -54,12 +54,21 @@ public class ProductController {
 	}
 	
 	@PostMapping("productInsert")
-	public String setInsert(ProductDTO productDTO) throws Exception{
-				
-		int result = productService.setInsert(productDTO);
+	public String setInsert(ProductDTO productDTO,MultipartFile[] files,Model model) throws Exception{
+		System.out.println(files);
+		int result = productService.setInsert(productDTO,files);
 		
+		//String path="./productList";
+		
+		//model.addAttribute("path", path);
+		
+		//return "common/commonResult";
 		return "redirect:./productList";
+		
 	}
+	
+	
+	
 	
 	
 	
@@ -82,9 +91,9 @@ public class ProductController {
 	}
 	
 	@PostMapping("productUpdate")
-	public String setUpdate(ProductDTO productDTO) throws Exception{
+	public String setUpdate(ProductDTO productDTO,MultipartFile[] files) throws Exception{
 		
-		int result = productService.setUpdate(productDTO);
+		int result = productService.setUpdate(productDTO,files);
 		
 		
 		if(result>0) {
