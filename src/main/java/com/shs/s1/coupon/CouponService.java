@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.shs.s1.util.Pager;
+
 @Service
 public class CouponService {
 
@@ -13,8 +15,12 @@ public class CouponService {
 	private CouponDAO couponDAO;
 //---------------------------------------------------------------------------------------
 	// getList ===================================================	
-	public List<CouponDTO> getList() throws Exception {
-		return couponDAO.getList();
+	public List<CouponDTO> getList(Pager pager) throws Exception {
+		pager.makeRow();
+		long totalCount = couponDAO.getTotalCount(pager);
+		pager.makePaging(totalCount);
+		
+		return couponDAO.getList(pager);
 	}
 	
 	// getSelect ===================================================

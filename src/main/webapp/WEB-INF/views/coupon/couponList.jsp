@@ -140,12 +140,12 @@ tbody tr td input {
 				</tr>
 				<c:forEach items="${list }" var="DTO">
 					<tr id="tr">
-						<td id="delNum"><a href="./couponSelect?couponNum=${DTO.couponNum }" id="couponSelect">${DTO.couponNum }</a></td>
+						<td class="delNum"><a href="./couponSelect?couponNum=${DTO.couponNum }" class="couponSelect">${DTO.couponNum }</a></td>
 						<td>${DTO.id }</td>
 						<td>${DTO.disRate }</td>
 						<td>${DTO.disPrice }</td>
 						<td>${DTO.usage }</td>
-						<td><input type="checkbox" name="deleteCheck">-</td>
+						<td><input type="checkbox" name="deleteCheck" class="check">-</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -154,14 +154,14 @@ tbody tr td input {
 	<!--------------------------- Paging ----------------------------------->
 	<div class="container">
 		<ul class="pagination">
-			<c:if test="${pager.pre }">
-				<li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1 }">Previous</a></li>
+			<c:if test="${pager.previous }">
+				<li class="page-item"><a class="page-link p" href="#" title="${pager.startPage-1 }">Previous</a></li>
 			</c:if>
-			<c:forEach begin="${pager.startNum }" end="${pager.lastNum }" var="i">
+			<c:forEach begin="${pager.startPage }" end="${pager.lastPage }" var="i">
 				<li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${pager.next}">
-				<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
+				<li class="page-item"><a class="page-link p" href="#" title="${pager.lastPage+1}">Next</a></li>
 			</c:if>
 		</ul>
 		<div class="input-group mt-3 mb-3">
@@ -183,7 +183,7 @@ tbody tr td input {
 	</div>
 
 	<!-------- table END --------------->
-	<input type="button" class="btn btn-primary" id="addBtn" value="+">
+	<input type="button" class="btn btn-danger" id="deleteBtn" value="-">
 	<!-------- ????????????????????????????? --------------->
 	</main>
 	</div>
