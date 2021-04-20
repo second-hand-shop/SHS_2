@@ -1,5 +1,7 @@
 package com.shs.s1.member;
 
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/member/**")
@@ -66,18 +69,28 @@ public class MemberController {
 	}
 	
 	@GetMapping("memberIdFind")
-	public String memberIdFind() throws Exception {
-		return "member/memberIdFind";
+	public void memberIdFind() throws Exception {
+		
 	}
 	
 	@PostMapping("memberIdFind")
-	public String memberIdFind(MemberDTO memberDTO, Model model) throws Exception {
-		memberDTO = memberService.memberIdCheck(memberDTO);
-		String result = "0";
-		if(memberDTO == null) {
-			result ="1";
+	public ModelAndView memberIdFind(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		//사용자가 입력한 name과 email 받아오기
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		
+		mv.addObject("dto", memberDTO);
+		mv.addObject("name", name);
+		mv.addObject("email", email);
+		mv.setViewName("member/memberIdFind");
+		
+		if(name == memberDTO.getName() && email == memberDTO.getEmail()) {
+			memberDTO = memberService.memberIdFind(memberDTO);
+			System.out.println(memberDTO.getId());
+		} else {
+			
 		}
-		model.addAttribute("result", result);
-		return "common/ajaxResult";
+		return mv;
 	}
 }
