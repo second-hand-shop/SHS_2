@@ -82,10 +82,8 @@ $(".insert").click(function(){
 
 $("#deleteBtn").click(function(){
 	$(".check").each(function(){
-		let checked = $(this).prop("checked");
-		if(checked){
-			$(this)
-		}
+		let check = $(this).prop("checked");
+		console.log(check);
 	});
 });
 
