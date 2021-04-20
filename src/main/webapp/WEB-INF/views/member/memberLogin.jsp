@@ -16,20 +16,12 @@
 		<div class="container mt-2">
 			<form action="./memberLogin" method="post">
 				<div class="form-group">
-					<label for="id">ID</label> <input type="text" class="form-control"
-						id="id" name="id" aria-describedby="idlHelp"> <small
-						id="idlHelp" class="form-text text-muted"> We'll never
-						share your email with anyone else. </small>
+					<label for="id">ID</label> <input type="text" class="form-control" id="id" name="id" aria-describedby="idlHelp"> 
 				</div>
 				<div class="form-group">
-					<label for="pw">Password</label> <input type="password"
-						class="form-control" id="pw" name="pw">
+					<label for="pw">Password</label> <input type="password" class="form-control" id="pw" name="pw">
 				</div>
-				<div class="form-group form-check">
-					<input type="checkbox" class="form-check-input" id="exampleCheck1">
-					<label class="form-check-label" for="exampleCheck1">Check me out</label>
-				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" id="btn_login" class="btn btn-primary">Submit</button>
 			</form>
 		</div>
 
@@ -42,4 +34,5 @@
 <script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
+<script type="text/javascript" src="./resources/jquery/memberLogin.js"></script>
 </html>

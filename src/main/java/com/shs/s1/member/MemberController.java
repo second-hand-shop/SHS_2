@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/member/**")
@@ -16,6 +17,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	//회원가입
 	@GetMapping("memberJoin")
 	public void memberJoin() throws Exception {
 		
@@ -36,6 +38,7 @@ public class MemberController {
 		return "common/commonResult";
 	}
 	
+	//id 중복확인
 	@GetMapping("memberIdCheck")
 	public String memberIdCheck(MemberDTO memberDTO, Model model) throws Exception {
 		memberDTO = memberService.memberIdCheck(memberDTO);
@@ -47,18 +50,40 @@ public class MemberController {
 		return "common/ajaxResult";
 	}
 	
+	//로그인
 	@GetMapping("memberLogin")
-	public void memberLogin() throws Exception {
+	public ModelAndView memberLogin() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberLogin");
 		
+		return mv;
 	}
 	
 	@PostMapping("memberLogin")
-	public String memberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
+	public ModelAndView memberLogin(MemberDTO memberDTO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		memberDTO = memberService.memberLogin(memberDTO);
-		session.setAttribute("member", memberDTO);
-		return "redirect:../";
+		
+		if(memberDTO != null) {
+			//index 페이지로 이동
+			session.setAttribute("member", memberDTO);
+			mv.addObject("msg", "로그인 성공");
+			mv.addObject("path", "../");
+			mv.setViewName("common/commonResult");
+			//mv.setViewName("redirect:../");
+			
+		}else {
+			//로그인 실패 메세지를 alert
+			//로그인 입력 폼 으로 이동
+			mv.addObject("msg", "로그인 실패");
+			mv.addObject("path", "./memberLogin");
+			mv.setViewName("common/commonResult");
+		}		
+		return mv;
 	}
+
 	
+	//로그아웃
 	@GetMapping("memberLogout")
 	public String memberLogout(HttpSession session) throws Exception {
 		session.invalidate();
