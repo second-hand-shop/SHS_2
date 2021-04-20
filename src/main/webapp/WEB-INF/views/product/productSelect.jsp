@@ -111,11 +111,33 @@ float :right;
 		
 	});
 	
-	$("#cart").click(function(){
+	$("#cartfrm").click(function(){
 		
 		let result = confirm("카트에 담으시겠습니까");
 		
 		if(result=true){
+			
+			$.post("setCartInsert",
+					
+			{
+				//매개변
+			},
+			function(data){
+				
+				if(data>0){
+					alert("상품을 장바구니에 담았습니다.");
+				}else{
+					alert("장바구니 담기 실패");
+				}
+				
+			}
+			
+			
+			
+			);
+				
+				
+			
 			
 			//디비에 저장되고, 카트jsp에서 보여야된다
 			//세션을 이용해서 해당 멤버 아이디에 해당하는걸 보여주면 될듯,,
