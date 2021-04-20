@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	alert('${message}');
-	location.href="${path}"
+	var result = '${msg}';
+	var path = '${path}';
+	alert(result);
+	location.href=path;
 </script>
 </head>
 <body>
