@@ -106,7 +106,12 @@ public class ProductController {
 	}
 	
 	
-	
+	public String setCartInsert(CartDTO cartDTO)throws Exception{
+		
+		int result = productService.setCartInsert(cartDTO);
+		return "common/ajaxResult";
+		
+	}
 	
 	
 	

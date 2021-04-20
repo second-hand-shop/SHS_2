@@ -13,17 +13,24 @@
  </select>
  
  
- <select id="getList" parameterType="ProductPager" resultType="ProductDTO"> 
+ <select id="getList" parameterType="ProductPager" resultMap="ProductSelectResult"> 
  
- select * from
-(select rownum R, P.*
-from (select * from product
- order by productNum desc) P)
+ 
+select *
+from
+    (select rownum R, P.*
+    from (select * from product
+          order by productNum desc)
+    P) A left join productImage PM
+    on A.productNum = PM.productNum
  where R between #{startRow} and #{lastRow}
  
  
  
  </select>
+ 
+
+ 
  
  <select id="getSelect" parameterType="ProductDTO" resultMap="ProductSelectResult">
  select P.*,PM.*
@@ -37,7 +44,7 @@ from (select * from product
  	<result property="kinds" column="kinds"></result>
  	<result property="contents" column="contents"></result>
  	<result property="price" column="price"></result>
- 	<result property="productName" column="prductName"></result>
+ 	<result property="productName" column="productName"></result>
  	<result property="amount" column="amount"></result>
  	
  	<collection property="productImages" javaType="java.util.List" ofType="ProductImageDTO">
@@ -95,7 +102,9 @@ from (select * from product
 </delete>
 
 
-
+<insert id="setCartInsert" parameterType="CartDTO">
+	insert into Cart values(cart_seq.nextval,#{productNum},#{id})
+</insert>
 
 
  </mapper>

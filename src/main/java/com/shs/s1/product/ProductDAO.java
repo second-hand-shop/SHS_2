@@ -89,6 +89,9 @@ public class ProductDAO {
 		
 	}
 	
-	
+	public int setCartInsert(CartDTO cartDTO)throws Exception{
+		
+		return sqlSession.insert(NAMESPACE+"setCartInsert", cartDTO);
+	}
 	
 }

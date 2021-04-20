@@ -4,6 +4,19 @@
 <head>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>SHS</title>
+
+<style type="text/css">
+
+#description{
+
+
+float :right;
+
+}
+
+
+
+</style>
 </head>
 <body>
 	<div id="wrap">
@@ -14,25 +27,40 @@
 		<div id="container">
 			<div id="contents">
 			<h1> 상세페이지</h1>
-			<a href="./productUpdate?productNum=${dto.productNum}"><button type="button" class="btn btn-primary">상품 수정</button></a>
 			
-			
-			
+			<div>
+			<a href="./productUpdate?productNum=${dto.productNum}"><button type="button" class="btn btn-outline-dark">상품 수정</button></a>
 			<a href="#" id="del" class="btn btn-danger">상품 삭제</a>
+			</div>
 			
 			
 			
 			
+			
+			
+			<div id="description" >
 			<h5>${dto.kinds}</h5>
 			<h5>${dto.contents}</h5>
 			<h5>${dto.price}</h5>
 			<h5>${dto.productName}</h5>
 			<h5>${dto.amount}</h5>	
+			<div> </div>
+			<a href="#" id="buy" class="btn btn-outline-dark">buy</a>
+			<a href="#" id="wish" class="btn btn-outline-dark">wish</a>
+			<a href="#" id="cart" class="btn btn-outline-dark">cart</a>
+			</div>
+			
 			
 				
-			<form action="./productDelete" id="frm">
+			<form action="./productDelete" id="delfrm">
 				<input type="hidden" name="productNum" value="${dto.productNum}">
 			</form>
+			
+			
+			<form action="" id="cartfrm">
+			
+			</form>
+			
 			
 			
 			
@@ -40,7 +68,10 @@
 				<div>
 	<c:forEach items="${dto.productImages}" var="file">
 		<%-- <a href="../resources/upload/images/${file.fileName}">${file.ogName}</a> --%>
+		
+		<div>
 		<img src="../resources/upload/images/${file.thumbnail}">
+		</div>
 	</c:forEach>
 	</div>
 	
@@ -73,12 +104,27 @@
 		
 
 		if(result=true){
-			$("#frm").attr("method","post");
-			$("#frm").submit();
+			$("#delfrm").attr("method","post");
+			$("#delfrm").submit();
 			
 		}
 		
 	});
+	
+	$("#cart").click(function(){
+		
+		let result = confirm("카트에 담으시겠습니까");
+		
+		if(result=true){
+			
+			//디비에 저장되고, 카트jsp에서 보여야된다
+			//세션을 이용해서 해당 멤버 아이디에 해당하는걸 보여주면 될듯,,
+			
+			
+		}
+		
+	})
+	
 	
 	
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -126,6 +127,10 @@ public class ProductService {
 	}
 	
 	
-	
+	public int setCartInsert(CartDTO cartDTO)throws Exception{
+		
+		
+		return productDAO.setCartInsert(cartDTO);
+	}
 	
 }
