@@ -42,14 +42,16 @@
 
 					<div>
 						<div>
-							<c:forEach items="${dto.productImages}" var="file">
-								 <a href="../resources/upload/images/${file.fileName}">${file.ogName}</a>
-								<h3>12123123</h3>
+							<%-- 		<c:forEach items="${dto.productImages}" var="file">
 								<img src="../resources/upload/images/${file.thumbnail}">
-							</c:forEach>
+							</c:forEach> --%>
+							<a href="./detail?productNum=${dto.productNum}"> <img
+								src="../resources/upload/images/${dto.productImages[0].thumbnail}">
+							</a>
 						</div>
-						<span> <a href="./detail?productNum=${dto.productNum}">${dto.productNum}</a>
+						<span> <a href="./detail?productNum=${dto.productNum}">${dto.productName}</a>
 						</span>
+						
 					</div>
 
 
