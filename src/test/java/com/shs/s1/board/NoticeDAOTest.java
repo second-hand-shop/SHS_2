@@ -17,17 +17,17 @@ public class NoticeDAOTest extends MyAbstractTest{
 	
 	//--------List
 	//@Test
-	public void getListTest() throws Exception{
-		
-		BoardDTO boardDTO = new BoardDTO();
-		
-		List<BoardDTO> ar = noticeDAO.getList(boardDTO);
-		
-		assertNotEquals(0, ar.size());
-		
-		System.out.println(ar.size());
-		
-	}
+//	public void getListTest() throws Exception{
+//		
+//		BoardDTO boardDTO = new BoardDTO();
+//		
+//		List<BoardDTO> ar = noticeDAO.getList(boardDTO);
+//		
+//		assertNotEquals(0, ar.size());
+//		
+//		System.out.println(ar.size());
+//		
+//	}
 	
 	//--------Insert
 	//@Test

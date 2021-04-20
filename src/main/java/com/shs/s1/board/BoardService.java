@@ -2,10 +2,12 @@ package com.shs.s1.board;
 
 import java.util.List;
 
+import com.shs.s1.util.Pager;
+
 public interface BoardService {
 	
 	//Board List
-	public List<BoardDTO> getList(BoardDTO boardDTO) throws Exception;
+	public List<BoardDTO> getList(Pager pager) throws Exception;
 	
 	//Board Insert
 	public int setInsert(BoardDTO boardDTO) throws Exception;

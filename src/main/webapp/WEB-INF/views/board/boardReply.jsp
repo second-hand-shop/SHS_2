@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 
 <c:import url="../template/bootStrap.jsp"></c:import>
-<title>${board} Insert</title>
+<title>${board} Select</title>
 
 <style>
 
@@ -64,13 +63,12 @@
 	</div>
 	
 	
-	<!-- Board Insert Contents -->
-	<!--  enctype="multipart/form-data" : notice에는 text만 넘어감 아직 빼기 -->
-	<form id="form" action="./${board}Insert" method="post" enctype="multipart/form-data">	
+	<!-- Reply Insert Contents -->
+	<form id="form" action="./${board}Reply" method="post">	
 	
 		<div id="table-border" style="border: 1px solid #d3d3d3;">	
 			<ul>
-				<li><input type="hidden" name="num" value="${dto.num}"></li>
+				<li><input type="hidden" name="num" value="${param.num}"></li>
 				
 				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
 					<label for="title">Title</label> 
@@ -107,7 +105,6 @@
 	
 	<!-- footer -->
 	<c:import url="../template/footer.jsp"></c:import>
-	
 
 </body>
 
@@ -116,5 +113,6 @@
 <script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
+
 
 </html>

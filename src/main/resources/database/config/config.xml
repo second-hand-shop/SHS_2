@@ -8,5 +8,9 @@
 		<typeAlias type="com.shs.s1.test.TestDTO" alias="TestDTO"/>
 		<typeAlias type="com.shs.s1.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.shs.s1.board.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.shs.s1.board.qna.QnaDTO" alias="QnaDTO"/>
+		<typeAlias type="com.shs.s1.util.Pager" alias="Pager"/>
+		
+		<typeAlias type="java.lang.Long" alias="Long"/>
 	</typeAliases>
 </configuration>
