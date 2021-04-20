@@ -8,6 +8,7 @@
 		<typeAlias type="com.shs.s1.test.TestDTO" alias="TestDTO"/>
 		<typeAlias type="com.shs.s1.product.ProductDTO" alias="ProductDTO"/>
 		<typeAlias type="com.shs.s1.util.ProductPager" alias="ProductPager"/>
+		<typeAlias type="com.shs.s1.product.ProductImageDTO" alias="ProductImageDTO"/>
 		
 		
 	</typeAliases>

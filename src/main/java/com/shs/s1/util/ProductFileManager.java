@@ -54,7 +54,7 @@ public class ProductFileManager {
 		String datePath = monthPath+File.separator+new DecimalFormat("00").format(calendar.get(Calendar.DATE));
 		
 		makeDateDir(uploadPath,yearPath,monthPath,datePath);
-		return "";
+		return datePath;
 	}
 	
 
@@ -78,7 +78,7 @@ public class ProductFileManager {
 		//원본이미지 메모리에 로딩
 		BufferedImage ogImg=ImageIO.read(new File(uploadRootPath+datePath,fileName));
 		//원본이미지 축
-		BufferedImage thumbImg = Scalr.resize(ogImg,Scalr.Method.AUTOMATIC,Scalr.Mode.FIT_TO_HEIGHT,100);
+		BufferedImage thumbImg = Scalr.resize(ogImg,Scalr.Method.AUTOMATIC,Scalr.Mode.FIT_TO_HEIGHT,450);
 		//bufferdimage 객체, 너비,높이,reisize옵션
 		String thumbnailImgName = "s_"+fileName;
 		String fullPath = uploadRootPath+datePath+File.separator+thumbnailImgName;
@@ -112,7 +112,7 @@ public class ProductFileManager {
 	
 	
 	
-	public String uploadFile(String name,MultipartFile multipartFile, HttpServletRequest request)throws Exception {
+	public String uploadFile(MultipartFile multipartFile, HttpServletRequest request)throws Exception {
 		
 	
 		String ogFileName = multipartFile.getOriginalFilename();

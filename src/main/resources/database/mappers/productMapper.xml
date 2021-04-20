@@ -8,7 +8,9 @@
  
  
  
- 
+ <select id="getProductNum" resultType="java.lang.Long">
+ select product_seq.nextval from dual
+ </select>
  
  
  <select id="getList" parameterType="ProductPager" resultType="ProductDTO"> 
@@ -23,9 +25,33 @@ from (select * from product
  
  </select>
  
- <select id="getSelect" parameterType="ProductDTO" resultType="ProductDTO">
-  select * from product where productNum=#{productNum}
+ <select id="getSelect" parameterType="ProductDTO" resultMap="ProductSelectResult">
+ select P.*,PM.*
+ from product P left join productIMAGE PM
+ on P.productNum=PM.productNum
+ where P.productNum = #{productNum}
  </select>
+ 
+ <resultMap type="ProductDTO" id="ProductSelectResult">
+ 	<id property="productNum" column="productNum"></id>
+ 	<result property="kinds" column="kinds"></result>
+ 	<result property="contents" column="contents"></result>
+ 	<result property="price" column="price"></result>
+ 	<result property="productName" column="prductName"></result>
+ 	<result property="amount" column="amount"></result>
+ 	
+ 	<collection property="productImages" javaType="java.util.List" ofType="ProductImageDTO">
+ 		<id property="imageNum" column="imageNum"/>
+ 		<result property="thumbnail" column="thumbnail"/>
+ 		<result property="contents" column="contents"/>
+ 		<result property="fileName" column="fileName"/>
+ 		<result property="ogName" column="ogName"/>
+ 	
+ 	</collection>
+ 
+ 
+ </resultMap>
+ 
  
  
  <select id="getTotalCount" resultType="java.lang.Long">
@@ -39,7 +65,7 @@ from (select * from product
  
 
 <insert id="setInsert" parameterType="ProductDTO">
-	insert into product values(product_seq.nextval,#{kinds},#{contents},#{price},#{productName},#{amount})
+	insert into product values(#{productNum},#{kinds},#{contents},#{price},#{productName},#{amount})
 </insert>
 
 <update id="setUpdate" parameterType="ProductDTO">
@@ -53,8 +79,20 @@ from (select * from product
 
 
 
+<select	id="getFileSelect" parameterType="ProductImageDTO" resultType="ProductImageDTO">
+	select * from productImage where ImageNum=#{imageNum}
+</select>
+
+<insert id="setFileInsert" parameterType="ProductImageDTO">
+
+	insert into ProductImage values(productImage_seq.nextval,#{productNum},#{thumbnail},#{fileName},#{ogName})
+									
+</insert>
 
 
+<delete id="setFileDelete" parameterType="ProductImageDTO">
+	delete from productImage where imageNum=#{imageNum}
+</delete>
 
 
 
