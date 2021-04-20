@@ -59,6 +59,21 @@
 		padding: 0.8% 2.5% 0.8% 2.5%;
 	}
 	
+	/* 2개의 div 절반으로 나누기 */
+	.size{
+		width: 100%;
+		vertical-align: middle;
+	}
+	
+	.first-size{
+		width: 50%;
+		float: left;
+	}
+	
+	.second-size{
+		width: 50%;
+		float: right;
+	}
 
 
 
@@ -96,10 +111,77 @@
 		
 		<tr>
 			<td class="lines" colspan="5">
-				<div id="botton-div">
-					<a href="./${board}Insert?num=${dto.num}" class="button-style">작성</a>
+				
+				<div class="container size">
+					  
+					  <div class="input-group mt-3 mb-3 first-size">
+						  <form id="frm" action="./${board}List" class="form-inline">
+							  <input type="hidden" name="curPage" value="1" id="curPage">
+						  
+						  	  <div class="input-group-prepend">
+						  	  
+						   		  <select class="form-control" name="kind" id="kind" >					   		  
+									    <option class="sel">Title</option>
+									    <option class="sel">Contents</option>
+									    <option class="sel">Writer</option>								    
+						 		  </select>
+						 		  
+						  	  </div>
+						  	  
+						  	  <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="">
+						    
+						      <div class="input-group-append">
+						    	  <button class="btn btn-success" type="submit">Search</button>
+						  	  </div>
+					 	  </form> 
+					  </div>
+					  
+					  <div class="second-size">
+						  <ul class="pagination">
+						  
+							  <c:if test="${pager.pre}">	
+							    <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>
+							  </c:if>
+						   
+						   	  <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+						   		<li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
+						   	  </c:forEach>
+						   
+						      <c:if test="${pager.next}">
+						      	<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
+						      </c:if>
+						      
+						  </ul>
+					  </div>
+					  
+					  <div id="botton-div">
+							<a href="./${board}Insert?num=${dto.num}" class="button-style">작성</a>
+					  </div>
+					
+					
+					  <script type="text/javascript">
+					  
+							let kind= '${pager.kind}';//Title, Writer, Contents
+							$(".sel").each(function() {
+								let t = $(this).text();//Title, Writer, Contents
+								if(t == kind){
+									$(this).prop("selected", true);
+								}
+							});
+							
+							$(".p").click(function () {
+								let curPage = $(this).attr("title");
+								$("#curPage").val(curPage);
+								let search= '${pager.search}';
+								$("#frm").submit();
+		
+							});
+							
+					  </script>  
 				</div>
+				
 			</td>
+			
 		</tr>
 		
 	</table>

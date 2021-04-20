@@ -84,6 +84,11 @@
 			<a href="./${board}List" class="button-style">목록</a>
 			<a href="./${board}Update?num=${dto.num}" class="button-style">수정</a>
 			<a href="./${board}Delete?num=${dto.num}" class="button-style">삭제</a>
+			
+			<c:if test="${board ne 'notice'}">
+				<a href="./${board}Reply?num=${dto.num}" class="button-style">답글</a>
+			</c:if>
+			
 		</div>
 	
 	</div>
