@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.shs.s1.util.Pager;
+
 @Repository
 public class CouponDAO {
 	
@@ -15,8 +17,13 @@ public class CouponDAO {
 	private final String NAMESPACE="com.shs.s1.coupon.CouponDAO.";
 //------------------------------------------------------------------------------------------
 	// getList ===================================================
-	public List<CouponDTO> getList() throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public List<CouponDTO> getList(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
+	}
+	
+	// getTotalCount ===================================================	
+	public long getTotalCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
 	// getSelect ===================================================

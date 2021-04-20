@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shs.s1.util.Pager;
+
 @Controller
 @RequestMapping("/coupon/**")
 public class CouponController {
@@ -18,10 +20,10 @@ public class CouponController {
 //----------------------------------------------------------------------------------
 	// getList ===================================================
 	@GetMapping("couponList")
-	public ModelAndView getList() throws Exception {
+	public ModelAndView getList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<CouponDTO> ar = couponService.getList();
-		
+		List<CouponDTO> ar = couponService.getList(pager);
+		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
 		mv.setViewName("coupon/couponList");
 		return mv;

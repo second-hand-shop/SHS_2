@@ -6,5 +6,6 @@
 <configuration>
  	<typeAliases>
 		<typeAlias type="com.shs.s1.coupon.CouponDTO" alias="CouponDTO"/>
+		<typeAlias type="com.shs.s1.util.Pager" alias="Pager"/>
 	</typeAliases>
 </configuration>

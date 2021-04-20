@@ -69,7 +69,7 @@ $(".insert").click(function(){
 		/*let couponNum = $("#couponSelect").html();
 		$(".modal-title").html(couponNum);
 		console.log(couponNum);*/
-		let i = $("#delNum").attr("title");
+		let i = $(".delNum").attr("title");
 		console.log(i);
 	});
 }
@@ -80,7 +80,14 @@ $(".insert").click(function(){
 // couponUpdate =================================================
 //===============================================================
 
-
+$("#deleteBtn").click(function(){
+	$(".check").each(function(){
+		let checked = $(this).prop("checked");
+		if(checked){
+			$(this)
+		}
+	});
+});
 
 
 
