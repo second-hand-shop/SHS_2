@@ -86,7 +86,7 @@
 			<a href="./${board}Delete?num=${dto.num}" class="button-style">삭제</a>
 			
 			<c:if test="${board ne 'notice'}">
-				<a href="./${board}Reply?num=${dto.num}" class="button-style">답글</a>
+				<a href="./${board}Reply?num=${dto.num}?productNum${dto.productNum}" class="button-style">답글</a>
 			</c:if>
 			
 		</div>
