@@ -89,4 +89,10 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:../";
 	}
+	
+	//아이디 찾기
+	@GetMapping("memberFind")
+	public void memberFind() throws Exception {
+		
+	}
 }
