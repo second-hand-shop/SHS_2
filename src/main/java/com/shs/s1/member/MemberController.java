@@ -29,18 +29,28 @@ public class MemberController {
 	
 	@PostMapping("memberJoin")
 	public String memberJoin(MemberDTO memberDTO, Model model, HttpSession session) throws Exception {
-		int result = memberService.memberJoin(memberDTO, session);
+		int result = memberService.memberJoin(memberDTO, session);				
+		session.setAttribute("member", memberDTO);
 		
-		String message = "회원가입 실패";	
-		String path="./memberJoin";
+		String message = "";	
+		String path="";
 		if(result>0) {
 			message ="회원가입 성공";
-			path="../";
-		} 
+			path="memberSuccess";
+		} else {
+			message="회원가입 실패";
+			path="memberJoin";
+		}
 		//memberjoinResult로 model이용해 메시지 전송
 		model.addAttribute("msg",message);
 		model.addAttribute("path",path);
 		return "common/commonResult";
+	}
+	
+	//회원가입 성공 후 페이지
+	@GetMapping("memberSuccess")
+	public void memberSuccess() throws Exception {
+		
 	}
 	
 	//id 중복확인
