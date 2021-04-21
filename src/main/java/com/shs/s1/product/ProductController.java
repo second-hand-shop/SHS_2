@@ -115,7 +115,7 @@ public class ProductController {
 		//cartDTO.setId(memberDTO.get)
 		
 		int result = productService.setCartInsert(cartDTO);
-		return "common/ajaxResult";
+		return "common/ProductAjaxResult";
 		
 	}
 	

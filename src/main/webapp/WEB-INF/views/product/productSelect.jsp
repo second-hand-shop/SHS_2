@@ -29,8 +29,8 @@ float :right;
 			<h1> 상세페이지</h1>
 			
 			<div>
-			<a href="./productUpdate?productNum=${dto.productNum}"><button type="button" class="btn btn-outline-dark">상품 수정</button></a>
-			<a href="#" id="del" class="btn btn-danger">상품 삭제</a>
+			<a href="./productUpdate?productNum=${dto.productNum}"><button type="button" >상품 수정</button></a>
+			<a href="#" id="del" type ="button">상품 삭제</a>
 			</div>
 			
 			

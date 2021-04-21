@@ -6,12 +6,44 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>SHS</title>
 <style>
-#linePage {
-	margin: 10;
-	padding: 10;
-	border: 10;
+
+.linePage {
 	float: left;
+	border: 1px solid #ccc;
+	margin:10px;
 }
+
+.productImg{
+	border: 1px solid #ccc;
+float : left;
+
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+	max-width: 100%;
+    	width: 400px;
+        height: 400px;
+        
+        padding: 10px;
+		margine: 10px;
+
+
+}
+
+
+.productBox{
+float:left;
+}
+
+
+.space{
+clear:left;
+}
+
+
 </style>
 
 </head>
@@ -33,44 +65,53 @@
 
 
 				<a href="./productInsert"><button type="button"
-						class="btn btn-primary">상품추가</button></a>
-				<div></div>
+						>상품추가</button></a>
+				<div> <br>  </div>
+				<!-- css로 마진 패딩 채우면 없앤다 br -->
+			
 
 				<c:forEach items="${list}" var="dto">
 
 
+					
 
-					<div>
-						<div>
+					<div class="productBox">
+					
+						<div class="productImg">
 							<%-- 		<c:forEach items="${dto.productImages}" var="file">
 								<img src="../resources/upload/images/${file.thumbnail}">
 							</c:forEach> --%>
-							<a href="./detail?productNum=${dto.productNum}"> <img
-								src="../resources/upload/images/${dto.productImages[0].thumbnail}">
+							<a href="./detail?productNum=${dto.productNum}">
+								<img src="../resources/upload/images/${dto.productImages[0].thumbnail}">
 							</a>
 						</div>
-						<span> <a href="./detail?productNum=${dto.productNum}">${dto.productName}</a>
-						</span>
-						
+					
+					
+					
+						<div class="space"> <a href="./detail?productNum=${dto.productNum}">${dto.productName}</a>
+						</div>
 					</div>
 
 
-
+				
 
 				</c:forEach>
 
 
-				<ul>
+				<div class="space"> <br></div>
+
+	
+				<ul >
 
 					<c:if test="${pager.pre}">
-						<li id=linePage><a
+						<li class=linePage><a
 							href="./productList?curPage=${pager.startNum-1}">PREV</a></li>
 					</c:if>
 					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-						<li id=linePage><a href="./productList?curPage=${i}">${i}</a></li>
+						<li class=linePage><a href="./productList?curPage=${i}">${i}</a></li>
 					</c:forEach>
 					<c:if test="${pager.next}">
-						<li id=linePage><a
+						<li class=linePage><a
 							href="./productList?curPage=${pager.lastNum+1}">NEXT</a></li>
 					</c:if>
 				</ul>
