@@ -66,11 +66,17 @@
 	
 	<!-- Board Insert Contents -->
 	<!--  enctype="multipart/form-data" : notice에는 text만 넘어감 아직 빼기 -->
-	<form id="form" action="./${board}Insert" method="post" enctype="multipart/form-data">	
+	<form id="form" action="./${board}Insert" method="post">	
 	
 		<div id="table-border" style="border: 1px solid #d3d3d3;">	
 			<ul>
 				<li><input type="hidden" name="num" value="${dto.num}"></li>
+				
+				
+				<c:if test="${board eq 'qna'}">
+					<li><input type="text" class="form-control" name="productNum"></li>
+				</c:if>
+				
 				
 				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
 					<label for="title">Title</label> 
@@ -82,7 +88,7 @@
 					<label for="writer">Writer</label> 
 					<input type="text"
 					class="form-control" id="writer" name="writer">
-
+    
 				</li>
 				
 				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">

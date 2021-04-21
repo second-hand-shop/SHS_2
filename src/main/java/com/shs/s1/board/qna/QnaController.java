@@ -39,9 +39,13 @@ public class QnaController {
 		
 		//insert
 		@GetMapping("qnaInsert")
-		public ModelAndView setInsert(Pager pager) throws Exception{
+		public ModelAndView setInsert() throws Exception{
+			
+			QnaDTO qnaDTO = new QnaDTO();
 			
 			ModelAndView mv = new ModelAndView();
+			
+			mv.addObject("dto", qnaDTO);
 			mv.setViewName("board/boardInsert");
 			mv.addObject("board", "qna");
 			
@@ -51,15 +55,16 @@ public class QnaController {
 		@PostMapping("qnaInsert")
 		public ModelAndView setInsert(BoardDTO boardDTO) throws Exception{
 			
-			int result = qnaService.setInsert(boardDTO);
-			
 			ModelAndView mv = new ModelAndView();
-		
+			
 			String message="등록 실패";
+			
+			int result = qnaService.setInsert(boardDTO);	
 			
 			if(result>0) {
 				message="등록 성공";
 			}
+			
 			mv.addObject("msg", message);
 			mv.addObject("path", "./qnaList");
 			mv.setViewName("common/commonResult");
