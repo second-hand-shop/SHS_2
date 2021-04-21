@@ -12,8 +12,7 @@ public class MemberDAO {
 	private final String NAMESPACE="com.shs.s1.member.MemberDAO.";
 		
 	public int memberJoin(MemberDTO memberDTO) throws Exception {
-		int result = sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
-		return result;
+		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
 	}
 	
 	public MemberDTO memberIdCheck(MemberDTO memberDTO) throws Exception {
