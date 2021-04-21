@@ -4,6 +4,8 @@ package com.shs.s1.product;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DaoSupport;
@@ -106,7 +108,11 @@ public class ProductController {
 	}
 	
 	
-	public String setCartInsert(CartDTO cartDTO)throws Exception{
+	public String setCartInsert(CartDTO cartDTO,HttpSession session)throws Exception{
+		
+		
+		//MemberDTO memberDTO = session.getAttribute("");
+		//cartDTO.setId(memberDTO.get)
 		
 		int result = productService.setCartInsert(cartDTO);
 		return "common/ajaxResult";
