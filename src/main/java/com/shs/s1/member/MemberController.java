@@ -21,35 +21,40 @@ public class MemberController {
 	
 	//회원가입
 	@GetMapping("memberJoin")
-	public void memberJoin() throws Exception {
-		
+	public ModelAndView memberJoin() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberJoin");
+		return mv;
 	}
 	
 	@PostMapping("memberJoin")
 	public String memberJoin(MemberDTO memberDTO, Model model, HttpSession session) throws Exception {
 		int result = memberService.memberJoin(memberDTO, session);
-		String message="회원가입 실패";
+		
+		String message = "회원가입 실패";	
 		String path="./memberJoin";
 		if(result>0) {
-			message="회원가입 성공";
+			message ="회원가입 성공";
 			path="../";
-		}
-		model.addAttribute("message",message);
+		} 
+		//memberjoinResult로 model이용해 메시지 전송
+		model.addAttribute("msg",message);
 		model.addAttribute("path",path);
-		
 		return "common/commonResult";
 	}
 	
 	//id 중복확인
 	@GetMapping("memberIdCheck")
-	public String memberIdCheck(MemberDTO memberDTO, Model model) throws Exception {
+	public ModelAndView memberIdCheck(MemberDTO memberDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		memberDTO = memberService.memberIdCheck(memberDTO);
-		String result = "0";
-		if(memberDTO == null) {
-			result ="1";
+		int result = 1; //중복
+		if(memberDTO == null) { 
+			result = 0; //중복데이터 없음
 		}
-		model.addAttribute("result", result);
-		return "common/ajaxResult";
+		mv.addObject("msg", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
 	}
 	
 	//로그인
