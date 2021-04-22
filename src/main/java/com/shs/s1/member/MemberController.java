@@ -98,11 +98,11 @@ public class MemberController {
 	
 	@PostMapping("memberIdFind")
 	public ModelAndView memberIdFind(MemberDTO memberDTO, ModelAndView mv) throws Exception {
-		memberDTO = memberService.memberFind(memberDTO);
+		memberDTO = memberService.memberIdFind(memberDTO);
 		
 		if(memberDTO != null) {
 			mv.addObject("msg", "회원님의 아이디는 "+memberDTO.getId()+" 입니다");
-			mv.addObject("path", "../");
+			mv.addObject("path", "./memberLogin");
 			mv.setViewName("common/commonResult");
 		} else {
 			mv.addObject("msg", "등록된 아이디가 없습니다");
