@@ -1,7 +1,5 @@
 package com.shs.s1.member;
 
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,50 +19,35 @@ public class MemberController {
 	
 	//회원가입
 	@GetMapping("memberJoin")
-	public ModelAndView memberJoin() throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("member/memberJoin");
-		return mv;
+	public void memberJoin() throws Exception {
+		
 	}
 	
 	@PostMapping("memberJoin")
 	public String memberJoin(MemberDTO memberDTO, Model model, HttpSession session) throws Exception {
-		int result = memberService.memberJoin(memberDTO, session);				
-		session.setAttribute("member", memberDTO);
-		
-		String message = "";	
-		String path="";
+		int result = memberService.memberJoin(memberDTO, session);
+		String message="회원가입 실패";
+		String path="./memberJoin";
 		if(result>0) {
-			message ="회원가입 성공";
-			path="memberSuccess";
-		} else {
-			message="회원가입 실패";
-			path="memberJoin";
+			message="회원가입 성공";
+			path="../";
 		}
-		//memberjoinResult로 model이용해 메시지 전송
-		model.addAttribute("msg",message);
+		model.addAttribute("message",message);
 		model.addAttribute("path",path);
-		return "common/commonResult";
-	}
-	
-	//회원가입 성공 후 페이지
-	@GetMapping("memberSuccess")
-	public void memberSuccess() throws Exception {
 		
+		return "common/commonResult";
 	}
 	
 	//id 중복확인
 	@GetMapping("memberIdCheck")
-	public ModelAndView memberIdCheck(MemberDTO memberDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
+	public String memberIdCheck(MemberDTO memberDTO, Model model) throws Exception {
 		memberDTO = memberService.memberIdCheck(memberDTO);
-		int result = 1; //중복
-		if(memberDTO == null) { 
-			result = 0; //중복데이터 없음
+		String result = "0";
+		if(memberDTO == null) {
+			result ="1";
 		}
-		mv.addObject("msg", result);
-		mv.setViewName("common/ajaxResult");
-		return mv;
+		model.addAttribute("result", result);
+		return "common/ajaxResult";
 	}
 	
 	//로그인
@@ -107,29 +90,25 @@ public class MemberController {
 		return "redirect:../";
 	}
 	
+	//아이디 찾기
 	@GetMapping("memberIdFind")
-	public void memberIdFind() throws Exception {
+	public void memberFind() throws Exception {
 		
 	}
 	
 	@PostMapping("memberIdFind")
-	public ModelAndView memberIdFind(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		//사용자가 입력한 name과 email 받아오기
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
+	public ModelAndView memberIdFind(MemberDTO memberDTO, ModelAndView mv) throws Exception {
+		memberDTO = memberService.memberFind(memberDTO);
 		
-		mv.addObject("dto", memberDTO);
-		mv.addObject("name", name);
-		mv.addObject("email", email);
-		mv.setViewName("member/memberIdFind");
-		
-		if(name == memberDTO.getName() && email == memberDTO.getEmail()) {
-			memberDTO = memberService.memberIdFind(memberDTO);
-			System.out.println(memberDTO.getId());
+		if(memberDTO != null) {
+			mv.addObject("msg", "회원님의 아이디는 "+memberDTO.getId()+" 입니다");
+			mv.addObject("path", "../");
+			mv.setViewName("common/commonResult");
 		} else {
-			
-		}
+			mv.addObject("msg", "등록된 아이디가 없습니다");
+			mv.addObject("path", "./memberIdFind");
+			mv.setViewName("common/commonResult");
+		}		
 		return mv;
 	}
 }
