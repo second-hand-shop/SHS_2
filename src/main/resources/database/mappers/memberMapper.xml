@@ -17,7 +17,7 @@
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
 	
-	<select id="memberFind" parameterType="MemberDTO" resultType="MemberDTO">
+	<select id="memberIdFind" parameterType="MemberDTO" resultType="MemberDTO">
 		select id from member where name=#{name} and email=#{email}
 	</select>
 </mapper>
