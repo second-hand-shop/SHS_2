@@ -98,7 +98,7 @@ public class MemberController {
 	
 	@PostMapping("memberIdFind")
 	public ModelAndView memberIdFind(MemberDTO memberDTO, ModelAndView mv) throws Exception {
-		memberDTO = memberService.memberFind(memberDTO);
+		memberDTO = memberService.memberIdFind(memberDTO);
 		
 		if(memberDTO != null) {
 			mv.addObject("msg", "회원님의 아이디는 "+memberDTO.getId()+" 입니다");
@@ -110,5 +110,10 @@ public class MemberController {
 			mv.setViewName("common/commonResult");
 		}		
 		return mv;
+	}
+	
+	@GetMapping("memberPwFind")
+	public void memberPwFind() throws Exception {
+		
 	}
 }
