@@ -23,4 +23,7 @@ public class MemberService {
 		return memberDAO.memberLogin(memberDTO);
 	}
 	
+	public MemberDTO memberIdFind(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberIdFind(memberDTO);
+	}
 }

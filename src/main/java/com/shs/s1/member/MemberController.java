@@ -91,8 +91,24 @@ public class MemberController {
 	}
 	
 	//아이디 찾기
-	@GetMapping("memberFind")
+	@GetMapping("memberIdFind")
 	public void memberFind() throws Exception {
 		
+	}
+	
+	@PostMapping("memberIdFind")
+	public ModelAndView memberIdFind(MemberDTO memberDTO, ModelAndView mv) throws Exception {
+		memberDTO = memberService.memberFind(memberDTO);
+		
+		if(memberDTO != null) {
+			mv.addObject("msg", "회원님의 아이디는 "+memberDTO.getId()+" 입니다");
+			mv.addObject("path", "../");
+			mv.setViewName("common/commonResult");
+		} else {
+			mv.addObject("msg", "등록된 아이디가 없습니다");
+			mv.addObject("path", "./memberIdFind");
+			mv.setViewName("common/commonResult");
+		}		
+		return mv;
 	}
 }
