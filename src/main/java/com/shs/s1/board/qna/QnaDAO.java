@@ -31,9 +31,9 @@ public class QnaDAO implements BoardDAO{
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 
-	@Override
-	public int setInsert(BoardDTO boardDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE+"setInsert", boardDTO);
+
+	public int setInsert(QnaDTO qnaDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setInsert", qnaDTO);
 	}
 
 	@Override

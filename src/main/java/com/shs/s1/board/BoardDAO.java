@@ -13,7 +13,7 @@ public interface BoardDAO {
 	public long getTotalCount(Pager pager)throws Exception;
 	 
 	//Board Insert
-	 public int setInsert(BoardDTO boardDTO) throws Exception;
+//	 public int setInsert(BoardDTO boardDTO) throws Exception;
 	 
 	//Board Select
 	 public BoardDTO getSelect(BoardDTO boardDTO) throws Exception;
