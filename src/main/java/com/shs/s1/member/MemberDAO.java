@@ -27,4 +27,16 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberIdFind", memberDTO);
 	}
 	
+	public MemberDTO memberPwFind(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"memberPwFind", memberDTO);
+	}
+	
+	public int memberModify(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"memberModify", memberDTO);
+	}
+	
+	public int memberDelete(MemberDTO memberDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
+	}
+	
 }

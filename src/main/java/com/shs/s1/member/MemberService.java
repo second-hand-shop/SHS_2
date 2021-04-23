@@ -26,4 +26,16 @@ public class MemberService {
 	public MemberDTO memberIdFind(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberIdFind(memberDTO);
 	}
+	
+	public MemberDTO memberPwFind(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberPwFind(memberDTO);
+	}
+	
+	public int memberModify(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberModify(memberDTO);
+	}
+	
+	public int memberDelete(MemberDTO memberDTO, HttpSession session) throws Exception {
+		return memberDAO.memberDelete(memberDTO);
+	}
 }
