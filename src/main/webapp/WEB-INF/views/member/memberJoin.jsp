@@ -42,8 +42,8 @@
 				<input type="text" class="form-control etc" id="email" name="email">
 			</div>
 			<input type="submit" id ="btn" value="JOIN" class="btn btn-primary">
+		</form>
 			</div>
-			</form>
 			<!-- footer -->
 			<c:import url="../template/footer.jsp"></c:import>
 		</div>
