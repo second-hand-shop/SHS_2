@@ -34,6 +34,9 @@ public class NoticeController {
 		mv.addObject("board", "notice");
 		mv.addObject("pager", pager);
 		
+		System.out.println("Start : "+pager.getStartNum());
+		System.out.println("Last : "+pager.getLastNum());
+		
 		mv.setViewName("board/boardList");
 		
 		return mv;
