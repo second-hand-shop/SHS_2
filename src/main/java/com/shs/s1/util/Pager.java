@@ -80,8 +80,8 @@ public class Pager {
 		//  2			11			20
 		//  3			21			30
 		
-		this.startNum = (this.curPage-1)*perPage+1;
-		this.lastNum = this.curPage * this.perPage;
+		this.startNum = (curBlock-1)*perPage+1;
+		this.lastNum = curBlock * this.perPage;
 		
 		
 		//5. 현재 블록이 마지막 블록과 같으면

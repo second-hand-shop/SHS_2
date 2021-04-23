@@ -42,6 +42,7 @@ public class NoticeService implements BoardService{
 	// hit이 지금 2번씩 입력됨.
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		int result = noticeDAO.setHitUpdate(boardDTO);
+		System.out.println("result : "+result);
 		return noticeDAO.getSelect(boardDTO);
 	}
 
