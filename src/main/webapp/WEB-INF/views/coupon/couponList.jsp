@@ -194,7 +194,20 @@ tbody tr td input {
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
 <script type="text/javascript" src="../resources/js/admin/adminHome.js"></script>
 <script type="text/javascript">
+	let kind = '${pager.kind}';
+	$(".sel").each(function(){
+		let t = $(this).text();
+		if(t==kind){
+			$(this).prop("selected", true);
+		}
+	});
 	
+	$(".p").click(function(){
+		let curPage=$(this).attr("title");
+		$("#curPage").attr("value", curPage);
+		let search = '${pager.search}';
+		$("#frm").submit();
+	});
 </script>
 </body>
 </html>
