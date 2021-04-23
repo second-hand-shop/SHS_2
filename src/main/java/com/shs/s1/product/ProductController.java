@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.shs.s1.order.CartDTO;
 import com.shs.s1.util.ProductPager;
 
 @Controller
@@ -108,16 +109,8 @@ public class ProductController {
 	}
 	
 	
-	public String setCartInsert(CartDTO cartDTO,HttpSession session)throws Exception{
-		
-		
-		//MemberDTO memberDTO = session.getAttribute("");
-		//cartDTO.setId(memberDTO.get)
-		
-		int result = productService.setCartInsert(cartDTO);
-		return "common/ProductAjaxResult";
-		
-	}
+
+	
 	
 	
 	

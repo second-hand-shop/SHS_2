@@ -7,11 +7,16 @@
 
 <style type="text/css">
 
-#description{
+/* #description{
 
 
 float :right;
 
+} */
+
+.col{
+display:flex;
+justify-content: space-evenly;
 }
 
 
@@ -26,40 +31,16 @@ float :right;
 		<!-- header END -->
 		<div id="container">
 			<div id="contents">
-			<h1> 상세페이지</h1>
 			
+			<h1 > 상세페이지</h1>
 			<div>
 			<a href="./productUpdate?productNum=${dto.productNum}"><button type="button" >상품 수정</button></a>
 			<a href="#" id="del" type ="button">상품 삭제</a>
 			</div>
 			
+			<div class="col">
 			
 			
-			
-			
-			
-			<div id="description" >
-			<h5>${dto.kinds}</h5>
-			<h5>${dto.contents}</h5>
-			<h5>${dto.price}</h5>
-			<h5>${dto.productName}</h5>
-			<h5>${dto.amount}</h5>	
-			<div> </div>
-			<a href="#" id="buy" class="btn btn-outline-dark">buy</a>
-			<a href="#" id="wish" class="btn btn-outline-dark">wish</a>
-			<a href="#" id="cart" class="btn btn-outline-dark">cart</a>
-			</div>
-			
-			
-				
-			<form action="./productDelete" id="delfrm">
-				<input type="hidden" name="productNum" value="${dto.productNum}">
-			</form>
-			
-			
-			<form action="" id="cartfrm">
-			
-			</form>
 			
 			
 			
@@ -74,6 +55,35 @@ float :right;
 		</div>
 	</c:forEach>
 	</div>
+			
+			
+			
+			
+			
+			<div id="description" >
+			<p>kinds : ${dto.kinds}</p>
+			<p>contents :${dto.contents}</p>
+			<p>price : ${dto.price}</p>
+			<p>name : ${dto.productName}</p>
+			<p>amount : ${dto.amount}</p>	
+			
+			<br>
+			
+			<form action="../order/orderForm" method="post" style="display: inline;">
+			<input type="hidden" name="productNum" value="${dto.productNum}">
+			<button>buyy</button>
+			</form>
+			<!--  세션에도 저장해야 회원검사하고 빼올수 있을듯,,-->
+			
+			<!-- <a href="../order/orderForm" id="buy" class="btn btn-outline-dark">buy</a> -->
+			<a href="#" id="wish" class="button">wish</a>
+			<a href="#" id="cart" class="button">cart</a>
+			</div>
+			
+			
+			
+			
+			
 	
 	
 			
@@ -82,6 +92,18 @@ float :right;
 			
 			
 			
+				
+			<form action="./productDelete" id="delfrm">
+				<input type="hidden" name="productNum" value="${dto.productNum}">
+			</form>
+			
+			
+			<form action="" id="cartfrm">
+			
+			</form>
+			
+			
+			</div>
 			
 			
 			
