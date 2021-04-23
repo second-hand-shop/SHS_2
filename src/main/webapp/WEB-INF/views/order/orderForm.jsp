@@ -50,6 +50,48 @@ table td {
 #productTable td {
 	text-align: center;
 }
+
+
+textarea{
+overflow-y:scroll;
+}
+
+
+
+.button_base {
+    margin: 0;
+    border: 0;
+    font-size: 18px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -100px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.button_base:hover {
+    cursor: pointer;
+} 
+
+
+.b01_simple_rollover {
+    color: #000000;
+    border: #000000 solid 1px;
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+.b01_simple_rollover:hover {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+
+
 </style>
 </head>
 <body>
@@ -121,11 +163,15 @@ table td {
 				<table style="margin-top: 40px">
 
 					<tr>
-						<td style="width: 200px;">받으시는 분</td>
+						<td style="width: 200px;">
+						<div style="display: inline-block; color:#F27500;'">*</div><div style="display: inline-block;">받으시는 분</div>
+						</td>
 						<td><input type="text" ><br></td>
 					</tr>
 					<tr>
-						<td rowspan="2">주소</td>
+						<td rowspan="2">
+						<div style="display: inline-block; color:#F27500;'">*</div><div style="display: inline-block;">주소</div>
+						</td>
 						<td><input type="text" id="sample3_postcode"
 							placeholder="우편번호" readonly="readonly"> <input type="button"
 							onclick="sample3_execDaumPostcode()" value="우편번호 찾기"><br></td>
@@ -139,11 +185,11 @@ table td {
 							<br></td>
 					</tr>
 					<tr>
-						<td>휴대전화</td>
+						<td><div style="display: inline-block; color:#F27500;'">*</div><div style="display: inline-block;">휴대전화</div></td>
 						<td><input type="tel"></td>
 					</tr>
 					<tr>
-						<td>이메일</td>
+						<td><div style="display: inline-block; color:#F27500;'">*</div><div style="display: inline-block;">이메일</div></td>
 						<td><input type="email"></td>
 					</tr>
 					<tr>
@@ -163,13 +209,84 @@ table td {
 				</div>
 
 
-
+				
 				<h1 style="margin:30px auto;">약관동의</h1>
+				<h1>비회원으로 들어갈 시 노출</h1>
+			
+				<table>
+				
+				<tr>
+					<td colspan="2">(체크박스) 전체 동의
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<strong>쇼핑몰 이용약관</strong>
+						<textarea rows="2" cols="80" readonly="readonly">쇼핑몰 이용약관 내용입니다. </textarea>
+						<div>)체크박스)</div>
+					</td>
+					<td>
+					<strong>비회원 구입시 정보이용 동의</strong>	
+						<textarea rows="2" cols="80" readonly="readonly">비회원 구입시 정보이용 동의 내용입니다.</textarea>
+						<div>)체크박스)</div>
+					</td>
+				</tr>
+				
+				</table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 				<h1 style="margin:30px auto;">결제 예정금액</h1>
+				
+				<table style="margin-bottom:100px; border: ">
+				
+				<tr>
+					<td>
+						총 주문 금액
+					</td>
+					<td>
+						총 할인 + 부가 결제 금액
+					</td>
+					<td>
+						총 결제 예정 금액
+					</td>
+				</tr>
+				<tr>
+					<td style="border: none;">
+						배송비 합한 금액
+					</td>
+					<td style="border:none;">
+						-붙여주는 금액
+					</td>
+					<td>
+						총
+					</td>
+				</tr>
+				<tr>
+					<td>
+						적립금
+					</td>
+					<td colspan="5">
+						<input type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"> 원 (총 사용 가능 적립금:(멤버에서 받아오는 적립금) 원)
 
-				<h1 style="margin:30px auto;">결제 수단</h1>
-					   <button onclick="requestPay()">결제하기</button> 
+					</td>
+				
+				</tr>
+				
+				
+				</table>
+				
+
+				 <button class="button_base b01_simple_rollover" onclick="requestPay()">결제하기</button> 
 
 
 			</div>
@@ -183,8 +300,7 @@ table td {
 <script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	// 우편번호 찾기 찾기 화면을 넣을 element
 	var element_wrap = document.getElementById('findPostCode');
@@ -279,14 +395,14 @@ var IMP = window.IMP; // 생략해도 괜찮습니다.
 IMP.init("imp92233315"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
 
 
-function requestPay(){
+function requestPay(){ 
 // IMP.request_pay(param, callback) 호출
 IMP.request_pay({
     pg : 'html5_inicis',
     pay_method : 'card',
-    merchant_uid : 'merchant_' + new Date().getTime(),
+    merchant_uid : 'merchant_' + new Date().getTime(), //주문번호
     name : $("#productName").text(),
-    amount : 1000,
+    amount :  100, //가격
     buyer_email : 'iamport@siot.do',
     buyer_name : '구매자이름',
     buyer_tel : '010-1234-5678',
@@ -294,11 +410,30 @@ IMP.request_pay({
     buyer_postcode : '123-456'
 }, function(rsp) {
     if ( rsp.success ) {
-        var msg = '결제가 완료되었습니다.';
+    	
+    	
+    	
+        $.ajax({
+        	type:'post',
+            url: "./payments/complete", // 가맹점 서버
+            
+            headers: { "Content-Type": "application/json" },
+            data: {
+                imp_uid: rsp.imp_uid,
+                merchant_uid: rsp.merchant_uid
+            }
+        }).done(function (data) {
+          // 가맹점 서버 결제 API 성공시 로직
+        })
+    	
+    	
+    	
+    	
+ /*        var msg = '결제가 완료되었습니다.';
         msg += '고유ID : ' + rsp.imp_uid;
         msg += '상점 거래ID : ' + rsp.merchant_uid;
         msg += '결제 금액 : ' + rsp.paid_amount;
-        msg += '카드 승인번호 : ' + rsp.apply_num;
+        msg += '카드 승인번호 : ' + rsp.apply_num; */
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
@@ -306,7 +441,7 @@ IMP.request_pay({
 
     alert(msg);
 });
-}
+ } 
 </script>  
 
 

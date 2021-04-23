@@ -101,7 +101,7 @@ flex-shrik:0;
 								<img src="../resources/upload/images/${file.thumbnail}">
 							</c:forEach> --%>
 							<p><a href="./detail?productNum=${dto.productNum}">
-								<img src="../resources/upload/images/${dto.productImages[0].thumbnail}">
+								<img src="../resources/upload/images/${dto.productImages[0].thumbnail}" style="max-width:370px; heigth:auto;">
 							</a></p>
 							<p><a href="./detail?productNum=${dto.productNum}">${dto.productName}</a></p>
 							
