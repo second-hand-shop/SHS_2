@@ -9,6 +9,10 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>${board} Insert</title>
 
+<!-- summerNote  -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
 <style>
 
 	/* div에 border 및 cell-padding */
@@ -90,15 +94,12 @@
 					class="form-control" id="writer" name="writer">
     
 				</li>
-				
-				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
-					<label for="hit">Hit</label> 
-				</li>
+
 				
 				<li class="lines">
 					<label for="contents">Contents</label>
-					<textarea class="form-control" rows="5" name="contents" id="contents" row="5">
-					</textarea>
+					<textarea class="form-control myCheck" rows="5" id="contents"
+					name="contents"></textarea>
 				</li>
 			
 			</ul>
@@ -114,6 +115,7 @@
 	<!-- footer -->
 	<c:import url="../template/footer.jsp"></c:import>
 	
+	<script type="text/javascript" src="../resources/jquery/summerFile.js?var=1"></script>
 
 </body>
 

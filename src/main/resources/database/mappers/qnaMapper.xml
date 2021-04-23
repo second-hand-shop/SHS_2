@@ -56,13 +56,13 @@
 	
 	
 	<!-- Qna Insert -->
-	<insert id="setInsert" parameterType="BoardDTO">
+	<insert id="setInsert" parameterType="QnaDTO">
 	
 		<!-- keyProperty는 파라미터의 이름, order는 after와 before가 있찌만 after는 잘 안되므로 before 사용 -->
-		<selectKey keyProperty="num" resultType="java.lang.Long" order="BEFORE">
+		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
 			select qna_seq.nextval from dual
 		</selectKey>
-	
+																								<!-- 위에서 미리 조회해서 값 넣기 -->
 		insert into qna values(#{num}, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{num}, 0, 0)
 	</insert>
 	

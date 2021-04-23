@@ -34,9 +34,8 @@ public class QnaService implements BoardService {
 		return qnaDAO.getList(pager);
 	}
 
-	@Override
-	public int setInsert(BoardDTO boardDTO) throws Exception {
-		return qnaDAO.setInsert(boardDTO);
+	public int setInsert(QnaDTO qnaDTO) throws Exception {
+		return qnaDAO.setInsert(qnaDTO);
 	}
 
 	@Override

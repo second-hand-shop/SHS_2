@@ -68,7 +68,10 @@
 	
 		<div id="table-border" style="border: 1px solid #d3d3d3;">	
 			<ul>
+													<!-- parameter값 -->
 				<li><input type="hidden" name="num" value="${param.num}"></li>
+				
+				<li><input type="hidden" name="productNum" value="${param.productNum}"></li>
 				
 				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
 					<label for="title">Title</label> 

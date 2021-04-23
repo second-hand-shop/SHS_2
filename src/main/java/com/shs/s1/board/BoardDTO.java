@@ -2,6 +2,7 @@ package com.shs.s1.board;
 
 import java.sql.Date;
 
+
 public class BoardDTO {
 	
 	private long num;
@@ -11,7 +12,7 @@ public class BoardDTO {
 	private Date regdate;
 	private long hit;
 	
-	
+
 	//get set
 	public long getNum() {
 		return num;
@@ -49,6 +50,5 @@ public class BoardDTO {
 	public void setHit(long hit) {
 		this.hit = hit;
 	}
-	
 
 }
