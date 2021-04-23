@@ -34,4 +34,8 @@ public class MemberService {
 	public int memberModify(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberModify(memberDTO);
 	}
+	
+	public int memberDelete(MemberDTO memberDTO, HttpSession session) throws Exception {
+		return memberDAO.memberDelete(memberDTO);
+	}
 }
