@@ -123,7 +123,25 @@ public class MemberController {
 	}
 	
 	@GetMapping("memberModify")
-	public void memberModify() throws Exception {
+	public void memberModify(MemberDTO memberDTO) throws Exception {
 		
+	}
+	
+	@PostMapping("memberModify")
+	public ModelAndView memberModify(MemberDTO memberDTO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result = memberService.memberModify(memberDTO);
+		if(result>0) {	
+			session.setAttribute("member", memberDTO);
+			mv.addObject("msg", "회원정보 수정 성공");
+			mv.addObject("path", "../");
+			mv.setViewName("common/commonResult");
+		} else {
+			mv.addObject("msg", "회원정보 수정 실패");
+			mv.addObject("path", "./memberModify");
+			mv.setViewName("common/commonResult");
+		}
+		return mv;
 	}
 }

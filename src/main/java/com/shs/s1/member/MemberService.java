@@ -30,4 +30,8 @@ public class MemberService {
 	public MemberDTO memberPwFind(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberPwFind(memberDTO);
 	}
+	
+	public int memberModify(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberModify(memberDTO);
+	}
 }
