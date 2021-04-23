@@ -117,11 +117,13 @@ public class MemberController {
 		
 	}
 	
+	//마이페이지
 	@GetMapping("memberAccount")
 	public void memberAccount() throws Exception {
 		
 	}
 	
+	//회원 정보 수정
 	@GetMapping("memberModify")
 	public void memberModify(MemberDTO memberDTO) throws Exception {
 		
@@ -139,6 +141,26 @@ public class MemberController {
 			mv.setViewName("common/commonResult");
 		} else {
 			mv.addObject("msg", "회원정보 수정 실패");
+			mv.addObject("path", "./memberModify");
+			mv.setViewName("common/commonResult");
+		}
+		return mv;
+	}
+	
+	//회원 탈퇴
+	@GetMapping("memberDelete")
+	public ModelAndView memberDelete(MemberDTO memberDTO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+	    memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		int result = memberService.memberDelete(memberDTO, session);
+		if(result>0) {		
+			session.invalidate();
+			mv.addObject("msg", "정상적으로 탈퇴되었습니다.");
+			mv.addObject("path", "../");
+			mv.setViewName("common/commonResult");			
+		} else {
+			mv.addObject("msg", "탈퇴 실패");
 			mv.addObject("path", "./memberModify");
 			mv.setViewName("common/commonResult");
 		}
