@@ -33,10 +33,17 @@
 		text-align: center;
 	}
 	
-	/* 2번째 줄 정렬 */
+	/* 2번째(notice:subject && qna:productImage) 줄 정렬 */
 	td:nth-child(2){
 		text-align: left;
 	}
+	
+	/* qna의 경우 3번째(qna:subject) 줄 정렬 */
+	<c:if test="${board eq 'qna'}">
+		td:nth-child(3){
+			text-align: left;
+		}
+	</c:if>
 	
 	/* th 글자 굵기와 정렬 */
 	th{
@@ -75,6 +82,11 @@
 		float: right;
 	}
 
+	.img-size{
+		width:2.5%;
+		height:auto;
+		vertical-align: middle;
+	}
 
 
 </style>
@@ -93,16 +105,35 @@
 	<table id="line">
 		<tr>
 			<th class="lines" width="4%">NO</td>
-			<th class="lines" width="69%">SUBJECT</td>
-			<th class="lines" width="9%">WRITER</td>
-			<th class="lines" width="9%">DATE</td>
-			<th class="lines" width="9%">HIT</td>
+			
+			<c:if test="${board eq 'qna'}">
+				<th class="lines" width="8%">PRODUCT</td>
+			</c:if>
+			
+			<th class="lines" width="60%">SUBJECT</td>
+			<th class="lines" width="8%">WRITER</td>
+			<th class="lines" width="8%">DATE</td>
+			<th class="lines" width="8%">HIT</td>
 		</tr>
 		
 		<c:forEach items="${list}" var="dto">
 			<tr>
 				<td class="lines">${dto.num}</td>
-				<td class="lines"><a href="./${board}Select?num=${dto.num}">${dto.title}</a></td>
+				
+				<c:if test="${board eq 'qna'}">
+					<td class="lines"><!-- product이미지 들어올자리 --></td>
+				</c:if>
+				
+				<td class="lines"><a href="./${board}Select?num=${dto.num}">
+			
+				<!-- depth부분 -->
+				<c:catch>
+					<c:forEach begin="1" end="${dto.depth}">
+					&ensp;<img src="../resources/images/curvedArrow2.png" alter="답변" class="img-size" />
+					</c:forEach>
+				</c:catch>
+				${dto.title}</a></td>
+				
 				<td class="lines">${dto.writer}</td>
 				<td class="lines">${dto.regdate}</td>
 				<td class="lines">${dto.hit}</td>
@@ -110,7 +141,7 @@
 		</c:forEach>
 		
 		<tr>
-			<td class="lines" colspan="5">
+			<td class="lines" colspan="6">
 				
 				<div class="container size">
 					  
