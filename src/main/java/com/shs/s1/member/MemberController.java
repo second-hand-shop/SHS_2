@@ -116,4 +116,14 @@ public class MemberController {
 	public void memberPwFind() throws Exception {
 		
 	}
+	
+	@GetMapping("memberAccount")
+	public void memberAccount() throws Exception {
+		
+	}
+	
+	@GetMapping("memberModify")
+	public void memberModify() throws Exception {
+		
+	}
 }
