@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta charset="UTF-8">
-<title>memberId Find</title>
+<title>memberPw Find</title>
 </head>
 <body>
 	<div id="wrap">
@@ -17,15 +17,19 @@
 		</div>
 	<div class="w3-content w3-container w3-margin-top">
 		<div class="w3-container w3-card-4">		
-			<form action="./memberIdFind" method="post">
+			<form action="./memberPwFind" method="post">
 				<div class="w3-center w3-large w3-margin-top">
-					<h2>아이디 찾기</h2>
+					<h2>비밀번호 찾기</h2>
 				</div>
 				<div id="search">
  					<p>
+						<label>Id</label>
+						<input class="w3-input" type="text" id="id" name="id" required>
+					</p> 
+					<p>
 						<label>Name</label>
 						<input class="w3-input" type="text" id="name" name="name" required>
-					</p> 
+					</p>
 					<p>
 						<label>Email</label>
 						<input class="w3-input" type="text" id="email" name="email" required>
@@ -40,7 +44,7 @@
 	</div>		
 <!-- footer -->
 <c:import url="../template/footer.jsp"></c:import>
-	</div>
+</div>
 </body>
 <!------------------------------- CSS & JavaScript -------------------------------------->
 <link rel="stylesheet" href="../resources/css/common.css">
