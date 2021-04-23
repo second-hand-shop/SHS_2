@@ -9,16 +9,16 @@
 
 .linePage {
 	float: left;
-	border: 1px solid #ccc;
+/* 	border: 1px solid #ccc; */
 	margin:10px;
 }
 
-.productImg{
-	border: 1px solid #ccc;
-float : left;
+/* .productImg{
+ 	border: 1px solid #ccc; 
+
+            display: flex;
 
             overflow: hidden;
-            display: flex;
             align-items: center;
             justify-content: center;
 
@@ -31,9 +31,9 @@ float : left;
 		margine: 10px;
 
 
-}
+} */
 
-
+/* 
 .productBox{
 float:left;
 }
@@ -42,6 +42,25 @@ float:left;
 .space{
 clear:left;
 }
+ */
+
+
+
+
+.row{
+display : flex;
+flex-direction: row;
+flex-wrap : wrap;
+/* border: 1px solid #ccc;  */
+}
+
+
+.col{
+/* border: 1px solid #ccc;  */
+
+flex-shrik:0;
+}
+
 
 
 </style>
@@ -56,12 +75,12 @@ clear:left;
 		<div id="container">
 			<div id="contents">
 
-				<!--                                                                           -->
+			
 
 
 
 
-
+				<h1></h1>
 
 
 				<a href="./productInsert"><button type="button"
@@ -70,35 +89,33 @@ clear:left;
 				<!-- css로 마진 패딩 채우면 없앤다 br -->
 			
 
+					<div class="row">
 				<c:forEach items="${list}" var="dto">
 
 
 					
-
-					<div class="productBox">
+				
 					
-						<div class="productImg">
+						<div class="col">
 							<%-- 		<c:forEach items="${dto.productImages}" var="file">
 								<img src="../resources/upload/images/${file.thumbnail}">
 							</c:forEach> --%>
-							<a href="./detail?productNum=${dto.productNum}">
+							<p><a href="./detail?productNum=${dto.productNum}">
 								<img src="../resources/upload/images/${dto.productImages[0].thumbnail}">
-							</a>
+							</a></p>
+							<p><a href="./detail?productNum=${dto.productNum}">${dto.productName}</a></p>
+							
 						</div>
 					
-					
-					
-						<div class="space"> <a href="./detail?productNum=${dto.productNum}">${dto.productName}</a>
-						</div>
-					</div>
-
+			
 
 				
 
 				</c:forEach>
+					</div>
 
 
-				<div class="space"> <br></div>
+				<div><br></div>
 
 	
 				<ul >

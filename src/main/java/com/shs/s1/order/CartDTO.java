@@ -1,4 +1,4 @@
-package com.shs.s1.product;
+package com.shs.s1.order;
 
 import java.sql.Date;
 

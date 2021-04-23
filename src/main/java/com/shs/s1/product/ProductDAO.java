@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import com.shs.s1.util.ProductPager;
 
 @Repository
@@ -89,9 +90,5 @@ public class ProductDAO {
 		
 	}
 	
-	public int setCartInsert(CartDTO cartDTO)throws Exception{
 		
-		return sqlSession.insert(NAMESPACE+"setCartInsert", cartDTO);
-	}
-	
 }
