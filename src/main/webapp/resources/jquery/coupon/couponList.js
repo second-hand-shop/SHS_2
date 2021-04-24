@@ -72,7 +72,6 @@ $("#deleteBtn").click(function(){
 		let couponNum = $(this).attr("title");
 		$(".modal-title").html(couponNum);
 		$.get("./couponSelect?couponNum="+couponNum, function(result){
-			result = result.trim();
 			console.log(result);
 			console.log(result.couponNum);
 			console.log(result.id);
