@@ -34,8 +34,8 @@ public class CouponController {
 	public ModelAndView getSelect(CouponDTO couponDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		couponDTO = couponService.getSelect(couponDTO);
-		mv.addObject("DTO", couponDTO);
-		mv.setViewName("coupon/couponSelect");
+		mv.addObject("result", couponDTO);
+		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
 	
