@@ -68,14 +68,20 @@ $("#deleteBtn").click(function(){
 //===============================================================
 // modal로 데이터 넘기기
 	function couponSelect() {
-		$("#couponSelect").click(function(){
-		/*let couponNum = $("#couponSelect").html();
+		$(".couponSelect").click(function(){
+		let couponNum = $(this).attr("title");
 		$(".modal-title").html(couponNum);
-		console.log(couponNum);*/
-		let i = $(".delNum").attr("title");
-		console.log(i);
+		$.get("./couponSelect?couponNum="+couponNum, function(result){
+			result = result.trim();
+			console.log(result);
+			console.log(result.couponNum);
+			console.log(result.id);
+			console.log(result.disRate);
+		});
 	});
 }
+
+couponSelect();
 
 
 
