@@ -145,12 +145,13 @@ tbody tr td input {
 						<td>${DTO.disRate }</td>
 						<td>${DTO.disPrice }</td>
 						<td>${DTO.usage }</td>
-						<td><input type="checkbox" name="deleteCheck" class="check">-</td>
+						<td><input type="checkbox" name="deleteCheck" class="check" title="${DTO.couponNum }">-</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	<!--------------------------- Paging ----------------------------------->
 	<!--------------------------- Paging ----------------------------------->
 	<div class="container">
 		<ul class="pagination">
@@ -181,7 +182,8 @@ tbody tr td input {
 			</form>
 		</div>
 	</div>
-
+	<!--------------------------- Paging END ----------------------------------->
+	<!--------------------------- Paging END ----------------------------------->
 	<!-------- table END --------------->
 	<input type="button" class="btn btn-danger" id="deleteBtn" value="-">
 	<!-------- ????????????????????????????? --------------->
