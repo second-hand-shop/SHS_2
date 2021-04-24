@@ -38,28 +38,31 @@ $(".insert").click(function(){
 // couponDelete =================================================
 //===============================================================
 
-/*$(".delete").click(function(){
-	let check = confirm("삭제하시겠습니까?");
-	if(check){
-		let couponNum = $(".delete").attr("title");
-		$.ajax({
-			type: "POST",
-			url: "./couponDelete",
-			data: {couponNum:couponNum},
-			success: function(result){
-				result=result.trim();
-				if(result>0){
-					alert("Delete 성공");
-					location.reload();
-				}
-			},
-			error: function(result){
-				alert("Delete 실패");
-			}
-		});
-		
-	}
-});*/ //-------------------------------
+$("#deleteBtn").click(function(){
+	let checker = confirm("삭제하겠습니까?");
+	if(checker){
+		$(".check").each(function(){
+			let check = $(this).prop("checked"); // T/F 값
+			if(check){
+				let couponNum = $(this).attr("title");
+				console.log(couponNum);
+				$.ajax({
+					type: "POST",
+					url: "./couponDelete",
+					data: {couponNum:couponNum},
+					success: function(result){
+						result = result.trim();
+					},
+					error: function(result){
+						result = result.trim();
+						
+					}
+				});	//---$.ajax END---
+			} //---checkbox T/F END---
+		}); //---for END---
+		location.reload();
+	} //---confirm END---
+});
 
 // couponSelect =================================================
 //===============================================================
@@ -80,12 +83,7 @@ $(".insert").click(function(){
 // couponUpdate =================================================
 //===============================================================
 
-$("#deleteBtn").click(function(){
-	$(".check").each(function(){
-		let check = $(this).prop("checked");
-		console.log(check);
-	});
-});
+
 
 
 

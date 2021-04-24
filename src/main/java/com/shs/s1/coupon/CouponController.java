@@ -53,7 +53,7 @@ public class CouponController {
 	@PostMapping("couponDelete")
 	public ModelAndView setDelete(CouponDTO couponDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		int result = couponService.setDelete(couponDTO);
+		int result = couponService.setDelete(couponDTO);	
 		mv.addObject("result", result);
 		mv.setViewName("common/ajaxResult");
 		return mv;
