@@ -29,7 +29,7 @@
 							<c:if test="${not empty member}">
 							<li class="xans-element- xans-layout xans-layout-statelogoff "><a href="${pageContext.request.contextPath}/member/memberLogout">LOGOUT</a></li>
 							</c:if>
-							<li class="xans-element- xans-layout xans-layout-statelogoff "><a href="${pageContext.request.contextPath}/member/memberJoin">JOIN</a></li>
+							<li class="xans-element- xans-layout xans-layout-statelogoff "><a href="${pageContext.request.contextPath}/member/memberJoinCheck">JOIN</a></li>
 							<!-- 로그인 시 나타나게 if -->
 							<li><a href="#">ORDER TRACKING</a></li>
 							<li><a href="${pageContext.request.contextPath}/member/memberAccount">MY ACCOUNT</a></li>

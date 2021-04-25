@@ -17,6 +17,12 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	//약관동의
+	@RequestMapping("memberJoinCheck")
+	public void memberJoinCheck()throws Exception{
+		
+	}
+	
 	//회원가입
 	@GetMapping("memberJoin")
 	public void memberJoin() throws Exception {
