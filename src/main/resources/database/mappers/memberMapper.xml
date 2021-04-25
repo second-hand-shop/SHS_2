@@ -21,7 +21,11 @@
 		select id from member where name=#{name} and email=#{email}
 	</select>
 	
-	<select id="memberPwFind" parameterType="MemberDTO" resultType="MemberDTO">
-		
-	</select>
+	<update id="memberModify" parameterType="MemberDTO">
+		update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone} where id=#{id}
+	</update>
+	
+	<delete id="memberDelete" parameterType="MemberDTO">
+		delete member where id=#{id}
+	</delete>
 </mapper>
