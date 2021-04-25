@@ -18,6 +18,7 @@
 		<div id="container">
 			<div id="contents">
 				<form id="modifyform" action="./memberModify" method="post" enctype="multipart/form-data">
+				<h2 align="center">${member.name}님은 [일반회원]입니다.</h2>
 				<div class="form-group">
 				<label for="id">ID</label> 
 				<input type="text" class="form-control" id="id" name="id" readonly="readonly" value="${member.id}"> 
