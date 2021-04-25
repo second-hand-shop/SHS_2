@@ -158,7 +158,7 @@ public class MemberController {
 			session.invalidate();
 			mv.addObject("msg", "정상적으로 탈퇴되었습니다.");
 			mv.addObject("path", "../");
-			mv.setViewName("common/commonResult");			
+			mv.setViewName("common/commonResult");
 		} else {
 			mv.addObject("msg", "탈퇴 실패");
 			mv.addObject("path", "./memberModify");
