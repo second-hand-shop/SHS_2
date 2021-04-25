@@ -34,17 +34,18 @@ function emptyCheck() {
 $("#pw2").blur(function() {
 	var pw = $("#pw").val();
 	var pw2 = $(this).val();
+	
 	pwCheck=false;
 		
-	if(pw2==''){
-		$("#pwResult").html("Password를 입력하세요");
+	if(result=null){
+		$("#pwResult").html("비밀번호를 입력하세요");
 		$("#pwResult").removeClass("idCheck0").addClass("idCheck1");
 	} else if(pw == pw2){
-		$("#pwResult").html("Password가 일치 합니다");
+		$("#pwResult").html("비밀번호가 일치 합니다");
 		$("#pwResult").removeClass("idCheck1").addClass("idCheck0");
 		pwCheck=true;
 	} else {
-		$("#pwResult").html("Password가 일치 하지 않습니다");
+		$("#pwResult").html("비밀번호가 일치 하지 않습니다");
 		$("#pwResult").removeClass("idCheck0").addClass("idCheck1");
 	}
  });
@@ -60,18 +61,24 @@ $("#id").blur(function() {
 				//true 사용가능 false 사용불가
 				//0 사용가능 	1 사용불가
 			data=data.trim();
-			var str = "중복된 ID 입니다";
-				
+			var str = "중복된 아이디 입니다";
+			
+			//아이디 정규식
+			var regex = /^[a-z][a-z\d]{4,11}$/;
+			var result = regex.exec(id);
+			                	
 			$("#idResult").removeClass("idCheck0").addClass("idCheck1");
-			if(data==0){
-				str = "사용 가능한 ID 입니다"
+			if(result!=null){
+				str = "사용 가능한 아이디 입니다"
 				$("#idResult").removeClass("idCheck1").addClass("idCheck0");
 				idCheck=true;
+			} else {
+				 str = "아이디는 영문(소문자), 숫자로 4-12자 이내로 입력해주세요."
 			}
 			$("#idResult").html(str);		
 		});
 	} else {
-		$("#idResult").html("Id는 필수 항목입니다");
+		$("#idResult").html("아이디는 필수 항목입니다");
 		$("#idResult").removeClass("idCheck0").addClass("idCheck1");
 	}		
 });
