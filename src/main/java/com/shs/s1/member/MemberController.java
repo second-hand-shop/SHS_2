@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shs.s1.email.Email;
+import com.shs.s1.email.EmailSender;
+
 @Controller
 @RequestMapping("/member/**")
 public class MemberController {
@@ -17,6 +20,37 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	//메일전송 관련
+	@Autowired
+	private EmailSender emailSender;
+	@Autowired
+	private Email email;
+
+	@GetMapping("memberPwFind")
+	public void memberPwFind() throws Exception {
+		
+	}
+	
+    @PostMapping("memberPwFind")
+    public ModelAndView memberPwFind (MemberDTO memberDTO, ModelAndView mv) throws Exception {
+    	memberDTO = memberService.memberPwFind(memberDTO);
+
+        if(memberDTO != null) {
+            email.setContent("비밀번호는 "+memberDTO.getPw()+" 입니다.");
+            email.setReceiver(memberDTO.getEmail());
+            email.setSubject(memberDTO.getName()+"님 비밀번호 찾기 메일입니다.");
+            emailSender.SendEmail(email);
+            mv.addObject("msg", "회원님의 이메일로 비밀번호를 전송해드렸습니다.");
+            mv.addObject("path","../");
+            mv.setViewName("common/commonResult");
+        }else {
+			mv.addObject("msg", "등록된 정보가 없습니다");
+			mv.addObject("path", "./memberPwFind");
+			mv.setViewName("common/commonResult");
+        }
+        return mv;
+    }
+
 	//약관동의
 	@RequestMapping("memberJoinCheck")
 	public void memberJoinCheck()throws Exception{
@@ -36,7 +70,7 @@ public class MemberController {
 		String path="./memberJoin";
 		if(result>0) {
 			message="회원가입 성공";
-			path="../";
+			path="./memberSuccess";
 		}
 		model.addAttribute("message",message);
 		model.addAttribute("path",path);
@@ -98,7 +132,7 @@ public class MemberController {
 	
 	//아이디 찾기
 	@GetMapping("memberIdFind")
-	public void memberFind() throws Exception {
+	public void memberIdFind() throws Exception {
 		
 	}
 	
@@ -116,11 +150,6 @@ public class MemberController {
 			mv.setViewName("common/commonResult");
 		}		
 		return mv;
-	}
-	
-	@GetMapping("memberPwFind")
-	public void memberPwFind() throws Exception {
-		
 	}
 	
 	//마이페이지
@@ -171,5 +200,11 @@ public class MemberController {
 			mv.setViewName("common/commonResult");
 		}
 		return mv;
+	}
+	
+	//회원가입 성공
+	@GetMapping("memberSuccess")
+	public void memberSuccess(MemberDTO memberDTO) throws Exception{
+		
 	}
 }
