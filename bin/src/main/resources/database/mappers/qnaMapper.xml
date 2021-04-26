@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.shs.s1.board.qna.QnaDAO">
+
+
+	<!-- Qna total count -->
+	<select id="getTotalCount" resultType="Long" parameterType="BoardPager">
+		select count(num) from qna
+		where 
+		<choose>
+			<when test="kind == 'Writer'">
+				writer
+			</when>
+			<when test="kind == 'Contents'">
+				contents
+			</when>
+			
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and num >0
+	</select>
+
+
+	<!-- Qna List -->
+	<select id="getList" parameterType="BoardPager" resultType="QnaDTO">
+	
+		select * from
+			(select rownum R, Q.* from
+				(select * from qna where
+				
+				<choose>
+						<when test="kind=='Title'">
+							title
+						</when>
+						
+						<when test="kind =='Writer'">
+							writer
+						</when>
+						
+						<otherwise>
+							contents
+						</otherwise>
+					
+				</choose>
+								
+				  like '%' || #{search} || '%' and num > 0 order by ref desc, step asc) Q)
+		where R between #{startRow} and #{lastRow}
+		
+	</select>
+	
+	
+	<!-- Qna Insert -->
+	<insert id="setInsert" parameterType="QnaDTO">
+	
+		<!-- keyProperty는 파라미터의 이름, order는 after와 before가 있찌만 after는 잘 안되므로 before 사용 -->
+		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+			select qna_seq.nextval from dual
+		</selectKey>
+																								<!-- 위에서 미리 조회해서 값 넣기 -->
+		insert into qna values(#{num}, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{num}, 0, 0)
+	</insert>
+	
+	
+	<!-- Qna Select -->
+    <select id="getSelect" parameterType="BoardDTO" resultType="QnaDTO">
+    	select * from qna where num = #{num}
+    </select>
+    
+    
+    <!-- Qna Update -->
+    <update id="setUpdate" parameterType="BoardDTO">
+    	update qna set title = #{title}, writer = #{writer}, contents = #{contents}, hit = 0, regdate = sysdate 
+    	where num = #{num}
+    </update>
+    
+    
+    <!-- Qna Delete -->
+    <delete id="setDelete" parameterType="BoardDTO">
+    	delete qna where num = #{num}
+    </delete>
+    
+    
+    <!-- Qna Hit Update -->
+    <update id="setHitUpdate" parameterType="BoardDTO">
+    	update qna set hit=hit+1 where num=#{num}
+    </update>
+    
+    
+   	<!-- reply -->
+	<insert id="setReply" parameterType="QnaDTO">
+		insert into qna values(qna_seq.nextval, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth})
+	</insert>
+    
+    
+    <!-- reply update -->
+	<update id="setReplyUpdate" parameterType="QnaDTO">
+		update qna set step=step+1 where ref=#{ref} and step>#{step}
+	</update>
+	
+
+</mapper>
