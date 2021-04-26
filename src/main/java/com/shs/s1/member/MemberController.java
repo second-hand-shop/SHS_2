@@ -1,5 +1,7 @@
 package com.shs.s1.member;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,23 +34,25 @@ public class MemberController {
 	}
 	
     @PostMapping("memberPwFind")
-    public ModelAndView memberPwFind (MemberDTO memberDTO, ModelAndView mv) throws Exception {
+    public String memberPwFind (MemberDTO memberDTO, Model model, HttpServletRequest request) throws Exception {
     	memberDTO = memberService.memberPwFind(memberDTO);
 
+    	String emails = request.getParameter("email");
+    	String pw = memberDTO.getPw();
+    	String name = request.getParameter("name");
+    	
         if(memberDTO != null) {
-            email.setContent("비밀번호는 "+memberDTO.getPw()+" 입니다.");
-            email.setReceiver(memberDTO.getEmail());
-            email.setSubject(memberDTO.getName()+"님 비밀번호 찾기 메일입니다.");
+            email.setContent("비밀번호는 "+pw+" 입니다.");
+            email.setReceiver(emails);
+            email.setSubject(name+"님 비밀번호 찾기 메일입니다.");
             emailSender.SendEmail(email);
-            mv.addObject("msg", "회원님의 이메일로 비밀번호를 전송해드렸습니다.");
-            mv.addObject("path","../");
-            mv.setViewName("common/commonResult");
-        }else {
-			mv.addObject("msg", "등록된 정보가 없습니다");
-			mv.addObject("path", "./memberPwFind");
-			mv.setViewName("common/commonResult");
-        }
-        return mv;
+            model.addAttribute("message", "회원님의 이메일로 비밀번호를 전송해드렸습니다.");
+            model.addAttribute("path","../");        
+        } 			
+        	model.addAttribute("message", "등록된 정보가 없습니다"); 
+        	model.addAttribute("path", "./memberPwFind");			 
+        
+    		return "common/commonResult";
     }
 
 	//약관동의

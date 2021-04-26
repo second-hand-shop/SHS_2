@@ -22,6 +22,8 @@
 					<label for="pw">Password</label> <input type="password" class="form-control" id="pw" name="pw">
 				</div>
 				<button type="submit" id="btn_login" class="btn btn-primary">Submit</button>
+				<a href="./memberIdFind" class="btn btn-info">아이디 찾기</a>
+				<a href="./memberPwFind" class="btn btn-info">비밀번호 찾기</a>
 			</form>
 		</div>
 

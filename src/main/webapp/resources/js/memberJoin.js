@@ -9,6 +9,7 @@ $("#join").click(function() {
 emptyCheck();
 		if(idCheck && pwCheck && emptyCheckResult){
 			//중복체크했고, 사용가능한 ID
+			alert("회원가입 성공");
 			$("#joinform").submit();
 		} else {
 			alert("회원가입 실패");
