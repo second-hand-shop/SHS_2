@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shs.s1.util.Pager;
@@ -31,12 +32,13 @@ public class CouponController {
 	
 	// getSelect ===================================================
 	@GetMapping("couponSelect")
-	public ModelAndView getSelect(CouponDTO couponDTO) throws Exception {
+	@ResponseBody
+	public CouponDTO getSelect(CouponDTO couponDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		couponDTO = couponService.getSelect(couponDTO);
-		mv.addObject("result", couponDTO);
-		mv.setViewName("common/ajaxResult");
-		return mv;
+//		mv.addObject("result", couponDTO);
+//		mv.setViewName("common/ajaxResult");
+		return couponDTO;
 	}
 	
 	// setInsert ===================================================
