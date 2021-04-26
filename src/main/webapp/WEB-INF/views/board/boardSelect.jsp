@@ -63,6 +63,13 @@
 	</div>
 	
 	
+	<c:if test="${board ne 'notice'}">
+		<div id="table-border" style="border: 1px solid #d3d3d3;">
+			PRODUCT IMG 불러오기
+		</div>
+	</c:if>
+	
+	
 	<div id="table-border" style="border: 1px solid #d3d3d3;">
 	
 		<ul>
@@ -93,6 +100,11 @@
 	
 	</div>
 	
+	<c:if test="${board eq 'qna'}">
+		<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">
+			Comment : Unauthorized User
+		</div>
+	</c:if>
 	
 	<!-- footer -->
 	<c:import url="../template/footer.jsp"></c:import>

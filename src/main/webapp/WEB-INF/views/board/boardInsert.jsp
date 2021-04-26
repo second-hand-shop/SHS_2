@@ -69,8 +69,8 @@
 	
 	
 	<!-- Board Insert Contents -->
-	<!--  enctype="multipart/form-data" : notice에는 text만 넘어감 아직 빼기 -->
-	<form id="form" action="./${board}Insert" method="post">	
+	<!--  enctype="multipart/form-data" : notice만 테스트할 때는 빼서 사용 -->
+	<form id="form" action="./${board}Insert" method="post" enctype="multipart/form-data">
 	
 		<div id="table-border" style="border: 1px solid #d3d3d3;">	
 			<ul>
