@@ -160,7 +160,7 @@
 						 		  
 						  	  </div>
 						  	  
-						  	  <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="">
+						  	  <input type="text" class="form-control" name="search" id="search" value="${boardPager.search}" placeholder="">
 						    
 						      <div class="input-group-append">
 						    	  <button class="btn btn-success" type="submit">Search</button>
@@ -171,16 +171,16 @@
 					  <div class="second-size">
 						  <ul class="pagination">
 						  
-							  <c:if test="${pager.pre}">	
-							    <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>
+							  <c:if test="${boardPager.pre}">	
+							    <li class="page-item"><a class="page-link p" href="#" title="${boardPager.startNum-1}">Previous</a></li>
 							  </c:if>
 						   
-						   	  <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+						   	  <c:forEach begin="${boardPager.startNum}" end="${boardPager.lastNum}" var="i">
 						   		<li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
 						   	  </c:forEach>
 						   
-						      <c:if test="${pager.next}">
-						      	<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
+						      <c:if test="${boardPager.next}">
+						      	<li class="page-item"><a class="page-link p" href="#" title="${boardPager.lastNum+1}">Next</a></li>
 						      </c:if>
 						      
 						  </ul>
@@ -193,7 +193,7 @@
 					
 					  <script type="text/javascript">
 					  
-							let kind= '${pager.kind}';//Title, Writer, Contents
+							let kind= '${boardPager.kind}';//Title, Writer, Contents
 							$(".sel").each(function() {
 								let t = $(this).text();//Title, Writer, Contents
 								if(t == kind){
@@ -204,7 +204,7 @@
 							$(".p").click(function () {
 								let curPage = $(this).attr("title");
 								$("#curPage").val(curPage);
-								let search= '${pager.search}';
+								let search= '${boardPager.search}';
 								$("#frm").submit();
 		
 							});

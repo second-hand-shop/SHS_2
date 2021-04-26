@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.shs.s1.board.BoardDTO;
 import com.shs.s1.board.qna.QnaDTO;
-import com.shs.s1.util.Pager;
+import com.shs.s1.util.BoardPager;
 
 @Controller
 @RequestMapping("/qna/**")
@@ -24,15 +24,15 @@ public class QnaController {
 	
 	//list
 		@GetMapping("qnaList")
-		public ModelAndView getList(Pager pager) throws Exception{
+		public ModelAndView getList(BoardPager boardPager) throws Exception{
 			
 			ModelAndView mv = new ModelAndView();
-			List<BoardDTO> ar = qnaService.getList(pager);
+			List<BoardDTO> ar = qnaService.getList(boardPager);
 			
 			mv.addObject("list", ar);
 			mv.addObject("board", "qna");
 			mv.setViewName("board/boardList");
-			mv.addObject("pager", pager);
+			mv.addObject("boardPager", boardPager);
 			
 			return mv;
 		}

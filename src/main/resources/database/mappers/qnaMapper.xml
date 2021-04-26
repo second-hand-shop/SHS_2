@@ -8,7 +8,7 @@
 
 
 	<!-- Qna total count -->
-	<select id="getTotalCount" resultType="Long" parameterType="Pager">
+	<select id="getTotalCount" resultType="Long" parameterType="BoardPager">
 		select count(num) from qna
 		where 
 		<choose>
@@ -28,7 +28,7 @@
 
 
 	<!-- Qna List -->
-	<select id="getList" parameterType="Pager" resultType="QnaDTO">
+	<select id="getList" parameterType="BoardPager" resultType="QnaDTO">
 	
 		select * from
 			(select rownum R, Q.* from

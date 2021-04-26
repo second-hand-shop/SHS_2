@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shs.s1.board.BoardDTO;
-import com.shs.s1.util.Pager;
+import com.shs.s1.util.BoardPager;
 
 @Controller
 @RequestMapping("/notice/**")
@@ -22,20 +22,20 @@ public class NoticeController {
 	
 	//Notice List
 	@GetMapping("noticeList")
-	public ModelAndView getList(Pager pager) throws Exception{
+	public ModelAndView getList(BoardPager boardPager) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("curPage : "+pager.getCurPage());
+		System.out.println("curPage : "+boardPager.getCurPage());
 		
-		List<BoardDTO> ar = noticeService.getList(pager);
+		List<BoardDTO> ar = noticeService.getList(boardPager);
 		
 		mv.addObject("list", ar);
 		mv.addObject("board", "notice");
-		mv.addObject("pager", pager);
+		mv.addObject("boardPager", boardPager);
 		
-		System.out.println("Start : "+pager.getStartNum());
-		System.out.println("Last : "+pager.getLastNum());
+		System.out.println("Start : "+boardPager.getStartNum());
+		System.out.println("Last : "+boardPager.getLastNum());
 		
 		mv.setViewName("board/boardList");
 		
