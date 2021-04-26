@@ -84,7 +84,6 @@
 				
 				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
 					<label for="hit">Hit</label> 
-					<input type="text" readonly="readonly"  name="hit" value="${dto.hit}">
 				</li>
 				
 				<li class="lines">

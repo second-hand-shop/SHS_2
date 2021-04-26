@@ -80,6 +80,7 @@ public class QnaController {
 		public ModelAndView getSelect(BoardDTO boardDTO) throws Exception{
 			
 			ModelAndView mv = new ModelAndView();
+			QnaDTO qnaDTO = new QnaDTO();
 			
 			boardDTO = qnaService.getSelect(boardDTO);
 			

@@ -124,6 +124,7 @@
 					<td class="lines"><!-- product이미지 들어올자리 --></td>
 				</c:if>
 				
+				<!-- 관리자와 일반유저 구분하는 id값 넘겨주기 추가 -->
 				<td class="lines"><a href="./${board}Select?num=${dto.num}">
 			
 				<!-- depth부분 -->
