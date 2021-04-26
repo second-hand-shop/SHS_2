@@ -77,9 +77,12 @@ $("#deleteBtn").click(function(){
 		$(".modal-title").html(couponNum);
 		$.get("./couponSelect?couponNum="+couponNum, function(result){
 			console.log(result);
-			console.log(result.couponNum);
-			console.log(result.id);
-			console.log(result.disRate);
+			$("#modal-id").val(result.id);
+			$("#modal-disRate").val(result.disRate);
+			$("#modal-disPrice").val(result.disPrice);
+			//#################
+			// 사용유무 세팅 ##
+			//#################
 		});
 	});
 }

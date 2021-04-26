@@ -34,7 +34,7 @@ public class CouponController {
 	@GetMapping("couponSelect")
 	@ResponseBody
 	public CouponDTO getSelect(CouponDTO couponDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
+//		ModelAndView mv = new ModelAndView();
 		couponDTO = couponService.getSelect(couponDTO);
 //		mv.addObject("result", couponDTO);
 //		mv.setViewName("common/ajaxResult");
