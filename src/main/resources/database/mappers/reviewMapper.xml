@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shs.s1.board.review.ReviewDAO">
+
+	
+	<!-- Review totalCount -->
+	<select id="getTotalCount" parameterType="BoardPager" resultType="Long">
+		select count(num) from review
+		where 
+		<choose>
+			<when test="kind == 'Writer'">
+				writer
+			</when>
+			<when test="kind == 'Contents'">
+				contents
+			</when>
+			
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and num >0
+	</select>
+
+
+	<!-- Review getList -->
+	<select id="getList" parameterType="BoardPager" resultType="ReviewDTO">
+		select * from
+			(select rownum R, E.* from
+				(select * from review where
+					<choose>
+						<when test="kind=='Writer'">
+							writer
+						</when>
+						
+						<when test="kind =='Contents'">
+							contents
+						</when>
+						
+						<otherwise>
+							title
+						</otherwise>
+					
+					</choose>
+
+				  like '%' || #{search} || '%' and num > 0 order by num desc) E)
+		where R between #{startRow} and #{lastRow}
+	</select>
+	
+	
+	<!-- Review getSelect -->
+	<select id="getSelect" parameterType="BoardDTO" resultType="ReviewDTO">
+		select * from review where num = #{num}
+	</select>
+	
+	
+	<!-- Review setInsert -->
+	<insert id="setInsert" parameterType="BoardDTO">
+		insert into review values(review_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0)
+	</insert>
+	
+	
+	<!-- Review setUpdate -->
+	<update id="setUpdate" parameterType="BoardDTO">
+    	update review set title = #{title}, writer = #{writer}, contents = #{contents}, hit = 0, regdate = sysdate 
+    	where num = #{num}
+	</update>
+	
+	<!-- Review setDelete -->
+	<delete id="setDelete" parameterType="BoardDTO">
+		delete review where num = #{num}
+	</delete>
+	
+	<!-- Review Hit Update -->
+    <update id="setHitUpdate" parameterType="BoardDTO">
+    	update review set hit=hit+1 where num=#{num}
+    </update>
+	
+	
+	
+
+</mapper>
