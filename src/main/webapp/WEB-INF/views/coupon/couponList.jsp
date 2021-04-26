@@ -39,7 +39,7 @@ tbody tr td input {
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/admin/adminHome">
               <span data-feather="home"></span>
               Admin Home
             </a>
@@ -75,7 +75,7 @@ tbody tr td input {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../coupon/couponList">
+            <a class="nav-link" href="${pageContext.request.contextPath }/coupon/couponList">
               <span data-feather="percent"></span>
               Coupons
             </a>
