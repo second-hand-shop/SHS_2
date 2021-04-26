@@ -12,5 +12,12 @@
 		<typeAlias type="com.shs.s1.order.CartDTO" alias="CartDTO"/>
 		<typeAlias type="com.shs.s1.coupon.CouponDTO" alias="CouponDTO"/>
 		<typeAlias type="com.shs.s1.util.CouponPager" alias="Pager"/>
+		<typeAlias type="com.shs.s1.board.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.shs.s1.board.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.shs.s1.board.qna.QnaDTO" alias="QnaDTO"/>
+		<typeAlias type="com.shs.s1.util.BoardPager" alias="BoardPager"/>
+		
+		<typeAlias type="java.lang.Long" alias="Long"/>
+
 	</typeAliases>
 </configuration>
