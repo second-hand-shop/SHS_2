@@ -219,8 +219,8 @@ tbody tr td input {
 						<span class="mb-3">
       						<label class="form-label">사용유무</label>
      						<select class="form-select" name="usage" id="modal-usage">
-     							<option>Y</option>
-     							<option>N</option>
+     							<option id="selectY">Y</option>
+     							<option id="selectN">N</option>
       						</select>
     					</span>
 						<button type="submit" class="btn btn-primary">UPDATE</button>

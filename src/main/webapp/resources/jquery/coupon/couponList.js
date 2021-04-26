@@ -80,9 +80,11 @@ $("#deleteBtn").click(function(){
 			$("#modal-id").val(result.id);
 			$("#modal-disRate").val(result.disRate);
 			$("#modal-disPrice").val(result.disPrice);
-			//#################
-			// 사용유무 세팅 ##
-			//#################
+			if(result.usage=="Y"){
+				$("#selectY").prop("selected", "selected");
+			}else {
+				$("#selectN").prop("selected", "selected");
+			}
 		});
 	});
 }
