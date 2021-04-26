@@ -6,7 +6,7 @@
 <mapper namespace="com.shs.s1.board.notice.NoticeDAO">
 
 	<!-- Notice totalCount -->
-	<select id="getTotalCount" parameterType="Pager" resultType="Long">
+	<select id="getTotalCount" parameterType="BoardPager" resultType="Long">
 		select count(num) from notice
 		where 
 		<choose>
@@ -26,7 +26,7 @@
     
     
     <!-- Notice List -->
-    <select id="getList" parameterType="Pager" resultType="NoticeDTO">
+    <select id="getList" parameterType="BoardPager" resultType="NoticeDTO">
     	select * from
 			(select rownum R, N.* from
 				(select * from notice where

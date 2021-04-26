@@ -115,7 +115,7 @@
 	<!-- footer -->
 	<c:import url="../template/footer.jsp"></c:import>
 	
-	<script type="text/javascript" src="../resources/jquery/summerFile.js?var=1"></script>
+	
 
 </body>
 

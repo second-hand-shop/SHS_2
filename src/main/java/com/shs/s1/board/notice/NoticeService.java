@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.shs.s1.util.Pager;
+import com.shs.s1.util.BoardPager;
 import com.shs.s1.board.BoardDTO;
 import com.shs.s1.board.BoardService;
 
@@ -16,21 +16,21 @@ public class NoticeService implements BoardService{
 	private NoticeDAO noticeDAO; 
 	
 	@Override
-	public List<BoardDTO> getList(Pager pager) throws Exception {
+	public List<BoardDTO> getList(BoardPager boardPager) throws Exception {
 		
 		// startRow, lastRow
-		pager.makeRow();
+		boardPager.makeRow();
 		
 		// -------------
 		// 1. totalCount
-		long totalCount = noticeDAO.getTotalCount(pager);
+		long totalCount = noticeDAO.getTotalCount(boardPager);
 		
 		// 페이징 계산
-		pager.makeNum(totalCount);
+		boardPager.makeNum(totalCount);
 		
 		System.out.println(totalCount);
 	
-		return noticeDAO.getList(pager);
+		return noticeDAO.getList(boardPager);
 
 	}
 

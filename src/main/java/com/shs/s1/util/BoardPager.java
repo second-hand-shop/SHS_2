@@ -1,6 +1,6 @@
 package com.shs.s1.util;
 
-public class Pager {
+public class BoardPager {
 	//Pager.java 클래스
 	//DB에서 TotalCount 조회
 	//조회한 값을 일정한 갯수만큼 번호를 나누어서 보여줌
@@ -11,7 +11,7 @@ public class Pager {
 	
 	
 	//초기값, 갯수는 원본 사이트 그대로 따라가기
-	public Pager() {
+	public BoardPager() {
 		this.perPage = 15;	//한 블록에 10개
 		this.perBlock = 10;	//화살표 <, > 넘어가기전 한번에 보여줄 번호의 갯수
 		this.curPage = 1;	//현재 페이지

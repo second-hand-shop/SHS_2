@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.shs.s1.board.qna.QnaDTO;
 import com.shs.s1.board.BoardDTO;
 import com.shs.s1.board.BoardService;
-import com.shs.s1.util.Pager;
+import com.shs.s1.util.BoardPager;
 
 @Service
 public class QnaService implements BoardService {
@@ -17,21 +17,21 @@ public class QnaService implements BoardService {
 	private QnaDAO qnaDAO; 
 	
 	@Override
-	public List<BoardDTO> getList(Pager pager) throws Exception {
+	public List<BoardDTO> getList(BoardPager boardPager) throws Exception {
 		
 		// startRow, lastRow
-		pager.makeRow();
+		boardPager.makeRow();
 		
 		// -------------
 		// 1. totalCount
-		long totalCount = qnaDAO.getTotalCount(pager);
+		long totalCount = qnaDAO.getTotalCount(boardPager);
 		
 		// 페이징 계산
-		pager.makeNum(totalCount);
+		boardPager.makeNum(totalCount);
 		
 		System.out.println(totalCount);
 		
-		return qnaDAO.getList(pager);
+		return qnaDAO.getList(boardPager);
 	}
 
 	public int setInsert(QnaDTO qnaDTO) throws Exception {
