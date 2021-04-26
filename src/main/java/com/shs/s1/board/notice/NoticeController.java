@@ -69,7 +69,7 @@ public class NoticeController {
 			message="등록 성공";
 		}
 
-		model.addAttribute("msg", message);
+		model.addAttribute("message", message);
 		model.addAttribute("path", "./noticeList");
 		
 		return "common/commonResult";
@@ -152,7 +152,7 @@ public class NoticeController {
 			message="삭제 성공";
 		}
 
-		mv.addObject("msg", message);
+		mv.addObject("message", message);
 		mv.addObject("path", path);
 		
 		mv.setViewName("common/commonResult");
