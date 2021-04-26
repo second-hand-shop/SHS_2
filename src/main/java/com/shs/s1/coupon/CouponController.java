@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.shs.s1.util.Pager;
+import com.shs.s1.util.CouponPager;
 
 @Controller
 @RequestMapping("/coupon/**")
@@ -21,7 +21,7 @@ public class CouponController {
 //----------------------------------------------------------------------------------
 	// getList ===================================================
 	@GetMapping("couponList")
-	public ModelAndView getList(Pager pager) throws Exception {
+	public ModelAndView getList(CouponPager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<CouponDTO> ar = couponService.getList(pager);
 		mv.addObject("pager", pager);

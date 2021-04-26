@@ -11,7 +11,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Component
-public class FileManager {
+public class CouponFileManager {
 	
 	public boolean delete(String name, String fileName, HttpSession session) throws Exception {
 		// 1. 경로 설정
