@@ -223,7 +223,7 @@ tbody tr td input {
      							<option id="selectN">N</option>
       						</select>
     					</span>
-						<button type="submit" class="btn btn-primary">UPDATE</button>
+						<button type="submit" class="btn btn-primary updateBtn">UPDATE</button>
 					</form>
 				</div>
 
