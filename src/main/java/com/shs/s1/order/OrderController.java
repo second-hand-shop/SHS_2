@@ -31,21 +31,12 @@ private ProductService productService;
 		
 	}
 	
-	//아직 미완성...!
 	@PostMapping("order/orderForm")
 	public void getSelectOrder(ProductDTO productDTO,Model model)throws Exception{
 		
 		System.out.println(productDTO);
 		productDTO = productService.getSelect(productDTO);
 		model.addAttribute("dto", productDTO);
-		
-	}
-	
-	
-	@PostMapping("order/payments/complete")
-	public void setPayment(Model model,String imp_uid,String merchant_uid)throws Exception{
-		
-		
 		
 	}
 	

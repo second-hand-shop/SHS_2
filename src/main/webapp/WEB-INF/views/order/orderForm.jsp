@@ -396,11 +396,6 @@ IMP.init("imp92233315"); // "imp00000000" 대신 발급받은 "가맹점 식별�
 
 
 function requestPay(){ 
-
-//호출 전 주문정보를 상점의 서버에 전달	
-//메퍼에서 주문번호 만들어서 저장해주면 될듯 이 주문번호가 merchant_uid
-	
-	
 // IMP.request_pay(param, callback) 호출
 IMP.request_pay({
     pg : 'html5_inicis',
@@ -429,10 +424,6 @@ IMP.request_pay({
             }
         }).done(function (data) {
           // 가맹점 서버 결제 API 성공시 로직
-          
-          
-          
-          
         })
     	
     	
