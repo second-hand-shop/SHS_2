@@ -32,4 +32,5 @@
 	<delete id="memberDelete" parameterType="MemberDTO">
 		delete member where id=#{id}
 	</delete>
+	
 </mapper>
