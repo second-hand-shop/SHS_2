@@ -5,7 +5,6 @@
 
 <configuration>
  	<typeAliases>
-		<typeAlias type="com.shs.s1.test.TestDTO" alias="TestDTO"/>
 		<typeAlias type="com.shs.s1.member.MemberDTO" alias="MemberDTO"/>
 	</typeAliases>
 </configuration>
