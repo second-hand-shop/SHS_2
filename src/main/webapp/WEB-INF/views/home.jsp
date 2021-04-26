@@ -5,7 +5,6 @@
 <c:import url="./template/bootStrap.jsp"></c:import>
 <title>SHS</title>
 </head>
-				<title>OUT OF LINE 아웃오브라인</title>
 <body>
 	<div id="wrap">
 		<div id="header">
@@ -16,9 +15,10 @@
 			<div id="contents">
 				<div class="main_img">
 					<ul>
-						<img src="./resources/images/popcat.png"/>
+						<img src="./resources/images/popcat.png" />
 					</ul>
 				</div>
+				<title>OUT OF LINE 아웃오브라인</title>
 			</div>
 			<!-- footer -->
 			<c:import url="./template/footer.jsp"></c:import>
@@ -31,3 +31,4 @@
 <script type="text/javascript" src="./resources/js/main.js"></script>
 <script type="text/javascript" src="./resources/jquery/dropdown.js"></script>
 </html>
+
