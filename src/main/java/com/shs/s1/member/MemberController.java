@@ -70,7 +70,7 @@ public class MemberController {
 		String path="./memberJoin";
 		if(result>0) {
 			message="회원가입 성공";
-			path="./memberSuccess";
+			path="../";
 		}
 		model.addAttribute("message",message);
 		model.addAttribute("path",path);
@@ -200,11 +200,5 @@ public class MemberController {
 			mv.setViewName("common/commonResult");
 		}
 		return mv;
-	}
-	
-	//회원가입 성공
-	@GetMapping("memberSuccess")
-	public void memberSuccess(MemberDTO memberDTO) throws Exception{
-		
 	}
 }
