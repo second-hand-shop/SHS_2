@@ -16,8 +16,11 @@
 		<typeAlias type="com.shs.s1.board.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.shs.s1.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="com.shs.s1.util.BoardPager" alias="BoardPager"/>
+		<typeAlias type="com.shs.s1.member.MemberDTO" alias="MemberDTO"/>
 		
 		<typeAlias type="java.lang.Long" alias="Long"/>
+
+		
 
 	</typeAliases>
 </configuration>

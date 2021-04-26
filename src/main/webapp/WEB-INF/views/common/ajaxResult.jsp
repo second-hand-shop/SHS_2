@@ -2,4 +2,5 @@
     pageEncoding="UTF-8"%>
 
 ${result}
+${msg}  
 
