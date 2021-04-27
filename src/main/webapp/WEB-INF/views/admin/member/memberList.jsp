@@ -114,8 +114,18 @@
     </nav>
  <!-------------------------- navbar END ---------------------------------->
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-	<h2>쿠폰 목록</h2>
-
+	<h2>회원 목록</h2>
+	<div class="btn-group btn-group-toggle" data-toggle="buttons">
+		  <label class="btn btn-light active">
+		    <input type="radio" name="options" id="option1" checked> 전체 회원
+		  </label>
+		  <label class="btn btn-light">
+		    <input type="radio" name="options" id="option2"> 정회원
+		  </label>
+		  <label class="btn btn-light">
+		    <input type="radio" name="options" id="option3"> 비회원
+		  </label>
+	</div>
 	<div class="table-responsive">
 		<table class="table table-striped table-sm">
 			<thead>
