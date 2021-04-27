@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
- <mapper namespace="com.shs.s1.coupon.CouponDAO">
+ <mapper namespace="com.shs.s1.admin.coupon.CouponDAO">
  	<select id="getList" parameterType="Pager" resultType="CouponDTO">
  		select * from (
 		select rownum R, C.* from (

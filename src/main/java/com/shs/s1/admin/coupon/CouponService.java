@@ -1,4 +1,4 @@
-package com.shs.s1.coupon;
+package com.shs.s1.admin.coupon;
 
 import java.util.Calendar;
 import java.util.List;

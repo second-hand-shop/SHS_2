@@ -68,9 +68,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath }/admin/member/memberList">
               <span data-feather="users"></span>
-              Customers <!-- 회원정보 모아보기 -->
+              Members <!-- 회원정보 모아보기 -->
             </a>
           </li>
           <li class="nav-item">
@@ -86,7 +86,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath }/coupon/couponList">
+            <a class="nav-link" href="${pageContext.request.contextPath }/admin/coupon/couponList">
               <span data-feather="percent"></span>
               Coupons
             </a>

@@ -1,4 +1,4 @@
-package com.shs.s1.coupon;
+package com.shs.s1.admin.coupon;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class CouponDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
-	private final String NAMESPACE="com.shs.s1.coupon.CouponDAO.";
+	private final String NAMESPACE="com.shs.s1.admin.coupon.CouponDAO.";
 //------------------------------------------------------------------------------------------
 	// getList ===================================================
 	public List<CouponDTO> getList(CouponPager pager) throws Exception {
