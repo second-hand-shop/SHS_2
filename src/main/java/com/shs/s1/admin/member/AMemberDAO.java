@@ -17,14 +17,11 @@ public class AMemberDAO {
 	private final String NAMESPACE = "com.shs.s1.admin.member.AMemberDAO.";
 	
 //	getTotalCount==========================================================
-//	=======================================================================
-	public long getTotalCount() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getTotalCount");
+	public long getTotalCount(AdminPager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
-	
 //	getList================================================================
-//	=======================================================================
 	public List<AMemberDTO> getList(AdminPager pager) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}

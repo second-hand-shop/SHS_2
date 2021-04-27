@@ -149,13 +149,13 @@
 	<div class="container">
 		<ul class="pagination">
 			<c:if test="${pager.previous }">
-				<li class="page-item"><a class="page-link p" href="#">Previous</a></li>
+				<li class="page-item"><a class="page-link p" href="#" title="${pager.startPage-1 }">Previous</a></li>
 			</c:if>
 			<c:forEach begin="${pager.startPage }" end="${pager.lastPage }" var="i">
-				<li class="page-item"><a class="page-link p" href="#">${i }</a></li>
+				<li class="page-item"><a class="page-link p" href="#" title="${i}">${i }</a></li>
 			</c:forEach>
 			<c:if test="${pager.next }">
-				<li class="page-item"><a class="page-link p" href="#">Next</a></li>
+				<li class="page-item"><a class="page-link p" href="#" title="${pager.lastPage+1}">Next</a></li>
 			</c:if>
 		</ul>
 		<div class="input-group mt-3 mb-3">

@@ -4,10 +4,39 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
  <mapper namespace="com.shs.s1.admin.member.AMemberDAO">
- 	<select id="getTotalCount" resultType="java.lang.Long">
- 		select count(id) from MEMBER
+ 	<select id="getTotalCount" parameterType="AdminPager" resultType="java.lang.Long">
+ 		select count(id) from MEMBER where
+ 		<choose>
+ 			<when test="kind=='ID'">
+ 				id
+ 			</when>
+ 			<when test="kind=='전화번호'">
+ 				phone
+ 			</when>
+ 			<otherwise>
+ 				email
+ 			</otherwise>
+ 		</choose>
+ 		like '%'||#{search}||'%'
  	</select>
  	<select id="getList" parameterType="AdminPager" resultType="AMemberDTO">
- 		select * from MEMBER order by memberNum desc
+ 		select * from (
+	 		select rowNum R, M.* from (
+		 		select * from MEMBER where
+		 		<choose>
+		 			<when test="kind=='ID'">
+		 				id
+		 			</when>
+		 			<when test="kind=='전화번호'">
+		 				phone
+		 			</when>
+		 			<otherwise>
+		 				email
+		 			</otherwise>
+		 		</choose>
+		 		like '%'||#{search}||'%' order by memberNum desc
+		 		) M
+	 		)
+ 		where R between #{startRow} and #{lastRow}
  	</select>
  </mapper>
