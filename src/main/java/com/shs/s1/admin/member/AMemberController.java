@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shs.s1.util.AdminPager;
+
 @Controller
 @RequestMapping("admin/member/**")
 public class AMemberController {
@@ -18,9 +20,9 @@ public class AMemberController {
 //	getList================================================================
 //	=======================================================================
 	@GetMapping("memberList")
-	public ModelAndView getList() throws Exception {
+	public ModelAndView getList(AdminPager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<AMemberDTO> ar = aMemberService.getList();
+		List<AMemberDTO> ar = aMemberService.getList(pager);
 		mv.addObject("list", ar);
 		mv.setViewName("admin/member/memberList");
 		return mv;

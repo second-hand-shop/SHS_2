@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.shs.s1.util.CouponPager;
+import com.shs.s1.util.AdminPager;
 
 @Service
 public class CouponService {
@@ -15,7 +15,7 @@ public class CouponService {
 	private CouponDAO couponDAO;
 //---------------------------------------------------------------------------------------
 	// getList ===================================================	
-	public List<CouponDTO> getList(CouponPager pager) throws Exception {
+	public List<CouponDTO> getList(AdminPager pager) throws Exception {
 		pager.makeRow();
 		long totalCount = couponDAO.getTotalCount(pager);
 		pager.makePaging(totalCount);

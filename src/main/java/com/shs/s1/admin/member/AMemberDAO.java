@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.shs.s1.util.AdminPager;
+
 @Repository
 public class AMemberDAO {
 
@@ -16,8 +18,8 @@ public class AMemberDAO {
 	
 //	getList================================================================
 //	=======================================================================
-	public List<AMemberDTO> getList() throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public List<AMemberDTO> getList(AdminPager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
 	
