@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
  <mapper namespace="com.shs.s1.admin.member.AMemberDAO">
- 	<select id="getList" resultType="AMemberDTO">
+ 	<select id="getList" parameterType="AdminPager" resultType="AMemberDTO">
  		select * from MEMBER order by memberNum desc
  	</select>
  </mapper>

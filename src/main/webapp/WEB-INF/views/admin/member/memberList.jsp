@@ -129,9 +129,48 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach items="${list }" var="DTO">
+					<c:if test="${DTO.id!='admin' }">
+						<tr>
+							<td>${DTO.id }</td>
+							<td>${DTO.pw }</td>
+							<td>${DTO.name }</td>
+							<td>${DTO.phone }</td>
+							<td>${DTO.email }</td>
+							<td><input type="checkbox" name="deleteCheck" class="check" title="${DTO.id }"></td>
+						</tr>
+					</c:if>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	<!--------------------------- Paging ----------------------------------->
+	<!--------------------------- Paging ----------------------------------->
+	<div class="container">
+		<ul class="pagination">
+				<li class="page-item"><a class="page-link p" href="#">Previous</a></li>
+				<li class="page-item"><a class="page-link p" href="#">1</a></li>
+				<li class="page-item"><a class="page-link p" href="#">Next</a></li>
+		</ul>
+		<div class="input-group mt-3 mb-3">
+			<form action="./memberList" id="frm" class="form-inline">
+				<input type="hidden" id="curPage" name="curPage" value="1">
+				<div class="input-group-prepend">
+					<select class="form-control" id="kind" name="kind">
+						<option class="sel">ID</option>
+						<option class="sel">전화번호</option>
+						<option class="sel">이메일</option>
+					</select>
+				</div>
+				<input type="text" class="form-control" id="search" name="search">
+				<div class="input-group-append">
+					<button class="btn btn-success" type="submit">Search</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!--------------------------- Paging END ----------------------------------->
+	<!--------------------------- Paging END ----------------------------------->
 	</main>
 	</div>
 </div>
