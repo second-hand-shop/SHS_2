@@ -26,7 +26,8 @@ public class NoticeController {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("curPage : "+boardPager.getCurPage());
+		//현재 페이지 확인
+		//System.out.println("curPage : "+boardPager.getCurPage());
 		
 		List<BoardDTO> ar = noticeService.getList(boardPager);
 		
