@@ -13,5 +13,9 @@
 	    <typeAlias type="com.shs.s1.board.qna.QnaDTO" alias="QnaDTO"/>
 	    <typeAlias type="com.shs.s1.util.BoardPager" alias="BoardPager"/>
         <typeAlias type="java.lang.Long" alias="Long"/>
+		<typeAlias type="com.shs.s1.product.ProductDTO" alias="ProductDTO"/>
+		<typeAlias type="com.shs.s1.util.ProductPager" alias="ProductPager"/>
+		<typeAlias type="com.shs.s1.product.ProductImageDTO" alias="ProductImageDTO"/>
+		<typeAlias type="com.shs.s1.order.CartDTO" alias="CartDTO"/>
 	</typeAliases>
 </configuration>

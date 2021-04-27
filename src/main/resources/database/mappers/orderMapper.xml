@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="com.shs.s1.order.OrderDAO">
+ 
+ 
+ 
+ 
+
+<insert id="setCartInsert" parameterType="CartDTO">
+	insert into Cart (cartNum,productNum,id,cartStock) values(cart_seq.nextval,#{productNum},#{id},#{cartStock})
+</insert>
+ 
+ 
+ 
+ </mapper>
