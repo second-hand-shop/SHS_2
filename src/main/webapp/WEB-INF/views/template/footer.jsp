@@ -8,7 +8,7 @@
 	</ul>
 	<ul class="xans-element- xans-layout xans-layout-info footer_cus ">
 		010-6426-0892 | MON - FRI 09AM - 6PM | SAT.SUN.HOLIDAY OFF
-		<br /> Kakao Bank 3333-05-7780800 | 예금주 : 임형수
+		<br /> Kakao Bank 3333-05-7780800 | 예금주 : <a href="${pageContext.request.contextPath}/admin/adminHome">임형수</a>
 
 	</ul>
 	<ul class="shop_info">
