@@ -1,20 +1,20 @@
 package com.shs.s1.util;
 
 public class BoardPager {
-	//Pager.java 클래스
-	//DB에서 TotalCount 조회
-	//조회한 값을 일정한 갯수만큼 번호를 나누어서 보여줌
+	// Pager.java 클래스
+	// DB에서 TotalCount 조회
+	// 조회한 값을 일정한 갯수만큼 번호를 나누어서 보여줌
 	
-	private long perPage;	//DB에 조회할 갯수
-	private long perBlock; 	//jsp에 출력할 번호의 갯수
-	private long curPage;	//현재 페이지
+	private long perPage;	// DB에 한 번에 조회할 pageing 번호 갯수??
+	private long perBlock; 	// jsp에 출력할 번호의 갯수
+	private long curPage;	// 현재 페이지
 	
 	
-	//초기값, 갯수는 원본 사이트 그대로 따라가기
+	// 초기값, 갯수는 원본 사이트 그대로 따라가기
 	public BoardPager() {
-		this.perPage = 15;	//한 블록에 10개
-		this.perBlock = 10;	//화살표 <, > 넘어가기전 한번에 보여줄 번호의 갯수
-		this.curPage = 1;	//현재 페이지
+		this.perPage = 15;	// 한 블록에 10개
+		this.perBlock = 10;	// 화살표 <, > 넘어가기전 한번에 보여줄 번호의 갯수
+		this.curPage = 1;	// 현재 페이지
 	}
 	
 	//한 블록에 들어갈 시작, 끝 번호

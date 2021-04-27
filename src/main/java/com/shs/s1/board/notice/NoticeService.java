@@ -22,7 +22,7 @@ public class NoticeService implements BoardService{
 		boardPager.makeRow();
 		
 		// -------------
-		// 1. totalCount
+		// totalCount
 		long totalCount = noticeDAO.getTotalCount(boardPager);
 		
 		// 페이징 계산
