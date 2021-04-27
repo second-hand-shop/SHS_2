@@ -16,7 +16,9 @@ public class AMemberService {
 //	getList================================================================
 //	=======================================================================
 	public List<AMemberDTO> getList(AdminPager pager) throws Exception {
+		long totalCount=aMemberDAO.getTotalCount();
 		pager.makeRow();
+		pager.makePaging(totalCount);
 		return aMemberDAO.getList(pager);
 	}
 	

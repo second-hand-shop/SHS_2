@@ -23,6 +23,7 @@ public class AMemberController {
 	public ModelAndView getList(AdminPager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<AMemberDTO> ar = aMemberService.getList(pager);
+		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
 		mv.setViewName("admin/member/memberList");
 		return mv;

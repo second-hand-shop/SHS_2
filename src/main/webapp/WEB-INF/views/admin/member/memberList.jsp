@@ -148,9 +148,15 @@
 	<!--------------------------- Paging ----------------------------------->
 	<div class="container">
 		<ul class="pagination">
+			<c:if test="${pager.previous }">
 				<li class="page-item"><a class="page-link p" href="#">Previous</a></li>
-				<li class="page-item"><a class="page-link p" href="#">1</a></li>
+			</c:if>
+			<c:forEach begin="${pager.startPage }" end="${pager.lastPage }" var="i">
+				<li class="page-item"><a class="page-link p" href="#">${i }</a></li>
+			</c:forEach>
+			<c:if test="${pager.next }">
 				<li class="page-item"><a class="page-link p" href="#">Next</a></li>
+			</c:if>
 		</ul>
 		<div class="input-group mt-3 mb-3">
 			<form action="./memberList" id="frm" class="form-inline">
@@ -162,7 +168,7 @@
 						<option class="sel">이메일</option>
 					</select>
 				</div>
-				<input type="text" class="form-control" id="search" name="search">
+				<input type="text" class="form-control" id="search" name="search" value="${pager.search }">
 				<div class="input-group-append">
 					<button class="btn btn-success" type="submit">Search</button>
 				</div>
