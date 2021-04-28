@@ -25,14 +25,18 @@ tr {
     vertical-align: inherit;
     border-color: inherit;
 }
-#LoginWrap {
+#login_wrap {
     display: inline-block;  
-    margin-left: auto; 
-	margin-right: auto;
+    display: block;
 }
-.login_wrap ul {
-	width:250px;
-	margin:0 auto;
+#join_wrap {
+	 display: inline-block;
+	 display: block;
+}
+.login_wrap_div{
+	text-align: center;
+	margin-top: 20px;
+	padding: 2%;
 }
 h1 {
 	text-align: center;
@@ -45,7 +49,7 @@ h1 {
 			<c:import url="../template/header.jsp"></c:import>
 		</div>
 
-		<div id="login_wrap">
+		<div id="login_wrap_div">
 			<table id="line">
 				<tbody>
 					<tr>

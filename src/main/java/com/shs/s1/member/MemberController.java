@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.shs.s1.email.Email;
 import com.shs.s1.email.EmailSender;
 
+
 @Controller
 @RequestMapping("/member/**")
 public class MemberController {
@@ -69,16 +70,24 @@ public class MemberController {
 	@PostMapping("memberJoin")
 	public String memberJoin(MemberDTO memberDTO, Model model, HttpSession session) throws Exception {
 		int result = memberService.memberJoin(memberDTO, session);
+		
 		String message="회원가입 실패";
 		String path="./memberJoin";
 		if(result>0) {
+			session.setAttribute("member", memberDTO);
 			message="회원가입 성공";
-			path="../";
+			path="./memberSuccess";
 		}
 		model.addAttribute("msg",message);
 		model.addAttribute("path",path);
 		
 		return "common/commonResult";
+	}
+	
+	//join 후 성공했을 떄 페이지
+	@GetMapping("memberSuccess")
+	public void memberSuccess(MemberDTO memberDTO) throws Exception {
+		
 	}
 	
 	//id 중복확인
@@ -214,7 +223,7 @@ public class MemberController {
 		if(memberDTO == null) {
 			mv.addObject("path", "./memberLogin");
 			mv.setViewName("common/Result");
-		} 
+		}		
 		return mv;
 	}
 }
