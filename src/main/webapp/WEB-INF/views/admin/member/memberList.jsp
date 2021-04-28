@@ -5,6 +5,9 @@
 <html>
 <head>
 <style type="text/css">
+	#modal {
+		display: none;
+	}
 	tbody tr td input {
 		width: 70%;
 	}
@@ -139,7 +142,7 @@
 				<c:forEach items="${list }" var="DTO">
 					<c:if test="${DTO.id!='admin' }">
 						<tr>
-							<td>${DTO.id }</td>
+							<td><a href="#myModal" data-toggle="modal" class="idSelect" title="${DTO.id }">${DTO.id }</a></td>
 							<td class="pw-hide" title="${DTO.pw }">${DTO.pw }</td>
 							<td>${DTO.name }</td>
 							<td>${DTO.phone }</td>
@@ -184,6 +187,49 @@
 	</div>
 	<!--------------------------- Paging END ----------------------------------->
 	<!--------------------------- Paging END ----------------------------------->
+	<!---- The Modal ---------------------------->
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title"><!-- ID 들어와야함 --></h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label">우편번호</label>
+							<input type="text" class="form-control" name="id" id="modal-id">
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputPassword1" class="form-label">기본주소</label>
+							<input type="number" class="form-control" name="disRate" id="modal-disRate">
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputPassword2" class="form-label">나머지주소</label>
+							<input type="number" class="form-control" name="disPrice" id="modal-disPrice">
+						</div>
+						<span class="mb-3">
+      						<label class="form-label">사용유무</label>
+     						<select class="form-select" name="usage" id="modal-usage">
+     							<option id="selectY">Y</option>
+     							<option id="selectN">N</option>
+      						</select>
+    					</span>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!---- The Modal ---------------------------->
 	</main>
 	</div>
 </div>
