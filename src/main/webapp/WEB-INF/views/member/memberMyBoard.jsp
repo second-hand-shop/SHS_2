@@ -5,7 +5,7 @@
 <html>
 <head>
 <c:import url="../template/bootStrap.jsp"></c:import>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 
 <style>	
@@ -20,7 +20,8 @@
 	
 	/* table 전체 */
 	#line{
-		margin-left: auto; margin-right: auto;
+		margin-left: auto; 
+		margin-right: auto;
 		margin-top: 4%;
 		width: 75%;
 		border: 1px solid #d3d3d3;
@@ -113,6 +114,10 @@
 			<th class="lines" width="8%">HIT</th>
 		</tr>
 		
+		<c:if test="${list eq null}">
+			<td colspan="5" class="lines"><h1>등록된 게시글이 없습니다.</h1></td>			
+		</c:if>
+		
 		<c:forEach items="${list}" var="dto">
 			<tr>
 				<td class="lines">${dto.num}</td>
@@ -121,24 +126,13 @@
 					<td class="lines"><!-- product이미지 들어올자리 --></td>
 				</c:if>
 				
-				<!-- 관리자와 일반유저 구분하는 id값 넘겨주기 추가 -->
-				<td class="lines"><a href="./${board}Select?num=${dto.num}">
-			
-				<!-- depth부분 -->
-				<c:catch>
-					<c:forEach begin="1" end="${dto.depth}">
-					&ensp;<img src="../resources/images/curvedArrow2.png" alter="답변" class="img-size" />
-					</c:forEach>
-				</c:catch>
-				${dto.title}</a></td>
-				
+				<td class="lines">${dto.title}</td>				
 				<td class="lines">${dto.writer}</td>
 				<td class="lines">${dto.regdate}</td>
 				<td class="lines">${dto.hit}</td>
 			</tr>
 		</c:forEach>
-		
-		
+			
 	</table>
 		
 		<!-- footer -->
