@@ -8,38 +8,60 @@
 <title>SHS</title>
 <style type="text/css">
 #line {
+	text-align: center;
 	margin-left: auto; 
 	margin-right: auto;
-    width: 70%;
+    width: 50%;
     height: 80%;
     border: 1px solid #d3d3d3;
 }
-#ul {
-	margin-left: auto; 
-	margin-right: auto;
-    width: 70%;
-    height: 80%;
-}
-tr {
-    display: table-row;
-    vertical-align: inherit;
-    border-color: inherit;
-}
-#login_wrap {
-    display: inline-block;  
-    display: block;
-}
-#join_wrap {
-	 display: inline-block;
-	 display: block;
+table td {
+	line-height: 2;
+	font-size: small;
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: auto;	
 }
 .login_wrap_div{
 	text-align: center;
+	margin-left: auto; 
+	margin-right: auto;
 	margin-top: 20px;
-	padding: 2%;
+	padding: 1%;
 }
-h1 {
-	text-align: center;
+.c {
+	text-align: left;
+}
+.login_wrap ul {
+    width: 200px;
+    margin: auto;
+}
+.join_wrap ul {
+    width: 200px;
+    margin: auto;
+}
+.idForm{
+  border-bottom: 2px solid #adadad;
+}
+
+.passForm{
+  border-bottom: 2px solid #adadad;
+}
+
+.id {
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  background: none;
+}
+
+.pw {
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  background: none;
 }
 </style>
 </head>
@@ -49,6 +71,8 @@ h1 {
 			<c:import url="../template/header.jsp"></c:import>
 		</div>
 
+		<br>
+		<br>
 		<div id="login_wrap_div">
 			<table id="line">
 				<tbody>
@@ -58,20 +82,24 @@ h1 {
 							<div class="form-group login_wrap">							
 							<fieldset>		
 								<h1>LOG IN</h1>
+								<br>
 								<ul class="log_form" id="ul">
-									<li>
+									<li class="c idForm">
 									<strong>ID</strong>
-									<input type="text" class="form-control" id="id" name="id" aria-describedby="idlHelp">
+									<input type="text" class="id" id="id" name="id">
 									</li>
-									<li>
+									<li class="c passForm">
 									<strong>PW</strong>
-									<input type="text" class="form-control" id="pw" name="pw" aria-describedby="pwlHelp">
+									<input type="text" class="pw" id="pw" name="pw">
 									</li>
 								</ul>
 								
+								<br>
+								<br>
 								<ul class="btn_login">
 									<li>
-										<button type="submit" id="btn_login">LOG-IN</button>
+										<button type="submit" id="btn_login" >LOG-IN</button>
+										<br>
 										<a href="./memberIdFind">아이디 찾기</a>
 										<a href="./memberPwFind">비밀번호 찾기</a>
 									</li>
@@ -87,13 +115,14 @@ h1 {
 							<br>						
 								<ul id="ul">
 									<li>
-									다양한 혜택과 편리한 쇼핑을 즐기실 수 있으며,
+									다양한 혜택과 편리한 쇼핑을 
+									<br>
+									즐기실 수 있으며,
 									<br>
 									회원님들이 불편하지 않도록 다양한 기능들이 준비되어있습니다!
 									<br>
 									<br>
-									<br>
-									<a href="./memberJoin" class="type1">REGISTER</a>
+									<a href="./memberJoin">REGISTER</a>
 									</li>
 								</ul>
 							</div>
