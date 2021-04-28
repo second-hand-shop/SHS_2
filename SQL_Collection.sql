@@ -201,21 +201,21 @@ zipCode number not null,
 majorAddr varchar2(100) not null,
 minorAddr varchar2(100) not null,
 addrMessage varchar2(200) not null,
-orderNum number not null
+orderNum number
 );
 
 --address sequence
 create sequence addr_seq;
 
+drop sequence addr_seq;
+
 --address insert
-insert into addressInfo values (addr_seq.nextval,'id1',1,'majorAddr1','minorAddr1','addMessage1',1);
-insert into addressInfo values (addr_seq.nextval,'id2',2,'majorAddr2','minorAddr2','addMessage2',2);
-insert into addressInfo values (addr_seq.nextval,'id3',3,'majorAddr3','minorAddr3','addMessage3',3);
+insert into addressInfo values (addr_seq.nextval,'id1',1,'majorAddr1','minorAddr1','addMessage1', null);
+insert into addressInfo values (addr_seq.nextval,'id2',2,'majorAddr2','minorAddr2','addMessage2', null);
+insert into addressInfo values (addr_seq.nextval,'id3',3,'majorAddr3','minorAddr3','addMessage3', null);
 
-commit;
-
-
-
+select * from ADDRESSINFO;
+commit work;
 
 drop table notice;
 drop table qna;
