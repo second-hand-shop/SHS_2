@@ -40,11 +40,12 @@
 } 
 table tr th {
 	border: 1px solid #ccc;
-	padding: 10px 8px 8px 20px;
+	padding: 10px 8px 10px 20px;
 	margin: auto;
 }
 table th {
 	width: 10%;
+	valign: middle;
 }
 table td {
 	line-height: 2;

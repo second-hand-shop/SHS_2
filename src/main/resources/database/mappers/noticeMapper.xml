@@ -85,5 +85,9 @@
     	update notice set hit=hit+1 where num=#{num}
     </update>
     
-
+    <!-- 내가 쓴 글 조회 -->
+    <select id="memberMyBoard" parameterType="BoardDTO" resultType="BoardDTO">
+    	select n.* from notice n inner join member m on (n.writer = m.id)where m.id=#{id}
+    </select>
+    
 </mapper>
