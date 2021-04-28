@@ -17,7 +17,8 @@
     margin-top: 4%;
 }
 #line{
-		margin-left: auto; margin-right: auto;
+		margin-left: auto; 
+		margin-right: auto;
 		margin-top: 4%;
 		width: 60%;
 		height:80%;
