@@ -6,6 +6,38 @@
 <head>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>SHS</title>
+<style type="text/css">
+#line {
+	margin-left: auto; 
+	margin-right: auto;
+    width: 70%;
+    height: 80%;
+    border: 1px solid #d3d3d3;
+}
+#ul {
+	margin-left: auto; 
+	margin-right: auto;
+    width: 70%;
+    height: 80%;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+#LoginWrap {
+    display: inline-block;  
+    margin-left: auto; 
+	margin-right: auto;
+}
+.login_wrap ul {
+	width:250px;
+	margin:0 auto;
+}
+h1 {
+	text-align: center;
+}
+</style>
 </head>
 <body>
 	<div id="wrap">
@@ -13,18 +45,58 @@
 			<c:import url="../template/header.jsp"></c:import>
 		</div>
 
-		<div class="container mt-2">
-			<form action="./memberLogin" method="post">
-				<div class="form-group">
-					<label for="id">ID</label> <input type="text" class="form-control" id="id" name="id" aria-describedby="idlHelp"> 
-				</div>
-				<div class="form-group">
-					<label for="pw">Password</label> <input type="password" class="form-control" id="pw" name="pw">
-				</div>
-				<button type="submit" id="btn_login" class="btn btn-primary">Submit</button>
-				<a href="./memberIdFind" class="btn btn-info">아이디 찾기</a>
-				<a href="./memberPwFind" class="btn btn-info">비밀번호 찾기</a>
-			</form>
+		<div id="login_wrap">
+			<table id="line">
+				<tbody>
+					<tr>
+						<td>
+							<form action="./memberLogin" method="post" id="member_form">		
+							<div class="form-group login_wrap">							
+							<fieldset>		
+								<h1>LOG IN</h1>
+								<ul class="log_form" id="ul">
+									<li>
+									<strong>ID</strong>
+									<input type="text" class="form-control" id="id" name="id" aria-describedby="idlHelp">
+									</li>
+									<li>
+									<strong>PW</strong>
+									<input type="text" class="form-control" id="pw" name="pw" aria-describedby="pwlHelp">
+									</li>
+								</ul>
+								
+								<ul class="btn_login">
+									<li>
+										<button type="submit" id="btn_login">LOG-IN</button>
+										<a href="./memberIdFind">아이디 찾기</a>
+										<a href="./memberPwFind">비밀번호 찾기</a>
+									</li>
+								</ul>
+							</fieldset>
+							</div>
+							</form>
+						</td>
+						
+						<td>
+							<div class="form-group join_wrap">		
+							<h1>REGISTER</h1>
+							<br>						
+								<ul id="ul">
+									<li>
+									다양한 혜택과 편리한 쇼핑을 즐기실 수 있으며,
+									<br>
+									회원님들이 불편하지 않도록 다양한 기능들이 준비되어있습니다!
+									<br>
+									<br>
+									<br>
+									<a href="./memberJoin" class="type1">REGISTER</a>
+									</li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>		
 		</div>
 
 		<!-- footer -->

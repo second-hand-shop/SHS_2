@@ -1,7 +1,6 @@
 package com.shs.s1.member;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +75,7 @@ public class MemberController {
 			message="회원가입 성공";
 			path="../";
 		}
-		model.addAttribute("message",message);
+		model.addAttribute("msg",message);
 		model.addAttribute("path",path);
 		
 		return "common/commonResult";
@@ -119,7 +118,7 @@ public class MemberController {
 		}else {
 			//로그인 실패 메세지를 alert
 			//로그인 입력 폼 으로 이동
-			mv.addObject("msg", "로그인 실패");
+			mv.addObject("msg", "아이디 또는 비밀번호가 일치하지 않습니다.");
 			mv.addObject("path", "./memberLogin");
 			mv.setViewName("common/commonResult");
 		}		
@@ -203,6 +202,19 @@ public class MemberController {
 			mv.addObject("path", "./memberModify");
 			mv.setViewName("common/commonResult");
 		}
+		return mv;
+	}
+	
+	//내가 쓴글 조회
+	@GetMapping("memberMyBoard")
+	public ModelAndView memberMyBoard(MemberDTO memberDTO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		memberDTO = (MemberDTO)session.getAttribute("member");		
+		
+		if(memberDTO == null) {
+			mv.addObject("path", "./memberLogin");
+			mv.setViewName("common/Result");
+		} 
 		return mv;
 	}
 }

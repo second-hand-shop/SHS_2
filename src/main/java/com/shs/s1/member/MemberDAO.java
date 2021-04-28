@@ -1,5 +1,6 @@
 package com.shs.s1.member;
 
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -38,5 +39,5 @@ public class MemberDAO {
 	public int memberDelete(MemberDTO memberDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
 	}
-	
+
 }

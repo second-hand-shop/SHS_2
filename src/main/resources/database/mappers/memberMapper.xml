@@ -33,4 +33,7 @@
 		delete member where id=#{id}
 	</delete>
 	
+<!-- 	<select id="memberMyBoard" parameterType="BoardDTO" resultType="BoardDTO">
+		select n.* from notice n, member m where n.writer = m.id and m.id=#{id}
+	</select> -->
 </mapper>
