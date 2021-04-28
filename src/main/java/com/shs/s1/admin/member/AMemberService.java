@@ -14,13 +14,24 @@ public class AMemberService {
 	private AMemberDAO aMemberDAO;
 	
 //	getList================================================================
-//	=======================================================================
 	public List<AMemberDTO> getList(AdminPager pager) throws Exception {
 		long totalCount=aMemberDAO.getTotalCount(pager);
 		pager.makeRow();
 		pager.makePaging(totalCount);
 		return aMemberDAO.getList(pager);
 	}
+	
+//	%%%%%%%%%%%%%%%%%%%%%%%%%% XMember %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+//	getXList================================================================
+	public List<XMemberDTO> getXList(AdminPager pager) throws Exception {
+		long totalCount = aMemberDAO.getXTotalCount(pager);
+		pager.makeRow();
+		pager.makePaging(totalCount);
+		return aMemberDAO.getXList(pager);
+	}
+	
+	
 	
 	
 }
