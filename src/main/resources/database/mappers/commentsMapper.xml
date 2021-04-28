@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shs.s1.board.comments.CommentsDAO">
+
+	<!-- review comments getList -->
+	<select id="getList" parameterType="CommentsDTO" resultType="CommentsDTO">
+		select * from comments where reviewNum = #{reviewNum} order by num desc
+	</select>
+	
+	<!-- review comments setInsert -->
+	<insert id="setInsert" parameterType="CommentsDTO">
+		insert into comments values(comments_seq.nextval, #{reviewNum}, #{writer}, #{contents}, sysdate)
+	</insert>
+	
+	<!-- review comments setDelete -->
+	<delete id="setDelete" parameterType="CommentsDTO">
+		delete comments where num = #{num}
+	</delete>
+	
+	<!-- review comments setUpdate -->
+	<update id="setUpdate" parameterType="CommentsDTO">
+		update comments set writer = #{writer}, contents = #{contents}, regdate = sysdate 
+    	where num = #{num}
+	</update>
+	
+
+</mapper>

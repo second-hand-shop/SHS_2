@@ -39,7 +39,7 @@
 	}
 	
 	/* qna의 경우 3번째(qna:subject) 줄 정렬 */
-	<c:if test="${board eq 'qna'}">
+	<c:if test="${board ne 'notice'}">
 		td:nth-child(3){
 			text-align: left;
 		}
@@ -106,7 +106,7 @@
 		<tr>
 			<th class="lines" width="4%">NO</td>
 			
-			<c:if test="${board eq 'qna'}">
+			<c:if test="${board ne 'notice'}">
 				<th class="lines" width="8%">PRODUCT</td>
 			</c:if>
 			
@@ -120,7 +120,7 @@
 			<tr>
 				<td class="lines">${dto.num}</td>
 				
-				<c:if test="${board eq 'qna'}">
+				<c:if test="${board ne 'notice'}">
 					<td class="lines"><!-- product이미지 들어올자리 --></td>
 				</c:if>
 				

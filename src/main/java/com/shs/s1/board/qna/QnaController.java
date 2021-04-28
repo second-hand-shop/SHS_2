@@ -66,7 +66,7 @@ public class QnaController {
 				message="등록 성공";
 			}
 			
-			mv.addObject("msg", message);
+			mv.addObject("message", message);
 			mv.addObject("path", "./qnaList");
 			mv.setViewName("common/commonResult");
 
@@ -107,7 +107,7 @@ public class QnaController {
 				message = "삭제 성공";
 			}
 			
-			mv.addObject("msg", message);
+			mv.addObject("message", message);
 			mv.addObject("path", path);
 			
 			mv.setViewName("common/commonResult");
@@ -137,17 +137,14 @@ public class QnaController {
 
 			//성공하면 리스트로 이동
 			if(result > 0) {
+				System.out.println("수정 성공");
 				mv.setViewName("redirect:./qnaList");
 			} 
 			
 			//실패하면 alert창, 리스트로 이동
 			else {
-				
-				mv.addObject("msg", "업데이트 실패");
-				mv.addObject("path", "./qnaList");
-				
-				mv.setViewName("common/commonResult");
-				
+				System.out.println("수정 실패");
+				mv.setViewName("redirect:./qnaList");
 			}
 			
 			
