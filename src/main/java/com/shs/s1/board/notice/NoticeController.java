@@ -35,8 +35,9 @@ public class NoticeController {
 		mv.addObject("board", "notice");
 		mv.addObject("boardPager", boardPager);
 		
-		System.out.println("Start : "+boardPager.getStartNum());
-		System.out.println("Last : "+boardPager.getLastNum());
+		// 시작, 끝 pageing 번호 확인 
+		//System.out.println("Start : "+boardPager.getStartNum());
+		//System.out.println("Last : "+boardPager.getLastNum());
 		
 		mv.setViewName("board/boardList");
 		
@@ -70,7 +71,7 @@ public class NoticeController {
 			message="등록 성공";
 		}
 
-		model.addAttribute("msg", message);
+		model.addAttribute("message", message);
 		model.addAttribute("path", "./noticeList");
 		
 		return "common/commonResult";
@@ -125,6 +126,7 @@ public class NoticeController {
 		if(result>0) {
 			//앞에서 실행되어 수정이 되었다면, 수정된 값을 boardlist로 보여주기 위해 redirect를 이용해  
 			//다시 boardlist로 주소값을 보내준다.
+			System.out.println("수정 성공");
 			mv.setViewName("redirect:./noticeList");
 		}
 		
@@ -153,7 +155,7 @@ public class NoticeController {
 			message="삭제 성공";
 		}
 
-		mv.addObject("msg", message);
+		mv.addObject("message", message);
 		mv.addObject("path", path);
 		
 		mv.setViewName("common/commonResult");

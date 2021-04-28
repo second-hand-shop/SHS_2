@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <c:import url="../template/bootStrap.jsp"></c:import>
-<title>${board} Insert</title>
+<title>${board} Insert2</title>
 
 <!-- summerNote  -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -15,31 +15,23 @@
 
 <style>
 
+	/* Page 이름 */
+	#title_center{
+		margin: 6% 0 0 0;
+		text-align: center;
+		font-size: 14px;
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+
+
 	/* div에 border 및 cell-padding */
-	#table-border{
+	#table-div{
 		margin-left: auto; margin-right: auto;
 		margin-top: 4%;
 		width: 75%;
 		height: auto;
 		padding: 2%;
-		
-	}
-	
-	/* table 처럼 보이게 하기 위해서 li 하단에 선 추가 */
-	.lines{
-		border-width: 80%;
-		padding: 1%;
-	}
-	
-	/* li 첫번째 줄 css */
-	li:nth-child(1){
-		font-size: 13pt;
-		font-weight: 400;
-	}
-	
-	/* li 네번째 줄 css */
-	li:nth-child(4){
-		padding-top: 2%;
 	}
 	
 	/* 버튼이 들어있는 div */
@@ -52,9 +44,38 @@
 	/* button css */
 	.button-style{
 		border: 1px solid black;
-		padding: 0.8% 2.5% 0.8% 2.5%; 
+		padding: 0.8% 2.5% 0.8% 2.5%;
+		background-color:black;
+		color: white;
 	}
 	
+	/* 선택한 상품 이미지 */
+	.prdImg-size{
+		width: 10px;
+		height: 10px;
+	}
+	
+	/* 내부 div padding */
+	.div-padding{
+		padding: 2%;
+	}
+	
+	/* input 폼 size */
+	.input-size{
+		width: 40%;
+		height: auto;
+		font-size: 15pt;
+	}
+	
+	/* input 폼 line */
+	.input-line{
+		border: 0.8px solid #c4c4c4;
+		margin-left: 3%;
+	}
+	
+	.div-boarder{
+		border-top: 1px solid black;
+	}
 	
 
 </style>
@@ -67,50 +88,70 @@
 		<c:import url="../template/header.jsp"></c:import>
 	</div>
 	
+	<!-- title -->
+	<p id="title_center">${board}</p>
+	
 	
 	<!-- Board Insert Contents -->
 	<!--  enctype="multipart/form-data" : notice만 테스트할 때는 빼서 사용 -->
 	<form id="form" action="./${board}Insert" method="post" enctype="multipart/form-data">
 	
-		<div id="table-border" style="border: 1px solid #d3d3d3;">	
-			<ul>
-				<li><input type="hidden" name="num" value="${dto.num}"></li>
+		<div id="table-div">
+		
+			<!-- review or qna 할 상품 선택 -->
+			<div class="div-padding div-boarder">
+				<img src="../resources/images/prdNoImg.gif" alter="NoImg" id="img-size" />
+				<a href="#" class="button-style">상품정보선택</a>
 				
-				
-				<c:if test="${board eq 'qna'}">
-					<li><input type="text" class="form-control" name="productNum"></li>
-				</c:if>
-				
-				
-				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
-					<label for="title">Title</label> 
-					<input type="text" class="form-control"
-					id="title" name="title" aria-describedby="titleHelp">
-				</li>
-				
-				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
-					<label for="writer">Writer</label> 
-					<input type="text"
-					class="form-control" id="writer" name="writer">
-    
-				</li>
-
-				
-				<li class="lines">
-					<label for="contents">Contents</label>
-					<textarea class="form-control myCheck" rows="5" id="contents"
-					name="contents"></textarea>
-				</li>
+				<!-- 상품정보선택 -->
+				<a href="./productSelect.jsp" 
+					onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">
+				</a>
+			</div>
 			
-			</ul>
+			<!-- subject, contents insert 부분 -->
+			<div style="border-top: 0.8px solid black; padding: 2%;">
 			
-			<div id="botton-div">
-				<input type="submit" value="등록" class="button-style" id="btn">
+				<ul>
+					<li><input type="hidden" name="num" value="${dto.num}"></li>
+					<li>
+						<label for="title" style="font-size: 9pt;">TITLE</label> 
+						<input type="text" class="input-size input-line"
+						id="title" name="title">
+					</li>
+					
+					<!-- contents -->
+					<li>
+						<label for="contents">CONTENTS</label>
+						<textarea class="myCheck" id="contents"
+						name="contents"></textarea>
+					</li>
+						
+					<li>
+						<label for="password" style="font-size: 9pt;">PASSWORD</label> 
+						<input type="password" class="input-size input-line"
+						id="password" name="password">
+					</li>
+				</ul>
+			
+			</div>
+			
+			<div>
+				<div id="botton-div">
+					<a href="./${board}List" class="button-style" id="btn">LIST</a>
+				</div>
+				
+				<div id="botton-div">
+					<a href="./${board}List" class="button-style" id="btn">CANCEL</a>
+					<input type="submit" value="OK!" class="button-style" id="btn">
+				</div>
 			</div>
 	
 		</div>
+		
+		
+		
 	</form>
-	
 	
 	<!-- footer -->
 	<c:import url="../template/footer.jsp"></c:import>

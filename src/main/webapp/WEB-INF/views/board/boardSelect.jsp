@@ -12,12 +12,12 @@
 
 	/* div에 border 및 cell-padding */
 	#table-border{
-		margin-left: auto; margin-right: auto;
+		margin-left: auto; 
+		margin-right: auto;
 		margin-top: 4%;
 		width: 75%;
 		height: auto;
 		padding: 2%;
-		
 	}
 	
 	/* table 처럼 보이게 하기 위해서 li 하단에 선 추가 */
@@ -36,6 +36,7 @@
 	li:nth-child(4){
 		padding-top: 2%;
 	}
+
 	
 	/* 버튼이 들어있는 div */
 	#botton-div{
@@ -50,8 +51,6 @@
 		padding: 0.8% 2.5% 0.8% 2.5%; 
 	}
 	
-	
-
 </style>
 
 </head>
@@ -100,8 +99,33 @@
 	
 	</div>
 	
-	<c:if test="${board eq 'qna'}">
+	<!-- comments -->
+	<c:if test="${board eq 'review'}">
 		<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">
+					
+			<ul>	
+				
+				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
+					${dto.writer}
+					<span>${dto.regdate}</span>
+					<span style="float: right;">
+						<!-- 클릭 시 update 폼 생성  -->
+						<a href="#" class="button-style">MODIFY</a>
+						<a href="#" class="button-style">DELETE</a>
+					</span>
+				</li>
+				
+				<li class="lines"> ${dto.contents} </li>
+							
+			</ul>
+					
+		</div>
+	</c:if>
+	
+	<c:if test="${board ne 'notice'}">
+		<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">
+			<!-- 여기도 로그인 하면 댓글 달 수 있게 바뀌어야 함 -->
+			<!-- 그렇지만 qna에는 comments를 안 만들어 놓은 상태 -->
 			Comment : Unauthorized User
 		</div>
 	</c:if>
