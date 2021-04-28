@@ -138,10 +138,10 @@
 				<c:forEach items="${list }" var="DTO">
 						<tr>
 							<td>${DTO.xId }</td>
-							<td>${DTO.orderPw }</td>
+							<td class="pw-hide" title="${DTO.orderPw }">${DTO.orderPw }</td>
 							<td>${DTO.xName }</td>
 							<td>${DTO.orderNum }</td>
-							<td><input type="checkbox" name="deleteCheck" class="check" title="${DTO.id }"></td>
+							<td><input type="checkbox" name="deleteCheck" class="check"></td>
 						</tr>
 				</c:forEach>
 			</tbody>
