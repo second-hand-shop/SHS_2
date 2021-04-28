@@ -137,20 +137,21 @@ insert into PRODUCTIMAGE values(3,3,'thumbnail3','contents3','fileName3','ogName
 -- Xmember table ===========================================================================================
 create Table XMEMBER(
     xId varchar2(100) CONSTRAINT XMEMBER_ID_PK PRIMARY KEY,
+    memberNum number,
     orderNum number CONSTRAINT XMEMBER_ON_FK REFERENCES ORDERINFO(orderNum) on delete cascade not null,
     xName varchar2(100) not null,
     orderPw varchar2(100) not null
 );
 
 -- insert
-insert into XMEMBER values('xId1', 1, 'xName1', 'orderPw1');
-insert into XMEMBER values('xId2', 2, 'xName2', 'orderPw2');
-insert into XMEMBER values('xId3', 3, 'xName3', 'orderPw3');
+insert into XMEMBER values('xId1', member_seq.nextval, 1, 'xName1', 'orderPw1');
+insert into XMEMBER values('xId2', member_seq.nextval, 2, 'xName2', 'orderPw2');
+insert into XMEMBER values('xId3', member_seq.nextval, 3, 'xName3', 'orderPw3');
 
 -- xMember 지우기
---drop table COMMENT;
+drop table xMember;
 
-
+commit work;
 
 
 --cart ==============================================================================================

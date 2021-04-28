@@ -17,7 +17,7 @@ public class AMemberController {
 	@Autowired
 	private AMemberService aMemberService;
 	
-//	getList================================================================
+//	회원 getList================================================================
 //	=======================================================================
 	@GetMapping("memberList")
 	public ModelAndView getList(AdminPager pager) throws Exception {
@@ -28,6 +28,19 @@ public class AMemberController {
 		mv.setViewName("admin/member/memberList");
 		return mv;
 	}
+	
+//	비회원 getList================================================================
+//	=======================================================================	
+	@GetMapping("xMemberList")
+	public ModelAndView getXList(AdminPager pager) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<XMemberDTO> ar = aMemberService.getXList(pager);
+		mv.addObject("pager", pager);
+		mv.addObject("list", ar);
+		mv.setViewName("common/commonResult");
+		return mv;
+	}
+	
 	
 	
 	

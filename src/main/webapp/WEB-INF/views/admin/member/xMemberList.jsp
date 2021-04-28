@@ -116,11 +116,11 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 	<h2>회원 목록</h2>
 	<div class="btn-group btn-group-toggle" data-toggle="buttons">
-		  <label class="btn btn-light active">
-		    <input type="radio" name="options" id="member-btn" checked> 회원
-		  </label>
 		  <label class="btn btn-light">
-		    <input type="radio" name="options" id="xMember-btn">비회원
+		    <input type="radio" name="options" id="member-btn"> 회원
+		  </label>
+		  <label class="btn btn-light active">
+		    <input type="radio" name="options" id="xMember-btn" checked>비회원
 		  </label>
 	</div>
 	<div class="table-responsive">
@@ -130,23 +130,19 @@
 					<th>ID</th>
 					<th>PW</th>
 					<th>이름</th>
-					<th>전화번호</th>
-					<th>이메일</th>
+					<th>주문번호</th>
 					<th>+ / -</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${list }" var="DTO">
-					<c:if test="${DTO.id!='admin' }">
 						<tr>
-							<td>${DTO.id }</td>
-							<td>${DTO.pw }</td>
-							<td>${DTO.name }</td>
-							<td>${DTO.phone }</td>
-							<td>${DTO.email }</td>
+							<td>${DTO.xId }</td>
+							<td>${DTO.orderPw }</td>
+							<td>${DTO.xName }</td>
+							<td>${DTO.orderNum }</td>
 							<td><input type="checkbox" name="deleteCheck" class="check" title="${DTO.id }"></td>
 						</tr>
-					</c:if>
 				</c:forEach>
 			</tbody>
 		</table>
@@ -171,8 +167,8 @@
 				<div class="input-group-prepend">
 					<select class="form-control" id="kind" name="kind">
 						<option class="sel">ID</option>
-						<option class="sel">전화번호</option>
-						<option class="sel">이메일</option>
+						<option class="sel">주문번호</option>
+						<option class="sel">이름</option>
 					</select>
 				</div>
 				<input type="text" class="form-control" id="search" name="search" value="${pager.search }">

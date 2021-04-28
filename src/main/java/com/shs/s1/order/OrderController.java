@@ -16,9 +16,9 @@ public class OrderController {
 
 @Autowired	
 private OrderService orderService;
+
 @Autowired
 private ProductService productService;
-	
 	
 	public String setCartInsert(CartDTO cartDTO,HttpSession session)throws Exception{
 		

@@ -26,6 +26,16 @@ public class AMemberDAO {
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
+//	%%%%%%%%%%%%%%%%%%%%%%%%%% XMember %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
+//	getXList================================================================	
+	public List<XMemberDTO> getXList(AdminPager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getXList", pager);
+	}
+	
+//	getXTotalCount================================================================
+	public long getXTotalCount(AdminPager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getXTotalCount", pager);
+	}
 	
 }
