@@ -202,23 +202,16 @@
 				<div class="modal-body">
 						<div class="mb-3">
 							<label for="exampleInputEmail1" class="form-label">우편번호</label>
-							<input type="text" class="form-control" name="id" id="modal-id">
+							<input readonly="readonly" type="text" class="form-control" name="id" id="modal-id">
 						</div>
 						<div class="mb-3">
 							<label for="exampleInputPassword1" class="form-label">기본주소</label>
-							<input type="number" class="form-control" name="disRate" id="modal-disRate">
+							<input readonly="readonly" type="text" class="form-control" name="disRate" id="modal-disRate">
 						</div>
 						<div class="mb-3">
 							<label for="exampleInputPassword2" class="form-label">나머지주소</label>
-							<input type="number" class="form-control" name="disPrice" id="modal-disPrice">
+							<input readonly="readonly" type="text" class="form-control" name="disPrice" id="modal-disPrice">
 						</div>
-						<span class="mb-3">
-      						<label class="form-label">사용유무</label>
-     						<select class="form-select" name="usage" id="modal-usage">
-     							<option id="selectY">Y</option>
-     							<option id="selectN">N</option>
-      						</select>
-    					</span>
 				</div>
 
 				<!-- Modal footer -->

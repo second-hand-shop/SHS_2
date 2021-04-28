@@ -26,3 +26,22 @@ $(".pw-hide").each(function(){
 	
 	$(this).html(dotPw);	
 });
+
+// 주소 조회 modal ================================================
+//=================================================================
+$(".idSelect").click(function(){
+		let id=$(this).attr("title");
+		$(".modal-title").html(id);
+		$.ajax({
+			type: "POST",
+			url: "./memberAddress",
+			data: {id:id},
+			success: function(data){
+				console.log(data);
+			}
+		});
+});
+
+
+
+
