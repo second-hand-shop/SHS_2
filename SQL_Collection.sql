@@ -53,8 +53,9 @@ create sequence member_seq;
 insert into member values (member_seq.nextval,'id1','pw1','name1','phone1','email1');
 insert into member values (member_seq.nextval,'id2','pw2','name2','phone2','email2');
 insert into member values (member_seq.nextval,'id3','pw3','name3','phone3','email3');
+insert into member values (member_seq.nextval,'id4','123456','name4','phone4','email4');
 
-
+commit work;
 
 --product table ========================================================================
 create table product(
@@ -147,6 +148,7 @@ create Table XMEMBER(
 insert into XMEMBER values('xId1', member_seq.nextval, 1, 'xName1', 'orderPw1');
 insert into XMEMBER values('xId2', member_seq.nextval, 2, 'xName2', 'orderPw2');
 insert into XMEMBER values('xId3', member_seq.nextval, 3, 'xName3', 'orderPw3');
+insert into XMEMBER values('xId4', member_seq.nextval, 3, 'xName4', 'orderPw1234');
 
 -- xMember 지우기
 drop table xMember;
@@ -333,3 +335,30 @@ where num = 3;
 -- ?????????????????????????????????????????????????????????????????????????????????????????????????????
 rollback;
 commit work;
+
+-- 욱창이 변경사항 21.04.28
+alter table productImage drop column contents;
+
+
+drop table cart;
+DROP SEQUENCE cart_seq;
+
+
+create table cart (
+cartNum number constraint CART_CNUM_PK primary key,
+productNum number constraint CART_PNUM_FK references product (productNum) not null,
+id varchar2(100) constraint CART_ID_FK references member (id) on delete cascade not null,
+cartStock number not null,
+addDate date default sysdate
+);
+
+—cart sequence
+create sequence cart_seq;
+
+—cart insert
+insert into cart (cartNum,productNum,id,cartStock) values (cart_seq.nextval, 1,'id1',1);
+insert into cart  (cartNum,productNum,id,cartStock)values (cart_seq.nextval, 2,'id2',1);
+insert into cart (cartNum,productNum,id,cartStock) values (cart_seq.nextval, 3,'id3',1);
+
+
+alter table orderinfo modify (orderDate default sysdate);

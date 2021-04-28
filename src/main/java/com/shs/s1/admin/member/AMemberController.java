@@ -37,7 +37,7 @@ public class AMemberController {
 		List<XMemberDTO> ar = aMemberService.getXList(pager);
 		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
-		mv.setViewName("common/commonResult");
+		mv.setViewName("admin/member/xMemberList");
 		return mv;
 	}
 	
