@@ -208,12 +208,12 @@
 						</div>
 						<div class="mb-3">
 							<label for="exampleInputPassword1" class="form-label">전체 주소</label>
-							<input readonly="readonly" type="text" class="form-control" name="disRate" id="modal-majorAddr">
-							<input readonly="readonly" type="text" class="form-control" name="disRate" id="modal-minorAddr">
+							<input readonly="readonly" type="text" class="form-control" name="majorAddr" id="modal-majorAddr">
+							<input readonly="readonly" type="text" class="form-control" name="minorAddr" id="modal-minorAddr">
 						</div>
 						<div class="mb-3">
 							<label for="exampleInputPassword2" class="form-label">우편번호</label>
-							<input readonly="readonly" type="text" class="form-control" name="disPrice" id="modal-zipCode">
+							<input readonly="readonly" type="text" class="form-control" name="zipCode" id="modal-zipCode">
 						</div>
 				</div>
 
