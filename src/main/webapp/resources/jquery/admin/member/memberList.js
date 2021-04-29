@@ -30,15 +30,21 @@ $(".pw-hide").each(function(){
 // 주소 조회 modal ================================================
 //=================================================================
 $(".idSelect").click(function(){
+		$("#majorAddr-sel").empty();
 		let id=$(this).attr("title");
 		$(".modal-title").html(id);
 		$.ajax({
 			type: "POST",
-			url: "./memberAddress",
+			url: "../address/memberAddress",
 			data: {id:id},
 			success: function(data){
-				console.log(data);
-			}
+				for(let i=0;i<data.length;i++){
+					console.log(data[i].majorAddr);
+					let majorAddr = data[i].majorAddr;
+					$("#majorAddr-sel").append("<option>"+majorAddr+"</option>");
+					
+				} //===for END===
+			} //===success END===
 		});
 });
 

@@ -31,6 +31,7 @@ public class CouponController {
 	}
 	
 	// getSelect ===================================================
+	// JSON 사용 예시===============================================
 	@GetMapping("couponSelect")
 	@ResponseBody
 	public CouponDTO getSelect(CouponDTO couponDTO) throws Exception {
