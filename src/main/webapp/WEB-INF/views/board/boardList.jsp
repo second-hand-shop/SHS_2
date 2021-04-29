@@ -64,6 +64,8 @@
 		float: right;
 		border: 1px solid black;
 		padding: 0.8% 2.5% 0.8% 2.5%;
+		background-color: black;
+		color: white;
 	}
 	
 	/* 2개의 div 절반으로 나누기 */
@@ -86,6 +88,15 @@
 		width:2.5%;
 		height:auto;
 		vertical-align: middle;
+	}
+	
+	.search-size{
+		widht: 1px;
+		height: 1px;
+	}
+	
+	.search{
+		width: 10%;
 	}
 
 
@@ -150,20 +161,20 @@
 						  <form id="frm" action="./${board}List" class="form-inline">
 							  <input type="hidden" name="curPage" value="1" id="curPage">
 						  
-						  	  <div class="input-group-prepend">
+						  	  <div>
 						  	  
-						   		  <select class="form-control" name="kind" id="kind" >					   		  
-									    <option class="sel">Title</option>
-									    <option class="sel">Contents</option>
-									    <option class="sel">Writer</option>								    
+						   		  <select name="kind" id="kind" >					   		  
+									    <option class="sel">제목</option>
+									    <option class="sel">내용</option>
+									    <option class="sel">글쓴이</option>								    
 						 		  </select>
 						 		  
 						  	  </div>
 						  	  
-						  	  <input type="text" class="form-control" name="search" id="search" value="${boardPager.search}" placeholder="">
+						  	  <input type="text" style="margin-left: 2%;" name="search" id="search" value="${boardPager.search}">
 						    
-						      <div class="input-group-append">
-						    	  <button class="btn btn-success" type="submit">Search</button>
+						      <div style="width: 10%;">
+						    	  <input type="image" class="search" style="width: 40%; height: 40%;" src="../resources/images/search.png" alt="search">
 						  	  </div>
 					 	  </form> 
 					  </div>
@@ -187,7 +198,7 @@
 					  </div>
 					  
 					  <div id="botton-div">
-							<a href="./${board}Insert?num=${dto.num}" class="button-style">작성</a>
+							<a href="./${board}Insert?num=${dto.num}" class="button-style">WRITE</a>
 					  </div>
 					
 					

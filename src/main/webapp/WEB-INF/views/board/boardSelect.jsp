@@ -18,6 +18,7 @@
 		width: 75%;
 		height: auto;
 		padding: 2%;
+		text-align: left;
 	}
 	
 	/* table 처럼 보이게 하기 위해서 li 하단에 선 추가 */
@@ -28,18 +29,18 @@
 	
 	/* li 첫번째 줄 css */
 	li:nth-child(1){
-		font-size: 13pt;
+		font-size: 11pt;
 		font-weight: 400;
 	}
 	
 	/* li 네번째 줄 css */
-	li:nth-child(4){
+	#table-border li:nth-child(4){
 		padding-top: 2%;
 	}
 
 	
 	/* 버튼이 들어있는 div */
-	#botton-div{
+	.botton-div{
 		margin-top: 5%;
 		margin-bottom: 1%;
 		margin-left: 0.8%;
@@ -48,8 +49,30 @@
 	/* button css */
 	.button-style{
 		border: 1px solid black;
-		padding: 0.8% 2.5% 0.8% 2.5%; 
+		padding: 0.8% 2.5% 0.8% 2.5%;
+		font-size: 9pt;
 	}
+	
+	.li-border{
+		border-bottom: 1px solid #d3d3d3;
+		text-align:left;
+	}
+	
+	
+	/* button css */
+	.comment-button-style{
+		border: 1px solid #adadad;
+		padding: 0.4% 2% 0.4% 2%;
+		font-size: 9pt;
+		color: #adadad;
+	}
+	
+	.comment-write-button{
+		border: 1px solid black;
+		padding: 5% 5% 5% 5%;
+		font-size: 9pt;
+	}
+
 	
 </style>
 
@@ -86,7 +109,7 @@
 		
 		</ul>
 		
-		<div id="botton-div">
+		<div class="botton-div">
 			<a href="./${board}List" class="button-style">목록</a>
 			<a href="./${board}Update?num=${dto.num}" class="button-style">수정</a>
 			<a href="./${board}Delete?num=${dto.num}" class="button-style">삭제</a>
@@ -94,39 +117,55 @@
 			<c:if test="${board eq 'qna'}">
 				<a href="./${board}Reply?num=${dto.num}&&productNum=${dto.productNum}" class="button-style">답글</a>
 			</c:if>
-			
+
 		</div>
 	
 	</div>
 	
-	<!-- comments -->
+	
+	<!-- comments 보여주기 -->
 	<c:if test="${board eq 'review'}">
-		<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">
-					
-			<ul>	
-				
-				<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
-					${dto.writer}
+		<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">					
+			<ul>					
+				<li class="lines li-border">
+					${dto.writer}				
 					<span>${dto.regdate}</span>
-					<span style="float: right;">
+					<!-- float:right를 쓰면 쭉 밀려서 버튼이 깨짐,
+					 display를 block으로 바꾸고 text-align:center를 주면
+					 div처럼 공간잡혀서 한줄 밑으로 내려감
+					 현재, 강제로 margin으로 밈 -->
+					<span class="botton-div" style="margin-left: 65%;">
 						<!-- 클릭 시 update 폼 생성  -->
-						<a href="#" class="button-style">MODIFY</a>
-						<a href="#" class="button-style">DELETE</a>
+						<a href="#" class="comment-button-style">MODIFY</a>
+						<a href="#" class="comment-button-style">DELETE</a>
 					</span>
 				</li>
 				
-				<li class="lines"> ${dto.contents} </li>
-							
-			</ul>
-					
+				<li class="lines" style="text-align:left;"> ${dto.contents} </li>						
+			</ul>					
 		</div>
-	</c:if>
 	
-	<c:if test="${board ne 'notice'}">
-		<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">
-			<!-- 여기도 로그인 하면 댓글 달 수 있게 바뀌어야 함 -->
-			<!-- 그렇지만 qna에는 comments를 안 만들어 놓은 상태 -->
-			Comment : Unauthorized User
+	
+	
+		<!-- comments 입력폼 -->
+		<div id="table-border" style="border: 1px solid #d3d3d3;">					
+				<ul>					
+					<li style="margin-bottom: 1%;">
+						<label for="writer" style="font-size: 9pt;">WRITER</label> 
+						<input type="text" class="writer-input-size input-line"
+						id="writer" name="writer" placeholder="writer">
+					</li>
+					
+					<span>
+						<li>
+							<label for="contents"></label>
+							<textarea rows="5" cols="2" id="contents"
+							name="contents"></textarea>
+						</li>
+						
+						<button type="button" class="comment-button" id="write">Write</button>
+					</span>	
+				</ul>					
 		</div>
 	</c:if>
 	
