@@ -9,7 +9,7 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>${board} Insert2</title>
 
-<!-- summerNote  -->
+<!-- summernote  -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
@@ -28,15 +28,15 @@
 	/* div에 border 및 cell-padding */
 	#table-div{
 		margin-left: auto; margin-right: auto;
-		margin-top: 4%;
+		margin-top: 1%;
 		width: 75%;
 		height: auto;
 		padding: 2%;
 	}
 	
 	/* 버튼이 들어있는 div */
-	#botton-div{
-		margin-top: 5%;
+	.botton-div{
+		margin-top: 2%;
 		margin-bottom: 1%;
 		margin-left: 0.8%;
 	}
@@ -44,37 +44,104 @@
 	/* button css */
 	.button-style{
 		border: 1px solid black;
-		padding: 0.8% 2.5% 0.8% 2.5%;
-		background-color:black;
+		padding: 1.3% 6% 1.3% 6%;
+		background-color: black;
 		color: white;
 	}
 	
+	/* prd select button css */
+	.prdButton-style{
+		border: 0.8px solid #adadad;
+		padding: 0.5% 2% 0.5% 2%;
+		background-color: white;
+		color: #adadad;
+		font-size: 5pt;
+	}
+	
 	/* 선택한 상품 이미지 */
-	.prdImg-size{
-		width: 10px;
-		height: 10px;
+	#prdImg-size{
+		width: 10%;
+		height: 20%;
+		float: left;
+	}
+	
+	#prdImg{
+		width: 100%;
+		height: auto;
 	}
 	
 	/* 내부 div padding */
 	.div-padding{
-		padding: 2%;
+		padding-top: 2%;
+		padding-bottom: 7%;
+		padding-left: 2%;
 	}
 	
 	/* input 폼 size */
-	.input-size{
+	.writer-input-size{
 		width: 40%;
 		height: auto;
-		font-size: 15pt;
+		font-size: 9pt;
+		margin-left: 8.5%;
+	}
+	
+	/* input 폼 size */
+	.title-input-size{
+		width: 40%;
+		height: auto;
+		font-size: 9pt;
+		margin-left: 10%;
+	}
+	
+	/* input 폼 size */
+	.pw-input-size{
+		width: 15%;
+		height: auto;
+		font-size: 9pt;
+		margin-left: 6%;
 	}
 	
 	/* input 폼 line */
 	.input-line{
 		border: 0.8px solid #c4c4c4;
-		margin-left: 3%;
+	}
+	
+	.li-line{
+		border-top: 0.8px solid #c4c4c4;
 	}
 	
 	.div-boarder{
 		border-top: 1px solid black;
+	}
+	
+	.input-border{
+		border-top: 0.8px solid black; 
+		border-bottom: 2px solid black;
+		padding: 2% 2% 0 2%;
+	}
+	
+	/* button : 왼쪽 div */
+	.div-left{
+		width: 50%;
+		height: auto;
+		float: left;
+	}
+	
+	/* button : 오른쪽 div */
+	.div-right{
+		width: 50%;
+		height: auto;
+		float: right;
+
+	}
+	
+	.li-padding{
+		padding-top: 1%;
+		padding-bottom: 1%;
+	}
+	
+	.radio-margin{
+		margin-left: 8%;
 	}
 	
 
@@ -100,57 +167,75 @@
 		
 			<!-- review or qna 할 상품 선택 -->
 			<div class="div-padding div-boarder">
-				<img src="../resources/images/prdNoImg.gif" alter="NoImg" id="img-size" />
-				<a href="#" class="button-style">상품정보선택</a>
+			
+				<div id="prdImg-size">
+					<img src="../resources/images/prdNoImg.gif" id="prdImg" alter="NoImg" />
+				</div>
 				
 				<!-- 상품정보선택 -->
-				<a href="./productSelect.jsp" 
-					onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">
-				</a>
+				<div style="margin-top: 5%; margin-left: 12%;">
+					<input type="button" value="상품정보선택" class="prdButton-style" id="btn" 
+					onclick="showPopup();">
+				</div>
+								
 			</div>
 			
 			<!-- subject, contents insert 부분 -->
-			<div style="border-top: 0.8px solid black; padding: 2%;">
+			<div class="input-border">
 			
 				<ul>
 					<li><input type="hidden" name="num" value="${dto.num}"></li>
-					<li>
-						<label for="title" style="font-size: 9pt;">TITLE</label> 
-						<input type="text" class="input-size input-line"
+					
+					<li style="margin-bottom: 1%;">
+						<label for="writer" style="font-size: 9pt;">WRITER</label> 
+						<input type="text" class="writer-input-size input-line"
+						id="writer" name="writer">
+					</li>
+					
+					<li class="li-line">
+						<label for="title" style="font-size: 9pt; margin-top:1%;">TITLE</label> 
+						<input type="text" class="title-input-size input-line"
 						id="title" name="title">
 					</li>
 					
 					<!-- contents -->
 					<li>
-						<label for="contents">CONTENTS</label>
+						<label for="contents"></label>
 						<textarea class="myCheck" id="contents"
 						name="contents"></textarea>
 					</li>
 						
-					<li>
+					<li class="li-padding">
 						<label for="password" style="font-size: 9pt;">PASSWORD</label> 
-						<input type="password" class="input-size input-line"
+						<input type="password" class="pw-input-size input-line"
 						id="password" name="password">
 					</li>
+					
+					<c:if test="${board eq 'qna'}">
+						<li class="li-line li-padding">
+							<label for="pwSet" style="font-size: 9pt;">P/W SET</label>
+							<input type="radio" class="radio-margin" name="pwSet" value="공개글" checked="checked"/> 공개글
+							<input type="radio" name="pwSet" value="비밀글"/> 비밀글				
+						</li>
+					</c:if>
+					
 				</ul>
 			
 			</div>
 			
-			<div>
-				<div id="botton-div">
-					<a href="./${board}List" class="button-style" id="btn">LIST</a>
+			<div class="botton-div">
+				<div class="div-left" >
+					<input type="button" value="LIST" class="button-style" id="btn" onClick="location.href='./${board}List'">
 				</div>
 				
-				<div id="botton-div">
-					<a href="./${board}List" class="button-style" id="btn">CANCEL</a>
+				<div class="div-right" align="right">	
+					<input type="button" value="CANCEL" class="button-style" id="btn" onClick="location.href='./${board}List'">
 					<input type="submit" value="OK!" class="button-style" id="btn">
 				</div>
 			</div>
 	
 		</div>
-		
-		
-		
+	
 	</form>
 	
 	<!-- footer -->
@@ -165,5 +250,13 @@
 <script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
+<script type="text/javascript" src="../resources/jquery/summerFile.js?var=1"></script>
+
+
+<script language="javascript">
+	function showPopup() { 
+		window.open("../popup/prdSelect", "productSelect", "width=500, height=300, left=300, top=50"); 
+	}
+</script>
 
 </html>
