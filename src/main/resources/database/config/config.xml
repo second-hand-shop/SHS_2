@@ -17,5 +17,6 @@
 		<typeAlias type="com.shs.s1.util.ProductPager" alias="ProductPager"/>
 		<typeAlias type="com.shs.s1.product.ProductImageDTO" alias="ProductImageDTO"/>
 		<typeAlias type="com.shs.s1.order.CartDTO" alias="CartDTO"/>
+		<typeAlias type="com.shs.s1.order.AddressInfoDTO" alias="AddressInfoDTO"/>
 	</typeAliases>
 </configuration>
