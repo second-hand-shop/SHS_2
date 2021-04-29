@@ -16,4 +16,10 @@ public class OrderService {
 	}
 	
 	
+	public int setAddrInsert(AddressInfoDTO addressInfoDTO)throws Exception{
+		
+		
+		return orderDAO.setAddrInsert(addressInfoDTO);
+	}
+	
 }

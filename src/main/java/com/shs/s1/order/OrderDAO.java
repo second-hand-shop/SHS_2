@@ -20,5 +20,14 @@ public int setCartInsert(CartDTO cartDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setCartInsert", cartDTO);
 	}
 
+public int setAddrInsert(AddressInfoDTO addressInfoDTO)throws Exception{
 	
+	
+	return sqlSession.insert(NAMESPACE+"setAddrInsert", addressInfoDTO);
+}
+
+
+
+
+
 }

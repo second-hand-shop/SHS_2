@@ -14,5 +14,14 @@
 </insert>
  
  
+ <insert id="setAddrInsert" parameterType="AddressInfoDTO">
+ 
+ 	insert into addressInfo values(#{orderNum},#{id},#{name},#{zipCode},#{addr},#{phone},#{email},#{addrMessage})
+ 
+ </insert>
+ 
+ 
+ 
+ 
  
  </mapper>
