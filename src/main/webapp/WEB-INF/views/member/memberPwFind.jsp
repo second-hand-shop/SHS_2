@@ -23,13 +23,9 @@
 				</div>
 				<div id="search">
  					<p>
-						<label>Id</label>
+						<label>ID</label>
 						<input class="w3-input" type="text" id="id" name="id" required>
 					</p> 
-					<p>
-						<label>Name</label>
-						<input class="w3-input" type="text" id="name" name="name" required>
-					</p>
 					<p>
 						<label>Email</label>
 						<input class="w3-input" type="text" id="email" name="email" required>

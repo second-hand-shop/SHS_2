@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.shs.s1.email.Email;
-import com.shs.s1.email.EmailSender;
-
 
 @Controller
 @RequestMapping("/member/**")
@@ -21,12 +18,6 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
-	//메일전송 관련
-	@Autowired
-	private EmailSender emailSender;
-	@Autowired
-	private Email email;
 
 	@GetMapping("memberPwFind")
 	public void memberPwFind() throws Exception {
@@ -34,25 +25,34 @@ public class MemberController {
 	}
 	
     @PostMapping("memberPwFind")
-    public String memberPwFind (MemberDTO memberDTO, Model model, HttpServletRequest request) throws Exception {
+    public ModelAndView memberPwFind (MemberDTO memberDTO, ModelAndView mv) throws Exception {	
     	memberDTO = memberService.memberPwFind(memberDTO);
-
-    	String emails = request.getParameter("email");
-    	String pw = memberDTO.getPw();
-    	String name = request.getParameter("name");
+    	  	
+    	System.out.println(memberDTO.getPw());
+    	/*if(memberDTO != null) {
+    		String subject ="비밀번호 찾기";
+    		String msg = memberDTO.getId()+" 님의 비밀번호는 "+memberDTO.getPw()+"입니다!"; 
+    		String email = memberDTO.getEmail();
+    		MailUtil.sendMail(email, subject, msg);
+    		
+			mv.addObject("msg", "회원님의 비밀번호는 "+memberDTO.getPw()+" 입니다");
+			mv.addObject("path", "./memberLogin");
+			mv.setViewName("common/commonResult");
+		} */
+			
+		return mv;
     	
-        if(memberDTO != null) {
-            email.setContent("비밀번호는 "+pw+" 입니다.");
-            email.setReceiver(emails);
-            email.setSubject(name+"님 비밀번호 찾기 메일입니다.");
-            emailSender.SendEmail(email);
-            model.addAttribute("message", "회원님의 이메일로 비밀번호를 전송해드렸습니다.");
-            model.addAttribute("path","../");        
-        } 			
-        	model.addAttribute("message", "등록된 정보가 없습니다"); 
-        	model.addAttribute("path", "./memberPwFind");			 
-        
-    		return "common/commonResult";
+		/*
+		 * if(memberDTO != null) { String subject ="비밀번호 찾기"; 
+		 * String msg = memberDTO.getId()+" 님의 비밀번호는 "+memberDTO.getPw()+"입니다!"; 
+		 * String email = memberDTO.getEmail(); MailUtil.sendMail(email, subject, msg);
+		 * model.addAttribute("message", "회원님의 이메일로 비밀번호를 전송해드렸습니다.");
+		 * model.addAttribute("path","../"); 
+		 * } 
+		 * model.addAttribute("message","등록된 정보가 없습니다"); 
+		 * model.addAttribute("path", "./memberPwFind");
+		 * return "common/commonResult";
+		 */
     }
 
 	//약관동의
