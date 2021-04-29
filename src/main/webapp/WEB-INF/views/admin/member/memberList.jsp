@@ -200,17 +200,20 @@
 
 				<!-- Modal body -->
 				<div class="modal-body">
-						<div class="mb-3">
-							<label for="exampleInputEmail1" class="form-label">우편번호</label>
-							<input readonly="readonly" type="text" class="form-control" name="id" id="modal-id">
+						<div class="mb-3">						
+							 <label for="sel1">주소목록</label>
+								  <select class="form-control" id="majorAddr-sel">
+								    <!-- append -->
+								  </select>
 						</div>
 						<div class="mb-3">
-							<label for="exampleInputPassword1" class="form-label">기본주소</label>
-							<input readonly="readonly" type="text" class="form-control" name="disRate" id="modal-disRate">
+							<label for="exampleInputPassword1" class="form-label">전체 주소</label>
+							<input readonly="readonly" type="text" class="form-control" name="disRate" id="modal-majorAddr">
+							<input readonly="readonly" type="text" class="form-control" name="disRate" id="modal-minorAddr">
 						</div>
 						<div class="mb-3">
-							<label for="exampleInputPassword2" class="form-label">나머지주소</label>
-							<input readonly="readonly" type="text" class="form-control" name="disPrice" id="modal-disPrice">
+							<label for="exampleInputPassword2" class="form-label">우편번호</label>
+							<input readonly="readonly" type="text" class="form-control" name="disPrice" id="modal-zipCode">
 						</div>
 				</div>
 
