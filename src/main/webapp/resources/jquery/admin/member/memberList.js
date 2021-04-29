@@ -29,24 +29,24 @@ $(".pw-hide").each(function(){
 
 // 주소 조회 modal ================================================
 //=================================================================
-$(".idSelect").click(function(){
+/*$(".idSelect").click(function(){
 		$("#majorAddr-sel").empty();
 		let id=$(this).attr("title");
 		$(".modal-title").html(id);
+		let i = 0;
 		$.ajax({
 			type: "POST",
 			url: "../address/memberAddress",
 			data: {id:id},
 			success: function(data){
-				for(let i=0;i<data.length;i++){
-					console.log(data[i].majorAddr);
+				for( i=0;i<data.length;i++){
 					let majorAddr = data[i].majorAddr;
-					$("#majorAddr-sel").append("<option>"+majorAddr+"</option>");
-					
+					$("#majorAddr-sel").append("<option id='addr-sel"+i+"'"+">"+majorAddr+"</option>");					
 				} //===for END===
 			} //===success END===
 		});
-});
+		console.log(i);
+});*/
 
 
 
