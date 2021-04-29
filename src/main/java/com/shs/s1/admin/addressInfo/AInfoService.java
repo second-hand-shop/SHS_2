@@ -13,7 +13,7 @@ public class AInfoService {
 
 //	getAddress==================================================================
 //==============================================================================
-	public List<AInfoDTO> getAddress(AInfoDTO aInfoDTO) throws Exception {
-		return aInfoDAO.getAddress(aInfoDTO);
+	public List<AInfoDTO> getList(AInfoDTO aInfoDTO) throws Exception {
+		return aInfoDAO.getList(aInfoDTO);
 	}
 }

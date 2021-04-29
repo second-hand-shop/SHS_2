@@ -4,27 +4,27 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("admin/address/**")
+@RequestMapping("admin/addressInfo/**")
 public class AInfoController {
 
 	@Autowired
 	private AInfoService aInfoService;
 
-//	getAddress==================================================================
+//	getList==================================================================
 //==============================================================================
-	@PostMapping("memberAddress")
-	@ResponseBody
-	public List<AInfoDTO> getAddress(AInfoDTO aInfoDTO) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-		List<AInfoDTO> ar = aInfoService.getAddress(aInfoDTO);
-//		mv.addObject("result", ar);
-//		mv.setViewName("common/ajaxResult");
-		return ar;
+	@GetMapping("aInfoList")
+	public ModelAndView getList(AInfoDTO aInfoDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<AInfoDTO> ar = aInfoService.getList(aInfoDTO);
+		mv.addObject("list", ar);
+		mv.setViewName("admin/addressInfo/aInfoList");
+		return mv;
 	}
 }

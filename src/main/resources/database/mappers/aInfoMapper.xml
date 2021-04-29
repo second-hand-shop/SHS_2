@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
  <mapper namespace="com.shs.s1.admin.addressInfo.AInfoDAO">
- 	<select id="getAddress" parameterType="AInfoDTO" resultType="AInfoDTO">
+ 	<select id="getList" parameterType="AInfoDTO" resultType="AInfoDTO">
  		select * from ADDRESSINFO where id=#{id} order by addressNum desc
  	</select>
  </mapper>

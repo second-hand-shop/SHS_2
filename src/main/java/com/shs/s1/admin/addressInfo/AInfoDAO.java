@@ -16,7 +16,7 @@ public class AInfoDAO {
 	
 //	getAddress==================================================================
 //==============================================================================
-	public List<AInfoDTO> getAddress(AInfoDTO aInfoDTO) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getAddress", aInfoDTO);
+	public List<AInfoDTO> getList(AInfoDTO aInfoDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getList", aInfoDTO);
 	}
 }
