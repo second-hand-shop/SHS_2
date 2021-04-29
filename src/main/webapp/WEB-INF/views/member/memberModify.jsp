@@ -52,17 +52,32 @@ table td {
 	font-size: small;
 	border: 1px solid #ccc;
 	padding: 10px;
-	margin: auto;
-	
+	margin: auto;	
 }
 input {
     font-family: malgun gothic, 맑은고딕, NanumGothic, 돋움;
     color: #000;
     vertical-align: middle;
     overflow: visible;
-    line-height: inherit;
+    outline:none;
+    font-size: 14px;
 }
-
+.btn {
+	display: inline-block;
+    width: 100px;
+    font-family: NanumGothic;
+    font-size: 10px;
+    border: 1px solid #000;
+    color: #000;
+    text-align: center;
+}
+.button{
+   margin:0 auto;
+   width: 230px;
+   display: flex;
+   flex-flow: row;
+   justify-content:space-between;
+}
 </style>
 </head>
 <body>
@@ -90,46 +105,49 @@ input {
 				<div class="write">
 					<table id="table" style="margin-bottom: 40px">
 						<tbody>
-							<tr>
+							<tr>		
 								<th scope="row">아이디</th>
 								<td>
-								<input type="text" class="form-control" id="id" name="id" readonly="readonly" value="${member.id}">
+								<input type="text" id="id" name="id" readonly="readonly" value="${member.id}">
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">비밀번호</th>
 								<td>
-								<input type="password" class="form-control" id="pw" name="pw" value="${member.pw}">
+								<input type="password" id="pw" name="pw" value="${member.pw}">
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">비밀번호 확인</th>
 								<td>
-								<input type="password" class="form-control" id="pw2" name="pw2">
+								<input type="password" id="pw2" name="pw2">
+								<h1 id="pwResult"></h1>
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">이름</th>
 								<td>
-								<input type="text" class="form-control etc" id="name" name="name" value="${member.name}">
+								<input type="text" id="name" name="name" value="${member.name}">
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">휴대전화</th>
 								<td>
-								<input type="text" class="form-control etc" id="phone" name="phone" value="${member.phone}">
+								<input type="text" id="phone" name="phone" value="${member.phone}">
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">이메일</th>
 								<td>
-								<input type="text" class="form-control etc" id="email" name="email" value="${member.email}">
+								<input type="text"  id="email" name="email" value="${member.email}">
 								</td>
 							</tr>
 						</tbody>					
 					</table>
-					<input type="submit" id ="btn" value="Update">
-					<a href="./memberDelete">Delete</a>
+				</div>
+				<div class="button">
+					<input type="submit" id ="btn" value="Update" class="btn">
+					<a href="./memberDelete" class="btn">Delete</a>
 				</div>
 			</form>
 		</div>
@@ -144,4 +162,25 @@ input {
 <script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
+<script type="text/javascript">
+var pwCheck=false;
+$("#pw2").blur(function() {
+	var pw = $("#pw").val();
+	var pw2 = $(this).val();
+	
+	pwCheck=false;
+		
+	if(result=null){
+		$("#pwResult").html("비밀번호를 입력하세요");
+		$("#pwResult").removeClass("idCheck0").addClass("idCheck1");
+	} else if(pw == pw2){
+		$("#pwResult").html("비밀번호가 일치 합니다");
+		$("#pwResult").removeClass("idCheck1").addClass("idCheck0");
+		pwCheck=true;
+	} else {
+		$("#pwResult").html("비밀번호가 일치 하지 않습니다");
+		$("#pwResult").removeClass("idCheck0").addClass("idCheck1");
+	}
+ });
+</script>
 </html>

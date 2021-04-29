@@ -63,6 +63,22 @@ table td {
   font-size:16px;
   background: none;
 }
+.btn {
+	display: inline-block;
+    width: 100px;
+    font-family: NanumGothic;
+    font-size: 10px;
+    border: 1px solid #000;
+    color: #000;
+    text-align: center;
+}
+.button{
+   margin:0 auto;
+   width: 210px;
+   display: flex;
+   flex-flow: row;
+   justify-content:space-between;
+}
 </style>
 </head>
 <body>
@@ -95,13 +111,15 @@ table td {
 								</ul>
 								
 								<br>
-								<br>
 								<ul class="btn_login">
 									<li>
-										<button type="submit" id="btn_login" >LOG-IN</button>
+										<button type="submit" id="btn_login" class="btn">LOG-IN</button>
 										<br>
-										<a href="./memberIdFind">아이디 찾기</a>
-										<a href="./memberPwFind">비밀번호 찾기</a>
+										<br>
+										<div class="button">
+										<a href="./memberIdFind" class="btn">아이디 찾기</a>
+										<a href="./memberPwFind" class="btn">비밀번호 찾기</a>
+										</div>
 									</li>
 								</ul>
 							</fieldset>
@@ -122,7 +140,7 @@ table td {
 									회원님들이 불편하지 않도록 다양한 기능들이 준비되어있습니다!
 									<br>
 									<br>
-									<a href="./memberJoin">REGISTER</a>
+									<a href="./memberJoin" class="btn">REGISTER</a>
 									</li>
 								</ul>
 							</div>
