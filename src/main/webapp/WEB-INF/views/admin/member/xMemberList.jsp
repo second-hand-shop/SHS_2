@@ -127,20 +127,20 @@
 		<table class="table table-striped table-sm">
 			<thead>
 				<tr>
+					<th>주문번호</th>
 					<th>ID</th>
 					<th>PW</th>
 					<th>이름</th>
-					<th>주문번호</th>
 					<th>+ / -</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${list }" var="DTO">
 						<tr>
+							<td><a href="#" class="numSelect" title="${DTO.orderNum }">${DTO.orderNum }</a></td>
 							<td>${DTO.xId }</td>
 							<td class="pw-hide" title="${DTO.orderPw }">${DTO.orderPw }</td>
 							<td>${DTO.xName }</td>
-							<td>${DTO.orderNum }</td>
 							<td><input type="checkbox" name="deleteCheck" class="check"></td>
 						</tr>
 				</c:forEach>

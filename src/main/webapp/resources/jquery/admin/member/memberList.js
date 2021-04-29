@@ -27,8 +27,20 @@ $(".pw-hide").each(function(){
 	$(this).html(dotPw);	
 });
 
-// 주소 조회 modal ================================================
+// 회원 주소 조회================================================
 //=================================================================
+$(".idSelect").each(function(){		
+	$(this).click(function(){
+		let id = $(this).attr("title");
+		window.open("../addressInfo/aInfoList?id="+id,"WindowName","width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	});
+});
+
+// 비회원 주소 조회================================================
+//=================================================================
+// mapper부터 싹 만들어야함
+
+
 /*$(".idSelect").click(function(){
 		$("#majorAddr-sel").empty();
 		let id=$(this).attr("title");

@@ -5,9 +5,6 @@
 <html>
 <head>
 <style type="text/css">
-	#modal {
-		display: none;
-	}
 	tbody tr td input {
 		width: 70%;
 	}
@@ -142,7 +139,7 @@
 				<c:forEach items="${list }" var="DTO">
 					<c:if test="${DTO.id!='admin' }">
 						<tr>
-							<td><a href="#myModal" data-toggle="modal" class="idSelect" title="${DTO.id }">${DTO.id }</a></td>
+							<td><a href="#" class="idSelect" title="${DTO.id }">${DTO.id }</a></td>
 							<td class="pw-hide" title="${DTO.pw }">${DTO.pw }</td>
 							<td>${DTO.name }</td>
 							<td>${DTO.phone }</td>
@@ -187,51 +184,14 @@
 	</div>
 	<!--------------------------- Paging END ----------------------------------->
 	<!--------------------------- Paging END ----------------------------------->
-	<!---- The Modal ---------------------------->
-	<div class="modal" id="myModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title"><!-- ID 들어와야함 --></h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">
-						<div class="mb-3">						
-							 <label for="sel1">주소목록</label>
-								  <select class="form-control" id="majorAddr-sel">
-								    <!-- append -->
-								  </select>
-						</div>
-						<div class="mb-3">
-							<label for="exampleInputPassword1" class="form-label">전체 주소</label>
-							<input readonly="readonly" type="text" class="form-control" name="majorAddr" id="modal-majorAddr">
-							<input readonly="readonly" type="text" class="form-control" name="minorAddr" id="modal-minorAddr">
-						</div>
-						<div class="mb-3">
-							<label for="exampleInputPassword2" class="form-label">우편번호</label>
-							<input readonly="readonly" type="text" class="form-control" name="zipCode" id="modal-zipCode">
-						</div>
-				</div>
-
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<!---- The Modal ---------------------------->
 	</main>
 	</div>
 </div>
 <script type="text/javascript" src="../../resources/jquery/admin/member/memberList.js"></script>
 <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+<script src="dashboard.js"></script>
 <script type="text/javascript" src="../../resources/js/admin/adminHome.js"></script>
 <script type="text/javascript">
 	/*================= Pager ==============*/
