@@ -1,9 +1,13 @@
 package com.shs.s1.member;
 
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.shs.s1.board.BoardDTO;
 
 @Repository
 public class MemberDAO {
@@ -40,4 +44,7 @@ public class MemberDAO {
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
 	}
 
+	public List<BoardDTO> memberMyBoard (BoardDTO boardDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"memberMyBoard", boardDTO);
+	}
 }

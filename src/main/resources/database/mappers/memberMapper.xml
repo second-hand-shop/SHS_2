@@ -2,36 +2,62 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
 <mapper namespace="com.shs.s1.member.MemberDAO">
 
 	<insert id="memberJoin" parameterType="MemberDTO">
-		insert into member values (member_seq.nextval, #{id}, #{pw}, #{name}, #{phone}, #{email})
+		insert into member values
+		(member_seq.nextval, #{id}, #{pw}, #{name}, #{phone}, #{email})
 	</insert>
 
-	<select id="memberIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
+	<select id="memberIdCheck" parameterType="MemberDTO"
+		resultType="MemberDTO">
 		select id from member where id=#{id}
 	</select>
-	
-	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
+
+	<select id="memberLogin" parameterType="MemberDTO"
+		resultType="MemberDTO">
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
-	
-	<select id="memberIdFind" parameterType="MemberDTO" resultType="MemberDTO">
+
+	<select id="memberIdFind" parameterType="MemberDTO"
+		resultType="MemberDTO">
 		select id from member where name=#{name} and email=#{email}
 	</select>
-	
-	<select id="memberPwFind" parameterType="MemberDTO" resultType="MemberDTO">
+
+	<select id="memberPwFind" parameterType="MemberDTO"
+		resultType="MemberDTO">
 		select pw from member where id=#{id} and email=#{email}
 	</select>
-	
-	<update id="memberModify" parameterType="MemberDTO">
-		update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone} where id=#{id}
-	</update>
-	
-	<delete id="memberDelete" parameterType="MemberDTO">
-		delete member where id=#{id}
-	</delete>
-	
 
+	<update id="memberModify" parameterType="MemberDTO">
+		update member set
+		pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone} where id=#{id}
+	</update>
+
+	<delete id="memberDelete" parameterType="MemberDTO">
+		delete member where
+		id=#{id}
+	</delete>
+
+	<select id="memberMyBoard" parameterType="MemberDTO" resultMap="boardMap">
+		select b.* from board b inner join member m on (b.writer = m.id) where m.id=#{id} 
+	</select>
+
+	<resultMap type="BoardDTO" id="boardMap">
+		<id property="num" column="num" />
+		<result property="title" column="title" />
+		<result property="writer" column="writer" />
+		<result property="contents" column="contents" />
+		<result property="regdate" column="regdate" />
+		<result property="hit" column="hit" />
+		<association property="memberDTO" javaType="memberDTO">	
+			<id property="id" column="id"/>
+			<result property="pw" column="pw"/>
+			<result property="name" column="name"/>
+			<result property="phone" column="phone"/>
+			<result property="email" column="email"/>
+		</association>
+	</resultMap>
+	
 </mapper>

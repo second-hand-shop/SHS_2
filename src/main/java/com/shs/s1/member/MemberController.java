@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shs.s1.board.BoardDTO;
 import com.shs.s1.email.MailUtil;
 
 
@@ -245,12 +246,18 @@ public class MemberController {
 	@GetMapping("memberMyBoard")
 	public ModelAndView memberMyBoard(MemberDTO memberDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		BoardDTO boardDTO = new BoardDTO();
+		
 		memberDTO = (MemberDTO)session.getAttribute("member");		
 
+		memberService.memberMyBoard(boardDTO);
+		System.out.println(boardDTO.getWriter());
+		
 		if(memberDTO == null) {
 			mv.addObject("path", "./memberLogin");
 			mv.setViewName("common/Result");
-		}		
+		} 
+		
 		return mv;
 	}
 }

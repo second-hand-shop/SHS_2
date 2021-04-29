@@ -1,9 +1,13 @@
 package com.shs.s1.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.shs.s1.board.BoardDTO;
 
 
 @Service
@@ -38,6 +42,10 @@ public class MemberService {
 	
 	public int memberDelete(MemberDTO memberDTO, HttpSession session) throws Exception {
 		return memberDAO.memberDelete(memberDTO);
+	}
+	
+	public List<BoardDTO> memberMyBoard (BoardDTO boardDTO) throws Exception {
+		return memberDAO.memberMyBoard(boardDTO);
 	}
 	
 }
