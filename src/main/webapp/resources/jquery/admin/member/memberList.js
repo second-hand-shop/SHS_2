@@ -38,7 +38,12 @@ $(".idSelect").each(function(){
 
 // 비회원 주소 조회================================================
 //=================================================================
-// mapper부터 싹 만들어야함
+$(".numSelect").each(function(){
+	$(this).click(function(){
+		let orderNum = $(this).attr("title");
+		window.open("../addressInfo/aInfoXList?orderNum="+orderNum,"WindowName","width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	});
+});
 
 
 /*$(".idSelect").click(function(){

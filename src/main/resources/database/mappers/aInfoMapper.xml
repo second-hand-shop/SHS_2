@@ -7,4 +7,7 @@
  	<select id="getList" parameterType="AInfoDTO" resultType="AInfoDTO">
  		select * from ADDRESSINFO where id=#{id} order by addressNum desc
  	</select>
+ 	<select id="getXList" parameterType="AInfoDTO" resultType="AInfoDTO">
+ 		select * from ADDRESSINFO where orderNum=#{orderNum}
+ 	</select>
  </mapper>
