@@ -28,7 +28,12 @@
 	}
 	
 	/* li 첫번째 줄 css */
-	li:nth-child(1){
+	.writer-font{
+		font-size: 10pt;
+		font-weight: 500;
+	}
+	
+	.title-font{
 		font-size: 11pt;
 		font-weight: 400;
 	}
@@ -69,9 +74,11 @@
 	
 	.comment-write-button{
 		border: 1px solid black;
-		padding: 5% 5% 5% 5%;
+		padding: 2% 3% 2% 3%;
 		font-size: 9pt;
+		background-color: white;
 	}
+
 
 	
 </style>
@@ -91,12 +98,12 @@
 		</div>
 	</c:if>
 	
-	
+	<!-- review -->
 	<div id="table-border" style="border: 1px solid #d3d3d3;">
 	
 		<ul>
 		
-			<li class="lines" style="border-bottom: 1px solid #d3d3d3;"> ${dto.title} </li>
+			<li class="lines title-font" style="border-bottom: 1px solid #d3d3d3;"> ${dto.title} </li>
 			
 			<li class="lines" style="border-bottom: 1px solid #d3d3d3;">
 				${dto.writer}
@@ -127,9 +134,9 @@
 	<c:if test="${board eq 'review'}">
 		<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">					
 			<ul>					
-				<li class="lines li-border">
+				<li class="lines li-border writer-font">
 					${dto.writer}				
-					<span>${dto.regdate}</span>
+					<span style="font-size: 9pt; font-weight: 400;">${dto.regdate}</span>
 					<!-- float:right를 쓰면 쭉 밀려서 버튼이 깨짐,
 					 display를 block으로 바꾸고 text-align:center를 주면
 					 div처럼 공간잡혀서 한줄 밑으로 내려감
@@ -150,21 +157,20 @@
 		<!-- comments 입력폼 -->
 		<div id="table-border" style="border: 1px solid #d3d3d3;">					
 				<ul>					
-					<li style="margin-bottom: 1%;">
+					<li style="margin-bottom: 1%; border-bottom: 1px solid black; width: 18%">
 						<label for="writer" style="font-size: 9pt;">WRITER</label> 
-						<input type="text" class="writer-input-size input-line"
-						id="writer" name="writer" placeholder="writer">
+						<input type="text" id="writer" name="writer" placeholder="ID" 
+						style="border:none; font-size: 9pt; margin-bottom: 2%; margin-left: 1%">
 					</li>
 					
-					<span>
-						<li>
-							<label for="contents"></label>
-							<textarea rows="5" cols="2" id="contents"
-							name="contents"></textarea>
-						</li>
+					<li>
+						<label for="contents"></label>
+						<textarea rowspan="2" colspan="2" id="contents"
+						name="contents"></textarea>
 						
-						<button type="button" class="comment-button" id="write">Write</button>
-					</span>	
+						<button type="button" class="comment-write-button" id="write">OK!</button>
+					</li>
+
 				</ul>					
 		</div>
 	</c:if>
