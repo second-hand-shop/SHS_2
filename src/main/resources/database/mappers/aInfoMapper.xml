@@ -5,7 +5,7 @@
     
  <mapper namespace="com.shs.s1.admin.addressInfo.AInfoDAO">
  	<select id="getList" parameterType="AInfoDTO" resultType="AInfoDTO">
- 		select * from ADDRESSINFO where id=#{id} order by addressNum desc
+ 		select * from ADDRESSINFO where id=#{id} order by orderNum desc
  	</select>
  	<select id="getXList" parameterType="AInfoDTO" resultType="AInfoDTO">
  		select * from ADDRESSINFO where orderNum=#{orderNum}

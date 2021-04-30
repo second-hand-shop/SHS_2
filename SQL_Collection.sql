@@ -362,3 +362,36 @@ insert into cart (cartNum,productNum,id,cartStock) values (cart_seq.nextval, 3,'
 
 
 alter table orderinfo modify (orderDate default sysdate);
+
+-- 욱창이 변경사항 21.04.30
+drop table addressInfo;
+
+drop sequence addr_seq;
+
+create table addressInfo (
+orderNum number constraint ADDR_ON_PK primary key,
+id varchar2(100) constraint ADDR_ID_FK references member (id)on delete cascade not null,
+productNum number constraint ADDR_PN_FK references product (productNum) on delete cascade not null,
+price number,
+name varchar2(100) not null,
+zipCode varchar2(100) not null,
+Addr varchar2(500) not null,
+phone varchar2(100) not null,
+email varchar2(100) not null,
+addrMessage varchar2(200)
+);
+
+
+
+-- address insert
+insert into addressInfo values (1,'id1',1,100,'name1','1123-123','Addr1','phone1','email1','addMessage1');
+insert into addressInfo values (2,'id2',2,100,'name2','232-23','Addr2','phone2','email2','addMessage2');
+insert into addressInfo values (3,'id3',3,100,'name3','323-332','Addr3','phone3','email3','addMessage3');
+
+
+
+
+
+
+
+commit work;
