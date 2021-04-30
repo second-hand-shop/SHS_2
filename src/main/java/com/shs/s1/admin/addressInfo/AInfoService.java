@@ -11,9 +11,13 @@ public class AInfoService {
 	@Autowired
 	private AInfoDAO aInfoDAO;
 
-//	getAddress==================================================================
-//==============================================================================
+//	getList==================================================================
 	public List<AInfoDTO> getList(AInfoDTO aInfoDTO) throws Exception {
 		return aInfoDAO.getList(aInfoDTO);
+	}
+	
+//	getXList==================================================================
+	public List<AInfoDTO> getXList(AInfoDTO aInfoDTO) throws Exception {
+		return aInfoDAO.getXList(aInfoDTO);
 	}
 }

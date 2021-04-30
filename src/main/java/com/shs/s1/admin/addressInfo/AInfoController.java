@@ -18,11 +18,22 @@ public class AInfoController {
 	private AInfoService aInfoService;
 
 //	getList==================================================================
-//==============================================================================
+//===========================================================================
 	@GetMapping("aInfoList")
 	public ModelAndView getList(AInfoDTO aInfoDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<AInfoDTO> ar = aInfoService.getList(aInfoDTO);
+		mv.addObject("list", ar);
+		mv.setViewName("admin/addressInfo/aInfoList");
+		return mv;
+	}
+	
+//	getXList=================================================================
+//===========================================================================
+	@GetMapping("aInfoXList")
+	public ModelAndView getXList(AInfoDTO aInfoDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<AInfoDTO> ar = aInfoService.getXList(aInfoDTO);
 		mv.addObject("list", ar);
 		mv.setViewName("admin/addressInfo/aInfoList");
 		return mv;

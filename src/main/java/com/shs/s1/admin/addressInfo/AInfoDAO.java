@@ -14,9 +14,13 @@ public class AInfoDAO {
 	
 	private final String NAMESPACE = "com.shs.s1.admin.addressInfo.AInfoDAO.";
 	
-//	getAddress==================================================================
-//==============================================================================
+//	getList==================================================================
 	public List<AInfoDTO> getList(AInfoDTO aInfoDTO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getList", aInfoDTO);
+	}
+	
+//	getXList==================================================================
+	public List<AInfoDTO> getXList(AInfoDTO aInfoDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getXList", aInfoDTO);
 	}
 }
