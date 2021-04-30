@@ -137,8 +137,8 @@
 			<tbody>
 				<c:forEach items="${list }" var="DTO">
 						<tr>
-							<td><a href="#" class="numSelect" title="${DTO.orderNum }">${DTO.orderNum }</a></td>
-							<td>${DTO.xId }</td>
+							<td><a href="#" class="numSelect" title="${DTO.orderNum }">${DTO.xId }</a></td>
+							<td>${DTO.orderNum }</td>
 							<td class="pw-hide" title="${DTO.orderPw }">${DTO.orderPw }</td>
 							<td>${DTO.xName }</td>
 							<td><input type="checkbox" name="deleteCheck" class="check"></td>
