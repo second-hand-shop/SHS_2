@@ -40,8 +40,6 @@
 		id=#{id}
 	</delete>
 
-	<select id="memberMyBoard" parameterType="MemberDTO" resultMap="BoardDTO">
-		select * from board where writer = #{id}
-	</select>
+
 	
 </mapper>
