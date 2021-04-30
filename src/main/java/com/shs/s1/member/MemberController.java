@@ -1,5 +1,6 @@
 package com.shs.s1.member;
 
+import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
@@ -246,12 +247,14 @@ public class MemberController {
 	@GetMapping("memberMyBoard")
 	public ModelAndView memberMyBoard(MemberDTO memberDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		BoardDTO boardDTO = new BoardDTO();
-		
+		BoardDTO boardDTO = new BoardDTO();		
 		memberDTO = (MemberDTO)session.getAttribute("member");		
 
-		memberService.memberMyBoard(boardDTO);
-		System.out.println(boardDTO.getWriter());
+		List<BoardDTO> ar = memberService.memberMyBoard(boardDTO);
+		
+		mv.addObject("list", ar);
+		mv.addObject("board", "review");
+		mv.setViewName("board/boardList");
 		
 		if(memberDTO == null) {
 			mv.addObject("path", "./memberLogin");

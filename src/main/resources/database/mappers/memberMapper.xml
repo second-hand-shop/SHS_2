@@ -40,24 +40,8 @@
 		id=#{id}
 	</delete>
 
-	<select id="memberMyBoard" parameterType="MemberDTO" resultMap="boardMap">
-		select b.* from board b inner join member m on (b.writer = m.id) where m.id=#{id} 
+	<select id="memberMyBoard" parameterType="MemberDTO" resultMap="BoardDTO">
+		select * from board where writer = #{id}
 	</select>
-
-	<resultMap type="BoardDTO" id="boardMap">
-		<id property="num" column="num" />
-		<result property="title" column="title" />
-		<result property="writer" column="writer" />
-		<result property="contents" column="contents" />
-		<result property="regdate" column="regdate" />
-		<result property="hit" column="hit" />
-		<association property="memberDTO" javaType="memberDTO">	
-			<id property="id" column="id"/>
-			<result property="pw" column="pw"/>
-			<result property="name" column="name"/>
-			<result property="phone" column="phone"/>
-			<result property="email" column="email"/>
-		</association>
-	</resultMap>
 	
 </mapper>
