@@ -91,13 +91,18 @@
 	}
 	
 	.search-size{
-		widht: 1px;
-		height: 1px;
+		width: 10%;
 	}
 	
 	.search{
 		width: 10%;
 	}
+	
+	.search-input-line{
+		border: 0.8px solid #c4c4c4;
+		font-size: 11pt;
+	}
+
 
 
 </style>
@@ -171,10 +176,10 @@
 						 		  
 						  	  </div>
 						  	  
-						  	  <input type="text" style="margin-left: 2%;" name="search" id="search" value="${boardPager.search}">
+						  	  <input type="text" class="search-input-line" style="margin-left: 2%;" name="search" id="search" value="${boardPager.search}">
 						    
-						      <div style="width: 10%;">
-						    	  <input type="image" class="search" style="width: 40%; height: 40%;" src="../resources/images/search.png" alt="search">
+						      <div class="search-size">
+						    	  <input type="image" class="search" style="width: 35%; height: 35%;" src="../resources/images/search.png" alt="search">
 						  	  </div>
 					 	  </form> 
 					  </div>

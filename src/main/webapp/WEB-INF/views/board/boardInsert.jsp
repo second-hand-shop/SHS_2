@@ -116,7 +116,7 @@
 	
 	.input-border{
 		border-top: 0.8px solid black; 
-		border-bottom: 2px solid black;
+		border-bottom: 1px solid black;
 		padding: 2% 2% 0 2%;
 	}
 	
@@ -166,19 +166,21 @@
 		<div id="table-div">
 		
 			<!-- review or qna 할 상품 선택 -->
-			<div class="div-padding div-boarder">
-			
-				<div id="prdImg-size">
-					<img src="../resources/images/prdNoImg.gif" id="prdImg" alter="NoImg" />
-				</div>
+			<c:if test="${board ne 'notice'}">
+				<div class="div-padding div-boarder">
 				
-				<!-- 상품정보선택 -->
-				<div style="margin-top: 5%; margin-left: 12%;">
-					<input type="button" value="상품정보선택" class="prdButton-style" id="btn" 
-					onclick="showPopup();">
+					<div id="prdImg-size">
+						<img src="../resources/images/prdNoImg.gif" id="prdImg" alter="NoImg" />
+					</div>
+					
+					<!-- 상품정보선택 -->
+					<div style="margin-top: 5%; margin-left: 12%;">
+						<input type="button" value="상품정보선택" class="prdButton-style" id="btn" 
+						onclick="showPopup();">
+					</div>
+									
 				</div>
-								
-			</div>
+			</c:if>
 			
 			<!-- subject, contents insert 부분 -->
 			<div class="input-border">
@@ -199,17 +201,19 @@
 					</li>
 					
 					<!-- contents -->
-					<li>
+					<li style="margin-bottom: 1%;">
 						<label for="contents"></label>
-						<textarea class="myCheck" id="contents"
+						<textarea id="contents"
 						name="contents"></textarea>
 					</li>
-						
-					<li class="li-padding">
-						<label for="password" style="font-size: 9pt;">PASSWORD</label> 
-						<input type="password" class="pw-input-size input-line"
-						id="password" name="password">
-					</li>
+					
+					<c:if test="${board ne 'notice'}">
+						<li class="li-padding">
+							<label for="password" style="font-size: 9pt;">PASSWORD</label> 
+							<input type="password" class="pw-input-size input-line"
+							id="password" name="password">
+						</li>
+					</c:if>
 					
 					<c:if test="${board eq 'qna'}">
 						<li class="li-line li-padding">
