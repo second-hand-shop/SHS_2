@@ -2,17 +2,20 @@ package com.shs.s1.member;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.shs.s1.MyAbstractTest;
+import com.shs.s1.board.BoardDTO;
 
 public class MemberDAOTest extends MyAbstractTest {
 
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	@Test
+	/*@Test
 	public void memberJoinTest() throws Exception {
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("id4");
@@ -35,11 +38,19 @@ public class MemberDAOTest extends MyAbstractTest {
 		assertNotNull(memberDTO);
 	}
 	
-	/*
+	
 	 * @Test public void memberIdFind() throws Exception { MemberDTO memberDTO = new
 	 * MemberDTO(); memberDTO.setName("name1"); memberDTO.setEmail("email1");
 	 * memberDTO = memberDAO.memberIdFind(memberDTO);
 	 * 
 	 * assertNotNull(memberDTO); }
 	 */
+	
+	@Test
+	public void getListTest() throws Exception{		
+		BoardDTO boardDTO = new BoardDTO();		
+		List<BoardDTO> ar = memberDAO.memberMyBoard(boardDTO);		
+		assertNotEquals(0, ar.size());	
+		System.out.println(ar.size());		
+	}
 }
