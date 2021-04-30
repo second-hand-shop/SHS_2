@@ -244,7 +244,7 @@ public class MemberController {
 	}
 
 	//내가 쓴글 조회
-	@GetMapping("memberMyBoard")
+	@GetMapping("/board/boardList")
 	public ModelAndView memberMyBoard(MemberDTO memberDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO = new BoardDTO();		
@@ -260,7 +260,6 @@ public class MemberController {
 			mv.addObject("path", "./memberLogin");
 			mv.setViewName("common/Result");
 		} 
-		
 		return mv;
 	}
 }

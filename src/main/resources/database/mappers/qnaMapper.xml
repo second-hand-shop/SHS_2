@@ -103,5 +103,5 @@
 		update qna set step=step+1 where ref=#{ref} and step>#{step}
 	</update>
 	
-
+	
 </mapper>

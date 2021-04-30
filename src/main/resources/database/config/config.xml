@@ -11,6 +11,7 @@
 		<typeAlias type="com.shs.s1.board.notice.NoticeDTO" alias="NoticeDTO"/>
 	    <typeAlias type="com.shs.s1.board.BoardDTO" alias="BoardDTO"/>
 	    <typeAlias type="com.shs.s1.board.qna.QnaDTO" alias="QnaDTO"/>
+	    <typeAlias type="com.shs.s1.board.review.ReviewDTO" alias="ReviewDTO"/>
 	    <typeAlias type="com.shs.s1.util.BoardPager" alias="BoardPager"/>
         <typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="com.shs.s1.product.ProductDTO" alias="ProductDTO"/>
