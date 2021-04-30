@@ -15,8 +15,7 @@
 			<thead>
 				<tr>
 					<th>우편번호</th>
-					<th>기본주소</th>
-					<th>상세주소</th>
+					<th>주소</th>
 					<th>주문번호</th>
 					<th>+ / -</th>
 				</tr>
@@ -25,8 +24,7 @@
 			<c:forEach items="${list }" var="DTO">
 				<tr>
 					<td>${DTO.zipCode }</td>
-					<td>${DTO.majorAddr }</td>
-					<td>${DTO.minorAddr }</td>
+					<td>${DTO.addr }</td>
 					<td>${DTO.orderNum }</td>
 					<td><input type="checkbox" name="deleteCheck" class="check"></td>
 				</tr>

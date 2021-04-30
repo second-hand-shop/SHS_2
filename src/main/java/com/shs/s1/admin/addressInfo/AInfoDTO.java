@@ -1,53 +1,54 @@
 package com.shs.s1.admin.addressInfo;
 
-public class AInfoDTO {
-	
-	private long addressNum;
-	private String id;
-	private long zipCode;
-	private String majorAddr;
-	private String minorAddr;
-	private String addrMessage;
+import com.shs.s1.member.MemberDTO;
+
+public class AInfoDTO extends MemberDTO {
+
 	private long orderNum;
+	private long productNum;
+	private long price;
+	private String zipCode;
+	private String addr;
+	private String addrMessage;
 
-	public long getAddressNum() {
-		return addressNum;
+	public long getOrderNum() {
+		return orderNum;
 	}
 
-	public void setAddressNum(long addressNum) {
-		this.addressNum = addressNum;
+	public void setOrderNum(long orderNum) {
+		this.orderNum = orderNum;
 	}
 
-	public String getId() {
-		return id;
+	public long getProductNum() {
+		return productNum;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setProductNum(long productNum) {
+		this.productNum = productNum;
 	}
 
-	public long getZipCode() {
+	public long getPrice() {
+		return price;
+	}
+
+	public void setPrice(long price) {
+		this.price = price;
+	}
+
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(long zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
-	public String getMajorAddr() {
-		return majorAddr;
+	public String getAddr() {
+		return addr;
 	}
 
-	public void setMajorAddr(String majorAddr) {
-		this.majorAddr = majorAddr;
-	}
-
-	public String getMinorAddr() {
-		return minorAddr;
-	}
-
-	public void setMinorAddr(String minorAddr) {
-		this.minorAddr = minorAddr;
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 
 	public String getAddrMessage() {
@@ -56,14 +57,6 @@ public class AInfoDTO {
 
 	public void setAddrMessage(String addrMessage) {
 		this.addrMessage = addrMessage;
-	}
-
-	public long getOrderNum() {
-		return orderNum;
-	}
-
-	public void setOrderNum(long orderNum) {
-		this.orderNum = orderNum;
 	}
 
 }
