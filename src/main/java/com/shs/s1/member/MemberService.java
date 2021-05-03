@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.shs.s1.board.BoardDTO;
+import com.shs.s1.board.review.ReviewDTO;
 
 
 @Service
@@ -44,8 +44,8 @@ public class MemberService {
 		return memberDAO.memberDelete(memberDTO);
 	}
 	
-	public List<BoardDTO> memberMyBoard (BoardDTO boardDTO) throws Exception {
-		return memberDAO.memberMyBoard(boardDTO);
+	public List<ReviewDTO> memberMyBoard (ReviewDTO reviewDTO) throws Exception {
+		return memberDAO.memberMyBoard(reviewDTO);
 	}
 	
 }

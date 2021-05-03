@@ -14,7 +14,7 @@ public class ReviewDAO {
 	
 	private String NAMESPACE = "com.shs.s1.board.review.ReviewDAO.";
 	
-	public List<ReviewDTO> memberMyBoard(ReviewDTO reviewDTO) throws Exception {
+	/*public List<ReviewDTO> memberMyBoard(ReviewDTO reviewDTO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"memberMyBoard", reviewDTO);
-	}
+	}*/
 }

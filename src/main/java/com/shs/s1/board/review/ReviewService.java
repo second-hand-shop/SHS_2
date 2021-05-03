@@ -11,7 +11,7 @@ public class ReviewService {
 	@Autowired
 	private ReviewDAO reviewDAO;
 	
-	public List<ReviewDTO> memberMyBoard(ReviewDTO reviewDTO) throws Exception {
+	/*public List<ReviewDTO> memberMyBoard(ReviewDTO reviewDTO) throws Exception {
 		return reviewDAO.memberMyBoard(reviewDTO);
-	}
+	}*/
 }

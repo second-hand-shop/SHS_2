@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.shs.s1.board.BoardDTO;
+import com.shs.s1.board.review.ReviewDTO;
 
 @Repository
 public class MemberDAO {
@@ -44,7 +44,7 @@ public class MemberDAO {
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
 	}
 
-	public List<BoardDTO> memberMyBoard (BoardDTO boardDTO) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"memberMyBoard", boardDTO);
+	public List<ReviewDTO> memberMyBoard (ReviewDTO reviewDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"memberMyBoard", reviewDTO);
 	}
 }
