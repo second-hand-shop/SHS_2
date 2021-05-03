@@ -5,8 +5,6 @@
     
  <mapper namespace="com.shs.s1.board.review.ReviewDAO">
  
- 	<select id="memberMyBoard" parameterType="ReviewDTO" resultType="ReviewDTO">
- 	 	select * from review where writer = #{id}
- 	</select>
+
  
  </mapper>

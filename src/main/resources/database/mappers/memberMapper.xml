@@ -6,40 +6,44 @@
 <mapper namespace="com.shs.s1.member.MemberDAO">
 
 	<insert id="memberJoin" parameterType="MemberDTO">
-		insert into member values
-		(member_seq.nextval, #{id}, #{pw}, #{name}, #{phone}, #{email})
+		insert into member values (member_seq.nextval, #{id}, #{pw}, #{name}, #{phone}, #{email})
 	</insert>
 
-	<select id="memberIdCheck" parameterType="MemberDTO"
-		resultType="MemberDTO">
+	<select id="memberIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
 		select id from member where id=#{id}
 	</select>
 
-	<select id="memberLogin" parameterType="MemberDTO"
-		resultType="MemberDTO">
+	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
 
-	<select id="memberIdFind" parameterType="MemberDTO"
-		resultType="MemberDTO">
+	<select id="memberIdFind" parameterType="MemberDTO" resultType="MemberDTO">
 		select id from member where name=#{name} and email=#{email}
 	</select>
 
-	<select id="memberPwFind" parameterType="MemberDTO"
-		resultType="MemberDTO">
+	<select id="memberPwFind" parameterType="MemberDTO" resultType="MemberDTO">
 		select pw from member where id=#{id} and email=#{email}
 	</select>
 
 	<update id="memberModify" parameterType="MemberDTO">
-		update member set
-		pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone} where id=#{id}
+		update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone} where id=#{id}
 	</update>
 
 	<delete id="memberDelete" parameterType="MemberDTO">
-		delete member where
-		id=#{id}
+		delete member where id=#{id}
 	</delete>
-
-
+	
+	 <select id="memberMyBoard" parameterType="String" resultMap="reviewMap">
+ 	 	select * from review where writer = #{id}
+ 	</select>
+ 	
+ 	<resultMap type="ReviewDTO" id="reviewMap">
+ 		<id column="num" property="num"/>
+ 		<result column="title" property="title"/>
+ 		<result column="writer" property="writer"/>
+ 		<result column="contents" property="contents"/>
+ 		<result column="regdate" property="regdate"/>
+ 		<result column="hit" property="hit"/>
+ 	</resultMap>
 	
 </mapper>

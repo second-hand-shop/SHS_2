@@ -99,9 +99,11 @@
 						<th class="lines" width="8%">
 						<a href="#">관심상품</a></th>
 						<th class="lines" width="8%">
-						<a href="${pageContext.request.contextPath}/board/boardList">내가쓴글</a></th>
+						<a href="${pageContext.request.contextPath}/member/memberMyBoard">내가쓴글</a></th>
 						<th class="lines" width="8%">
 						<a href="#">적립금</a></th>
+						<th class="lines" width="8%">
+						<a href="#">쿠폰</a></th>
 					</tr>
 				</table> 
 			</div>

@@ -15,12 +15,10 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
-	//내가 쓴 글 조회
-	@GetMapping("boardList")
-	public ModelAndView memberMyBoard (BoardPager boardPager) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		return mv;
-	}
-	
+	/*
+	 * //내가 쓴 글 조회
+	 * 
+	 * @GetMapping("boardList") public ModelAndView memberMyBoard (BoardPager
+	 * boardPager) throws Exception { ModelAndView mv = new ModelAndView() }
+	 */
 }

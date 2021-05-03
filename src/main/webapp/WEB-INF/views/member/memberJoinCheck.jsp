@@ -7,6 +7,17 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.info{
+	width: 80%;
+	margin: auto;
+}
+.button{
+   margin:0 auto;
+   width: 250px;
+   flex-flow: row;
+}
+</style>
 </head>
 <body>
 	<div id="wrap">
@@ -14,9 +25,11 @@
 			<c:import url="../template/header.jsp"></c:import>
 		</div>
 		<!-- header END -->
-	<div class="jumbotron">
-		<h1>제1조(목적)</h1>
-		<p>이 약관은 아웃 오브 라인이 운영하는 아웃오브라인 스토어(이하 “몰”이라 한다)에서 제공하는 인터넷 관련
+		
+	<div class="info">
+		<div class="jumbotron">
+			<h1>제1조(목적)</h1>
+			<p>이 약관은 아웃 오브 라인이 운영하는 아웃오브라인 스토어(이하 “몰”이라 한다)에서 제공하는 인터넷 관련
 			서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리.의무 및 책임사항을 규정함을 목적으로 합니다.
 			※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」 제2조(정의) ①
 			“몰”이란 아웃 오브 라인이 재화 또는 용역(이하 “재화 등”이라 함)을 이용자에게 제공하기 위하여 컴퓨터 등 정보통신설비를
@@ -40,16 +53,17 @@
 			뜻을 제3항에 의한 개정약관의 공지기간 내에 “몰”에 송신하여 “몰”의 동의를 받은 경우에는 개정약관 조항이 적용됩니다. ⑥
 			이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는 전자상거래 등에서의 소비자보호에 관한 법률, 약관의 규제 등에
 			관한 법률, 공정거래위원회가 정하는 전자상거래 등에서의 소비자 보호지침 및 관계법령 또는 상관례에 따릅니다.</p>
-
-		<div class="form-check">
-			<label class="form-check-label"> <input type="checkbox" class="form-check-input check" value="">동의
-			</label>
+			<br>
+			<div class="form-check">
+				<label class="form-check-label"> 
+					<input type="checkbox" class="form-check-input check" value="">동의
+				</label>
+			</div>
 		</div>
-	</div>
 
-	<div class="jumbotron">
-		<h1>1. 개인정보 수집목적 및 이용목적</h1>
-		<p>가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산 콘텐츠 제공 , 구매 및 요금 결제 ,
+		<div class="jumbotron">
+			<h1>1. 개인정보 수집목적 및 이용목적</h1>
+			<p>가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산 콘텐츠 제공 , 구매 및 요금 결제 ,
 			물품배송 또는 청구지 등 발송 , 금융거래 본인 인증 및 금융 서비스 나. 회원 관리 회원제 서비스 이용에 따른 본인확인 ,
 			개인 식별 , 불량회원의 부정 이용 방지와 비인가 사용 방지 , 가입 의사 확인 , 연령확인 , 만14세 미만 아동 개인정보
 			수집 시 법정 대리인 동의여부 확인, 불만처리 등 민원처리 , 고지사항 전달 2. 수집하는 개인정보 항목 : 이름 ,
@@ -61,19 +75,24 @@
 			등의 공급에 관한 기록 -보존이유: 전자상거래등에서의소비자보호에관한법률 -보존기간 : 5년 o 소비자 불만 또는 분쟁처리에
 			관한 기록 -보존이유 : 전자상거래등에서의소비자보호에관한법률 -보존기간 : 3년 o 로그 기록 -보존이유: 통신비밀보호법
 			-보존기간 : 3개월 ※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.</p>
-		<div class="form-check">
-			<label class="form-check-label"> <input type="checkbox" class="form-check-input check" value="">동의
-			</label>
+			<br>
+			<div class="form-check">
+				<label class="form-check-label"> 
+					<input type="checkbox" class="form-check-input check" value="">동의
+				</label>
+			</div>
 		</div>
 	</div>
-
-	<div class="form-check">
-		<label class="form-check-label"> <input type="checkbox"	class="form-check-input check" id="all" value="">모두 동의
-		</label>
+	
+	<div class="button">
+		<div class="form-check">
+			<label class="form-check-label"> 
+				<input type="checkbox"	class="form-check-input check" id="all" value="">모두 동의
+			</label>
+		</div>
+		<br>
+		<button class="btn btn-dark" id="btn">JOIN</button>
 	</div>
-
-	<button class="btn btn-dark" id="btn">JOIN</button>
-
 		<!-- footer -->
 		<c:import url="../template/footer.jsp"></c:import>
 	</div>
