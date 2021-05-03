@@ -44,8 +44,8 @@ public class MemberService {
 		return memberDAO.memberDelete(memberDTO);
 	}
 	
-	public List<ReviewDTO> memberMyBoard (ReviewDTO reviewDTO) throws Exception {
-		return memberDAO.memberMyBoard(reviewDTO);
+	public List<ReviewDTO> memberMyBoard (MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberMyBoard(memberDTO);
 	}
 	
 }

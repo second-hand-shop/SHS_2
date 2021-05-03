@@ -44,7 +44,7 @@ public class MemberDAO {
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
 	}
 
-	public List<ReviewDTO> memberMyBoard (ReviewDTO reviewDTO) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"memberMyBoard", reviewDTO);
+	public List<ReviewDTO> memberMyBoard (MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"memberMyBoard", memberDTO);
 	}
 }

@@ -2,7 +2,6 @@ package com.shs.s1.member;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.mail.HtmlEmail;
@@ -252,19 +251,17 @@ public class MemberController {
 	public ModelAndView memberMyBoard(HttpSession session) throws Exception {
 		MemberDTO memberDTO = new MemberDTO();
 		ModelAndView mv = new ModelAndView();
-		ReviewDTO reviewDTO = new ReviewDTO();
 		
 		memberDTO = (MemberDTO)session.getAttribute("member");
 				
-		List<ReviewDTO> ar = memberService.memberMyBoard(reviewDTO);
+		List<ReviewDTO> ar = memberService.memberMyBoard(memberDTO);
 		
-		if(memberDTO == null ) {
-			mv.addObject("path", "./memberLogin");
-			mv.setViewName("common/Result");
-		} else {
+		if(memberDTO != null ) {
 			mv.addObject("list", ar); 
 			mv.addObject("board","review"); 
-			mv.setViewName("board/boardList");
+			mv.setViewName("board/boardList");		
+		} else {
+			mv.setViewName("member/memberLogin");
 		}			
 			return mv;
 	}
