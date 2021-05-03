@@ -1,15 +1,39 @@
 package com.shs.s1.order;
 
+import java.util.List;
+
+
+
 public class AddressInfoDTO {
 	
 	private long orderNum;
 	private String id;
+	private long productNum;
+	private long price;
 	private String name;
 	private String zipCode;
 	private String addr;
 	private String phone;
 	private String email;
 	private String addrMessage;
+	
+	
+	
+	
+	
+
+	public long getProductNum() {
+		return productNum;
+	}
+	public void setProductNum(long productNum) {
+		this.productNum = productNum;
+	}
+	public long getPrice() {
+		return price;
+	}
+	public void setPrice(long price) {
+		this.price = price;
+	}
 	public long getOrderNum() {
 		return orderNum;
 	}
