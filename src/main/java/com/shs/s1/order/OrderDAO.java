@@ -1,8 +1,12 @@
 package com.shs.s1.order;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.shs.s1.member.MemberDTO;
 
 @Repository
 public class OrderDAO {
@@ -26,8 +30,14 @@ public int setAddrInsert(AddressInfoDTO addressInfoDTO)throws Exception{
 	return sqlSession.insert(NAMESPACE+"setAddrInsert", addressInfoDTO);
 }
 
+public AddressInfoDTO getAddrOne(AddressInfoDTO addressInfoDTO)throws Exception{
+	
+	
+	return sqlSession.selectOne(NAMESPACE+"getAddrOne", addressInfoDTO);
+}
 
-
-
+public List<CartDTO> getCartList(MemberDTO memberDTO)throws Exception{
+	return sqlSession.selectList(NAMESPACE+"getCartList",memberDTO);
+}
 
 }

@@ -71,7 +71,7 @@ justify-content: space-evenly;
 			
 			<form action="../order/orderForm" method="post" style="display: inline;">
 			<input type="hidden" name="productNum" value="${dto.productNum}">
-			<button>buyy</button>
+			<button>buy</button>
 			</form>
 			<!--  세션에도 저장해야 회원검사하고 빼올수 있을듯,,-->
 			
@@ -98,8 +98,8 @@ justify-content: space-evenly;
 			</form>
 			
 			
-			<form action="" id="cartfrm">
-			
+			<form action="../order/cartInsert" id="cartfrm">
+				<input type="hidden" name="productNum" id="cProductNum" value="${dto.productNum}">			
 			</form>
 			
 			
@@ -125,24 +125,28 @@ justify-content: space-evenly;
 		let result = confirm("지우시겠습니까!");
 		
 
-		if(result=true){
+		if(result==true){
 			$("#delfrm").attr("method","post");
 			$("#delfrm").submit();
-			
+		}else{
+			alert("삭제하지 않습니다.")
 		}
+		
 		
 	});
 	
-	$("#cartfrm").click(function(){
+	$("#cart").click(function(){
 		
+		let proudctNum = $("#cProductNum").val();
 		let result = confirm("카트에 담으시겠습니까");
 		
-		if(result=true){
+		if(result==true){
 			
-			$.post("setCartInsert",
+			$("#cartfrm").attr("method","post");
+			$.post("../order/cartInsert",
 					
 			{
-				//매개변
+				productNum : proudctNum,
 			},
 			function(data){
 				

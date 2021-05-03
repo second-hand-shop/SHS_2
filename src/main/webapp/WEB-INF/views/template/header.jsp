@@ -35,7 +35,7 @@
 							<li><a href="${pageContext.request.contextPath}/member/memberAccount">MY ACCOUNT</a></li>
 							<!-- if END -->
 							<li></li>
-							<li class="cart_ct"><a href="#" class="xans-element- xans-layout xans-layout-orderbasketcount ">0</a></li>
+							<li class="cart_ct"><a href="${pageContext.request.contextPath}/order/cartList" class="xans-element- xans-layout xans-layout-orderbasketcount ">cart</a></li>
 						</ul></li>
 				</ul>
 			</div>

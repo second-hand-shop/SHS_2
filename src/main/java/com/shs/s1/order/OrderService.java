@@ -1,7 +1,13 @@
 package com.shs.s1.order;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.shs.s1.member.MemberDTO;
 
 @Service
 public class OrderService {
@@ -15,11 +21,26 @@ public class OrderService {
 		return orderDAO.setCartInsert(cartDTO);
 	}
 	
+	public List<CartDTO> getCartList(MemberDTO memberDTO)throws Exception{
+
+		return orderDAO.getCartList(memberDTO);
+	}
+	
+	
+	
 	
 	public int setAddrInsert(AddressInfoDTO addressInfoDTO)throws Exception{
 		
 		
 		return orderDAO.setAddrInsert(addressInfoDTO);
 	}
+	
+	public AddressInfoDTO getAddrOne(AddressInfoDTO addressInfoDTO)throws Exception{
+		
+		
+		return orderDAO.getAddrOne(addressInfoDTO);
+	}
+	
+	
 	
 }

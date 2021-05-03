@@ -17,14 +17,6 @@
 		
 		
 		
-<h1>payInfo</h1>
-
-
-
-<p>${dto.productNum}</p>
-<p>주문번호 : ${dto.orderNum}</p>
-<p>${dto.name}님의 상품 구매가 완료되었습니다.</p>
-		
 		
 		
 		

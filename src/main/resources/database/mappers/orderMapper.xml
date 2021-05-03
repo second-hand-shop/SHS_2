@@ -10,18 +10,29 @@
  
 
 <insert id="setCartInsert" parameterType="CartDTO">
-	insert into Cart (cartNum,productNum,id,cartStock) values(cart_seq.nextval,#{productNum},#{id},#{cartStock})
+	insert into Cart (cartNum,productNum,id,cartStock) values(cart_seq.nextval,#{productNum},#{id},1)
 </insert>
+ 
+ 
+<select id="getCartList" parameterType="MemberDTO" resultType="CartDTO">
+	select * from cart where id=#{id}
+</select>
+ 
+ 
  
  
  <insert id="setAddrInsert" parameterType="AddressInfoDTO">
  
- 	insert into addressInfo values(#{orderNum},#{id},#{name},#{zipCode},#{addr},#{phone},#{email},#{addrMessage})
+ 	insert into addressInfo values(#{orderNum},#{id},#{productNum},#{price},#{name},#{zipCode},#{addr},#{phone},#{email},#{addrMessage})
  
  </insert>
  
  
+ <select id="getAddrOne" resultType="AddressInfoDTO">
  
+ select * from addressInfo where orderNum=#{orderNum}
+ 
+ </select>
  
  
  </mapper>
