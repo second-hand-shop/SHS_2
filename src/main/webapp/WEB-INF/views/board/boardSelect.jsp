@@ -135,29 +135,30 @@
 		<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">					
 			<ul>					
 				<li class="lines li-border writer-font">
-					${dto.writer}				
-					<span style="font-size: 9pt; font-weight: 400;">${dto.regdate}</span>
+					${comments.writer}				
+					<span style="font-size: 9pt; font-weight: 400;">${comments.regdate}</span>
 					<!-- float:right를 쓰면 쭉 밀려서 버튼이 깨짐,
 					 display를 block으로 바꾸고 text-align:center를 주면
 					 div처럼 공간잡혀서 한줄 밑으로 내려감
 					 현재, 강제로 margin으로 밈 -->
 					<span class="botton-div" style="margin-left: 65%;">
 					
-						<!-- 클릭 시 update 폼 생성  -->
+						<!-- 클릭 시 update 폼 생성 -->
 						<a href="#" class="comment-button-style">MODIFY</a>						
 						<a href="#" class="comment-button-style">DELETE</a>
 					</span>
 				</li>
 				
-				<li class="lines" style="text-align:left;"> ${dto.contents} </li>						
+				<li class="lines" style="text-align:left;"> ${comments.contents} </li>						
 			</ul>					
-		</div>
-	
+		</div> 
 	
 	
 		<!-- comments 입력폼 -->
 		<div id="table-border" style="border: 1px solid #d3d3d3;">					
-				<ul>					
+				<ul>
+					<li><input type="hidden" name="reviewNum" value="${dto.num}"></li>
+							
 					<li style="margin-bottom: 1%; border-bottom: 1px solid black; width: 25%">
 						<label for="writer" style="font-size: 9pt;">WRITER</label> 
 						<input type="text" id="writer" name="writer" placeholder="ID" 
@@ -166,7 +167,7 @@
 					
 					<li>
 						<label for="contents"></label>
-						<textarea row="2" col="2" id="contents"
+						<textarea style="col:3;" id="contents"
 						name="contents"></textarea>
 						
 						<button type="button" class="comment-write-button" id="write">OK!</button>
@@ -187,5 +188,7 @@
 <script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
+
+<script type="text/javascript" src="../resources/jquery/comments.js"></script>
 
 </html>

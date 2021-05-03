@@ -18,7 +18,7 @@ $("#write").click(function(){
 	let writer = $("#writer").val();
 	let contents = $("#contents").val();
 	
-	$.post("../comments/commentsInsert", {writer:writer, contents:contents, num:num}, function(data) {
+	$.post("../comments/commentsInsert", {writer:writer, contents:contents, reviewNum:reivewNum}, function(data) {
 		
 		
 		data = data.trim();
@@ -34,34 +34,5 @@ $("#write").click(function(){
 	});
 
 
-});
-
-//comments안에 자식으로 보내는 것 on
-$("#comments").on("click", "#remove", function(){
-	
-	const ar = []; //빈 배열 , 체크된 것만 집어넣을 것
-	
-	$(".del").each(function(){
-	
-		let ch = $(this).prop("checked");
-	
-		if(ch){
-			ar.push($(this).val());
-		}
-	
-	});
-	
-	console.log(ar);
-	$.ajax({
-		
-		type:	"POST",
-		url:	"../comments/commentsDelete",
-		traditional: true,	//배열은 전송
-		data:	{commentNum:ar},
-		success: function(data){
-			alert(data);
-		}
-	});
-	
 });
 

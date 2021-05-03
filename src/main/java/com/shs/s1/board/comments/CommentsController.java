@@ -20,11 +20,9 @@ public class CommentsController {
 	
 	@PostMapping("commentsDelete")
 	public void commentsDelete(int [] commentNum) throws Exception{
-		System.out.println("start");
-		System.out.println("finish");
+
 	}
-	
-	
+		
 	@PostMapping("commentsInsert")
 	public ModelAndView setInsert(CommentsDTO commentsDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
