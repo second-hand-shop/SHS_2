@@ -142,8 +142,9 @@
 					 div처럼 공간잡혀서 한줄 밑으로 내려감
 					 현재, 강제로 margin으로 밈 -->
 					<span class="botton-div" style="margin-left: 65%;">
+					
 						<!-- 클릭 시 update 폼 생성  -->
-						<a href="#" class="comment-button-style">MODIFY</a>
+						<a href="#" class="comment-button-style">MODIFY</a>						
 						<a href="#" class="comment-button-style">DELETE</a>
 					</span>
 				</li>
@@ -157,7 +158,7 @@
 		<!-- comments 입력폼 -->
 		<div id="table-border" style="border: 1px solid #d3d3d3;">					
 				<ul>					
-					<li style="margin-bottom: 1%; border-bottom: 1px solid black; width: 18%">
+					<li style="margin-bottom: 1%; border-bottom: 1px solid black; width: 25%">
 						<label for="writer" style="font-size: 9pt;">WRITER</label> 
 						<input type="text" id="writer" name="writer" placeholder="ID" 
 						style="border:none; font-size: 9pt; margin-bottom: 2%; margin-left: 1%">
@@ -165,7 +166,7 @@
 					
 					<li>
 						<label for="contents"></label>
-						<textarea rowspan="2" colspan="2" id="contents"
+						<textarea row="2" col="2" id="contents"
 						name="contents"></textarea>
 						
 						<button type="button" class="comment-write-button" id="write">OK!</button>
@@ -173,6 +174,7 @@
 
 				</ul>					
 		</div>
+		
 	</c:if>
 	
 	<!-- footer -->
