@@ -11,8 +11,8 @@ public class CommentsService {
 	@Autowired
 	private CommentsDAO commentsDAO;
 	
-	public List<CommentsDTO> getList(CommentsDTO commentsDTO)throws Exception{
-		return commentsDAO.getList(commentsDTO);
+	public CommentsDTO getSelect(CommentsDTO commentsDTO)throws Exception{
+		return commentsDAO.getSelect(commentsDTO);
 	}
 	
 	public int setInsert(CommentsDTO commentsDTO) throws Exception{
