@@ -155,26 +155,28 @@
 	
 	
 		<!-- comments 입력폼 -->
-		<div id="table-border" style="border: 1px solid #d3d3d3;">					
-				<ul>
-					<li><input type="hidden" name="reviewNum" value="${dto.num}"></li>
-							
-					<li style="margin-bottom: 1%; border-bottom: 1px solid black; width: 25%">
-						<label for="writer" style="font-size: 9pt;">WRITER</label> 
-						<input type="text" id="writer" name="writer" placeholder="ID" 
-						style="border:none; font-size: 9pt; margin-bottom: 2%; margin-left: 1%">
-					</li>
-					
-					<li>
-						<label for="contents"></label>
-						<textarea style="col:3;" id="contents"
-						name="contents"></textarea>
+		<form id="form" action="./reviewSelect" method="post">
+			<div id="table-border" style="border: 1px solid #d3d3d3;">					
+					<ul>
+						<li><input type="hidden" name="reviewNum" value="${dto.num}"></li>
+								
+						<li style="margin-bottom: 1%; border-bottom: 1px solid black; width: 25%">
+							<label for="writer" style="font-size: 9pt;">WRITER</label> 
+							<input type="text" id="writer" name="writer" placeholder="ID" 
+							style="border:none; font-size: 9pt; margin-bottom: 2%; margin-left: 1%">
+						</li>
 						
-						<button type="button" class="comment-write-button" id="write">OK!</button>
-					</li>
-
-				</ul>					
-		</div>
+						<li>
+							<label for="contents"></label>
+							<textarea style="col:3;" id="contents"
+							name="contents"></textarea>
+							
+							<button type="submit" class="comment-write-button" id="write">OK!</button>
+						</li>
+	
+					</ul>					
+			</div>
+		</form>
 		
 	</c:if>
 	
@@ -188,7 +190,5 @@
 <script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
-
-<script type="text/javascript" src="../resources/jquery/comments.js"></script>
 
 </html>
