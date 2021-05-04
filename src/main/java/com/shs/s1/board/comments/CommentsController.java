@@ -25,7 +25,7 @@ public class CommentsController {
 
 	}
 	
-	@GetMapping("reviewSelect")
+	@GetMapping("commentsInsert")
 	public ModelAndView setInsert() throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
@@ -37,7 +37,7 @@ public class CommentsController {
 		return mv;
 	}
 		
-	@PostMapping("reviewSelect")
+	@PostMapping("commentsInsert")
 	public String setInsert(CommentsDTO commentsDTO, Model model) throws Exception{
 		
 		int result = commentsService.setInsert(commentsDTO);
@@ -53,17 +53,7 @@ public class CommentsController {
 		
 		return "common/commonResult";
 	}
-	
-	
-//	@GetMapping("commentsList")
-//	public void getList(CommentsDTO commentsDTO, Model model) throws Exception{
-//		
-//		System.out.println(commentsDTO.getNum());
-//		List<CommentsDTO> ar = commentsService.getList(commentsDTO);
-//		
-//		model.addAttribute("list", ar);
-//		
-//	}
+
 	
 	
 

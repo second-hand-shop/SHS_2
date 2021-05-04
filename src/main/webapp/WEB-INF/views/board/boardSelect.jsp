@@ -152,11 +152,11 @@
 				
 				<li class="lines" style="text-align:left;"> ${comments.contents} </li>						
 			</ul>					
-		</div> 
+		</div>
 	
 	
 		<!-- comments 입력폼 -->
-		<form id="form" action="./reviewSelect" method="post">
+		<form id="form" action="comments/commentsInsert" method="post">
 			<div id="table-border" style="border: 1px solid #d3d3d3;">					
 					<ul>
 						<li><input type="hidden" name="reviewNum" value="${dto.num}"></li>

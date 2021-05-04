@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shs.s1.board.BoardDTO;
+import com.shs.s1.board.comments.CommentsDTO;
+import com.shs.s1.board.comments.CommentsService;
 import com.shs.s1.util.BoardPager;
 
 @Controller
@@ -88,9 +90,14 @@ public class ReviewController {
 	public ModelAndView getSelect(BoardDTO boardDTO) throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
+		CommentsService commentsService = new CommentsService();
+		CommentsDTO commentsDTO = new CommentsDTO(); 
 		
 		boardDTO = reviewService.getSelect(boardDTO);
+		commentsDTO = commentsService.getSelect(commentsDTO);
 		
+		
+		mv.addObject("comments", commentsDTO);
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "review");
 		

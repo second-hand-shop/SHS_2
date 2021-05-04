@@ -141,7 +141,7 @@
 				</c:if>
 				
 				<!-- 관리자와 일반유저 구분하는 id값 넘겨주기 추가 -->
-				<td class="lines"><a href="./${board}Select?num=${dto.num}">
+				<td class="lines"><a href="./${board}Select?num=${dto.num}<c:if test="${board eq 'review'}">&&reviewNum=${dto.num}</c:if>">
 			
 				<!-- depth부분 -->
 				<c:catch>
@@ -169,9 +169,9 @@
 						  	  <div>
 						  	  
 						   		  <select name="kind" id="kind" >					   		  
-									    <option class="sel">제목</option>
-									    <option class="sel">내용</option>
-									    <option class="sel">글쓴이</option>								    
+									    <option class="sel">title</option>
+									    <option class="sel">contents</option>
+									    <option class="sel">writer</option>								    
 						 		  </select>
 						 		  
 						  	  </div>
