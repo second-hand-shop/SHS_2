@@ -138,6 +138,11 @@
 				<td class="lines">${dto.writer}</td>
 				<td class="lines">${dto.regdate}</td>
 				<td class="lines">${dto.hit}</td>
+				
+				<c:if test="${list eq null}">
+					<td colspan="5" class="lines"><p>등록된 게시글이 없습니다.</p></td>			
+				</c:if>
+	
 			</tr>
 		</c:forEach>
 		

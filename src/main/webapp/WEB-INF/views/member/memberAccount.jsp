@@ -85,7 +85,7 @@
 							</a>
 						</li>
 						<li>
-							<p class="title">POINT</p>
+							<p class="title">COUPON</p>
 						</li>
 					</ul>
 				</div>
@@ -93,15 +93,13 @@
 				<table id="line">
 					<tr>
 						<th class="lines" width="8%">
-						<a href="#">주문내역조회</a></th>
+						<a href="${pageContext.request.contextPath}/member/memberMyOrder">주문내역조회</a></th>
 						<th class="lines" width="8%">
 						<a href="${pageContext.request.contextPath}/member/memberModify">내 정보수정</a></th>
 						<th class="lines" width="8%">
-						<a href="#">관심상품</a></th>
+						<a href="${pageContext.request.contextPath}/member/memberMyWriting">내가 쓴 리뷰</a></th>
 						<th class="lines" width="8%">
-						<a href="${pageContext.request.contextPath}/member/memberMyBoard">내가쓴글</a></th>
-						<th class="lines" width="8%">
-						<a href="#">적립금</a></th>
+						<a href="${pageContext.request.contextPath}/member/memberMyQna">나의 문의사항</a></th>
 						<th class="lines" width="8%">
 						<a href="#">쿠폰</a></th>
 					</tr>

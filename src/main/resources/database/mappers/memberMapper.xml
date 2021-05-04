@@ -33,17 +33,15 @@
 		delete member where id=#{id}
 	</delete>
 	
-	 <select id="memberMyBoard" parameterType="MemberDTO" resultMap="reviewMap">
+	 <select id="memberMyWriting" parameterType="MemberDTO" resultType="ReviewDTO">
  	 	select * from review where writer = #{id, jdbcType=VARCHAR}
  	</select>
- 	
- 	<resultMap type="ReviewDTO" id="reviewMap">
- 		<id column="num" property="num"/>
- 		<result column="title" property="title"/>
- 		<result column="writer" property="writer"/>
- 		<result column="contents" property="contents"/>
- 		<result column="regdate" property="regdate"/>
- 		<result column="hit" property="hit"/>
- 	</resultMap>
 	
+	<select id="memberMyQna" parameterType="MemberDTO" resultType="QnaDTO">
+		select * from qna where writer = #{id, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="memberMyOrder" parameterType="MemberDTO" resultType="OrderInfoDTO">
+		select * from orderInfo where id = #{id, jdbcType=VARCHAR}
+	</select>
 </mapper>
