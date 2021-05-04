@@ -389,9 +389,30 @@ insert into addressInfo values (2,'id2',2,100,'name2','232-23','Addr2','phone2',
 insert into addressInfo values (3,'id3',3,100,'name3','323-332','Addr3','phone3','email3','addMessage3');
 
 
+commit work;
 
+-- 혜민이 변경사항 21.05.04
+DROP TABLE ORDERINFO CASCADE CONSTRAINTS;
+DROP SEQUENCE ORDERINFO_SEQ;
+--orderinfo table
+CREATE TABLE ORDERINFO(
+    oiNum             NUMBER           PRIMARY KEY,
+    id                VARCHAR2(100)  CONSTRAINT ORINFO_ID_FK references member(id) on delete cascade,
+    productNum        NUMBER         CONSTRAINT ORINFO_PN_FK references product(productNum)on delete cascade,
+    orderNum          NUMBER           NOT NULL unique,
+    orderDate         DATE             NOT NULL, 
+    orderProcess      VARCHAR2(100)    NOT NULL, 
+    orderCondition    VARCHAR2(100)    NOT NULL
+);
 
+--orderinfo seq
+CREATE SEQUENCE ORDERINFO_SEQ
+START WITH 1
+INCREMENT BY 1;
 
-
+--orderinfo insert
+insert into orderinfo values(1,'id1',1,1,sysdate,'orderPorocess1','orderCondition1');
+insert into orderinfo values(2,'id2',2,2,sysdate,'orderPorocess2','orderCondition3');
+insert into orderinfo values(3,'id3',3,3,sysdate,'orderPorocess3','orderCondition3');
 
 commit work;
