@@ -42,16 +42,16 @@ public class CommentsController {
 		
 		int result = commentsService.setInsert(commentsDTO);
 		
-		String message="등록 실패";
+//		String message="등록 실패";
+//		
+//		if(result>0) {
+//			message="등록 성공";
+//		}
+//
+//		model.addAttribute("message", message);
+//		model.addAttribute("path", "./reviewList");
 		
-		if(result>0) {
-			message="등록 성공";
-		}
-
-		model.addAttribute("message", message);
-		model.addAttribute("path", "./reviewList");
-		
-		return "common/commonResult";
+		return "redirect:../review/reviewSelect";
 	}
 
 	
