@@ -4,10 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<c:import url="../template/bootStrap.jsp"></c:import>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <style>	
 	/* Page 이름 */
 	#title_center{
@@ -103,33 +101,25 @@
 	<table id="line">
 		<tr>
 			<th class="lines" width="4%">NO</th>
-			
-			<c:if test="${board eq 'qna'}">
-				<th class="lines" width="8%">PRODUCT</th>
-			</c:if>
-			
-			<th class="lines" width="60%">SUBJECT</th>
-			<th class="lines" width="8%">WRITER</th>
-			<th class="lines" width="8%">DATE</th>
-			<th class="lines" width="8%">HIT</th>
+			<th class="lines" width="8%">PRODUCT NUM</th>
+			<th class="lines" width="8%">ORDER NUM</th>
+			<th class="lines" width="8%">ORDER DATE</th>
+			<th class="lines" width="8%">ORDER PROCESS</th>
+			<th class="lines" width="8%">ORDER CONDITION</th>
 		</tr>
 		
 		<c:if test="${list eq null}">
-			<td colspan="5" class="lines"><h1>등록된 게시글이 없습니다.</h1></td>			
+			<td colspan="5" class="lines"><p>주문하신 내역이 없습니다.</p></td>			
 		</c:if>
 		
 		<c:forEach items="${list}" var="dto">
 			<tr>
-				<td class="lines">${dto.num}</td>
-				
-				<c:if test="${board eq 'qna'}">
-					<td class="lines"><!-- product이미지 들어올자리 --></td>
-				</c:if>
-				
-				<td class="lines">${dto.title}</td>				
-				<td class="lines">${dto.writer}</td>
-				<td class="lines">${dto.regdate}</td>
-				<td class="lines">${dto.hit}</td>
+				<td class="lines">${dto.oiNum}</td>	
+				<td class="lines">${dto.productNum}</td>				
+				<td class="lines">${dto.orderNum}</td>				
+				<td class="lines">${dto.orderDate}</td>
+				<td class="lines">${dto.orderProcess}</td>
+				<td class="lines">${dto.orderCondition}</td>
 			</tr>
 		</c:forEach>
 			
