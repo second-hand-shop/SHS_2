@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shs.s1.board.BoardDTO;
+
 
 @Controller
 @RequestMapping("/comments/**")
@@ -19,22 +21,37 @@ public class CommentsController {
 	private CommentsService commentsService;
 	
 	@PostMapping("commentsDelete")
-	public void commentsDelete(int [] commentNum) throws Exception{
+	public void commentsDelete() throws Exception{
 
 	}
+	
+	@GetMapping("reviewSelect")
+	public ModelAndView setInsert() throws Exception{
 		
-	@PostMapping("commentsInsert")
-	public ModelAndView setInsert(CommentsDTO commentsDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		CommentsDTO commentsDTO = new CommentsDTO();
 		
-		System.out.println("getNum : "+commentsDTO.getNum());
+		mv.addObject("dto", commentsDTO);
+		mv.setViewName("board/boardSelect");
+
+		return mv;
+	}
+		
+	@PostMapping("reviewSelect")
+	public String setInsert(CommentsDTO commentsDTO, Model model) throws Exception{
 		
 		int result = commentsService.setInsert(commentsDTO);
 		
-		mv.addObject("result", result);
-		mv.setViewName("common/ajaxResult");
+		String message="등록 실패";
 		
-		return mv;
+		if(result>0) {
+			message="등록 성공";
+		}
+
+		model.addAttribute("message", message);
+		model.addAttribute("path", "./reviewList");
+		
+		return "common/commonResult";
 	}
 	
 	
