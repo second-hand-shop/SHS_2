@@ -15,16 +15,16 @@
 		insert into comments values(comments_seq.nextval, #{reviewNum}, #{writer}, #{contents}, sysdate)
 	</insert>
 	
-	<!-- review comments setDelete 
+	<!-- review comments setDelete  -->
 	<delete id="setDelete" parameterType="CommentsDTO">
 		delete comments where num = #{num}
-	</delete> -->
+	</delete> 
 	
-	<!-- review comments setUpdate
+	<!-- review comments setUpdate -->
 	<update id="setUpdate" parameterType="CommentsDTO">
 		update comments set writer = #{writer}, contents = #{contents}, regdate = sysdate 
     	where num = #{num}  
-	</update>-->
+	</update>
 	
 
 </mapper>

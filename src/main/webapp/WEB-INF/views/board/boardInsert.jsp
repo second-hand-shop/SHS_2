@@ -207,7 +207,7 @@
 						name="contents"></textarea>
 					</li>
 					
-					<c:if test="${board ne 'notice'}">
+ 					<c:if test="${board ne 'notice'}">
 						<li class="li-padding">
 							<label for="password" style="font-size: 9pt;">PASSWORD</label> 
 							<input type="password" class="pw-input-size input-line"
@@ -216,7 +216,7 @@
 					</c:if>
 					
 					<c:if test="${board eq 'qna'}">
-						<li class="li-line li-padding">
+						<li class="li-padding">
 							<label for="pwSet" style="font-size: 9pt;">P/W SET</label>
 							<input type="radio" class="radio-margin" name="pwSet" value="공개글" checked="checked"/> 공개글
 							<input type="radio" name="pwSet" value="비밀글"/> 비밀글				

@@ -151,6 +151,9 @@
 				</c:catch>
 				${dto.title}</a></td>
 				
+				<!-- 댓글이 달리면 보여주려 했는데 값 가져오는 법 찾기 -->
+				<!-- <c:if test="${comments ne null}">&ensp;[1]</c:if> -->
+				
 				<td class="lines">${dto.writer}</td>
 				<td class="lines">${dto.regdate}</td>
 				<td class="lines">${dto.hit}</td>
