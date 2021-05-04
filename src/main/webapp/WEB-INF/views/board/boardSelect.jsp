@@ -8,6 +8,7 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>${board} Select</title>
 
+
 <style>
 
 	/* div에 border 및 cell-padding */
