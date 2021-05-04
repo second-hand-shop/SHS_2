@@ -21,6 +21,9 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	@Autowired
+	private CommentsService commentsService; 
+	
 	
 	// Review List
 	@GetMapping("reviewList")
@@ -87,11 +90,9 @@ public class ReviewController {
 	
 	// Review Select
 	@GetMapping("reviewSelect")
-	public ModelAndView getSelect(BoardDTO boardDTO) throws Exception {
+	public ModelAndView getSelect(BoardDTO boardDTO, CommentsDTO commentsDTO) throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
-		CommentsService commentsService = new CommentsService();
-		CommentsDTO commentsDTO = new CommentsDTO(); 
 		
 		boardDTO = reviewService.getSelect(boardDTO);
 		commentsDTO = commentsService.getSelect(commentsDTO);

@@ -137,7 +137,7 @@
 			<ul>					
 				<li class="lines li-border writer-font">
 					${comments.writer}				
-					<span style="font-size: 9pt; font-weight: 400;">${comments.regdate}</span>
+					<span style="font-size: 9pt; font-weight: 400;">${comments.regDate}</span>
 					<!-- float:right를 쓰면 쭉 밀려서 버튼이 깨짐,
 					 display를 block으로 바꾸고 text-align:center를 주면
 					 div처럼 공간잡혀서 한줄 밑으로 내려감
@@ -156,28 +156,30 @@
 	
 	
 		<!-- comments 입력폼 -->
-		<form id="form" action="comments/commentsInsert" method="post">
-			<div id="table-border" style="border: 1px solid #d3d3d3;">					
-					<ul>
-						<li><input type="hidden" name="reviewNum" value="${dto.num}"></li>
-								
-						<li style="margin-bottom: 1%; border-bottom: 1px solid black; width: 25%">
-							<label for="writer" style="font-size: 9pt;">WRITER</label> 
-							<input type="text" id="writer" name="writer" placeholder="ID" 
-							style="border:none; font-size: 9pt; margin-bottom: 2%; margin-left: 1%">
-						</li>
-						
-						<li>
-							<label for="contents"></label>
-							<textarea style="col:3;" id="contents"
-							name="contents"></textarea>
+		<c:if test="${count eq null}">
+			<form id="form" action="../comments/commentsInsert" method="post">
+				<div id="table-border" style="border: 1px solid #d3d3d3;">					
+						<ul>
+							<li><input type="hidden" name="reviewNum" value="${dto.num}"></li>
+									
+							<li style="margin-bottom: 1%; border-bottom: 1px solid black; width: 25%">
+								<label for="writer" style="font-size: 9pt;">WRITER</label> 
+								<input type="text" id="writer" name="writer" placeholder="ID" 
+								style="border:none; font-size: 9pt; margin-bottom: 2%; margin-left: 1%">
+							</li>
 							
-							<button type="submit" class="comment-write-button" id="write">OK!</button>
-						</li>
-	
-					</ul>					
-			</div>
-		</form>
+							<li>
+								<label for="contents"></label>
+								<textarea style="col:3;" id="contents"
+								name="contents"></textarea>
+								
+								<button type="submit" class="comment-write-button" id="write">OK!</button>
+							</li>
+		
+						</ul>					
+				</div>
+			</form>
+		</c:if>
 		
 	</c:if>
 	

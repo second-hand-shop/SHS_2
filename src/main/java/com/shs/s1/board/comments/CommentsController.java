@@ -38,20 +38,14 @@ public class CommentsController {
 	}
 		
 	@PostMapping("commentsInsert")
-	public String setInsert(CommentsDTO commentsDTO, Model model) throws Exception{
+	public ModelAndView setInsert(CommentsDTO commentsDTO) throws Exception{
 		
+		ModelAndView mv = new ModelAndView();
 		int result = commentsService.setInsert(commentsDTO);
 		
-//		String message="등록 실패";
-//		
-//		if(result>0) {
-//			message="등록 성공";
-//		}
-//
-//		model.addAttribute("message", message);
-//		model.addAttribute("path", "./reviewList");
+		mv.setViewName("redirect:../review/reviewList");
 		
-		return "redirect:../review/reviewSelect";
+		return mv;
 	}
 
 	
