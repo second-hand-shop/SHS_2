@@ -12,12 +12,24 @@ public class CommentsDAO {
 	private SqlSession sqlSession;
 	
 	private final String NAMESPACE="com.shs.s1.board.comments.CommentsDAO.";
-
+	
+	// Comments Select
 	public CommentsDTO getSelect(CommentsDTO commentsDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelect", commentsDTO);
 	}
 	
+	// Comments Insert
 	public int setInsert(CommentsDTO commentsDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setInsert", commentsDTO);
+	}
+	
+	// Comments Delete
+	public int setDelete(CommentsDTO commentsDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete", commentsDTO);
+	}
+	
+	// Comments Update
+	public int setUpdate(CommentsDTO commentsDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdate", commentsDTO);
 	}
 }

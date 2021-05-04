@@ -30,6 +30,7 @@ public class ReviewController {
 	public ModelAndView getList(BoardPager boardPager) throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
+		CommentsDTO commentsDTO = new CommentsDTO();
 		
 		System.out.println("curPage : "+boardPager.getCurPage());
 		
@@ -38,6 +39,8 @@ public class ReviewController {
 		mv.addObject("list", ar);
 		mv.addObject("board", "review");
 		mv.addObject("boardPager", boardPager);
+		
+		mv.addObject("comments", commentsDTO);
 		
 		System.out.println("Start : "+boardPager.getStartNum());
 		System.out.println("Last : "+boardPager.getLastNum());
@@ -95,8 +98,9 @@ public class ReviewController {
 		ModelAndView mv = new ModelAndView();
 		
 		boardDTO = reviewService.getSelect(boardDTO);
-		commentsDTO = commentsService.getSelect(commentsDTO);
 		
+		// Comments Select
+		commentsDTO = commentsService.getSelect(commentsDTO);
 		
 		mv.addObject("comments", commentsDTO);
 		mv.addObject("dto", boardDTO);

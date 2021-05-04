@@ -133,6 +133,7 @@
 	
 	<!-- comments 보여주기 -->
 	<c:if test="${board eq 'review'}">
+		<c:if test="${comments ne null}">
 		<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">					
 			<ul>					
 				<li class="lines li-border writer-font">
@@ -145,19 +146,19 @@
 					<span class="botton-div" style="margin-left: 65%;">
 					
 						<!-- 클릭 시 update 폼 생성 -->
-						<a href="#" class="comment-button-style">MODIFY</a>						
-						<a href="#" class="comment-button-style">DELETE</a>
+						<a href="#" class="comment-button-style">MODIFY</a>				
+						<a href="../comments/commentsResult?num=${comments.num}" class="comment-button-style">DELETE</a>
 					</span>
 				</li>
 				
 				<li class="lines" style="text-align:left;"> ${comments.contents} </li>						
 			</ul>					
 		</div>
-	
+		</c:if>
 	
 		<!-- comments 입력폼 -->
-		<c:if test="${count eq null}">
-			<form id="form" action="../comments/commentsInsert" method="post">
+		<c:if test="${comments eq null}">
+			<form id="form" action="../comments/commentsInsert?num=${dto.num}" method="post">
 				<div id="table-border" style="border: 1px solid #d3d3d3;">					
 						<ul>
 							<li><input type="hidden" name="reviewNum" value="${dto.num}"></li>
@@ -170,8 +171,8 @@
 							
 							<li>
 								<label for="contents"></label>
-								<textarea style="col:3;" id="contents"
-								name="contents"></textarea>
+								<textarea id="contents"
+								name="contents" cols="3"></textarea>
 								
 								<button type="submit" class="comment-write-button" id="write">OK!</button>
 							</li>
