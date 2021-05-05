@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.shs.s1.MyAbstractTest;
 import com.shs.s1.board.BoardDTO;
+import com.shs.s1.board.review.ReviewDTO;
 
 public class MemberDAOTest extends MyAbstractTest {
 
@@ -39,18 +40,15 @@ public class MemberDAOTest extends MyAbstractTest {
 	}
 	
 	
-	 * @Test public void memberIdFind() throws Exception { MemberDTO memberDTO = new
-	 * MemberDTO(); memberDTO.setName("name1"); memberDTO.setEmail("email1");
+	 * @Test 
+	 * public void memberIdFind() throws Exception { 
+	 * MemberDTO memberDTO = new MemberDTO(); 
+	 * memberDTO.setName("name1"); 
+	 * memberDTO.setEmail("email1");
 	 * memberDTO = memberDAO.memberIdFind(memberDTO);
 	 * 
-	 * assertNotNull(memberDTO); }
+	 * assertNotNull(memberDTO); 
+	 * }
 	 */
 	
-	@Test
-	public void getListTest() throws Exception{		
-		BoardDTO boardDTO = new BoardDTO();		
-		List<BoardDTO> ar = memberDAO.memberMyBoard(boardDTO);		
-		assertNotEquals(0, ar.size());	
-		System.out.println(ar.size());		
-	}
 }

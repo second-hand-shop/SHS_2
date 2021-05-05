@@ -8,10 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.title h2 {
-    font-family: Gob,malgun gothic,맑은고딕,NanumGothic,돋움;
-    font-size: 14px!important;   
-}
 .title {
     text-align: center;
     margin-top: 4%;
@@ -36,7 +32,6 @@
     width: 900px;
     margin: 0 auto;
     text-align: center;
-    font-size: 14px;
     line-height: 18px;
     margin-top: 30px;
 }
@@ -60,7 +55,7 @@
 				<div class="account">
 					<ul class="account_ul">
 						<li>
-							<a href="#">
+							<a href="${pageContext.request.contextPath}/member/memberMyOrder">
 							<img src="../resources/images/account_ico_order.jpg">
 							</a>
 						</li>
@@ -70,7 +65,7 @@
 					</ul>
 					<ul class="account_ul">
 						<li>
-							<a href="#">
+							<a href="${pageContext.request.contextPath}/member/memberMyCart">
 							<img src="../resources/images/account_ico_cart.jpg">
 							</a>
 						</li>
@@ -80,7 +75,7 @@
 					</ul>
 					<ul class="account_ul">
 						<li>
-							<a href="#">
+							<a href="${pageContext.request.contextPath}/member/memberMyCoupon">
 							<img src="../resources/images/account_ico_point.jpg">
 							</a>
 						</li>
@@ -93,15 +88,20 @@
 				<table id="line">
 					<tr>
 						<th class="lines" width="8%">
+						<p style="font-size:14px;">ORDER TACKING</p>
 						<a href="${pageContext.request.contextPath}/member/memberMyOrder">주문내역조회</a></th>
 						<th class="lines" width="8%">
+						<p style="font-size:14px;">PROFILE</p>
 						<a href="${pageContext.request.contextPath}/member/memberModify">내 정보수정</a></th>
 						<th class="lines" width="8%">
+						<p style="font-size:14px;">MY REVIEW</p>
 						<a href="${pageContext.request.contextPath}/member/memberMyWriting">내가 쓴 리뷰</a></th>
 						<th class="lines" width="8%">
+						<p style="font-size:14px;">MY QNA</p>
 						<a href="${pageContext.request.contextPath}/member/memberMyQna">나의 문의사항</a></th>
 						<th class="lines" width="8%">
-						<a href="#">쿠폰</a></th>
+						<p style="font-size:14px;">COUPON</p>
+						<a href="${pageContext.request.contextPath}/member/memberMyCoupon">쿠폰</a></th>
 					</tr>
 				</table> 
 			</div>

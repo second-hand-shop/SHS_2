@@ -12,7 +12,6 @@
 	margin-left: auto; 
 	margin-right: auto;
     width: 50%;
-    height: 80%;
     border: 1px solid #d3d3d3;
 }
 table td {
@@ -29,9 +28,6 @@ table td {
 	margin-top: 20px;
 	padding: 1%;
 }
-.c {
-	text-align: left;
-}
 .login_wrap ul {
     width: 200px;
     margin: auto;
@@ -43,11 +39,9 @@ table td {
 .idForm{
   border-bottom: 2px solid #adadad;
 }
-
 .passForm{
   border-bottom: 2px solid #adadad;
 }
-
 .id {
   border:none;
   outline:none;
@@ -90,7 +84,7 @@ table td {
 		<br>
 		<br>
 		<div id="login_wrap_div">
-			<table id="line">
+			<table id="line" class="a">
 				<tbody>
 					<tr>
 						<td>

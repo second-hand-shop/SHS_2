@@ -108,10 +108,6 @@
 			<th class="lines" width="8%">ORDER CONDITION</th>
 		</tr>
 		
-		<c:if test="${list eq null}">
-			<td colspan="5" class="lines"><p>주문하신 내역이 없습니다.</p></td>			
-		</c:if>
-		
 		<c:forEach items="${list}" var="dto">
 			<tr>
 				<td class="lines">${dto.oiNum}</td>	
@@ -122,6 +118,10 @@
 				<td class="lines">${dto.orderCondition}</td>
 			</tr>
 		</c:forEach>
+		
+		<c:if test="${list eq null}">
+			<td colspan="5" class="lines"><p>주문하신 내역이 없습니다.</p></td>			
+		</c:if>
 			
 	</table>
 		

@@ -83,7 +83,7 @@ table td {
 							<tr>		
 								<th scope="row">ID</th>
 								<td>
-								<input type="text" id="id" name="id" readonly="readonly">
+								<input type="text" id="id" name="id" aria-describedby="idHelp">
 								<h2 id="idResult"></h2>
 								</td>
 							</tr>
