@@ -104,21 +104,25 @@
 	
 	<table id="line">
 		<tr>
-			<th class="lines" width="4%">NO</td>
+			<th class="lines" width="4%">NO</th>
 			
 			<c:if test="${board eq 'qna'}">
-				<th class="lines" width="8%">PRODUCT</td>
+				<th class="lines" width="8%">PRODUCT</th>
 			</c:if>
 			
-			<th class="lines" width="60%">SUBJECT</td>
-			<th class="lines" width="8%">WRITER</td>
-			<th class="lines" width="8%">DATE</td>
-			<th class="lines" width="8%">HIT</td>
+			<th class="lines" width="60%">SUBJECT</th>
+			<th class="lines" width="8%">WRITER</th>
+			<th class="lines" width="8%">DATE</th>
+			<th class="lines" width="8%">HIT</th>
 		</tr>
+		
+		<c:if test="${dto eq null}">				
+			<td colspan="5" class="lines" ><p>등록된 게시글이 없습니다.</p></td>								
+		</c:if>
 		
 		<c:forEach items="${list}" var="dto">
 			<tr>
-				<td class="lines">${dto.num}</td>
+				<td>class="lines">${dto.num}</td>
 				
 				<c:if test="${board eq 'qna'}">
 					<td class="lines"><!-- product이미지 들어올자리 --></td>
@@ -138,10 +142,6 @@
 				<td class="lines">${dto.writer}</td>
 				<td class="lines">${dto.regdate}</td>
 				<td class="lines">${dto.hit}</td>
-				
-				<c:if test="${list eq null}">
-					<td colspan="5" class="lines"><p>등록된 게시글이 없습니다.</p></td>			
-				</c:if>
 	
 			</tr>
 		</c:forEach>
