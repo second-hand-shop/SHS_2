@@ -45,6 +45,12 @@ public class ProductService {
 	
 	
 	
+	public List<ProductDTO> getSelectList(ProductDTO productDTO)throws Exception{
+		return productDAO.getSelectList(productDTO);
+	}
+	
+	
+	
 	
 	public int setInsert(ProductDTO productDTO,MultipartFile[] files)throws Exception{
 		

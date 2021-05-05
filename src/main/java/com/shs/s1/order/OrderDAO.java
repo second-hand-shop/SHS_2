@@ -32,9 +32,14 @@ public int setAddrInsert(AddressInfoDTO addressInfoDTO)throws Exception{
 
 public AddressInfoDTO getAddrOne(AddressInfoDTO addressInfoDTO)throws Exception{
 	
-	
 	return sqlSession.selectOne(NAMESPACE+"getAddrOne", addressInfoDTO);
 }
+
+public List<AddressInfoDTO> getAddrList(AddressInfoDTO addressInfoDTO)throws Exception{
+	return sqlSession.selectList(NAMESPACE+"getAddrList", addressInfoDTO);
+}
+
+
 
 public List<CartDTO> getCartList(MemberDTO memberDTO)throws Exception{
 	return sqlSession.selectList(NAMESPACE+"getCartList",memberDTO);

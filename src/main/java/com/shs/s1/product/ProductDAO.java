@@ -29,6 +29,13 @@ public class ProductDAO {
 				
 	}
 	
+	public List<ProductDTO> getSelectList(ProductDTO productDTO) throws Exception {
+		
+		return sqlSession.selectList(NAMESPACE+"getSelectList",productDTO);
+	}
+	
+	
+	
 	
 	public Long getTotalCount()throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount");
