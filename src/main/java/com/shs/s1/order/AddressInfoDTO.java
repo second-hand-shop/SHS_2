@@ -2,14 +2,18 @@ package com.shs.s1.order;
 
 import java.util.List;
 
+import com.shs.s1.product.ProductDTO;
+
 
 
 public class AddressInfoDTO {
 	
+	private long addressNum;
 	private long orderNum;
 	private String id;
 	private long productNum;
 	private long price;
+	private long amount;
 	private String name;
 	private String zipCode;
 	private String addr;
@@ -17,11 +21,31 @@ public class AddressInfoDTO {
 	private String email;
 	private String addrMessage;
 	
+	private List<ProductDTO> products;
+	
 	
 	
 	
 	
 
+	public long getAmount() {
+		return amount;
+	}
+	public void setAmount(long amount) {
+		this.amount = amount;
+	}
+	public List<ProductDTO> getProducts() {
+		return products;
+	}
+	public void setProducts(List<ProductDTO> products) {
+		this.products = products;
+	}
+	public long getAddressNum() {
+		return addressNum;
+	}
+	public void setAddressNum(long addressNum) {
+		this.addressNum = addressNum;
+	}
 	public long getProductNum() {
 		return productNum;
 	}

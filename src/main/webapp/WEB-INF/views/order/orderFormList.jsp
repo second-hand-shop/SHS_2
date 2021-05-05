@@ -312,15 +312,7 @@ overflow-y:scroll;
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript">
 
-$(".productNum").each(function(){
-	
-	 alert($(this).val());
-	
-});
-
-</script>
 
 <script>
 	// 우편번호 찾기 찾기 화면을 넣을 element
@@ -423,8 +415,6 @@ IMP.init("imp92233315"); // "imp00000000" 대신 발급받은 "가맹점 식별�
 var productArr= [];
 //빈 배열 생성 --> 반복문 돌려서 list 안에 있는 값 복사 ,, ?
 $(".productNum").each(function(){
-	
-	 alert($(this).val());
 	 productArr.push($(this).val());
 	
 });
@@ -475,7 +465,7 @@ IMP.request_pay({
         }).done(function (data) {
           // 가맹점 서버 결제 API 성공시 로직
           // 밑의 결제완료 메세지 이후 출력
-        	alert("가맹정 서버 결제 api 성공시 로직");	
+        	alert("결제되었습니다.");	
           location.href="../payment/payInfoList?orderNum="+rsp.merchant_uid;
         });
     	

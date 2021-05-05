@@ -17,18 +17,18 @@
 		
 		
 		
-<h1>payInfo</h1>
 
 
+<div style="text-align: center;">
+<h1>payInfo</h1><br>
+<p>주문번호 : ${list.get(0).orderNum}</p>
+<span>${list.get(0).name}님의</span>
 <c:forEach items="${list}" var="dto">
-<p>상품번호 : ${dto.productNum}</p>
-<p>주문번호 : ${dto.orderNum}</p>
-<p>${dto.name}님의 상품 구매가 완료되었습니다.</p>
-
-
+<span> ${dto.products[0].productName}</span>
 </c:forEach>
-
-
+<span> 상품 구매가 완료되었습니다.</span>
+<a href="../"> 홈으로 </a>
+</div>
 
 		
 		
