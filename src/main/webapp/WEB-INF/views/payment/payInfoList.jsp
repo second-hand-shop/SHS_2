@@ -26,7 +26,7 @@
 <c:forEach items="${list}" var="dto">
 <span> ${dto.products[0].productName}</span>
 </c:forEach>
-<span> 상품 구매가 완료되었습니다.</span>
+<span> 상품 구매가 완료되었습니다.</span><br>
 <a href="../"> 홈으로 </a>
 </div>
 

@@ -97,5 +97,8 @@ public class ProductDAO {
 		
 	}
 	
+	public int setMinus(ProductDTO productDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setMinus", productDTO);
+	}
 		
 }

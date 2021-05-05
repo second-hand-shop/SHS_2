@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shs.s1.member.MemberDTO;
 import com.shs.s1.product.ProductDTO;
+import com.shs.s1.product.ProductService;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.AccessToken;
@@ -41,6 +42,9 @@ public class IamportController {
 	@Autowired	
 	private OrderService orderService;
 	
+	@Autowired
+	private ProductService productService;
+	
 	
 	// API key와 API Secret Key를 활용해 IamportClient 생성
 	IamportClient getTestClient()  {
@@ -53,8 +57,7 @@ public class IamportController {
 	
 	@PostMapping("payList")
 	public String getPayList(String merchant_uid,
-			String name,
-//			String productNum,
+			String name,		
 			Long[] productList,
 			Long amount,
 			Long count,
@@ -79,13 +82,14 @@ public class IamportController {
 		for(int i=0;i<productList.length;i++) {
 			
 		
-		
+			ProductDTO productDTO = new ProductDTO();
+			productDTO.setProductNum(productList[i]);
+			productDTO=productService.getSelect(productDTO);
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO = (MemberDTO)session.getAttribute("member");
 		AddressInfoDTO addressInfoDTO = new AddressInfoDTO();
 		addressInfoDTO.setOrderNum(Long.parseLong(merchant_uid));
 		addressInfoDTO.setId(memberDTO.getId());
-//		addressInfoDTO.setProductNum(Long.parseLong(productNum));
 		addressInfoDTO.setPrice(amount);
 		addressInfoDTO.setAmount(count);
 		addressInfoDTO.setName(buyer_name);
@@ -97,14 +101,14 @@ public class IamportController {
 		addressInfoDTO.setProductNum(productList[i]);
 		
 		int result = orderService.setAddrInsert(addressInfoDTO); // db에 주문정보 저장
-		result = orderService.setOrderInfoInert(addressInfoDTO);
-		
+		result = orderService.setOrderInfoInert(addressInfoDTO); // orderInfo 테이블에 저장
+		result=productService.setMinus(productDTO); //프로덕트 테이블 수량 감소
 		}
-		//상품 수량 -1 해줘야하고, 상품수량이 0일경우를 더 만들어줘야함
-		//배송메시지 널 가능?
-		//상품이름? 상품정보랑 결제가격을 테이블, 메퍼에 추가해야될듯
-		//orderInfo에도 들어가야 될듯 ,,, 고민해보자
+		//수량0일경우 결제 안되게 jsp javascript 처
+	
 		
+	
+		//cart 테이블 update 및 같은 상품 카트에 담으면 수량이 올라갈수 있도록
 		
 		model.addAttribute("merchant_uid",merchant_uid);
 		return "payment/pay";
@@ -133,8 +137,9 @@ public class IamportController {
 //		System.out.println("orderMessage: " + orderMessage);
 
 		
-		
-		
+		ProductDTO productDTO = new ProductDTO();
+		productDTO.setProductNum(Long.parseLong(productNum));
+		productDTO=productService.getSelect(productDTO);
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO = (MemberDTO)session.getAttribute("member");
 		AddressInfoDTO addressInfoDTO = new AddressInfoDTO();
@@ -153,10 +158,11 @@ public class IamportController {
 		
 		int result = orderService.setAddrInsert(addressInfoDTO); // db에 주문정보 저장
 		//상품 수량 -1 해줘야하고, 상품수량이 0일경우를 더 만들어줘야함
-		//배송메시지 널 가능?
-		//상품이름? 상품정보랑 결제가격을 테이블, 메퍼에 추가해야될듯
-		//orderInfo에도 들어가야 될듯 ,,, 고민해보자
-		result = orderService.setOrderInfoInert(addressInfoDTO);
+	
+		result = orderService.setOrderInfoInert(addressInfoDTO); //오더인포 테이블에 저장
+		
+		//product 테이블 insert
+		result=productService.setMinus(productDTO); //프로덕트 테이블 수량 감소
 		
 		
 		model.addAttribute("merchant_uid",merchant_uid);
