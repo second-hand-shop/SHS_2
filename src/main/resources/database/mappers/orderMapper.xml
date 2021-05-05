@@ -23,12 +23,18 @@
  
  <insert id="setAddrInsert" parameterType="AddressInfoDTO">
  
- 	insert into addressInfo values(#{orderNum},#{id},#{productNum},#{price},#{name},#{zipCode},#{addr},#{phone},#{email},#{addrMessage})
+ 	insert into addressInfo values(addr_seq.nextval,#{orderNum},#{id},#{productNum},#{price},#{name},#{zipCode},#{addr},#{phone},#{email},#{addrMessage})
  
  </insert>
  
  
- <select id="getAddrOne" resultType="AddressInfoDTO">
+ <select id="getAddrOne" parameterType="AddressInfoDTO" resultType="AddressInfoDTO">
+ 
+ select * from addressInfo where orderNum=#{orderNum}
+ 
+ </select>
+ 
+  <select id="getAddrList" parameterType="AddressInfoDTO" resultType="AddressInfoDTO">
  
  select * from addressInfo where orderNum=#{orderNum}
  

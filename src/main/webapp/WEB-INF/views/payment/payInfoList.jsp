@@ -4,6 +4,7 @@
 <head>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>SHS</title>
+				<title>OUT OF LINE 아웃오브라인</title>
 </head>
 <body>
 	<div id="wrap">
@@ -13,35 +14,29 @@
 		<!-- header END -->
 		<div id="container">
 			<div id="contents">
-			
-			<h1>cart list</h1>
-			
-			<c:if test="${not empty list}">
-			
-			<form action="./orderFormList" method="post">
-			
-			
-			<c:forEach items="${list}" var="dto">
-			
-			<label><input type="checkbox" name="productNum" value="${dto.productNum}">
-			<span>${dto.id}</span>
-			<span>${dto.productNum}</span>
-			<span>${dto.addDate}</span>
 		
-			</label>
-			<br>
-			
-			</c:forEach>
 		
-			
-			<button>선택상품 주문</button>
-			<button>전체상품 주문</button>
-			
-			</form>
-			
-			</c:if>
-			
-			
+		
+<h1>payInfo</h1>
+
+
+<c:forEach items="${list}" var="dto">
+<p>상품번호 : ${dto.productNum}</p>
+<p>주문번호 : ${dto.orderNum}</p>
+<p>${dto.name}님의 상품 구매가 완료되었습니다.</p>
+
+
+</c:forEach>
+
+
+
+		
+		
+		
+		
+		
+		
+		
 			</div>
 			<!-- footer -->
 			<c:import url="../template/footer.jsp"></c:import>
@@ -54,3 +49,4 @@
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
 </html>
+

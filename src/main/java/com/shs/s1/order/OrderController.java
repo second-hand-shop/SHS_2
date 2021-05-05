@@ -1,7 +1,9 @@
 package com.shs.s1.order;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,23 +60,40 @@ private ProductService productService;
 	
 	
 	@PostMapping("order/orderForm")
-	public void getSelectOrder(long productNum,ProductDTO productDTO,Model model)throws Exception{
+	public void getSelectOrder(ProductDTO productDTO,Model model)throws Exception{
 		
-		System.out.println(productNum);
-		productDTO.setProductNum(productNum);
-		System.out.println(productDTO);
-		System.out.println(productNum);
+		
+		//List<ProductDTO> ar = productService.getSelect(productDTO);
+		
 		productDTO = productService.getSelect(productDTO);
-		System.out.println(productDTO);
-		System.out.println(productNum);
+		
 		model.addAttribute("dto", productDTO);
-		//ar로 넘겨야 2개 이상 받을수 있음
+	
 		
 	}
+	@PostMapping("order/orderFormList")
+	public void getSelectOrderList(HttpServletRequest request,Model model)throws Exception{
+		
+		String[] arr= request.getParameterValues("productNum");
+		List<ProductDTO> ar = new ArrayList<ProductDTO>();
+		
+
+		for(int i=0;i<arr.length;i++) {
+			ProductDTO productDTO = new ProductDTO();
+			productDTO.setProductNum(Long.parseLong(arr[i]));
+			productDTO = productService.getSelect(productDTO);
+			ar.add(i, productDTO);
+		}
+
+		
+		
+		
 	
+		
+		model.addAttribute("list", ar);
 	
-	
-	
+		
+	}
 	
 	
 }

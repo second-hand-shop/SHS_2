@@ -41,6 +41,10 @@ public class OrderService {
 		return orderDAO.getAddrOne(addressInfoDTO);
 	}
 	
-	
+	public List<AddressInfoDTO> getAddrList(AddressInfoDTO addressInfoDTO)throws Exception{
+		
+		
+		return orderDAO.getAddrList(addressInfoDTO);
+	}
 	
 }

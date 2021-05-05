@@ -29,7 +29,17 @@ from
  
  </select>
  
-
+ 
+ <select id="getSelectList" parameterType="ProductDTO" resultMap="ProductSelectResult">
+ select P.*,PM.*
+ from product P left join productIMAGE PM
+ on P.productNum=PM.productNum
+ where P.productNum in #{productNum}
+ </select>
+ 
+ 
+ 
+ 
  
  
  <select id="getSelect" parameterType="ProductDTO" resultMap="ProductSelectResult">

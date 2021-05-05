@@ -6,6 +6,11 @@ import java.util.List;
 
 public class ProductDTO {
 
+	public ProductDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	private long productNum;
 	private String kinds;
 	private String contents;
