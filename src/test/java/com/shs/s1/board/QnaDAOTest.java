@@ -36,7 +36,7 @@ public class QnaDAOTest extends MyAbstractTest{
 	}
 	
 	//--------Delete
-	@Test
+	//@Test
 	public void setDeleteTest() throws Exception{
 		
 		QnaDTO qnaDTO = new QnaDTO();

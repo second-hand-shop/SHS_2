@@ -19,6 +19,7 @@
 		<typeAlias type="com.shs.s1.product.ProductImageDTO" alias="ProductImageDTO"/>
 		<typeAlias type="com.shs.s1.order.CartDTO" alias="CartDTO"/>
 		<typeAlias type="com.shs.s1.order.OrderInfoDTO" alias="OrderInfoDTO"/>
+		<typeAlias type="com.shs.s1.admin.addressInfo.AInfoDTO" alias="AInfoDTO"/>
 	</typeAliases>
 	
 </configuration>

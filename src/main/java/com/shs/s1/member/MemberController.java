@@ -2,6 +2,7 @@ package com.shs.s1.member;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.shs.s1.board.qna.QnaDTO;
 import com.shs.s1.board.review.ReviewDTO;
+import com.shs.s1.coupon.CouponDTO;
+import com.shs.s1.order.CartDTO;
 import com.shs.s1.order.OrderInfoDTO;
 
 @Controller
@@ -23,29 +26,40 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	
 	@GetMapping("memberPwFind")
 	public void memberPwFind() throws Exception {
 
 	}
 
+	//비밀번호 찾기
 	@PostMapping("memberPwFind")
-	public ModelAndView memberPwFind(MemberDTO memberDTO, ModelAndView mv) throws Exception {
+	public ModelAndView memberPwFind(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		memberDTO = memberService.memberPwFind(memberDTO);
-		System.out.println(memberDTO.getPw()); // pw값 확인
-	       
-            return mv;
 
-		/*
-		 * if(memberDTO != null) { 
-		 * String subject ="비밀번호 찾기"; 
-		 * String msg = memberDTO.getId()+" 님의 비밀번호는 "+memberDTO+"입니다!"; 
-		 * String email = memberDTO.getEmail();
-		 * 
-		 * MailUtil.sendMail(email, subject, msg);
-		 * 
-		 * mv.addObject("msg","메일 전송 성공"); mv.addObject("path", "./memberLogin");
-		 * mv.setViewName("common/commonResult"); }
-		 */
+		if (memberDTO != null) {
+			mv.addObject("msg", "회원님의 비밀번호는 " + memberDTO.getPw() + " 입니다");
+			mv.addObject("path", "./memberLogin");
+			mv.setViewName("common/commonResult");
+		} else {
+			mv.addObject("msg", "등록된 아이디가 없습니다");
+			mv.addObject("path", "./memberPwFind");
+			mv.setViewName("common/commonResult");
+		}
+		return mv;
+	    
+		/*String id = request.getParameter("id");
+		String e_mail = request.getParameter("email");
+		String pw = memberDTO.getPw();
+		
+		System.out.println(memberDTO.getPw()); // pw값 확인
+		System.out.println(id);
+		System.out.println(e_mail);
+				
+
+        return mv;*/
+
 	}
 
 	// 약관동의
@@ -181,8 +195,9 @@ public class MemberController {
 	public ModelAndView memberModify(MemberDTO memberDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
-		int result = memberService.memberModify(memberDTO);
-		if (result > 0) {
+		int result = memberService.memberModify(memberDTO);	
+		
+		if (result > 0 ) {
 			session.setAttribute("member", memberDTO);
 			mv.addObject("msg", "회원정보 수정 성공");
 			mv.addObject("path", "../");
@@ -269,6 +284,37 @@ public class MemberController {
 		} else {
 			mv.setViewName("member/memberLogin");
 		}
+		return mv;
+	}
+	
+	//카트
+	@GetMapping("memberMyCart")
+	public ModelAndView memberMyCart(HttpSession session, ModelAndView mv) throws Exception {
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		List<CartDTO> ar = memberService.memberMyCart(memberDTO);
+		mv.addObject("list", ar);
+		mv.setViewName("order/cartList");
+		
+		return mv;
+	}
+	
+	//쿠폰
+	@GetMapping("memberMyCoupon")
+	public ModelAndView memberMyCoupon(HttpSession session, ModelAndView mv) throws Exception {
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		List<CouponDTO> ar = memberService.memberMyCoupon(memberDTO);
+		
+		if(memberDTO != null) {
+			mv.addObject("list", ar);
+			mv.setViewName("member/memberMyCoupon");
+		} else {
+			mv.setViewName("member/memberLogin");
+		}
+				
 		return mv;
 	}
 }

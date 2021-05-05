@@ -44,4 +44,12 @@
 	<select id="memberMyOrder" parameterType="MemberDTO" resultType="OrderInfoDTO">
 		select * from orderInfo where id = #{id, jdbcType=VARCHAR}
 	</select>
+	
+	<select id="memberMyCart" parameterType="MemberDTO" resultType="CartDTO">
+		select * from cart where id = #{id, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="memberMyCoupon" parameterType="MemberDTO" resultType="CouponDTO">
+		select * from coupon where id = #{id, jdbcType=VARCHAR}
+	</select>
 </mapper>

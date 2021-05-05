@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.shs.s1.board.qna.QnaDTO;
 import com.shs.s1.board.review.ReviewDTO;
+import com.shs.s1.coupon.CouponDTO;
+import com.shs.s1.order.CartDTO;
 import com.shs.s1.order.OrderInfoDTO;
 
 @Repository
@@ -56,5 +58,13 @@ public class MemberDAO {
 	
 	public List<OrderInfoDTO> memberMyOrder(MemberDTO memberDTO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"memberMyOrder", memberDTO);
+	}
+	
+	public List<CartDTO> memberMyCart(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"memberMyCart", memberDTO);
+	}
+	
+	public List<CouponDTO> memberMyCoupon(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"memberMyCoupon", memberDTO);
 	}
 }

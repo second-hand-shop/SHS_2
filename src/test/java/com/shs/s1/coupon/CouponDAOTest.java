@@ -14,7 +14,7 @@ public class CouponDAOTest extends MyAbstractTest {
 	@Autowired
 	private CouponDAO couponDAO;
 	
-	@Test
+	//@Test
 	public void setInsertTest() throws Exception {
 		int result = 0;
 		for(int i=1;i<100;i++) {

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.shs.s1.board.qna.QnaDTO;
 import com.shs.s1.board.review.ReviewDTO;
+import com.shs.s1.coupon.CouponDTO;
+import com.shs.s1.order.CartDTO;
 import com.shs.s1.order.OrderInfoDTO;
 
 
@@ -42,6 +44,7 @@ public class MemberService {
 		return memberDAO.memberModify(memberDTO);
 	}
 	
+	
 	public int memberDelete(MemberDTO memberDTO, HttpSession session) throws Exception {
 		return memberDAO.memberDelete(memberDTO);
 	}
@@ -56,6 +59,14 @@ public class MemberService {
 	
 	public List<OrderInfoDTO> memberMyOrder(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberMyOrder(memberDTO);
+	}
+	
+	public List<CartDTO> memberMyCart(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberMyCart(memberDTO);
+	}
+	
+	public List<CouponDTO> memberMyCoupon(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberMyCoupon(memberDTO);
 	}
 	
 }
