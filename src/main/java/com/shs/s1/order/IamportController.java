@@ -57,6 +57,7 @@ public class IamportController {
 //			String productNum,
 			Long[] productList,
 			Long amount,
+			Long count,
 			String buyer_email,
 			String buyer_name,
 			String buyer_tel,
@@ -73,8 +74,7 @@ public class IamportController {
 //		System.out.println("price: " + amount);
 //		System.out.println("orderMessage: " + orderMessage);
 		
-		System.out.println(productList);
-		System.out.println(productList[0]);
+
 		
 		for(int i=0;i<productList.length;i++) {
 			
@@ -87,6 +87,7 @@ public class IamportController {
 		addressInfoDTO.setId(memberDTO.getId());
 //		addressInfoDTO.setProductNum(Long.parseLong(productNum));
 		addressInfoDTO.setPrice(amount);
+		addressInfoDTO.setAmount(count);
 		addressInfoDTO.setName(buyer_name);
 		addressInfoDTO.setZipCode(buyer_postcode);
 		addressInfoDTO.setAddr(buyer_addr);
@@ -96,12 +97,14 @@ public class IamportController {
 		addressInfoDTO.setProductNum(productList[i]);
 		
 		int result = orderService.setAddrInsert(addressInfoDTO); // db에 주문정보 저장
+		result = orderService.setOrderInfoInert(addressInfoDTO);
 		
 		}
 		//상품 수량 -1 해줘야하고, 상품수량이 0일경우를 더 만들어줘야함
 		//배송메시지 널 가능?
 		//상품이름? 상품정보랑 결제가격을 테이블, 메퍼에 추가해야될듯
 		//orderInfo에도 들어가야 될듯 ,,, 고민해보자
+		
 		
 		model.addAttribute("merchant_uid",merchant_uid);
 		return "payment/pay";
@@ -112,6 +115,7 @@ public class IamportController {
 			String name,
 			String productNum,
 			Long amount,
+			Long count,
             String buyer_email,
             String buyer_name,
             String buyer_tel,
@@ -138,6 +142,7 @@ public class IamportController {
 		addressInfoDTO.setId(memberDTO.getId());
 		addressInfoDTO.setProductNum(Long.parseLong(productNum));
 		addressInfoDTO.setPrice(amount);
+		addressInfoDTO.setAmount(count);
 		addressInfoDTO.setName(buyer_name);
 		addressInfoDTO.setZipCode(buyer_postcode);
 		addressInfoDTO.setAddr(buyer_addr);
@@ -151,6 +156,8 @@ public class IamportController {
 		//배송메시지 널 가능?
 		//상품이름? 상품정보랑 결제가격을 테이블, 메퍼에 추가해야될듯
 		//orderInfo에도 들어가야 될듯 ,,, 고민해보자
+		result = orderService.setOrderInfoInert(addressInfoDTO);
+		
 		
 		model.addAttribute("merchant_uid",merchant_uid);
 		return "payment/pay";
@@ -164,6 +171,7 @@ public class IamportController {
 		
 		
 		addressInfoDTO = orderService.getAddrOne(addressInfoDTO);
+		//
 		model.addAttribute("dto", addressInfoDTO);
 		
 		

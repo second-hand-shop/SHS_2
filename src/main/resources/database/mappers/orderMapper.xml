@@ -22,6 +22,12 @@
  
  
  
+ <insert id="setOrderInfoInsert" parameterType="AddressInfoDTO">
+ 	insert into orderInfo values(ORDERINFO_SEQ.nextval,#{id},#{productNum},#{orderNum},sysdate,'배송준비중','-')
+ </insert>
+ 
+ 
+ 
  
  <insert id="setAddrInsert" parameterType="AddressInfoDTO">
  
