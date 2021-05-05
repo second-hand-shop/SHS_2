@@ -134,6 +134,8 @@ public class ProductService {
 	}
 	
 	
-
+	public int setMinus(ProductDTO productDTO) throws Exception{
+		return productDAO.setMinus(productDTO);
+	}
 	
 }

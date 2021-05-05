@@ -5,8 +5,8 @@
     
  <mapper namespace="com.shs.s1.product.ProductDAO">
  
- 
- 
+
+
  
  <select id="getProductNum" resultType="java.lang.Long">
  select product_seq.nextval from dual
@@ -112,8 +112,11 @@ from
 </delete>
 
 
+<update id="setMinus" parameterType="ProductDTO">
 
+	update product set amount = #{amount}-1 where productNum=#{productNum}
 
+</update>
 
 
 
