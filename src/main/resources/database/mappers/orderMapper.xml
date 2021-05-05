@@ -15,7 +15,9 @@
  
  
 <select id="getCartList" parameterType="MemberDTO" resultType="CartDTO">
-	select * from cart where id=#{id}
+	select *
+	from cart
+	where id=#{id}
 </select>
  
  
@@ -23,22 +25,54 @@
  
  <insert id="setAddrInsert" parameterType="AddressInfoDTO">
  
- 	insert into addressInfo values(addr_seq.nextval,#{orderNum},#{id},#{productNum},#{price},#{name},#{zipCode},#{addr},#{phone},#{email},#{addrMessage})
+ 	insert into addressInfo values(addr_seq.nextval,#{orderNum},#{id},#{productNum},#{price},#{amount},#{name},#{zipCode},#{addr},#{phone},#{email},#{addrMessage})
  
  </insert>
  
  
- <select id="getAddrOne" parameterType="AddressInfoDTO" resultType="AddressInfoDTO">
+ <select id="getAddrOne" parameterType="AddressInfoDTO" resultMap="AddrProductResult">
  
- select * from addressInfo where orderNum=#{orderNum}
+ select *
+ from addressInfo AI left join product P
+ on AI.productNum=P.productNum
+ where orderNum=#{orderNum}
+ 
+ </select>
+ 
+  <select id="getAddrList" parameterType="AddressInfoDTO" resultMap="AddrProductResult">
+ 
+ select *
+ from addressInfo AI left join product P
+ on AI.productNum=P.productNum
+ where orderNum=#{orderNum}
  
  </select>
  
-  <select id="getAddrList" parameterType="AddressInfoDTO" resultType="AddressInfoDTO">
+
+
  
- select * from addressInfo where orderNum=#{orderNum}
+ <resultMap type="AddressInfoDTO" id="AddrProductResult">
+ 	<id property="addressNum" column="addressNum"></id>
+ 	<result property="orderNum" column="orderNum"></result>
+ 	<result property="productNum" column="productNum"></result>
+ 	<result property="price" column="price"></result>
+ 	<result property="name" column="name"></result>
+ 	<result property="zipCode" column="zipCode"></result>
+ 	<result property="addr" column="addr"></result>
+ 	<result property="phone" column="phone"></result>
+ 	<result property="email" column="email"></result>
+ 	<result property="addrMessage" column="addrMessage"></result>
  
- </select>
+ 		<collection property="products" javaType="java.util.List" ofType="ProductDTO">
+			 	<id property="productNum" column="productNum"></id>
+			 	<result property="kinds" column="kinds"></result>
+			 	<result property="contents" column="contents"></result>
+			 	<result property="price" column="price"></result>
+			 	<result property="productName" column="productName"></result>
+			 	<result property="amount" column="amount"></result>
+			 	
+			 	</collection>
+ </resultMap>
  
  
  </mapper>
