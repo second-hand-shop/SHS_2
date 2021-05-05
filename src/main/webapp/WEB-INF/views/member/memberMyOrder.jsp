@@ -95,8 +95,9 @@
 			<c:import url="../template/header.jsp"></c:import>
 		</div>
 		<!-- header END -->
+
 	
-		<p id="title_center">${board}</p>
+	<p id="title_center">${board}</p>
 	
 	<table id="line">
 		<tr>
@@ -108,6 +109,12 @@
 			<th class="lines" width="8%">ORDER CONDITION</th>
 		</tr>
 		
+		<c:if test="${dto eq null}">
+			<tr>
+				<td colspan="6" class="lines"><p>주문하신 내역이 없습니다.</p></td>		
+			</tr>	
+		 </c:if> 
+		
 		<c:forEach items="${list}" var="dto">
 			<tr>
 				<td class="lines">${dto.oiNum}</td>	
@@ -118,12 +125,8 @@
 				<td class="lines">${dto.orderCondition}</td>
 			</tr>
 		</c:forEach>
-		
-		<c:if test="${list eq null}">
-			<td colspan="5" class="lines"><p>주문하신 내역이 없습니다.</p></td>			
-		</c:if>
 			
-	</table>
+	</table> 
 		
 		<!-- footer -->
 			<c:import url="../template/footer.jsp"></c:import>

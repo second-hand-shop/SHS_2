@@ -32,14 +32,14 @@
 		
 	<table id="line">
 		<tr>
-			<th class="lines" width="4%">COUPON NUMBER</th>
+			<th class="lines" width="10%">COUPON NUMBER</th>
 			<th class="lines" width="8%">할인율</th>
 			<th class="lines" width="8%">금액</th>
 			<th class="lines" width="8%">사용여부</th>
 		</tr>
 		
-		<c:if test="${list eq null}">
-			<td colspan="5" class="lines"><p>보유하고 계신 쿠폰 내역이 없습니다</p></td>			
+		<c:if test="${dto eq null}">
+			<td colspan="4" class="lines"><p>보유하고 계신 쿠폰 내역이 없습니다</p></td>			
 		</c:if>
 		
 		<c:forEach items="${list}" var="dto">
