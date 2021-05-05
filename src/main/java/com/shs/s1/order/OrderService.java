@@ -47,4 +47,8 @@ public class OrderService {
 		return orderDAO.getAddrList(addressInfoDTO);
 	}
 	
+	public int setOrderInfoInert(AddressInfoDTO addressInfoDTO)throws Exception{
+		
+		return orderDAO.setOrderInfoInsert(addressInfoDTO);
+	}
 }

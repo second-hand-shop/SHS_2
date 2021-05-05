@@ -138,7 +138,7 @@ overflow-y:scroll;
 								</div></td>
 							<td class="productName">${dto.productName}</td>
 							<td class="productPrice"><strong>${dto.price}</strong></td>
-							<td>${dto.amount}</td>
+							<td id="productAmount">${dto.amount}</td>
 							<td>적립금</td>
 							<td>배송비</td>
 							<td>합계<input type="hidden" value="${dto.productNum}" class="productNum"></td>
@@ -438,7 +438,7 @@ IMP.request_pay({
 }, function(rsp) {
     if ( rsp.success ) {
     	
-    	alert("rsp success")
+    	
     	
     	
     	
@@ -459,7 +459,8 @@ IMP.request_pay({
                 buyer_postcode : rsp.buyer_postcode,
                 /* productNum : $("#productNum").val(), */
                 productList : productArr,
-                orderMessage : $("#orderMessage").text()
+                orderMessage : $("#orderMessage").text(),
+                count : $("#productAmount").text()
                 
             }
         }).done(function (data) {

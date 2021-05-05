@@ -135,17 +135,20 @@ overflow-y:scroll;
 								</div></td>
 							<td id="productName">${dto.productName}</td>
 							<td id="productPrice"><strong>${dto.price}</strong></td>
-							<td>${dto.amount}</td>
+							<td id="productAmount">${dto.amount}</td>
 							<td>적립금</td>
 							<td>배송비</td>
 							<td>합계</td>
+						</tr>
+						<tr>
+							<td colspan="7" style="text-align:right;">합계</td>
 						</tr>
 
 					</tbody>
 
 				</table>
 				<input type="hidden" value="${dto.productNum}" id="productNum">
-				<h2>${dto.productNum}</h2>
+				
 				<br>
 				<hr>
 				<br>
@@ -445,7 +448,8 @@ IMP.request_pay({
                 buyer_addr : rsp.buyer_addr,
                 buyer_postcode : rsp.buyer_postcode,
                 productNum : $("#productNum").val(),
-                orderMessage : $("#orderMessage").text()
+                orderMessage : $("#orderMessage").text(),
+                count : $("#productAmount").text()
             }
         }).done(function (data) {
           // 가맹점 서버 결제 API 성공시 로직

@@ -45,4 +45,8 @@ public List<CartDTO> getCartList(MemberDTO memberDTO)throws Exception{
 	return sqlSession.selectList(NAMESPACE+"getCartList",memberDTO);
 }
 
+public int setOrderInfoInsert(AddressInfoDTO addressInfoDTO)throws Exception{
+	return sqlSession.insert(NAMESPACE+"setOrderInfoInsert", addressInfoDTO);
+}
+
 }

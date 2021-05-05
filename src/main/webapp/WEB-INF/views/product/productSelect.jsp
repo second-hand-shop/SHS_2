@@ -69,19 +69,19 @@ justify-content: space-evenly;
 			
 			<br>
 			
-			<form action="../order/orderForm" method="post" style="display: inline;">
+			<form action="../order/orderForm" method="post" id="buyfrm" style="display: inline;">
 			<input type="hidden" name="productNum" value="${dto.productNum}">
-			<button>buy</button>
+			<!-- <button>buy</button> -->
+			<input type="button" value="buy" id="buyButton">
 			</form>
 			<!--  세션에도 저장해야 회원검사하고 빼올수 있을듯,,-->
 			
 			<!-- <a href="../order/orderForm" id="buy" class="btn btn-outline-dark">buy</a> -->
-			<a href="#" id="wish" class="button">wish</a>
 			<a href="#" id="cart" class="button">cart</a>
 			</div>
 			
 			
-			
+			<input type="hidden" value="${member.id}" id="mId">
 			
 			
 	
@@ -119,6 +119,23 @@ justify-content: space-evenly;
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
 <script type="text/javascript">
+
+
+
+
+ $("#buyButton").click(function(){
+	
+	var id = $('#mId').val();
+	
+	if(id.length>0){
+		$("#buyfrm").submit();
+	}else{
+		alert("비회원입니다.");
+	} 
+}); 
+
+
+
 
 	$("#del").click(function(){
 		
