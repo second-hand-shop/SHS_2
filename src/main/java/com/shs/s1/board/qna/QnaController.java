@@ -28,11 +28,18 @@ public class QnaController {
 			
 			ModelAndView mv = new ModelAndView();
 			List<BoardDTO> ar = qnaService.getList(boardPager);
+			long totalCount = qnaService.totalCount(boardPager);
+			BoardDTO boardDTO = new BoardDTO();
+			
 			
 			mv.addObject("list", ar);
 			mv.addObject("board", "qna");
-			mv.setViewName("board/boardList");
+			mv.addObject("dto", boardDTO);
+
 			mv.addObject("boardPager", boardPager);
+			mv.addObject("totalCount", totalCount);
+			
+			mv.setViewName("board/boardList");
 			
 			return mv;
 		}

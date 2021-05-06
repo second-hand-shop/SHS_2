@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.shs.s1.board.BoardDAO;
 import com.shs.s1.board.BoardDTO;
+import com.shs.s1.board.ReviewFileDTO;
 import com.shs.s1.util.BoardPager;
 
 @Repository
@@ -50,6 +51,26 @@ public class ReviewDAO implements BoardDAO{
 	@Override
 	public int setHitUpdate(BoardDTO boardDTO) throws Exception {
 		return sqlSession.update(NAMESPACE+"setHitUpdate", boardDTO);
+	}
+	
+	//file upload
+	
+	public int setFileInsert(ReviewFileDTO reviewFileDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileInsert", reviewFileDTO);
+	}
+	
+	public int setFileDelete(ReviewFileDTO reviewFileDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setFileDelete", reviewFileDTO);
+	}
+	
+	public ReviewFileDTO getFileSelect(ReviewFileDTO reviewFileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFileSelect", reviewFileDTO);
+	}
+	
+	
+	//getnum
+	public long getNum() throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getNum");
 	}
 	
 	

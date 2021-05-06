@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <c:import url="../template/bootStrap.jsp"></c:import>
-<title>${board} Insert2</title>
+<title>${board} Insert</title>
 
 <!-- summernote  -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -186,40 +186,51 @@
 			<div class="input-border">
 			
 				<ul>
-					<li><input type="hidden" name="num" value="${dto.num}"></li>
+				
+					<c:if test="${board eq 'review'}">
+						<li><input class="mycheck" type="text" name="num" value="${param.num}"></li>
+					</c:if>
+				
+					<c:if test="${board ne 'notice'}">
+						<li><input class="mycheck" type="hidden" name="productNum" value="${param.productNum}"></li>
+					</c:if>
 					
+					<!-- 글쓴이 입력 -->
 					<li style="margin-bottom: 1%;">
 						<label for="writer" style="font-size: 9pt;">WRITER</label> 
-						<input type="text" class="writer-input-size input-line"
+						<input type="text" class="writer-input-size input-line mycheck"
 						id="writer" name="writer">
 					</li>
 					
+					<!-- 제목 입력 -->
 					<li class="li-line">
 						<label for="title" style="font-size: 9pt; margin-top:1%;">TITLE</label> 
-						<input type="text" class="title-input-size input-line"
+						<input type="text" class="title-input-size input-line mycheck"
 						id="title" name="title">
 					</li>
 					
 					<!-- contents -->
 					<li style="margin-bottom: 1%;">
 						<label for="contents"></label>
-						<textarea id="contents"
+						<textarea class="mycheck" id="contents"
 						name="contents"></textarea>
 					</li>
 					
+					<!-- PW 입력 -->
  					<c:if test="${board ne 'notice'}">
 						<li class="li-padding">
 							<label for="password" style="font-size: 9pt;">PASSWORD</label> 
-							<input type="password" class="pw-input-size input-line"
-							id="password" name="password">
+							<input type="password" class="pw-input-size input-line mycheck"
+							id="boardPw" name="boardPw">
 						</li>
 					</c:if>
 					
+					<!-- 비밀글 / 공개글 설정 -->
 					<c:if test="${board eq 'qna'}">
 						<li class="li-padding">
 							<label for="pwSet" style="font-size: 9pt;">P/W SET</label>
-							<input type="radio" class="radio-margin" name="pwSet" value="공개글" checked="checked"/> 공개글
-							<input type="radio" name="pwSet" value="비밀글"/> 비밀글				
+							<input type="radio" class="radio-margin" name="pwSet" value="N" checked="checked"/> 공개글
+							<input type="radio" name="pwSet" value="Y"/> 비밀글				
 						</li>
 					</c:if>
 					
@@ -254,7 +265,8 @@
 <script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
-<script type="text/javascript" src="../resources/jquery/summerFile.js?var=1"></script>
+<script type="text/javascript" src="../resources/jquery/summerFile.js"></script>
+<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
 
 
 <script language="javascript">

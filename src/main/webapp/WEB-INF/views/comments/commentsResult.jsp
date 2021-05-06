@@ -13,12 +13,14 @@
 
 	/* box div 폼 line */
 	.box-line{
-		border: 0.8px solid #c4c4c4;
-		width: 60%;
+		border: 0.8px solid black;
+		width: 75%;
 		height: auto;
-		margin-left: 20%;
-		padding: 2%;
+		margin-top: 3%;
+		margin-left: 15%;
+		padding: 4%;
 		text-align: left;
+		font-size: 9pt;
 	}
 	
 	
@@ -37,16 +39,26 @@
 	<div class="box-line">
 		<ul>
 		
-			<li>[삭제]</li>
+			<li>[ 비밀번호 확인 ]</li>
 			<li>COMMENT PASSWORD</li>
-			<li>안전한 삭제를 위해 작성하신 비밀번호를 입력해주세요!</li>
+			<li>안전한 확인을 위해 작성하신 비밀번호를 입력해주세요!</li>
 			<br>
 			<li>
 				<label for="password" style="font-size: 9pt; border-bottom: 0.8px solid black">P/W</label> 
-				<input type="password" id="pw" name="pw" 
-				style="border:none; font-size: 9pt; margin-left:1%;">
+				<input type="password" id="boardPw" name="boardPw" 
+				style="border:none; font-size:9pt; margin-left:1%;">
 				
-				<a href="../comments/commentsDelete?num=${comments.num}" style="text-align: right;">OK</a>
+				<a href=""
+			 	style="text-align: right; font-weight: 800;" id="pwCheck">OK</a>
+			 	
+			 	<!-- 
+			 	
+			 	<c:if test="${param.name eq 'comments'}">../comments/commentsDelete?num=${param.num}</c:if>
+				<c:if test="${param.name eq 'qna'}">../qna/qnaDelete?num=${param.num}</c:if>
+				<c:if test="${param.name eq 'review'}">../review/reviewDelete?num=${param.num}</c:if>
+			 	
+			 	 -->
+			 	
 			</li>
 		
 		</ul>

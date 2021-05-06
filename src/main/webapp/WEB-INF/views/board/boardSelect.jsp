@@ -119,11 +119,11 @@
 		
 		<div class="botton-div">
 			<a href="./${board}List" class="button-style">목록</a>
-			<a href="./${board}Update?num=${dto.num}" class="button-style">수정</a>
-			<a href="./${board}Delete?num=${dto.num}" class="button-style">삭제</a>
+			<a href="./${board}Update?num=${dto.num}<c:if test="${board ne 'notice'}">&&productNum=${dto.productNum}</c:if>" class="button-style">수정</a>
+			<a href="../comments/commentsResult?num=${dto.num}&&name=${board}" class="button-style">삭제</a>
 			
 			<c:if test="${board eq 'qna'}">
-				<a href="./${board}Reply?num=${dto.num}&&productNum=${dto.productNum}" class="button-style">답글</a>
+				<a href="./${board}Reply?num=${dto.num}&&productNum=${param.productNum}" class="button-style">답글</a>
 			</c:if>
 
 		</div>
@@ -147,7 +147,7 @@
 					
 						<!-- 클릭 시 update 폼 생성 -->
 						<a href="#" class="comment-button-style">MODIFY</a>				
-						<a href="../comments/commentsResult?num=${comments.num}" class="comment-button-style">DELETE</a>
+						<a href="../comments/commentsResult?num=${comments.num}&&name=${name}" class="comment-button-style">DELETE</a>
 					</span>
 				</li>
 				

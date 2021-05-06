@@ -15,6 +15,12 @@ public class NoticeService implements BoardService{
 	@Autowired
 	private NoticeDAO noticeDAO; 
 	
+	public long totalCount(BoardPager boardPager) throws Exception{
+		long totalCount = noticeDAO.getTotalCount(boardPager);
+		
+		return totalCount;
+	}
+	
 	@Override
 	public List<BoardDTO> getList(BoardPager boardPager) throws Exception {
 		
@@ -29,6 +35,8 @@ public class NoticeService implements BoardService{
 		boardPager.makeNum(totalCount);
 		
 		System.out.println(totalCount);
+		System.out.println("Service Kind : "+boardPager.getKind());
+		System.out.println("Service Search : "+boardPager.getSearch());
 	
 		return noticeDAO.getList(boardPager);
 
@@ -46,7 +54,6 @@ public class NoticeService implements BoardService{
 		return noticeDAO.getSelect(boardDTO);
 	}
 
-	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		return noticeDAO.setUpdate(boardDTO);
 	}

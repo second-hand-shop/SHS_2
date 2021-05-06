@@ -13,6 +13,7 @@
 		<typeAlias type="com.shs.s1.board.review.ReviewDTO" alias="ReviewDTO"/>
 		<typeAlias type="com.shs.s1.board.comments.CommentsDTO" alias="CommentsDTO"/>
 		<typeAlias type="com.shs.s1.util.BoardPager" alias="BoardPager"/>
+		<typeAlias type="com.shs.s1.board.ReviewFileDTO" alias="ReviewFileDTO"/>
 	
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		

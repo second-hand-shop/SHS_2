@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-	alert('${msg}');
+	alert('${message}');
 	location.href="${path}";
 </script>
 
