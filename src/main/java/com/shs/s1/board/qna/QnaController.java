@@ -22,7 +22,7 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	
-	//list
+		//list
 		@GetMapping("qnaList")
 		public ModelAndView getList(BoardPager boardPager) throws Exception{
 			
@@ -165,10 +165,9 @@ public class QnaController {
 			
 			ModelAndView mv = new ModelAndView();
 			QnaDTO qnaDTO = new QnaDTO();
-			
+						
+			mv.addObject("board", "qna");			
 			mv.setViewName("board/boardReply");
-			mv.addObject("board", "qna");
-			mv.addObject("dto", qnaDTO);
 			
 			return mv;
 			
