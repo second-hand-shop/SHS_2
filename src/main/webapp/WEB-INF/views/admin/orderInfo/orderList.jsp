@@ -83,6 +83,9 @@
  <!-------------------------- navbar END ---------------------------------->
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 	<h2>주문 목록</h2>
+	<button class="btn btn-primary ready-shipping">배송준비중</button>
+	<button class="btn btn-primary shipping">배송중</button>
+	<button class="btn btn-primary shipped">배송완료</button>
 	<div class="table-responsive">
 		<table class="table table-striped table-sm">
 			<thead>
@@ -91,7 +94,7 @@
 					<th>주문일자</th>
 					<th>주문처리상태</th>
 					<th>주문자 ID</th>
-					<th>+ / -</th>
+					<th><input type="checkbox" name="allCheck" class="allCheck"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -101,7 +104,7 @@
 							<td>${DTO.orderDate }</td>
 							<td>${DTO.orderProcess }</td>
 							<td>${DTO.id }</td>
-							<td><input type="checkbox" name="deleteCheck" class="check"></td>
+							<td><input type="checkbox" name="deleteCheck" class="check" title="${DTO.oiNum }"></td>
 						</tr>
 				</c:forEach>
 			</tbody>

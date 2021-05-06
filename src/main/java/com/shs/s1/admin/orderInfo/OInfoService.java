@@ -26,4 +26,9 @@ public class OInfoService {
 	public List<OInfoDTO> getSelect(OInfoDTO oInfoDTO) throws Exception {
 		return oInfoDAO.getSelect(oInfoDTO);
 	}
+
+//	setShippingUpdate============================================================
+	public int setShippingUpdate(OInfoDTO oInfoDTO) throws Exception {
+		return oInfoDAO.setShippingUpdate(oInfoDTO);
+	}
 }

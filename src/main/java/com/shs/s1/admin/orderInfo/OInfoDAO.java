@@ -31,5 +31,10 @@ public class OInfoDAO {
 		return sqlSession.selectList(NAMESPACE+"getSelect", oInfoDTO);
 	}
 	
+//	setShippingUpdate============================================================
+	public int setShippingUpdate(OInfoDTO oInfoDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"setShippingUpdate", oInfoDTO);
+	}
+	
 
 }

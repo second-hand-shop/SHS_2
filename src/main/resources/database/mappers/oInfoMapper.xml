@@ -47,5 +47,9 @@
  		on O.orderNum=A.orderNum
  		where O.orderNum=#{orderNum}
  	</select>
+ 	
+ 	<update id="setShippingUpdate" parameterType="OInfoDTO">
+ 		update ORDERINFO set orderProcess=#{orderProcess} where oiNum=#{oiNum}
+ 	</update>
  
  </mapper>
