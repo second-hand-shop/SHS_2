@@ -49,7 +49,7 @@
 	.botton-div{
 		margin-top: 5%;
 		margin-bottom: 1%;
-		margin-left: 0.8%;
+		margin-left: 5%;
 	}
 	
 	/* button css */
@@ -148,7 +148,10 @@
 					<span class="botton-div" style="margin-left: 65%;">
 					
 						<!-- 클릭 시 update 폼 생성 -->
-						<a href="#" class="comment-button-style">MODIFY</a>				
+						<!-- update 현재 안됨 -->
+						<!-- >
+						<a href="#" class="comment-button-style">MODIFY</a>
+						 -->
 						<a href="../comments/commentsResult?num=${comments.num}&&name=${name}" class="comment-button-style">DELETE</a>
 					</span>
 				</li>
