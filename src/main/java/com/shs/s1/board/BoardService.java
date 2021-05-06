@@ -12,9 +12,6 @@ public interface BoardService {
 	//Board Select
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception;
 	
-	//Board Update
-	public int setUpdate(BoardDTO boardDTO) throws Exception;
-	
 	//Board Delete
 	public int setDelect(BoardDTO boardDTO) throws Exception;
 	

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shs.s1.board.review.ReviewDTO;
+
 
 @Controller
 @RequestMapping("/comments/**")
@@ -24,6 +26,7 @@ public class CommentsController {
 		CommentsDTO commentsDTO = new CommentsDTO();
 		
 		mv.addObject("dto", commentsDTO);
+		mv.addObject("name", "comments");
 		mv.setViewName("board/boardSelect");
 
 		return mv;
@@ -68,12 +71,16 @@ public class CommentsController {
 		
 		ModelAndView mv = new ModelAndView();
 		
+		ReviewDTO reviewDTO = new ReviewDTO();
+		
+		mv.addObject("review", reviewDTO);
 		mv.addObject("comments", commentsDTO);
 		mv.setViewName("comments/commentsResult");
 		
 		return mv;
 		
 	}
+
 
 	
 	

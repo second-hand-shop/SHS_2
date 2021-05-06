@@ -4,22 +4,13 @@ import com.shs.s1.board.BoardDTO;
 
 public class QnaDTO extends BoardDTO {
 	
-	private long productNum;
 	private long ref;
 	private long step;
 	private long depth;
 	
 	
 	//get set
-	
-	public long getProductNum() {
-		return productNum;
-	}
-	
-	public void setProductNum(long productNum) {
-		this.productNum = productNum;
-	}
-	
+
 	public long getRef() {
 		return ref;
 	}
@@ -43,6 +34,8 @@ public class QnaDTO extends BoardDTO {
 	public void setDepth(long depth) {
 		this.depth = depth;
 	}
+	
+
 	
 	
 

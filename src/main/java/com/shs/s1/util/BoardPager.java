@@ -201,13 +201,13 @@ public class BoardPager {
 
 	public void setNext(boolean next) {
 		this.next = next;
-	}
-		
+	}	
 	
 	
+
 	// ----- 검색 -----
-	private String kind; //검색할 컬럼명
-	private String search;//검색어
+	private String kind;   //검색할 컬럼명
+	private String search; //검색어
 	
 	
 	public String getKind() {
@@ -221,6 +221,7 @@ public class BoardPager {
 			//검색 값이 없으면 아무것도 검색 x
 			this.search="";
 		}
+		
 		return search;
 	}
 	public void setSearch(String search) {
@@ -228,6 +229,7 @@ public class BoardPager {
 			//검색 값이 없으면 아무것도 검색 x
 			search="";
 		}
+		
 		this.search = search;
 	}
 }

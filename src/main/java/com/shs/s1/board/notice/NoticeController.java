@@ -26,18 +26,22 @@ public class NoticeController {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		//현재 페이지 확인
-		//System.out.println("curPage : "+boardPager.getCurPage());
-		
 		List<BoardDTO> ar = noticeService.getList(boardPager);
+		long totalCount = noticeService.totalCount(boardPager);
+		BoardDTO boardDTO = new BoardDTO();
+		
+		System.out.println("ar : "+ar.size());
+		System.out.println("totalCount : "+totalCount);
 		
 		mv.addObject("list", ar);
 		mv.addObject("board", "notice");
+		mv.addObject("dto", boardDTO);
 		mv.addObject("boardPager", boardPager);
+		mv.addObject("totalCount", totalCount);
+
 		
-		// 시작, 끝 pageing 번호 확인 
-		//System.out.println("Start : "+boardPager.getStartNum());
-		//System.out.println("Last : "+boardPager.getLastNum());
+		System.out.println("Controller Kind : "+boardPager.getKind());
+		System.out.println("Controller Search : "+boardPager.getSearch());
 		
 		mv.setViewName("board/boardList");
 		

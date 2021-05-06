@@ -12,10 +12,10 @@
 		select count(num) from qna
 		where 
 		<choose>
-			<when test="kind == 'Writer'">
+			<when test="kind == '글쓴이'">
 				writer
 			</when>
-			<when test="kind == 'Contents'">
+			<when test="kind == '내용'">
 				contents
 			</when>
 			
@@ -35,11 +35,11 @@
 				(select * from qna where
 				
 				<choose>
-						<when test="kind=='Title'">
+						<when test="kind=='글쓴이'">
 							title
 						</when>
 						
-						<when test="kind =='Writer'">
+						<when test="kind =='내용'">
 							writer
 						</when>
 						
@@ -63,7 +63,7 @@
 			select qna_seq.nextval from dual
 		</selectKey>
 																								<!-- 위에서 미리 조회해서 값 넣기 -->
-		insert into qna values(#{num}, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{num}, 0, 0)
+		insert into qna values(#{num}, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{num}, 0, 0, #{boardPw}, #{pwSet})
 	</insert>
 	
 	
@@ -75,7 +75,8 @@
     
     <!-- Qna Update -->
     <update id="setUpdate" parameterType="BoardDTO">
-    	update qna set title = #{title}, writer = #{writer}, contents = #{contents}, hit = 0, regdate = sysdate 
+    	update qna set productNum = #{productNum}, title = #{title}, writer = #{writer}, contents = #{contents}, 
+    	hit = 0, regdate = sysdate, boardPw = #{boardPw}, pwSet = #{pwSet}
     	where num = #{num}
     </update>
     
@@ -94,7 +95,7 @@
     
    	<!-- reply -->
 	<insert id="setReply" parameterType="QnaDTO">
-		insert into qna values(qna_seq.nextval, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth})
+		insert into qna values(qna_seq.nextval, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth}, #{boardPw})
 	</insert>
     
     

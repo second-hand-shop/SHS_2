@@ -188,6 +188,10 @@
 				<ul>
 					<li><input type="hidden" name="num" value="${param.num}"></li>
 					
+					<c:if test="${board ne 'notice'}">
+						<li><input type="hidden" name="productNum" value="${param.productNum}"></li>
+					</c:if>
+					
 					<li style="margin-bottom: 1%;">
 						<label for="writer" style="font-size: 9pt;">WRITER</label> 
 						<input type="text" class="writer-input-size input-line"
@@ -211,7 +215,7 @@
 						<li class="li-padding">
 							<label for="password" style="font-size: 9pt;">PASSWORD</label> 
 							<input type="password" class="pw-input-size input-line"
-							id="password" name="password">
+							id="boardPw" name="boardPw">
 						</li>
 					</c:if>
 					
