@@ -75,4 +75,7 @@ public class ReviewDAO implements BoardDAO{
 	
 	
 	
+	/*public List<ReviewDTO> memberMyBoard(ReviewDTO reviewDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"memberMyBoard", reviewDTO);
+	}*/
 }

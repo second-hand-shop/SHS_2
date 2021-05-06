@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
 <mapper namespace="com.shs.s1.member.MemberDAO">
 
 	<insert id="memberJoin" parameterType="MemberDTO">
@@ -12,25 +12,48 @@
 	<select id="memberIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
 		select id from member where id=#{id}
 	</select>
-	
+
 	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
-	
+
 	<select id="memberIdFind" parameterType="MemberDTO" resultType="MemberDTO">
 		select id from member where name=#{name} and email=#{email}
 	</select>
-	
+
 	<select id="memberPwFind" parameterType="MemberDTO" resultType="MemberDTO">
-		select pw from member where id=#{id} and email=#{email}
+		select pw from member where id=#{id} and name=#{name}
 	</select>
 	
+	<update id="memberPwUpdate" parameterType="MemberDTO">
+		update member set pw=#{pw} where id=#{id}
+	</update>
+
 	<update id="memberModify" parameterType="MemberDTO">
 		update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone} where id=#{id}
 	</update>
-	
+
 	<delete id="memberDelete" parameterType="MemberDTO">
 		delete member where id=#{id}
 	</delete>
 	
+	 <select id="memberMyWriting" parameterType="MemberDTO" resultType="ReviewDTO">
+ 	 	select * from review where writer = #{id, jdbcType=VARCHAR}
+ 	</select>
+	
+	<select id="memberMyQna" parameterType="MemberDTO" resultType="QnaDTO">
+		select * from qna where writer = #{id, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="memberMyOrder" parameterType="MemberDTO" resultType="OrderInfoDTO">
+		select * from orderInfo where id = #{id, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="memberMyCart" parameterType="MemberDTO" resultType="CartDTO">
+		select * from cart where id = #{id, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="memberMyCoupon" parameterType="MemberDTO" resultType="CouponDTO">
+		select * from coupon where id = #{id, jdbcType=VARCHAR}
+	</select>
 </mapper>

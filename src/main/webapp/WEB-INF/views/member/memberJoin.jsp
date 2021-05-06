@@ -5,6 +5,64 @@
 <head>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>SHS</title>
+<style type="text/css">
+/* 타이틀 */
+.title h2 {
+    font-family: Gob,malgun gothic,맑은고딕,NanumGothic,돋움;
+    font-size: 14px!important; 
+    font-weight: bold;  
+}
+.title {
+    text-align: center;
+    margin-top: 4%;
+}
+input {
+	height: 30%;
+	width: 15%;
+}
+#table {
+	margin-left: auto; 
+	margin-right: auto;
+    width: 90%;
+    border: 1px solid #ccc;
+    border-spacing: 0;
+    border-collapse: collapse;
+} 
+table tr th {
+	border: 1px solid #ccc;
+	padding: 10px 8px 10px 20px;
+	margin: auto;
+	font-size: small;
+}
+table th {
+	width: 10%;
+	valign: middle;
+	font-size: small;
+}
+table td {
+	line-height: 2;
+	height: 10%;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin: auto;	
+}
+/* 버튼 */
+.btn {
+	display: inline-block;
+    width: 100px;
+    font-family: NanumGothic;
+    font-size: 10px;
+    border: 1px solid #000;
+    color: #000;
+    text-align: center;
+}
+.button{
+   margin:0 auto;
+   width:300px;
+   display: flex;
+   flex-flow: row;
+}
+</style>
 </head>
 <body>
 	<div id="wrap">
@@ -14,37 +72,58 @@
 		<!-- header END -->
 		<div id="container">
 			<div id="contents">
-				<h2>REGISTER</h2>
-				<form id="joinform" action="./memberJoin" method="post"
-					enctype="multipart/form-data">
-					<div class="form-group">
-						<label for="id">ID</label> <input type="text" class="form-control"
-							id="id" name="id" aria-describedby="idHelp">
-						<h2 id="idResult"></h2>
+				<div class="title">
+				<h2>JOIN</h2>
+				</div>	
+				<br>
+				<form id="joinform" action="./memberJoin" method="post" enctype="multipart/form-data">
+					<div class="write">
+					<table id="table" style="margin-bottom: 40px">
+						<tbody>
+							<tr>		
+								<th scope="row">ID</th>
+								<td>
+								<input type="text" id="id" name="id" aria-describedby="idHelp">
+								<h2 id="idResult"></h2>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">PW</th>
+								<td>
+								<input type="password" id="pw" name="pw">
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">PW CHECK</th>
+								<td>
+								<input type="password" id="pw2" name="pw2">
+								<h2 id="pwResult"></h2>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">NAME</th>
+								<td>
+								<input type="text" id="name" name="name">
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">PHONE</th>
+								<td>
+								<input type="text" id="phone" name="phone">
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">E-MAIL</th>
+								<td>
+								<input type="text"  id="email" name="email">
+								</td>
+							</tr>
+						</tbody>					
+					</table>
+				</div>
+					<div class="button">	
+						<input type="submit" id="btn" value="SUBMIT" class="btn">
 					</div>
-					<div class="form-group">
-						<label for="pw">PW</label> <input type="password"
-							class="form-control" id="pw" name="pw">
-						<h2 id="pwResult"></h2>
-					</div>
-					<div class="form-group">
-						<label for="pw">PW CHECK</label> <input type="password"
-							class="form-control" id="pw2">
-					</div>
-					<div class="form-group">
-						<label for="name">NAME</label> <input type="text"
-							class="form-control etc" id="name" name="name">
-					</div>
-					<div class="form-group">
-						<label for="phone">MOBILE</label> <input type="text"
-							class="form-control etc" id="phone" name="phone">
-					</div>
-					<div class="form-group">
-						<label for="email">E-MAIL</label> <input type="text"
-							class="form-control etc" id="email" name="email">
-					</div>
-
-					<input type="submit" id="btn" value="JOIN" class="btn btn-primary">
 				</form>
 			</div>
 			<!-- footer -->

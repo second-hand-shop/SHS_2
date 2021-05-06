@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -7,6 +7,39 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.title {
+    text-align: center;
+    margin-top: 4%;
+}
+#line{
+		margin-left: auto; 
+		margin-right: auto;
+		margin-top: 4%;
+		width: 60%;
+		height:80%;
+		border: 1px solid #d3d3d3;
+	}
+.lines{
+		border: 1px solid #d3d3d3;	
+		padding: 3%;
+		height:60%;
+		text-align: center;
+}	
+.account {
+    color: #000;
+    padding: 0;
+    width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 18px;
+    margin-top: 30px;
+}
+.account_ul {
+	display:inline-block;
+	width:200px;
+}	
+</style>
 </head>
 <body>
 	<div id="wrap">
@@ -14,23 +47,66 @@
 			<c:import url="../template/header.jsp"></c:import>
 		</div>
 
-	<div class="w3-content w3-container w3-margin-top">
-		<div class="w3-container w3-card-4" style="text-align:center">		
-			<h2> MY ACCOUNT </h2>
+		<div class="w3-content w3-container w3-margin-top">
+			<div class="w3-container w3-card-4" style="text-align: center">
+				<div class="title">
+					<h2>MY ACCOUNT</h2>
+				</div>
+				<div class="account">
+					<ul class="account_ul">
+						<li>
+							<a href="${pageContext.request.contextPath}/member/memberMyOrder">
+							<img src="../resources/images/account_ico_order.jpg">
+							</a>
+						</li>
+						<li>
+							<p class="title">ORDER</p>
+						</li>
+					</ul>
+					<ul class="account_ul">
+						<li>
+							<a href="${pageContext.request.contextPath}/member/memberMyCart">
+							<img src="../resources/images/account_ico_cart.jpg">
+							</a>
+						</li>
+						<li>
+							<p class="title">CART</p>
+						</li>
+					</ul>
+					<ul class="account_ul">
+						<li>
+							<a href="${pageContext.request.contextPath}/member/memberMyCoupon">
+							<img src="../resources/images/account_ico_point.jpg">
+							</a>
+						</li>
+						<li>
+							<p class="title">COUPON</p>
+						</li>
+					</ul>
+				</div>
 			
-			<a href="#">ORDER</a>
-			<a href="#">CART</a>
-			<a href="#">POINT</a>
-			
-			<p>
-				<a href="#">주문내역조회</a>
-				<a href="${pageContext.request.contextPath}/member/memberModify">내 정보수정</a>	
-				<a href="#">관심상품</a>
-				<a href="#">내가쓴글</a>	
-				<a href="#">적립금</a>
-			</p>
+				<table id="line">
+					<tr>
+						<th class="lines" width="8%">
+						<p style="font-size:14px;">ORDER TACKING</p>
+						<a href="${pageContext.request.contextPath}/member/memberMyOrder">주문내역조회</a></th>
+						<th class="lines" width="8%">
+						<p style="font-size:14px;">PROFILE</p>
+						<a href="${pageContext.request.contextPath}/member/memberModify">내 정보수정</a></th>
+						<th class="lines" width="8%">
+						<p style="font-size:14px;">MY REVIEW</p>
+						<a href="${pageContext.request.contextPath}/member/memberMyWriting">내가 쓴 리뷰</a></th>
+						<th class="lines" width="8%">
+						<p style="font-size:14px;">MY QNA</p>
+						<a href="${pageContext.request.contextPath}/member/memberMyQna">나의 문의사항</a></th>
+						<th class="lines" width="8%">
+						<p style="font-size:14px;">COUPON</p>
+						<a href="${pageContext.request.contextPath}/member/memberMyCoupon">쿠폰</a></th>
+					</tr>
+				</table> 
+			</div>
 		</div>
-	</div>	
+		
 		<!-- footer -->
 		<c:import url="../template/footer.jsp"></c:import>
 	</div>
