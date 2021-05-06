@@ -43,7 +43,7 @@
 
 						<c:forEach items="${list}" var="dto" varStatus="status">
 						<tr>
-							<td style="width:70px;"><input type="checkbox" name="productNum" value="${dto.productNum}" ></td>
+							<td style="width:70px;"><input type="checkbox" name="productNum" value="${dto.productNum}"></td>
 							<td><div>
 									<img id="productImg"
 										src="../resources/upload/images/${dto.productImages[0].thumbnail}" style="width:70px; height:auto;">
@@ -119,6 +119,8 @@
 
 
 
+
 </script>
+<script type="text/javascript" src="../resources/jquery/cart/cartList.js"></script>
 
 </html>
