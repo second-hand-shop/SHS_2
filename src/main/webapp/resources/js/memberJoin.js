@@ -12,7 +12,7 @@ emptyCheck();
 			alert("회원가입 성공");
 			$("#joinform").submit();
 		} else {
-			alert("회원가입 실패");
+			alert("입력 항목을 확인해주세요!");
 		}			
 });
 	
