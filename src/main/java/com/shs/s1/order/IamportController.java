@@ -99,6 +99,7 @@ public class IamportController {
 		addressInfoDTO.setEmail(buyer_email);
 		addressInfoDTO.setAddrMessage(orderMessage);
 		addressInfoDTO.setProductNum(productList[i]);
+		addressInfoDTO.setProductName(productDTO.getProductName());
 		
 		int result = orderService.setAddrInsert(addressInfoDTO); // db에 주문정보 저장
 		result = orderService.setOrderInfoInert(addressInfoDTO); // orderInfo 테이블에 저장
@@ -154,7 +155,7 @@ public class IamportController {
 		addressInfoDTO.setPhone(buyer_tel);
 		addressInfoDTO.setEmail(buyer_email);
 		addressInfoDTO.setAddrMessage(orderMessage);
-		
+		addressInfoDTO.setProductName(productDTO.getProductName());
 		
 		int result = orderService.setAddrInsert(addressInfoDTO); // db에 주문정보 저장
 		//상품 수량 -1 해줘야하고, 상품수량이 0일경우를 더 만들어줘야함

@@ -71,6 +71,7 @@ justify-content: space-evenly;
 			
 			<form action="../order/orderForm" method="post" id="buyfrm" style="display: inline;">
 			<input type="hidden" name="productNum" value="${dto.productNum}">
+			수량<input type="number" value="1" min="1" max="${dto.amount}" name="productAmount" id="productAmount">
 			<!-- <button>buy</button> -->
 			<input type="button" value="buy" id="buyButton">
 			</form>
@@ -164,11 +165,13 @@ justify-content: space-evenly;
 					
 			{
 				productNum : proudctNum,
+				productAmount : $("#productAmount").val()
 			},
 			function(data){
 				
 				if(data>0){
 					alert("상품을 장바구니에 담았습니다.");
+					
 				}else{
 					alert("장바구니 담기 실패");
 				}

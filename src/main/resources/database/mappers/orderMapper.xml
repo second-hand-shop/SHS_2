@@ -10,15 +10,48 @@
  
 
 <insert id="setCartInsert" parameterType="CartDTO">
-	insert into Cart (cartNum,productNum,id,cartStock) values(cart_seq.nextval,#{productNum},#{id},1)
+	insert into Cart (cartNum,productNum,id,cartStock) values(cart_seq.nextval,#{productNum},#{id},#{cartStock})
 </insert>
  
  
-<select id="getCartList" parameterType="MemberDTO" resultType="CartDTO">
-	select *
-	from cart
-	where id=#{id}
+<select id="getCartList" parameterType="MemberDTO" resultMap="CartResult">
+select *
+ from cart C left join product P 
+ on C.productNum= P.productNum
+ left join productImage PM
+ on P.productNum= PM.productNum
+ where C.id=#{id}
 </select>
+
+ 
+ 
+  <resultMap type="CartDTO" id="CartResult">
+ 	<id property="cartNum" column="cartNum"></id>
+ 	<result property="productNum" column="productNum"></result>
+ 	<result property="id" column="id"></result>
+ 	<result property="cartStock" column="cartStock"></result>
+ 	<result property="addDate" column="addDate"></result>
+ 
+ 			<collection property="products" javaType="java.util.List" ofType="ProductDTO">
+			 	<id property="productNum" column="productNum"></id>
+			 	<result property="kinds" column="kinds"></result>
+			 	<result property="contents" column="contents"></result>
+			 	<result property="price" column="price"></result>
+			 	<result property="productName" column="productName"></result>
+			 	<result property="amount" column="amount"></result>	 	
+			</collection>
+			
+			<collection property="productImages" javaType="java.util.List" ofType="ProductImageDTO">
+ 		<id property="imageNum" column="imageNum"/>
+ 		<result property="thumbnail" column="thumbnail"/>
+ 		<result property="contents" column="contents"/>
+ 		<result property="fileName" column="fileName"/>
+ 		<result property="ogName" column="ogName"/>
+ 	
+ 			</collection>
+			
+ 	</resultMap>
+ 
  
  
  
@@ -31,7 +64,7 @@
  
  <insert id="setAddrInsert" parameterType="AddressInfoDTO">
  
- 	insert into addressInfo values(addr_seq.nextval,#{orderNum},#{id},#{productNum},#{price},#{amount},#{name},#{zipCode},#{addr},#{phone},#{email},#{addrMessage})
+ 	insert into addressInfo values(addr_seq.nextval,#{orderNum},#{id},#{productNum},#{productName},#{price},#{amount},#{name},#{zipCode},#{addr},#{phone},#{email},#{addrMessage})
  
  </insert>
  

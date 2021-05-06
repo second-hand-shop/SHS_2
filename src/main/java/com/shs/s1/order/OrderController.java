@@ -26,12 +26,14 @@ private OrderService orderService;
 private ProductService productService;
 	
 	@PostMapping("order/cartInsert")
-	public String setCartInsert(ProductDTO productDTO,CartDTO cartDTO,HttpSession session,Model model)throws Exception{
+	public String setCartInsert(ProductDTO productDTO,CartDTO cartDTO,HttpSession session,Model model,long productAmount)throws Exception{
 		
 		
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		cartDTO.setId(memberDTO.getId());
 		cartDTO.setProductNum(productDTO.getProductNum());
+		cartDTO.setCartStock(productAmount);
+
 		
 		int result = orderService.setCartInsert(cartDTO);
 		model.addAttribute("result", result);
@@ -60,12 +62,13 @@ private ProductService productService;
 	
 	
 	@PostMapping("order/orderForm")
-	public void getSelectOrder(ProductDTO productDTO,Model model)throws Exception{
+	public void getSelectOrder(ProductDTO productDTO,Model model,Long productAmount)throws Exception{
 		
 		
 		//List<ProductDTO> ar = productService.getSelect(productDTO);
 		
 		productDTO = productService.getSelect(productDTO);
+		productDTO.setAmount(productAmount);
 		
 		model.addAttribute("dto", productDTO);
 	
@@ -75,6 +78,12 @@ private ProductService productService;
 	public void getSelectOrderList(HttpServletRequest request,Model model)throws Exception{
 		
 		String[] arr= request.getParameterValues("productNum");
+		String[] amountArr=request.getParameterValues("productAmount");
+	
+
+		
+		System.out.println(amountArr[0]);
+		
 		List<ProductDTO> ar = new ArrayList<ProductDTO>();
 		
 
@@ -82,6 +91,8 @@ private ProductService productService;
 			ProductDTO productDTO = new ProductDTO();
 			productDTO.setProductNum(Long.parseLong(arr[i]));
 			productDTO = productService.getSelect(productDTO);
+			productDTO.setAmount(Long.parseLong(amountArr[i]));
+			System.out.println(amountArr[i]);
 			ar.add(i, productDTO);
 		}
 
