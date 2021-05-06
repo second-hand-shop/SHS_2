@@ -36,7 +36,7 @@
 							<li class="xans-element- xans-layout xans-layout-statelogoff "><a href="${pageContext.request.contextPath}/member/memberModify">MODIFY</a></li>
 							</c:if>
 							<!-- 로그인 시 나타나게 if -->
-							<li><a href="#">ORDER TRACKING</a></li>
+							<li><a href="${pageContext.request.contextPath}/member/memberMyOrder">ORDER TRACKING</a></li>
 							<li><a href="${pageContext.request.contextPath}/member/memberAccount">MY ACCOUNT</a></li>
 							<!-- if END -->
 							<li></li>
