@@ -7,6 +7,7 @@ public class AInfoDTO extends MemberDTO {
 	private long orderNum;
 	private long productNum;
 	private long price;
+	private String productName;
 	private String zipCode;
 	private String addr;
 	private String addrMessage;
@@ -58,5 +59,15 @@ public class AInfoDTO extends MemberDTO {
 	public void setAddrMessage(String addrMessage) {
 		this.addrMessage = addrMessage;
 	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	
+	
 
 }

@@ -9,6 +9,7 @@
 		<typeAlias type="com.shs.s1.admin.member.AMemberDTO" alias="AMemberDTO"/>
 		<typeAlias type="com.shs.s1.admin.member.XMemberDTO" alias="XMemberDTO"/>
 		<typeAlias type="com.shs.s1.admin.addressInfo.AInfoDTO" alias="AInfoDTO"/>
+		<typeAlias type="com.shs.s1.admin.orderInfo.OInfoDTO" alias="OInfoDTO"/>
 		<typeAlias type="com.shs.s1.util.AdminPager" alias="AdminPager"/>
 		<typeAlias type="com.shs.s1.member.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.shs.s1.board.notice.NoticeDTO" alias="NoticeDTO"/>

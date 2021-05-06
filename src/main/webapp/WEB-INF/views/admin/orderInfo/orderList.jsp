@@ -9,11 +9,12 @@
 		width: 70%;
 	}
 </style>
-  <c:import url="../../template/bootStrap.jsp"></c:import>
+<c:import url="../../template/bootStrap.jsp"></c:import>
 <meta charset="UTF-8">
-<title>memberList</title>
+<title>orderList</title>
 </head>
-<body><!--------------------- header ---------------------------------------------------->
+<body>
+<!--------------------- header ---------------------------------------------------->
 <!--------------------- header ---------------------------------------------------->
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="${pageContext.request.contextPath}">Site Main</a>
@@ -81,39 +82,27 @@
     </nav>
  <!-------------------------- navbar END ---------------------------------->
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-	<h2>회원 목록</h2>
-	<div class="btn-group btn-group-toggle" data-toggle="buttons">
-		  <label class="btn btn-light active">
-		    <input type="radio" name="options" id="member-btn" checked> 회원
-		  </label>
-		  <label class="btn btn-light">
-		    <input type="radio" name="options" id="xMember-btn">비회원
-		  </label>
-	</div>
+	<h2>주문 목록</h2>
 	<div class="table-responsive">
 		<table class="table table-striped table-sm">
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>PW</th>
-					<th>이름</th>
-					<th>전화번호</th>
-					<th>이메일</th>
+					<th>주문번호</th>
+					<th>주문일자</th>
+					<th>주문처리상태</th>
+					<th>주문자 ID</th>
 					<th>+ / -</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${list }" var="DTO">
-					<c:if test="${DTO.id!='admin' }">
 						<tr>
-							<td><a href="#" class="idSelect" title="${DTO.id }">${DTO.id }</a></td>
-							<td class="pw-hide" title="${DTO.pw }">${DTO.pw }</td>
-							<td>${DTO.name }</td>
-							<td>${DTO.phone }</td>
-							<td>${DTO.email }</td>
-							<td><input type="checkbox" name="deleteCheck" class="check" title="${DTO.id }"></td>
+							<td><a href="#" class="numSelect" title="${DTO.orderNum }">${DTO.orderNum }</a></td>
+							<td>${DTO.orderDate }</td>
+							<td>${DTO.orderProcess }</td>
+							<td>${DTO.id }</td>
+							<td><input type="checkbox" name="deleteCheck" class="check"></td>
 						</tr>
-					</c:if>
 				</c:forEach>
 			</tbody>
 		</table>
@@ -133,13 +122,13 @@
 			</c:if>
 		</ul>
 		<div class="input-group mt-3 mb-3">
-			<form action="./memberList" id="frm" class="form-inline">
+			<form action="./orderList" id="frm" class="form-inline">
 				<input type="hidden" id="curPage" name="curPage" value="1">
 				<div class="input-group-prepend">
 					<select class="form-control" id="kind" name="kind">
-						<option class="sel">ID</option>
-						<option class="sel">전화번호</option>
-						<option class="sel">이메일</option>
+						<option class="sel">주문번호</option>
+						<option class="sel">주문일자</option>
+						<option class="sel">주문자 ID</option>
 					</select>
 				</div>
 				<input type="text" class="form-control" id="search" name="search" value="${pager.search }">
@@ -154,7 +143,7 @@
 	</main>
 	</div>
 </div>
-<script type="text/javascript" src="../../resources/jquery/admin/member/memberList.js"></script>
+<script type="text/javascript" src="../../resources/jquery/admin/orderInfo/orderList.js"></script>
 <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
