@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shs.s1.admin.coupon.CouponDTO;
 import com.shs.s1.board.qna.QnaDTO;
 import com.shs.s1.board.review.ReviewDTO;
-import com.shs.s1.coupon.CouponDTO;
 import com.shs.s1.order.CartDTO;
 import com.shs.s1.order.OrderInfoDTO;
 

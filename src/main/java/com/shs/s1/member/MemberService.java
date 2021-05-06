@@ -7,9 +7,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.shs.s1.admin.coupon.CouponDTO;
 import com.shs.s1.board.qna.QnaDTO;
 import com.shs.s1.board.review.ReviewDTO;
-import com.shs.s1.coupon.CouponDTO;
 import com.shs.s1.order.CartDTO;
 import com.shs.s1.order.OrderInfoDTO;
 
@@ -69,8 +69,10 @@ public class MemberService {
 		return memberDAO.memberMyCart(memberDTO);
 	}
 	
-	public List<CouponDTO> memberMyCoupon(MemberDTO memberDTO) throws Exception {
-		return memberDAO.memberMyCoupon(memberDTO);
-	}
+	
+	  public List<CouponDTO> memberMyCoupon(MemberDTO memberDTO) throws Exception {
+		  return memberDAO.memberMyCoupon(memberDTO); 
+	  }
+	 
 	
 }
