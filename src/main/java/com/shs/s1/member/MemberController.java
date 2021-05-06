@@ -1,6 +1,7 @@
 package com.shs.s1.member;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,11 +35,26 @@ public class MemberController {
 
 	//비밀번호 찾기
 	@PostMapping("memberPwFind")
-	public ModelAndView memberPwFind(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView memberPwFind(MemberDTO memberDTO, ModelAndView mv) throws Exception {
 		memberDTO = memberService.memberPwFind(memberDTO);
-
-		if (memberDTO != null) {
+			
+		if(memberDTO != null) {		
+			/*memberService.memberPwUpdate(memberDTO);		
+			
+			String tempPw = UUID.randomUUID().toString().replace("-", ""); 
+			tempPw = tempPw.substring(0, 10);
+			
+			System.out.println("임시비밀번호 : " + tempPw);
+		
+			memberDTO.setPw(tempPw); //임시비밀번호 db에 저장 */
+			
+			mv.addObject("member", memberDTO);
+			mv.addObject("msg", "회원님의 비밀번호는 " + memberDTO.getPw() + " 입니다");
+			mv.addObject("path", "./memberPwSuccess");
+			mv.setViewName("common/commonResult");
+			
+		}
+		/*if (memberDTO != null) {
 			mv.addObject("msg", "회원님의 비밀번호는 " + memberDTO.getPw() + " 입니다");
 			mv.addObject("path", "./memberLogin");
 			mv.setViewName("common/commonResult");
@@ -46,22 +62,16 @@ public class MemberController {
 			mv.addObject("msg", "등록된 아이디가 없습니다");
 			mv.addObject("path", "./memberPwFind");
 			mv.setViewName("common/commonResult");
-		}
-		return mv;
-	    
-		/*String id = request.getParameter("id");
-		String e_mail = request.getParameter("email");
-		String pw = memberDTO.getPw();
-		
-		System.out.println(memberDTO.getPw()); // pw값 확인
-		System.out.println(id);
-		System.out.println(e_mail);
-				
-
-        return mv;*/
+		} */
+		return mv; 
 
 	}
 
+	@RequestMapping("memberPwSuccess")
+	public void memberPwSuccess() throws Exception {
+		
+	}
+	
 	// 약관동의
 	@RequestMapping("memberJoinCheck")
 	public void memberJoinCheck() throws Exception {
@@ -157,7 +167,7 @@ public class MemberController {
 	@PostMapping("memberIdFind")
 	public ModelAndView memberIdFind(MemberDTO memberDTO, ModelAndView mv) throws Exception {
 		memberDTO = memberService.memberIdFind(memberDTO);
-
+		
 		if (memberDTO != null) {
 			mv.addObject("msg", "회원님의 아이디는 " + memberDTO.getId() + " 입니다");
 			mv.addObject("path", "./memberLogin");

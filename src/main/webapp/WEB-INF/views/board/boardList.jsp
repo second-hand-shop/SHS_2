@@ -118,7 +118,7 @@
 		
 		<c:if test="${dto eq null}">				
 			<td colspan="5" class="lines" ><p>등록된 게시글이 없습니다.</p></td>								
-		</c:if>
+		</c:if> 
 		
 		<c:forEach items="${list}" var="dto">
 			<tr>
