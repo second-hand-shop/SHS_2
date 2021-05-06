@@ -22,8 +22,12 @@
 	</select>
 
 	<select id="memberPwFind" parameterType="MemberDTO" resultType="MemberDTO">
-		select pw from member where id=#{id} and email=#{email}
+		select pw from member where id=#{id} and name=#{name}
 	</select>
+	
+	<update id="memberPwUpdate" parameterType="MemberDTO">
+		update member set pw=#{pw} where id=#{id}
+	</update>
 
 	<update id="memberModify" parameterType="MemberDTO">
 		update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone} where id=#{id}

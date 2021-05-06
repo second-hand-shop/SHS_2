@@ -40,6 +40,10 @@ public class MemberService {
 		return memberDAO.memberPwFind(memberDTO);
 	}
 	
+	public int memberPwUpdate(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberPwUpdate(memberDTO);
+	}
+	
 	public int memberModify(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberModify(memberDTO);
 	}

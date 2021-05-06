@@ -29,12 +29,17 @@
 			<h1>CART</h1>
 			<br>
 			
-			<c:if test="${list eq null}">
-					<td colspan="5" class="lines"><p>0 item</p></td>			
+			<c:if test="${dto eq null}">
+					<h1 style="text-align: center;">0 item</h1>
 			</c:if>
 			
-			<div class="orderList">
-				<table border="1">
+			<c:if test="${not empty dto}">
+			
+			<form action="./orderForm" method="post">
+						
+			<c:forEach items="${list}" var="dto">
+			
+			<table border="1">
 					<caption>기본배송</caption>
 					<thead>
 						<tr>
@@ -43,31 +48,19 @@
 							</th>
 							<th scope="col" class="image lines" width="9%">-</th>
 							<th scope="col" class="product lines" width="20%">ITEM</th>
-							<th scope="col" class="price lines" width="8%">PRICE</th>
-							<th scope="col" class="qty lines" width="8%">QTY</th>
-							<th scope="col" class="delivery lines" width="8%">DELIVERY</th>
-							<th scope="col" class="charge lines" width="8%">CHARGE</th>
 							<th scope="col" class="total lines" width="8%">TOTAL</th>
 							<th scope="col" class="button lines" width="8%">ETC</th>
 						</tr>
 					</thead>
 					
-					<tbody class="body">
+						<tbody class="body">
 						<tr>
 							<td>
 								<input type="checkbox">
 							</td>
 							<td class="image"><!-- 상품이미지 a태그 --></td>
-							<td class="product"><!-- 상품명 a태그 --></td>
+							<td class="product">${dto.productNum}<!-- 상품명 a태그 --></td>
 							<td class="price"></td>
-							<td>
-								<span class="qty"></span>
-							</td>
-							<td class="delivery">기본배송</td>
-							<td class="charge">
-								<p>3,000</p>
-								<br>조건
-							</td>
 							<td class="total"></td>
 							<td class="button">
 								<a href="#">BUY NOW</a><br>
@@ -75,8 +68,19 @@
 							</td>
 						</tr>
 					</tbody>
-				</table>
-			</div>
+						
+					
+			</table>
+			
+			</c:forEach>
+		
+			
+			<button>선택상품 주문</button>
+			<button>전체상품 주문</button>
+			
+			</form>
+			
+			</c:if>
 				
 		</div>
 	</div>
