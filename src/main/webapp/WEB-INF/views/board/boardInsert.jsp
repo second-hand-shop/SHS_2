@@ -175,7 +175,7 @@
 					
 					<!-- 상품정보선택 -->
 					<div style="margin-top: 5%; margin-left: 12%;">
-						<input type="button" value="상품정보선택" class="prdButton-style" id="btn" 
+						<input type="button" value="상품정보선택" class="prdButton-style" 
 						onclick="showPopup();">
 					</div>
 									
@@ -187,12 +187,14 @@
 			
 				<ul>
 				
+					<!-- review의 경우 num값 보내기 -->
 					<c:if test="${board eq 'review'}">
-						<li><input class="mycheck" type="text" name="num" value="${param.num}"></li>
+						<li><input type="hidden" name="num" value="${getNum}"></li>
 					</c:if>
-				
+					
+					<!-- notice를 뺀 나머지의 경우 productNum값 보내기 -->
 					<c:if test="${board ne 'notice'}">
-						<li><input class="mycheck" type="hidden" name="productNum" value="${param.productNum}"></li>
+						<li><input type="hidden" name="productNum" value="${param.productNum}"></li>
 					</c:if>
 					
 					<!-- 글쓴이 입력 -->
@@ -240,12 +242,12 @@
 			
 			<div class="botton-div">
 				<div class="div-left" >
-					<input type="button" value="LIST" class="button-style" id="btn" onClick="location.href='./${board}List'">
+					<input type="button" value="LIST" class="button-style" onClick="location.href='./${board}List'">
 				</div>
 				
 				<div class="div-right" align="right">	
-					<input type="button" value="CANCEL" class="button-style" id="btn" onClick="location.href='./${board}List'">
-					<input type="submit" value="OK!" class="button-style" id="btn">
+					<input type="button" value="CANCEL" class="button-style" onClick="location.href='./${board}List'">
+					<input type="button" id="btn" value="OK!" class="button-style">
 				</div>
 			</div>
 	
@@ -266,7 +268,7 @@
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
 <script type="text/javascript" src="../resources/jquery/summerFile.js"></script>
-<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
+<script type="text/javascript" src="../resources/jquery/boardInsert.js?var=1"></script>
 
 
 <script language="javascript">

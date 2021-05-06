@@ -123,7 +123,7 @@
 			<a href="../comments/commentsResult?num=${dto.num}&&name=${board}" class="button-style">삭제</a>
 			
 			<c:if test="${board eq 'qna'}">
-				<a href="./${board}Reply?num=${dto.num}&&productNum=${param.productNum}" class="button-style">답글</a>
+				<a href="./${board}Reply?num=${dto.num}&&productNum=${dto.productNum}" class="button-style">답글</a>
 			</c:if>
 
 		</div>

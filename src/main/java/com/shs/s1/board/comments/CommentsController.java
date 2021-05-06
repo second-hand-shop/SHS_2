@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shs.s1.board.BoardDTO;
 import com.shs.s1.board.review.ReviewDTO;
 
 
@@ -72,9 +73,11 @@ public class CommentsController {
 		ModelAndView mv = new ModelAndView();
 		
 		ReviewDTO reviewDTO = new ReviewDTO();
+		BoardDTO boardDTO = new BoardDTO(); 
 		
 		mv.addObject("review", reviewDTO);
 		mv.addObject("comments", commentsDTO);
+		mv.addObject("getPw", boardDTO.getBoardPw());
 		mv.setViewName("comments/commentsResult");
 		
 		return mv;

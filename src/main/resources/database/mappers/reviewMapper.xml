@@ -90,7 +90,7 @@
 	
 	<!-- Review setInsert -->
 	<insert id="setInsert" parameterType="BoardDTO">
-		insert into review values(review_seq.nextval, #{productNum} ,#{title}, #{writer}, #{contents}, sysdate, 0, #{boardPw})
+		insert into review values(#{num}, #{productNum} ,#{title}, #{writer}, #{contents}, sysdate, 0, #{boardPw})
 	</insert>
 	
 	
