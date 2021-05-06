@@ -36,10 +36,6 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberIdFind", memberDTO);
 	}
 	
-	public MemberDTO memberPwFind(MemberDTO memberDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"memberPwFind", memberDTO);
-	}
-	
 	public int memberPwUpdate(MemberDTO memberDTO) throws Exception {
 		return sqlSession.update(NAMESPACE+"memberPwUpdate", memberDTO);
 	}

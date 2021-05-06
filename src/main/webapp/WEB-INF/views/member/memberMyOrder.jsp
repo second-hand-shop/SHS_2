@@ -117,9 +117,9 @@
 		
 		<c:forEach items="${list}" var="dto">
 			<tr>
-				<td class="lines">${dto.oiNum}</td>	
+				<td class="lines">${dto.oinum}</td>	
 				<td class="lines">${dto.productNum}</td>				
-				<td class="lines">${dto.orderNum}</td>				
+				<td class="lines">${dto.ordernum}</td>				
 				<td class="lines">${dto.orderDate}</td>
 				<td class="lines">${dto.orderProcess}</td>
 				<td class="lines">${dto.orderCondition}</td>

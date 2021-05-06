@@ -36,10 +36,6 @@ public class MemberService {
 		return memberDAO.memberIdFind(memberDTO);
 	}
 	
-	public MemberDTO memberPwFind(MemberDTO memberDTO) throws Exception {
-		return memberDAO.memberPwFind(memberDTO);
-	}
-	
 	public int memberPwUpdate(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberPwUpdate(memberDTO);
 	}
@@ -47,8 +43,7 @@ public class MemberService {
 	public int memberModify(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberModify(memberDTO);
 	}
-	
-	
+		
 	public int memberDelete(MemberDTO memberDTO, HttpSession session) throws Exception {
 		return memberDAO.memberDelete(memberDTO);
 	}
