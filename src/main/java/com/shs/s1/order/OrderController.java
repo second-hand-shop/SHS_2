@@ -22,13 +22,13 @@ public class OrderController {
 
 @Autowired	
 private OrderService orderService;
+
 @Autowired
 private ProductService productService;
 	
+
 	@PostMapping("order/cartInsert")
 	public String setCartInsert(ProductDTO productDTO,CartDTO cartDTO,HttpSession session,Model model,long productAmount)throws Exception{
-		
-		
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		cartDTO.setId(memberDTO.getId());
 		cartDTO.setProductNum(productDTO.getProductNum());

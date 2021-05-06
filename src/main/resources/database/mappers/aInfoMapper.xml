@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="com.shs.s1.admin.addressInfo.AInfoDAO">
+ 	<select id="getList" parameterType="AInfoDTO" resultType="AInfoDTO">
+ 		select * from ADDRESSINFO where id=#{id} order by orderNum desc
+ 	</select>
+ 	<select id="getXList" parameterType="AInfoDTO" resultType="AInfoDTO">
+ 		select * from ADDRESSINFO where orderNum=#{orderNum}
+ 	</select>
+ </mapper>

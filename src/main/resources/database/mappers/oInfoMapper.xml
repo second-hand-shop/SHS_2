@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="com.shs.s1.admin.orderInfo.OInfoDAO">
+ 	<select id="getList" parameterType="AdminPager" resultType="OInfoDTO">
+ 		select * from (
+	 		select rowNum R, O.* from (
+		 		select * from ORDERINFO where
+		 		<choose>
+		 			<when test="kind=='주문번호'">
+		 				orderNum
+		 			</when>
+		 			<when test="kind=='주문일자'">
+		 				orderDate
+		 			</when>
+		 			<otherwise>
+		 				id
+		 			</otherwise>
+		 		</choose>
+		 		like '%'||#{search}||'%' order by oiNum desc
+		 		) O
+	 		)
+ 		where R between #{startRow} and #{lastRow}
+ 	</select>
+ 	
+ 	<select id="getTotalCount" parameterType="AdminPager" resultType="java.lang.Long">
+ 		select count(oiNum) from ORDERINFO where
+ 		<choose>
+ 			<when test="kind=='주문번호'">
+ 				orderNum
+ 			</when>
+ 			<when test="kind=='주문일자'">
+ 				orderDate
+ 			</when>
+ 			<otherwise>
+ 				id
+ 			</otherwise>
+ 		</choose>
+ 		like '%'||#{search}||'%'
+ 	</select>
+ 	
+ 	<select id="getSelect" parameterType="OInfoDTO" resultType="OInfoDTO">
+ 		select O.*, A.* from ORDERINFO O
+ 		inner join ADDRESSINFO A
+ 		on O.orderNum=A.orderNum
+ 		where O.orderNum=#{orderNum}
+ 	</select>
+ 	
+ 	<update id="setShippingUpdate" parameterType="OInfoDTO">
+ 		update ORDERINFO set orderProcess=#{orderProcess} where oiNum=#{oiNum}
+ 	</update>
+ 
+ </mapper>
