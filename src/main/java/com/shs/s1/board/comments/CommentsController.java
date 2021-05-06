@@ -59,7 +59,7 @@ public class CommentsController {
 			message = "삭제 성공";
 		}
 		
-		mv.addObject("message", message);
+		mv.addObject("msg", message);
 		mv.addObject("path", path);
 		
 		mv.setViewName("common/commonResult");
