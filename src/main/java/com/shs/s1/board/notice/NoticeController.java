@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shs.s1.board.BoardDTO;
+import com.shs.s1.member.MemberDTO;
 import com.shs.s1.util.BoardPager;
 
 @Controller
@@ -29,6 +30,7 @@ public class NoticeController {
 		List<BoardDTO> ar = noticeService.getList(boardPager);
 		long totalCount = noticeService.totalCount(boardPager);
 		BoardDTO boardDTO = new BoardDTO();
+		MemberDTO memberDTO = new MemberDTO();
 		
 		System.out.println("ar : "+ar.size());
 		System.out.println("totalCount : "+totalCount);
@@ -36,6 +38,9 @@ public class NoticeController {
 		mv.addObject("list", ar);
 		mv.addObject("board", "notice");
 		mv.addObject("dto", boardDTO);
+		
+		mv.addObject("member", memberDTO);
+		
 		mv.addObject("boardPager", boardPager);
 		mv.addObject("totalCount", totalCount);
 
