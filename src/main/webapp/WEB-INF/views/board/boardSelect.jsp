@@ -166,7 +166,7 @@
 							<li style="margin-bottom: 1%; border-bottom: 1px solid black; width: 25%">
 								<label for="writer" style="font-size: 9pt;">WRITER</label> 
 								<input type="text" id="writer" name="writer" placeholder="ID" 
-								style="border:none; font-size: 9pt; margin-bottom: 2%; margin-left: 1%">
+								style="border:none; font-size: 9pt; margin-bottom: 1.6%; margin-left: 1%">
 							</li>
 							
 							<li>

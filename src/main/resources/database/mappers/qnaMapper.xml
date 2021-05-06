@@ -93,22 +93,16 @@
     </update>
     
     
-   	<!-- reply -->
-	<insert id="setReply" parameterType="QnaDTO">
-	
-		<!-- keyProperty는 파라미터의 이름, order는 after와 before가 있찌만 after는 잘 안되므로 before 사용 -->
-		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
-			select qna_seq.nextval from dual
-		</selectKey>
-	
-		insert into qna values(#{num}, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{num}, #{step}, #{depth}, #{boardPw})
-	</insert>
-    
-    
     <!-- reply update -->
 	<update id="setReplyUpdate" parameterType="QnaDTO">
 		update qna set step=step+1 where ref=#{ref} and step>#{step}
 	</update>
+    
+    
+   	<!-- reply -->
+	<insert id="setReply" parameterType="QnaDTO">
+		insert into qna values(qna_seq.nextval, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth}, #{boardPw})
+	</insert>
 	
 
 </mapper>
