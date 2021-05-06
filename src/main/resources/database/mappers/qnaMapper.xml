@@ -104,5 +104,5 @@
 		insert into qna values(qna_seq.nextval, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth}, #{boardPw})
 	</insert>
 	
-
+	
 </mapper>

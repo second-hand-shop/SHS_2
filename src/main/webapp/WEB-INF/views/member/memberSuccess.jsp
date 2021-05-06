@@ -7,6 +7,23 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+#container {
+    position: relative;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 4%;
+    border: 1px solid #d3d3d3;
+    text-align: left;
+    padding: 3%;
+}
+h2 h1 {
+	font-family: NanumGothic;
+}
+.a {
+	text-align: center;
+}
+</style>
 </head>
 <body>
 	<div id="header">
@@ -16,12 +33,17 @@
 		<div class="container mt-2">
 			<div id="container">
 				<h2> ${member.name}님 환영합니다!</h2>
-				<h2> ID: ${member.id}</h2>
-				<h2> NAME: ${member.name}</h2>
-				<h2> EMAIL: ${member.email}</h2>
+				<br>
+				<h1> ID: ${member.id}</h1>
+				<h1> NAME: ${member.name}</h1>
+				<h1> EMAIL: ${member.email}</h1>
 				
-				<a href="${pageContext.request.contextPath}/member/memberLogin">LOGIN</a>
-				<a href="${pageContext.request.contextPath}/">HOME</a>
+				<br>
+				<br>
+				<div class="a">
+					<a href="${pageContext.request.contextPath}/member/memberLogin">LOGIN</a>
+					<a href="${pageContext.request.contextPath}/">HOME</a>
+				</div>
 			</div>
 		</div>
 				

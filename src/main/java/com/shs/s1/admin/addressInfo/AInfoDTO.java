@@ -67,7 +67,5 @@ public class AInfoDTO extends MemberDTO {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	
-	
 
 }
