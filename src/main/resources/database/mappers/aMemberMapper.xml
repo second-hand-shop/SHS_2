@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="com.shs.s1.admin.member.AMemberDAO">
+ 	<select id="getTotalCount" parameterType="AdminPager" resultType="java.lang.Long">
+ 		select count(id) from MEMBER where
+ 		<choose>
+ 			<when test="kind=='ID'">
+ 				id
+ 			</when>
+ 			<when test="kind=='전화번호'">
+ 				phone
+ 			</when>
+ 			<otherwise>
+ 				email
+ 			</otherwise>
+ 		</choose>
+ 		like '%'||#{search}||'%'
+ 	</select>
+ 	<select id="getList" parameterType="AdminPager" resultType="AMemberDTO">
+ 		select * from (
+	 		select rowNum R, M.* from (
+		 		select * from MEMBER where
+		 		<choose>
+		 			<when test="kind=='ID'">
+		 				id
+		 			</when>
+		 			<when test="kind=='전화번호'">
+		 				phone
+		 			</when>
+		 			<otherwise>
+		 				email
+		 			</otherwise>
+		 		</choose>
+		 		like '%'||#{search}||'%' order by memberNum desc
+		 		) M
+	 		)
+ 		where R between #{startRow} and #{lastRow}
+ 	</select>
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% X Member %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<select id="getXList" parameterType="AdminPager" resultType="XMemberDTO">
+		select * from (
+			select rowNum R, X.* from (
+				select * from XMEMBER where
+				<choose>
+					<when test="kind=='ID'">
+						xId
+					</when>
+					<when test="kind=='주문번호'">
+						orderNum
+					</when>
+					<otherwise>
+						xName
+					</otherwise>
+				</choose>
+				like '%'||#{search}||'%' order by memberNum desc
+			) X
+		)
+		where R between #{startRow} and #{lastRow}
+	</select>
+	<select id="getXTotalCount" parameterType="AdminPager" resultType="java.lang.Long">
+ 		select count(xId) from XMEMBER where
+ 		<choose>
+ 			<when test="kind=='ID'">
+ 				XId
+ 			</when>
+ 			<when test="kind=='주문번호'">
+ 				orderNum
+ 			</when>
+ 			<otherwise>
+ 				xName
+ 			</otherwise>
+ 		</choose>
+ 		like '%'||#{search}||'%'
+ 	</select>
+
+
+ </mapper>

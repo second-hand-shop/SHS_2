@@ -1,4 +1,4 @@
-package com.shs.s1.coupon;
+package com.shs.s1.admin.coupon;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.shs.s1.util.CouponPager;
+import com.shs.s1.util.AdminPager;
 
 @Controller
-@RequestMapping("/coupon/**")
+@RequestMapping("admin/coupon/**")
 public class CouponController {
 	
 	@Autowired
@@ -21,16 +21,17 @@ public class CouponController {
 //----------------------------------------------------------------------------------
 	// getList ===================================================
 	@GetMapping("couponList")
-	public ModelAndView getList(CouponPager pager) throws Exception {
+	public ModelAndView getList(AdminPager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<CouponDTO> ar = couponService.getList(pager);
 		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
-		mv.setViewName("coupon/couponList");
+		mv.setViewName("admin/coupon/couponList");
 		return mv;
 	}
 	
 	// getSelect ===================================================
+	// JSON 사용 예시===============================================
 	@GetMapping("couponSelect")
 	@ResponseBody
 	public CouponDTO getSelect(CouponDTO couponDTO) throws Exception {
@@ -62,19 +63,19 @@ public class CouponController {
 	}
 	
 	// setUpdate ===================================================	
-	@PostMapping("couponUpdate")
-	public ModelAndView setUpdate(CouponDTO couponDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		int result = couponService.setUpdate(couponDTO);
-		String message = "Update 실패";
-		String path = "../coupon/couponList";
-		if(result>0) {
-			message = "Update 성공";
-		}
-		mv.addObject("message", message);
-		mv.addObject("path", path);
-		mv.setViewName("common/commonResult");
-		return mv;
-	}
+//	@PostMapping("couponUpdate")
+//	public ModelAndView setUpdate(CouponDTO couponDTO) throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		int result = couponService.setUpdate(couponDTO);
+//		String message = "Update 실패";
+//		String path = "../coupon/couponList";
+//		if(result>0) {
+//			message = "Update 성공";
+//		}
+//		mv.addObject("message", message);
+//		mv.addObject("path", path);
+//		mv.setViewName("common/commonResult");
+//		return mv;
+//	}
 	
 }

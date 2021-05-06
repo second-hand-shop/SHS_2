@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.shs.s1.MyAbstractTest;
+import com.shs.s1.admin.coupon.CouponDAO;
+import com.shs.s1.admin.coupon.CouponDTO;
 
 public class CouponDAOTest extends MyAbstractTest {
 

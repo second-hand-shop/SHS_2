@@ -1,4 +1,4 @@
-package com.shs.s1.coupon;
+package com.shs.s1.admin.coupon;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.shs.s1.util.CouponPager;
+import com.shs.s1.util.AdminPager;
 
 @Repository
 public class CouponDAO {
@@ -14,15 +14,15 @@ public class CouponDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
-	private final String NAMESPACE="com.shs.s1.coupon.CouponDAO.";
+	private final String NAMESPACE="com.shs.s1.admin.coupon.CouponDAO.";
 //------------------------------------------------------------------------------------------
 	// getList ===================================================
-	public List<CouponDTO> getList(CouponPager pager) throws Exception {
+	public List<CouponDTO> getList(AdminPager pager) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
 	// getTotalCount ===================================================	
-	public long getTotalCount(CouponPager pager) throws Exception {
+	public long getTotalCount(AdminPager pager) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	

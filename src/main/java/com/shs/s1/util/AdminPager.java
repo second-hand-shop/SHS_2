@@ -1,6 +1,6 @@
 package com.shs.s1.util;
 
-public class CouponPager {
+public class AdminPager {
 	// curPage (현재 페이지)는 parameter로 받아옴
 	
 	private long perPage;	// 1 페이지 당 몇개의 Row?
@@ -8,7 +8,7 @@ public class CouponPager {
 	private long curPage;	// 현재 페이지 번호
 	
 	// 생성자로 perPage, perBlock 세팅
-	public CouponPager() {
+	public AdminPager() {
 		// TODO Auto-generated constructor stub
 		this.perPage=10;
 		this.perBlock=5;
