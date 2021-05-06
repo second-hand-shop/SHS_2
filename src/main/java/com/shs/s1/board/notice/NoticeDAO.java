@@ -21,6 +21,9 @@ public class NoticeDAO implements BoardDAO{
 
 	@Override
 	public List<BoardDTO> getList(BoardPager boardPager) throws Exception {
+		System.out.println("DAO Kind : "+boardPager.getKind());
+		System.out.println("DAO Search : "+boardPager.getSearch());
+		
 		return sqlSession.selectList(NAMESPACE+"getList", boardPager);
 	}
 	

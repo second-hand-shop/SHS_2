@@ -26,16 +26,22 @@ public class NoticeController {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("curPage : "+boardPager.getCurPage());
-		
 		List<BoardDTO> ar = noticeService.getList(boardPager);
+		long totalCount = noticeService.totalCount(boardPager);
+		BoardDTO boardDTO = new BoardDTO();
+		
+		System.out.println("ar : "+ar.size());
+		System.out.println("totalCount : "+totalCount);
 		
 		mv.addObject("list", ar);
 		mv.addObject("board", "notice");
+		mv.addObject("dto", boardDTO);
 		mv.addObject("boardPager", boardPager);
+		mv.addObject("totalCount", totalCount);
+
 		
-		System.out.println("Start : "+boardPager.getStartNum());
-		System.out.println("Last : "+boardPager.getLastNum());
+		System.out.println("Controller Kind : "+boardPager.getKind());
+		System.out.println("Controller Search : "+boardPager.getSearch());
 		
 		mv.setViewName("board/boardList");
 		
@@ -124,6 +130,7 @@ public class NoticeController {
 		if(result>0) {
 			//앞에서 실행되어 수정이 되었다면, 수정된 값을 boardlist로 보여주기 위해 redirect를 이용해  
 			//다시 boardlist로 주소값을 보내준다.
+			System.out.println("수정 성공");
 			mv.setViewName("redirect:./noticeList");
 		}
 		
