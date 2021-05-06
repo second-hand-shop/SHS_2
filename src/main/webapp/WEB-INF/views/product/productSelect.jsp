@@ -46,7 +46,7 @@ justify-content: space-evenly;
 			
 			
 			
-				<div>
+				<div style="align-content: center;">
 	<c:forEach items="${dto.productImages}" var="file">
 		<%-- <a href="../resources/upload/images/${file.fileName}">${file.ogName}</a> --%>
 		
@@ -54,6 +54,7 @@ justify-content: space-evenly;
 		<img src="../resources/upload/images/${file.thumbnail}">
 		</div>
 	</c:forEach>
+	<img src="../resources/images/productListContents.jpg">
 	</div>
 			
 			
