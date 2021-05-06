@@ -14,6 +14,7 @@ import com.shs.s1.board.BoardDTO;
 import com.shs.s1.board.ReviewFileDTO;
 import com.shs.s1.board.comments.CommentsDTO;
 import com.shs.s1.board.comments.CommentsService;
+import com.shs.s1.member.MemberDTO;
 import com.shs.s1.util.BoardPager;
 
 @Controller
@@ -108,13 +109,16 @@ public class ReviewController {
 		
 		boardDTO = reviewService.getSelect(boardDTO);
 		
+		MemberDTO memberDTO = new MemberDTO();
+		
 		// Comments Select
-		commentsDTO = commentsService.getSelect(commentsDTO);
+		commentsDTO = commentsService.getSelect(commentsDTO); 
 		
 		mv.addObject("comments", commentsDTO);
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "review");
 		mv.addObject("name", "comments");
+		mv.addObject("member", memberDTO);
 		
 		mv.setViewName("board/boardSelect");
 		

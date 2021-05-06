@@ -122,11 +122,11 @@
 			<a href="./${board}Update?num=${dto.num}<c:if test="${board ne 'notice'}">&&productNum=${dto.productNum}</c:if>" class="button-style">수정</a>
 			<a href="../comments/commentsResult?num=${dto.num}&&name=${board}" class="button-style">삭제</a>
 			
-			<!-- reply 현재 오류! -->
-			<!--  
-			<c:if test="${board eq 'qna'}">
-				<a href="./${board}Reply?num=${dto.num}&&productNum=${dto.productNum}" class="button-style">답글</a>
-			</c:if>-->
+			<c:if test="${member.id eq 'admin'}">
+				<c:if test="${board eq 'qna'}">
+					<a href="./${board}Reply?num=${dto.num}&&productNum=${dto.productNum}" class="button-style">답글</a>
+				</c:if>
+			</c:if>
 
 		</div>
 	
@@ -134,31 +134,33 @@
 	
 	
 	<!-- comments 보여주기 -->
-	<c:if test="${board eq 'review'}">
-		<c:if test="${comments ne null}">
-		<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">					
-			<ul>					
-				<li class="lines li-border writer-font">
-					${comments.writer}				
-					<span style="font-size: 9pt; font-weight: 400;">${comments.regDate}</span>
-					<!-- float:right를 쓰면 쭉 밀려서 버튼이 깨짐,
-					 display를 block으로 바꾸고 text-align:center를 주면
-					 div처럼 공간잡혀서 한줄 밑으로 내려감
-					 현재, 강제로 margin으로 밈 -->
-					<span class="botton-div" style="margin-left: 65%;">
-					
-						<!-- 클릭 시 update 폼 생성 -->
-						<!-- update 현재 안됨 -->
-						<!-- >
-						<a href="#" class="comment-button-style">MODIFY</a>
-						 -->
-						<a href="../comments/commentsResult?num=${comments.num}&&name=${name}" class="comment-button-style">DELETE</a>
-					</span>
-				</li>
-				
-				<li class="lines" style="text-align:left;"> ${comments.contents} </li>						
-			</ul>					
-		</div>
+	<c:if test="${member.id eq 'admin'}">
+		<c:if test="${board eq 'review'}">
+			<c:if test="${comments ne null}">
+				<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">					
+					<ul>					
+						<li class="lines li-border writer-font">
+							${comments.writer}				
+							<span style="font-size: 9pt; font-weight: 400;">${comments.regDate}</span>
+							<!-- float:right를 쓰면 쭉 밀려서 버튼이 깨짐,
+							 display를 block으로 바꾸고 text-align:center를 주면
+							 div처럼 공간잡혀서 한줄 밑으로 내려감
+							 현재, 강제로 margin으로 밈 -->
+							<span class="botton-div" style="margin-left: 65%;">
+							
+								<!-- 클릭 시 update 폼 생성 -->
+								<!-- update 현재 안됨 -->
+								<!-- >
+								<a href="#" class="comment-button-style">MODIFY</a>
+								 -->
+								<a href="../comments/commentsResult?num=${comments.num}&&name=${name}" class="comment-button-style">DELETE</a>
+							</span>
+						</li>
+						
+						<li class="lines" style="text-align:left;"> ${comments.contents} </li>						
+					</ul>					
+				</div>
+			</c:if>
 		</c:if>
 	
 		<!-- comments 입력폼 -->
