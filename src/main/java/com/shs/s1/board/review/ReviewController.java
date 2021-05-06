@@ -90,7 +90,7 @@ public class ReviewController {
 			message = "등록 성공";
 		}
 		
-		mv.addObject("message", message);
+		mv.addObject("msg", message);
 		mv.addObject("path", path);
 		
 		mv.setViewName("common/commonResult");
@@ -174,7 +174,7 @@ public class ReviewController {
 			message = "삭제 성공";
 		}
 		
-		mv.addObject("message", message);
+		mv.addObject("msg", message);
 		mv.addObject("path", path);
 		
 		mv.setViewName("common/commonResult");
