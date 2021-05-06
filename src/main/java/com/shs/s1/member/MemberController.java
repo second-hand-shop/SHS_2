@@ -35,38 +35,25 @@ public class MemberController {
 
 	//비밀번호 찾기
 	@PostMapping("memberPwFind")
-	public ModelAndView memberPwFind(MemberDTO memberDTO, ModelAndView mv) throws Exception {
-		memberDTO = memberService.memberPwFind(memberDTO);
+	public ModelAndView memberPwFind(MemberDTO memberDTO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+				
+		String pw = UUID.randomUUID().toString().replace("-", ""); 
+		pw = pw.substring(0, 10);
 			
-		if(memberDTO != null) {		
-			/*memberService.memberPwUpdate(memberDTO);		
-			
-			String tempPw = UUID.randomUUID().toString().replace("-", ""); 
-			tempPw = tempPw.substring(0, 10);
-			
-			System.out.println("임시비밀번호 : " + tempPw);
+		System.out.println("임시비밀번호 : " + pw);
 		
-			memberDTO.setPw(tempPw); //임시비밀번호 db에 저장 */
-			
-			mv.addObject("member", memberDTO);
-			mv.addObject("msg", "회원님의 비밀번호는 " + memberDTO.getPw() + " 입니다");
+		memberDTO.setPw(pw); //임시비밀번호 db에 저장
+		int result = memberService.memberPwUpdate(memberDTO);
+		 		
+		if (result > 0) {		
+			session.setAttribute("member", memberDTO);
 			mv.addObject("path", "./memberPwSuccess");
-			mv.setViewName("common/commonResult");
-			
+			mv.setViewName("common/Result");
 		}
-		/*if (memberDTO != null) {
-			mv.addObject("msg", "회원님의 비밀번호는 " + memberDTO.getPw() + " 입니다");
-			mv.addObject("path", "./memberLogin");
-			mv.setViewName("common/commonResult");
-		} else {
-			mv.addObject("msg", "등록된 아이디가 없습니다");
-			mv.addObject("path", "./memberPwFind");
-			mv.setViewName("common/commonResult");
-		} */
-		return mv; 
-
+		return mv;
 	}
-
+	
 	@RequestMapping("memberPwSuccess")
 	public void memberPwSuccess() throws Exception {
 		

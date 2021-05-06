@@ -11,6 +11,7 @@ public class OrderInfoDTO {
 	private Date orderDate;
 	private String orderProcess;
 	private String orderCondition;
+	
 	public long getOinum() {
 		return oinum;
 	}
