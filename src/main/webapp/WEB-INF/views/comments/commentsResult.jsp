@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <c:import url="../template/bootStrap.jsp"></c:import>
-<title>Delete form</title>
+<title>Password form</title>
 
 <style>
 
@@ -44,14 +44,34 @@
 			<li>안전한 확인을 위해 작성하신 비밀번호를 입력해주세요!</li>
 			<br>
 			<li>
+				
 				<label for="password" style="font-size: 9pt; border-bottom: 0.8px solid black">P/W</label> 
 				<input type="password" id="boardPw" name="boardPw" 
 				style="border:none; font-size:9pt; margin-left:1%;">
 				
-				<a href=""
-			 	style="text-align: right; font-weight: 800;" id="pwCheck">OK</a>
+				
+				<a href="
+				
+				<c:if test="${param.name eq 'comments'}">../comments/commentsDelete?num=${param.num}</c:if>
+				<c:if test="${param.name eq 'qna'}">../qna/qnaDelete?num=${param.num}</c:if>
+				<c:if test="${param.name eq 'review'}">../review/reviewDelete?num=${param.num}</c:if>
+				<c:if test="${param.name eq 'qnaList'}">../qna/qnaSelect?num=${param.num}</c:if>
+				
+				" style="text-align: right; font-weight: 800;" value="OK">OK</a>
+
+				
+				<!--
+				<input type="button" onclick="location.href='
+				
+				<c:if test="${param.name eq 'comments'}">../comments/commentsDelete?num=${param.num}</c:if>
+				<c:if test="${param.name eq 'qna'}">../qna/qnaDelete?num=${param.num}</c:if>
+				<c:if test="${param.name eq 'review'}">../review/reviewDelete?num=${param.num}</c:if>
+				<c:if test="${param.name eq 'qnaList'}">../review/reviewDelete?num=${param.num}</c:if>'"
+				
+				
+			 	style="text-align: right; font-weight: 800; background-color: white; border: 0;" id="btn" value="OK">
 			 	
-			 	<!-- 
+			 	 
 			 	
 			 	<c:if test="${param.name eq 'comments'}">../comments/commentsDelete?num=${param.num}</c:if>
 				<c:if test="${param.name eq 'qna'}">../qna/qnaDelete?num=${param.num}</c:if>
@@ -76,5 +96,7 @@
 <script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
+
+
 
 </html>

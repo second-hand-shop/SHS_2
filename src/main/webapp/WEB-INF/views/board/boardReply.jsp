@@ -206,8 +206,8 @@
 					<c:if test="${board eq 'qna'}">
 						<li class="li-padding">
 							<label for="pwSet" style="font-size: 9pt;">P/W SET</label>
-							<input type="radio" class="radio-margin" name="pwSet" value="공개글" checked="checked"/> 공개글
-							<input type="radio" name="pwSet" value="비밀글"/> 비밀글				
+							<input type="radio" class="radio-margin" name="pwSet" value="N" checked="checked"/> 공개글
+							<input type="radio" name="pwSet" value="Y"/> 비밀글				
 						</li>
 					</c:if>
 					
@@ -217,11 +217,11 @@
 			
 			<div class="botton-div">
 				<div class="div-left" >
-					<input type="button" value="LIST" class="button-style" id="btn" onClick="location.href='./${board}List'">
+					<input type="button" value="LIST" class="button-style" onClick="location.href='./${board}List'">
 				</div>
 				
 				<div class="div-right" align="right">	
-					<input type="button" value="CANCEL" class="button-style" id="btn" onClick="location.href='./${board}List'">
+					<input type="button" value="CANCEL" class="button-style" onClick="location.href='./${board}List'">
 					<input type="submit" value="OK!" class="button-style" id="btn">
 				</div>
 			</div>

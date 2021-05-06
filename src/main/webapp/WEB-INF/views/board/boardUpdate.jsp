@@ -233,12 +233,12 @@
 			
 			<div class="botton-div">
 				<div class="div-left" >
-					<input type="button" value="LIST" class="button-style" id="btn" onClick="location.href='./${board}List'">
+					<input type="button" value="LIST" class="button-style" onClick="location.href='./${board}List'">
 				</div>
 				
 				<div class="div-right" align="right">	
-					<input type="button" value="CANCEL" class="button-style" id="btn" onClick="location.href='./${board}List'">
-					<input type="submit" value="MODIFY!" class="button-style" id="btn">
+					<input type="button" value="CANCEL" class="button-style" onClick="location.href='./${board}List'">
+					<input type="button" value="MODIFY!" class="button-style" id="btn">
 				</div>
 			</div>
 	
@@ -259,6 +259,7 @@
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
 <script type="text/javascript" src="../resources/jquery/summerFile.js?var=1"></script>
+<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
 
 
 <script language="javascript">

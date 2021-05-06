@@ -34,7 +34,6 @@ public class ReviewController {
 		ModelAndView mv = new ModelAndView();
 		CommentsDTO commentsDTO = new CommentsDTO();
 		BoardDTO boardDTO = new BoardDTO();
-		long getNum = reviewService.getNum();
 		
 		System.out.println("curPage : "+boardPager.getCurPage());
 		
@@ -46,8 +45,7 @@ public class ReviewController {
 		mv.addObject("dto", boardDTO);
 		mv.addObject("boardPager", boardPager);
 		mv.addObject("totalCount", totalCount);
-		mv.addObject("num", getNum);
-		
+			
 		mv.addObject("comments", commentsDTO);
 		
 		System.out.println("Start : "+boardPager.getStartNum());
@@ -65,6 +63,9 @@ public class ReviewController {
 		
 		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO = new BoardDTO();
+		long getNum = reviewService.getNum();
+		
+		mv.addObject("getNum", getNum);
 		
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "review");
