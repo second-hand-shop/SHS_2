@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,6 +36,16 @@ public class OInfoController {
 		List<OInfoDTO> ar = oInfoService.getSelect(oInfoDTO);
 		mv.addObject("list", ar);
 		mv.addObject("path", "admin/orderInfo/selectList");
+		return mv;
+	}
+	
+//	setShippingUpdate============================================================
+	@PostMapping("shippingUpdate")
+	public ModelAndView setShippingUpdate(OInfoDTO oInfoDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = oInfoService.setShippingUpdate(oInfoDTO);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
 }
