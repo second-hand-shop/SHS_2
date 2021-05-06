@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shs.s1.board.review.ReviewDAO">
+
+	
+	<!-- Review totalCount -->
+	<select id="getTotalCount" parameterType="BoardPager" resultType="Long">
+		select count(num) from review
+		where 
+		<choose>
+			<when test="kind == '글쓴이'">
+				writer
+			</when>
+			<when test="kind == '내용'">
+				contents
+			</when>
+			
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and num >0
+	</select>
+
+
+	<!-- Review getList -->
+	<select id="getList" parameterType="BoardPager" resultType="ReviewDTO">
+		select * from
+			(select rownum R, E.* from
+				(select * from review where
+					<choose>
+						<when test="kind=='글쓴이'">
+							writer
+						</when>
+						
+						<when test="kind =='내용'">
+							contents
+						</when>
+						
+						<otherwise>
+							title
+						</otherwise>
+					
+					</choose>
+
+				  like '%' || #{search} || '%' and num > 0 order by num desc) E)
+		where R between #{startRow} and #{lastRow}
+	</select>
+
+	
+	
+	<!-- Review getSelect -->
+	<select id="getSelect" parameterType="BoardDTO" resultMap="reviewResult">
+		select R.*, RF.*
+		from review R left join reviewFiles RF
+		on R.num = RF.num
+		where R.num = #{num}
+	</select>
+
+	<!-- 1:다 는 collection -->
+	<resultMap type="reviewDTO" id="reviewResult">
+	
+		<id property="num" column="num"/>
+		<id property="productNum" column="productNum"/> 
+		<result property="title" column="title"/>
+		<result property="writer" column="writer"/>
+		<result property="contents" column="contents"/>
+		<result property="hit" column="hit"/>
+		<result property="regdate" column="regdate"/>
+		<result property="boardPw" column="boardPw"/>
+		
+		<collection property="reviewFiles" javaType="java.util.List" ofType="ReviewFileDTO">
+				<id property="fileNum" column="fileNum"/>
+				<result property="num" column="num"/>
+				<result property="fileName" column="fileName"/>
+				<result property="OrigineName" column="OrigineName"/>
+		</collection>
+		
+	</resultMap>
+
+	
+	<!-- review_seq 미리 만들기 -->
+	<select id="getNum" resultType="java.lang.Long">
+		select review_seq.nextval from dual
+	</select>
+	
+	
+	<!-- Review setInsert -->
+	<insert id="setInsert" parameterType="BoardDTO">
+		insert into review values(#{num}, #{productNum} ,#{title}, #{writer}, #{contents}, sysdate, 0, #{boardPw})
+	</insert>
+	
+	
+	<!-- Review setUpdate -->
+	<update id="setUpdate" parameterType="BoardDTO">
+    	update review set productNum = #{productNum}, title = #{title}, writer = #{writer}, contents = #{contents}, hit = 0, regdate = sysdate, boardPw = #{boardPw} 
+    	where num = #{num}
+	</update>
+	
+	<!-- Review setDelete -->
+	<delete id="setDelete" parameterType="BoardDTO">
+		delete review where num = #{num}
+	</delete>
+	
+	<!-- Review Hit Update -->
+    <update id="setHitUpdate" parameterType="BoardDTO">
+    	update review set hit=hit+1 where num=#{num}
+    </update>
+    
+    
+    <!-- file upload -->
+	<insert id="setFileInsert" parameterType="ReviewFileDTO">	
+		insert into reviewFiles values(file_seq.nextval, #{num}, #{fileName}, #{OrigineName})
+	</insert> 
+
+	<delete id="setFileDelete" parameterType="ReviewFileDTO">
+		delete reviewFiles where fileNum=#{fileNum}
+	</delete>
+	
+	<select id="getFileSelect" parameterType="ReviewFileDTO" resultType="ReviewFileDTO">
+		select * from reviewFiles where fileNum=#{fileNum}
+	</select> 
+
+</mapper>

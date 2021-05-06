@@ -22,17 +22,24 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	
-	//list
+		//list
 		@GetMapping("qnaList")
 		public ModelAndView getList(BoardPager boardPager) throws Exception{
 			
 			ModelAndView mv = new ModelAndView();
 			List<BoardDTO> ar = qnaService.getList(boardPager);
+			long totalCount = qnaService.totalCount(boardPager);
+			BoardDTO boardDTO = new BoardDTO();
+			
 			
 			mv.addObject("list", ar);
 			mv.addObject("board", "qna");
-			mv.setViewName("board/boardList");
+			mv.addObject("dto", boardDTO);
+
 			mv.addObject("boardPager", boardPager);
+			mv.addObject("totalCount", totalCount);
+			
+			mv.setViewName("board/boardList");
 			
 			return mv;
 		}
@@ -66,7 +73,7 @@ public class QnaController {
 				message="등록 성공";
 			}
 			
-			mv.addObject("message", message);
+			mv.addObject("msg", message);
 			mv.addObject("path", "./qnaList");
 			mv.setViewName("common/commonResult");
 
@@ -107,7 +114,7 @@ public class QnaController {
 				message = "삭제 성공";
 			}
 			
-			mv.addObject("message", message);
+			mv.addObject("msg", message);
 			mv.addObject("path", path);
 			
 			mv.setViewName("common/commonResult");
@@ -137,17 +144,16 @@ public class QnaController {
 
 			//성공하면 리스트로 이동
 			if(result > 0) {
+				System.out.println("수정 성공");
 				mv.setViewName("redirect:./qnaList");
 			} 
 			
 			//실패하면 alert창, 리스트로 이동
 			else {
-				
-				mv.addObject("message", "업데이트 실패");
-				mv.addObject("path", "./qnaList");
-				
-				mv.setViewName("common/commonResult");
-				
+
+				System.out.println("수정 실패");
+				mv.setViewName("redirect:./qnaList");
+
 			}
 			
 			
@@ -161,10 +167,9 @@ public class QnaController {
 			
 			ModelAndView mv = new ModelAndView();
 			QnaDTO qnaDTO = new QnaDTO();
-			
+						
+			mv.addObject("board", "qna");			
 			mv.setViewName("board/boardReply");
-			mv.addObject("board", "qna");
-			mv.addObject("dto", qnaDTO);
 			
 			return mv;
 			

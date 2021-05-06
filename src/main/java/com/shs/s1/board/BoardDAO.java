@@ -13,7 +13,9 @@ public interface BoardDAO {
 	public long getTotalCount(BoardPager boardPager)throws Exception;
 	 
 	//Board Insert
-//	 public int setInsert(BoardDTO boardDTO) throws Exception;
+	//insert를 주석처리한 이유는 qnaDAO에 값을 넘길때 depth, step, ref가 필요한데
+	//BoardDTO에는 해당 값이 없음. 그래서 insert는 각자 따로 값을 받기위해 override하지 않도록 함.
+	//public int setInsert(BoardDTO boardDTO) throws Exception;
 	 
 	//Board Select
 	 public BoardDTO getSelect(BoardDTO boardDTO) throws Exception;

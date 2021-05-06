@@ -14,7 +14,13 @@ import com.shs.s1.util.BoardPager;
 public class QnaService implements BoardService {
 
 	@Autowired
-	private QnaDAO qnaDAO; 
+	private QnaDAO qnaDAO;
+	
+	public long totalCount(BoardPager boardPager) throws Exception{
+		long totalCount = qnaDAO.getTotalCount(boardPager);
+		
+		return totalCount;
+	}
 	
 	@Override
 	public List<BoardDTO> getList(BoardPager boardPager) throws Exception {
@@ -44,7 +50,6 @@ public class QnaService implements BoardService {
 		return qnaDAO.getSelect(boardDTO);
 	}
 
-	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		return qnaDAO.setUpdate(boardDTO);
 	}

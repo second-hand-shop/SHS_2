@@ -5,6 +5,7 @@
 
 <configuration>
  	<typeAliases>
+
 		<typeAlias type="com.shs.s1.admin.coupon.CouponDTO" alias="CouponDTO"/>
 		<typeAlias type="com.shs.s1.admin.member.AMemberDTO" alias="AMemberDTO"/>
 		<typeAlias type="com.shs.s1.admin.member.XMemberDTO" alias="XMemberDTO"/>
@@ -23,5 +24,12 @@
 		<typeAlias type="com.shs.s1.order.CartDTO" alias="CartDTO"/>
 		<typeAlias type="com.shs.s1.order.AddressInfoDTO" alias="AddressInfoDTO"/>
 		<typeAlias type="com.shs.s1.order.OrderInfoDTO" alias="OrderInfoDTO"/>
+		
+		
+		<typeAlias type="com.shs.s1.board.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.shs.s1.board.ReviewFileDTO" alias="ReviewFileDTO"/>
+		<typeAlias type="com.shs.s1.board.comments.CommentsDTO" alias="CommentsDTO"/>
+		<typeAlias type="com.shs.s1.board.review.ReviewDTO" alias="ReviewDTO"/>
+
 	</typeAliases>
 </configuration>

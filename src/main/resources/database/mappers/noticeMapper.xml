@@ -10,18 +10,21 @@
 		select count(num) from notice
 		where 
 		<choose>
-			<when test="kind == 'Writer'">
+		
+			<when test="kind == '글쓴이'">
 				writer
 			</when>
-			<when test="kind == 'Contents'">
+			
+			<when test="kind == '내용'">
 				contents
 			</when>
 			
-			<otherwise>
+			<otherwise>				
 				title
 			</otherwise>
+			
 		</choose>
-		like '%'||#{search}||'%' and num >0
+		like '%'|| #{search} ||'%' and num >0
 	</select>
     
     
@@ -31,11 +34,11 @@
 			(select rownum R, N.* from
 				(select * from notice where
 					<choose>
-						<when test="kind=='Writer'">
+						<when test="kind == '글쓴이'">
 							writer
 						</when>
 						
-						<when test="kind =='Contents'">
+						<when test="kind == '내용'">
 							contents
 						</when>
 						

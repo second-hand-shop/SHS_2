@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -39,7 +40,7 @@
 	}
 	
 	/* qna의 경우 3번째(qna:subject) 줄 정렬 */
-	<c:if test="${board eq 'qna'}">
+	<c:if test="${board ne 'notice'}">
 		td:nth-child(3){
 			text-align: left;
 		}
@@ -64,6 +65,8 @@
 		float: right;
 		border: 1px solid black;
 		padding: 0.8% 2.5% 0.8% 2.5%;
+		background-color: black;
+		color: white;
 	}
 	
 	/* 2개의 div 절반으로 나누기 */
@@ -87,6 +90,21 @@
 		height:auto;
 		vertical-align: middle;
 	}
+	
+	.search-size{
+		width: 10%;
+	}
+	
+	.search{
+		width: 10%;
+	}
+	
+	.search-input-line{
+		border: 0.8px solid #c4c4c4;
+		font-size: 11pt;
+	}
+
+
 
 
 </style>
@@ -106,7 +124,7 @@
 		<tr>
 			<th class="lines" width="4%">NO</td>
 			
-			<c:if test="${board eq 'qna'}">
+			<c:if test="${board ne 'notice'}">
 				<th class="lines" width="8%">PRODUCT</td>
 			</c:if>
 			
@@ -116,30 +134,41 @@
 			<th class="lines" width="8%">HIT</td>
 		</tr>
 		
-		<c:forEach items="${list}" var="dto">
-			<tr>
-				<td class="lines">${dto.num}</td>
+		
+			<c:forEach items="${list}" var="dto">
+				<tr>						
+					<td class="lines">	
+						${dto.num}					
+					</td>	   
+					
+					<c:if test="${board ne 'notice'}">
+						<td class="lines"><!-- product이미지 들어올자리 --></td>
+					</c:if>
+					
+					<td class="lines"><a href="
+					<c:if test="${board eq 'qna' && dto.pwSet eq 'Y'}">../comments/commentsResult?num=${dto.num}&&name=qnaList</c:if>
+					<c:if test="${board ne 'qna' || dto.pwSet eq 'N'}">./${board}Select?num=${dto.num}<c:if test="${board eq 'review'}">&&reviewNum=${dto.num}</c:if></c:if>">
 				
-				<c:if test="${board eq 'qna'}">
-					<td class="lines"><!-- product이미지 들어올자리 --></td>
-				</c:if>
-				
-				<!-- 관리자와 일반유저 구분하는 id값 넘겨주기 추가 -->
-				<td class="lines"><a href="./${board}Select?num=${dto.num}">
-			
-				<!-- depth부분 -->
-				<c:catch>
-					<c:forEach begin="1" end="${dto.depth}">
-					&ensp;<img src="../resources/images/curvedArrow2.png" alter="답변" class="img-size" />
-					</c:forEach>
-				</c:catch>
-				${dto.title}</a></td>
-				
-				<td class="lines">${dto.writer}</td>
-				<td class="lines">${dto.regdate}</td>
-				<td class="lines">${dto.hit}</td>
-			</tr>
-		</c:forEach>
+						<!-- depth부분 -->
+						<c:catch>
+							<c:forEach begin="1" end="${dto.depth}">
+							&ensp;<img src="../resources/images/curvedArrow2.png" alter="답변" class="img-size" />
+							</c:forEach>
+						</c:catch>
+						
+						<c:if test="${dto.pwSet eq 'Y'}">
+							<img src="../resources/images/lock.png" alter="자물쇠" class="img-size" />
+						</c:if>
+						
+						${dto.title}</a>
+					
+					</td>
+					
+					<td class="lines">${dto.writer}</td>
+					<td class="lines">${dto.regdate}</td>
+					<td class="lines">${dto.hit}</td>
+				</tr>
+			</c:forEach>
 		
 		<tr>
 			<td class="lines" colspan="6">
@@ -150,53 +179,58 @@
 						  <form id="frm" action="./${board}List" class="form-inline">
 							  <input type="hidden" name="curPage" value="1" id="curPage">
 						  
-						  	  <div class="input-group-prepend">
+						  	  <div>
 						  	  
-						   		  <select class="form-control" name="kind" id="kind" >					   		  
-									    <option class="sel">Title</option>
-									    <option class="sel">Contents</option>
-									    <option class="sel">Writer</option>								    
+						   		  <select name="kind" id="kind" >					   		  
+									    <option class="select">제목</option>
+									    <option class="select">내용</option>
+									    <option class="select">글쓴이</option>								    
 						 		  </select>
 						 		  
 						  	  </div>
 						  	  
-						  	  <input type="text" class="form-control" name="search" id="search" value="${boardPager.search}" placeholder="">
+						  	  <input type="text" class="search-input-line" style="margin-left: 2%;" name="search" id="search" value="${boardPager.search}">
 						    
-						      <div class="input-group-append">
-						    	  <button class="btn btn-success" type="submit">Search</button>
+						      <div class="search-size">
+						    	  <input type="image" name="submit" value="submit" class="search" style="width: 35%; height: 35%; margin-left:1%;" src="../resources/images/search.png" alt="search">
 						  	  </div>
 					 	  </form> 
 					  </div>
 					  
-					  <div class="second-size">
-						  <ul class="pagination">
-						  
-							  <c:if test="${boardPager.pre}">	
-							    <li class="page-item"><a class="page-link p" href="#" title="${boardPager.startNum-1}">Previous</a></li>
-							  </c:if>
-						   
-						   	  <c:forEach begin="${boardPager.startNum}" end="${boardPager.lastNum}" var="i">
-						   		<li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
-						   	  </c:forEach>
-						   
-						      <c:if test="${boardPager.next}">
-						      	<li class="page-item"><a class="page-link p" href="#" title="${boardPager.lastNum+1}">Next</a></li>
-						      </c:if>
-						      
-						  </ul>
-					  </div>
+					  <!-- 검색 결과가 없으면 pager 안보이게 -->
+					  <c:if test="${totalCount ne 0}">
+						  <div class="second-size">
+							  <ul class="pagination">
+							  
+								  <c:if test="${boardPager.pre}">	
+								    <li class="page-item"><a class="page-link p" href="#" title="${boardPager.startNum-1}">Previous</a></li>
+								  </c:if>
+							   
+							   	  <c:forEach begin="${boardPager.startNum}" end="${boardPager.lastNum}" var="i">
+							   		<li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
+							   	  </c:forEach>
+							   
+							      <c:if test="${boardPager.next}">
+							      	<li class="page-item"><a class="page-link p" href="#" title="${boardPager.lastNum+1}">Next</a></li>
+							      </c:if>
+							      
+							  </ul>
+						  </div>
+					  </c:if>
 					  
 					  <div id="botton-div">
-							<a href="./${board}Insert?num=${dto.num}" class="button-style">작성</a>
+							<a href="./${board}Insert<c:if test="${board ne 'notice'}">?productNum=3</c:if><c:if test="${board eq 'review'}">&&num=${num}</c:if>" class="button-style">WRITE</a>
 					  </div>
 					
 					
 					  <script type="text/javascript">
 					  
-							let kind= '${boardPager.kind}';//Title, Writer, Contents
-							$(".sel").each(function() {
-								let t = $(this).text();//Title, Writer, Contents
-								if(t == kind){
+ 							let kind= '${boardPager.kind}';//Title, Writer, Contents
+ 							console.log(kind);
+ 							
+							$(".select").each(function() {
+								let select = $(this).text();//Title, Writer, Contents
+								if(select == kind){
 									$(this).prop("selected", true);
 								}
 							});
@@ -204,7 +238,7 @@
 							$(".p").click(function () {
 								let curPage = $(this).attr("title");
 								$("#curPage").val(curPage);
-								let search= '${boardPager.search}';
+								let search = '${boardPager.search}';
 								$("#frm").submit();
 		
 							});

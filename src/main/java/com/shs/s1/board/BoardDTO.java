@@ -12,7 +12,12 @@ public class BoardDTO {
 	private Date regdate;
 	private long hit;
 	
-
+	private String boardPw;
+	private long productNum;
+	
+	
+	private String pwSet;
+	
 	//get set
 	public long getNum() {
 		return num;
@@ -50,5 +55,32 @@ public class BoardDTO {
 	public void setHit(long hit) {
 		this.hit = hit;
 	}
+	
+	public String getBoardPw() {
+		return boardPw;
+	}
+	public void setBoardPw(String boardPw) {
+		this.boardPw = boardPw;
+	}
+	
+	public long getProductNum() {
+		return productNum;
+	}
+	
+	public void setProductNum(long productNum) {
+		this.productNum = productNum;
+	}
+	
+	
+	
+	public String getPwSet() {
+		return pwSet;
+	}
+
+	public void setPwSet(String pwSet) {
+		this.pwSet = pwSet;
+	}
+
+
 
 }
