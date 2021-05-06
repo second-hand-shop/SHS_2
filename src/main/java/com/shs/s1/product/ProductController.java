@@ -57,7 +57,7 @@ public class ProductController {
 	
 	@PostMapping("productInsert")
 	public String setInsert(ProductDTO productDTO,MultipartFile[] files,Model model) throws Exception{
-		System.out.println(files);
+//		System.out.println(files);
 		int result = productService.setInsert(productDTO,files);
 		
 		//String path="./productList";

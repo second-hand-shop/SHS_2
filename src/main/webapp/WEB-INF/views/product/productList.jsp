@@ -50,7 +50,7 @@ clear:left;
 .row{
 display : flex;
 flex-direction: row;
-flex-wrap : wrap;
+ flex-wrap : wrap; 
 /* border: 1px solid #ccc;  */
 }
 

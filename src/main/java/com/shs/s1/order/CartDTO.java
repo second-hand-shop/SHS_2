@@ -1,6 +1,10 @@
 package com.shs.s1.order;
 
 import java.sql.Date;
+import java.util.List;
+
+import com.shs.s1.product.ProductDTO;
+import com.shs.s1.product.ProductImageDTO;
 
 public class CartDTO {
 
@@ -9,8 +13,23 @@ public class CartDTO {
 	private String id;
 	private long cartStock;
 	private Date addDate;
+	private List<ProductDTO> products;
+	private List<ProductImageDTO> productImages;
 	
 	
+	
+	public List<ProductImageDTO> getProductImages() {
+		return productImages;
+	}
+	public void setProductImages(List<ProductImageDTO> productImages) {
+		this.productImages = productImages;
+	}
+	public List<ProductDTO> getProducts() {
+		return products;
+	}
+	public void setProducts(List<ProductDTO> products) {
+		this.products = products;
+	}
 	public long getCartNum() {
 		return cartNum;
 	}

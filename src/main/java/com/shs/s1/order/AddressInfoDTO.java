@@ -12,6 +12,7 @@ public class AddressInfoDTO {
 	private long orderNum;
 	private String id;
 	private long productNum;
+	private String productName;
 	private long price;
 	private long amount;
 	private String name;
@@ -28,6 +29,12 @@ public class AddressInfoDTO {
 	
 	
 
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 	public long getAmount() {
 		return amount;
 	}
