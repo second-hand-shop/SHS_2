@@ -122,9 +122,11 @@
 			<a href="./${board}Update?num=${dto.num}<c:if test="${board ne 'notice'}">&&productNum=${dto.productNum}</c:if>" class="button-style">수정</a>
 			<a href="../comments/commentsResult?num=${dto.num}&&name=${board}" class="button-style">삭제</a>
 			
+			<!-- reply 현재 오류! -->
+			<!--  
 			<c:if test="${board eq 'qna'}">
 				<a href="./${board}Reply?num=${dto.num}&&productNum=${dto.productNum}" class="button-style">답글</a>
-			</c:if>
+			</c:if>-->
 
 		</div>
 	
