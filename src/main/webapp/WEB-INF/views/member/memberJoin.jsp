@@ -122,7 +122,7 @@ table td {
 					</table>
 				</div>
 					<div class="button">	
-						<input type="submit" id="btn" value="SUBMIT" class="btn">
+						<input type="button" id="join" value="SUBMIT" class="btn">
 					</div>
 				</form>
 			</div>
