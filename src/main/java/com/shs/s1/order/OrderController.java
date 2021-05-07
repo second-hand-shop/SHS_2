@@ -75,23 +75,23 @@ private ProductService productService;
 		
 	}
 	@PostMapping("order/orderFormList")
-	public void getSelectOrderList(HttpServletRequest request,Model model)throws Exception{
+	public void getSelectOrderList(Long[] productNum,Long[] productAmount,Model model)throws Exception{
 		
-		String[] arr= request.getParameterValues("productNum");
-		String[] amountArr=request.getParameterValues("productAmount");
+		Long[] arr= productNum;
+		Long[] amountArr=productAmount;
 	
 
 		
-		System.out.println(amountArr[0]);
+		
 		
 		List<ProductDTO> ar = new ArrayList<ProductDTO>();
 		
 
 		for(int i=0;i<arr.length;i++) {
 			ProductDTO productDTO = new ProductDTO();
-			productDTO.setProductNum(Long.parseLong(arr[i]));
+			productDTO.setProductNum(arr[i]);
 			productDTO = productService.getSelect(productDTO);
-			productDTO.setAmount(Long.parseLong(amountArr[i]));
+			productDTO.setAmount(amountArr[i]);
 			System.out.println(amountArr[i]);
 			ar.add(i, productDTO);
 		}
