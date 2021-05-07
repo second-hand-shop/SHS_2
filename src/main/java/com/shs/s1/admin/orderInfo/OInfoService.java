@@ -31,4 +31,14 @@ public class OInfoService {
 	public int setShippingUpdate(OInfoDTO oInfoDTO) throws Exception {
 		return oInfoDAO.setShippingUpdate(oInfoDTO);
 	}
+	
+//	setShippingNum============================================================
+	public int setShippingNum(OInfoDTO oInfoDTO) throws Exception {
+		return oInfoDAO.setShippingNum(oInfoDTO);
+	}
+	
+//	getShippingSelect============================================================
+	public OInfoDTO getShippingSelect(OInfoDTO oInfoDTO) throws Exception {
+		return oInfoDAO.getShippingSelect(oInfoDTO);
+	}
 }

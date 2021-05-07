@@ -107,5 +107,50 @@ $(".shipped").click(function(){
 	}
 });
 
+// 송장번호 입력====================================================
+//==================================================================
+$(".addShipping").click(function(){
+	$(".shipNum").each(function(){
+		let shipNum = $(this).val();
+		if(shipNum != 0){			
+			let oiNum = $(this).prop("title");	
+			console.log(oiNum);
+			console.log(shipNum);
+			$.ajax({
+				type: "POST",
+				url: "./shippingNumUpdate",
+				data: {
+					shippingNum:shipNum,
+					oiNum:oiNum
+				},
+				success: function(result){
+					
+				}
+			});
+		}
+	});
+	location.reload();
+});
+
+
+// 배송조회 창======================================================
+//==================================================================
+$(".selectShipping").each(function(){		
+	$(this).click(function(){
+		let oiNum = $(this).attr("title");
+		window.open("./selectShipList?oiNum="+oiNum,"WindowName","width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	});
+});
+// 배송조회 ======================================================
+//================================================================
+$(".shippingSearch").each(function(){
+	$(this).click(function(){		
+		let shippingNum=$(this).attr("title");
+		window.open("http://nplus.doortodoor.co.kr/web/detail.jsp?slipno="+shippingNum,"WindowName","width=700, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	});
+});
+
+
+
 
 

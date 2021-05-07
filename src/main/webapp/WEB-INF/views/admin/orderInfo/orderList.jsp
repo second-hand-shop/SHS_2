@@ -6,7 +6,7 @@
 <head>
 <style type="text/css">
 	tbody tr td input {
-		width: 70%;
+		width: 50%;
 	}
 </style>
 <c:import url="../../template/bootStrap.jsp"></c:import>
@@ -48,7 +48,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><!-- @@@@@@@@@상품페이지@@@@@@@@@@ -->
+            <a class="nav-link" href="${pageContext.request.contextPath }/product/productList">
               <span data-feather="shopping-cart"></span>
               Products <!-- 상품리스트 -->
             </a>
@@ -60,7 +60,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> <!-- QnA로 -->
+            <a class="nav-link" href="${pageContext.request.contextPath }/qna/qnaList"> <!-- QnA로 -->
               <span data-feather="message-square"></span>
               Board
             </a>
@@ -83,17 +83,18 @@
  <!-------------------------- navbar END ---------------------------------->
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 	<h2>주문 목록</h2>
-	<button class="btn btn-primary ready-shipping">배송준비중</button>
-	<button class="btn btn-primary shipping">배송중</button>
-	<button class="btn btn-primary shipped">배송완료</button>
+	<button class="btn btn-light ready-shipping">배송준비중</button>
+	<button class="btn btn-light shipping">배송중</button>
+	<button class="btn btn-light shipped">배송완료</button>
 	<div class="table-responsive">
 		<table class="table table-striped table-sm">
 			<thead>
 				<tr>
 					<th>주문번호</th>
 					<th>주문일자</th>
-					<th>주문처리상태</th>
 					<th>주문자 ID</th>
+					<th>주문처리상태</th>
+					<th>송장번호</th>
 					<th><input type="checkbox" name="allCheck" class="allCheck"></th>
 				</tr>
 			</thead>
@@ -102,8 +103,18 @@
 						<tr>
 							<td><a href="#" class="numSelect" title="${DTO.orderNum }">${DTO.orderNum }</a></td>
 							<td>${DTO.orderDate }</td>
-							<td>${DTO.orderProcess }</td>
 							<td>${DTO.id }</td>
+							<td>${DTO.orderProcess }</td>
+							<c:choose>
+								<c:when test="${DTO.shippingNum==0 }">
+									<td><input type="text" class="shipNum" title="${DTO.oiNum }"><button class="btn btn-dark addShipping">+</button></td>
+								</c:when>
+								<c:when test="${DTO.shippingNum!=0 }">
+									<td><a href="#" class="selectShipping" title="${DTO.oiNum }">${DTO.shippingNum }
+									<br>
+									</a><button class="btn btn-light shippingSearch" title="${DTO.shippingNum }">배송조회</button></td>
+								</c:when>
+							</c:choose>
 							<td><input type="checkbox" name="deleteCheck" class="check" title="${DTO.oiNum }"></td>
 						</tr>
 				</c:forEach>
