@@ -20,7 +20,7 @@
 			
 			
 			
-			<form action="./orderFormList" method="post">
+			
 			
 				<table id="productTable" style="margin-bottom: 40px">
 
@@ -43,7 +43,12 @@
 
 						<c:forEach items="${list}" var="dto" varStatus="status">
 						<tr>
-							<td style="width:70px;"><input type="checkbox" name="productNum" value="${dto.productNum}" ></td>
+							<td style="width:70px;">
+							
+							<input type="checkbox" name="productNum" value="${dto.productNum}" class="check">
+							<input class="productAmount" type="hidden" name="productAmount" value="${dto.cartStock}">
+							
+							</td>
 							<td><div>
 									<img id="productImg"
 										src="../resources/upload/images/${dto.productImages[0].thumbnail}" style="width:70px; height:auto;">
@@ -53,7 +58,7 @@
 							<td>${dto.cartStock}
 							
 							
-							<input id="productAmount" type="text" name="productAmount" value="${dto.cartStock}" title="${status.index}">
+							
 							
 							<input type="hidden" value="${list.size()}" id="listSize">
 				
@@ -71,13 +76,61 @@
 					</tbody>
 
 				</table>
-					<button id="ccc">선택상품 주문</button>
-			<button>전체상품 주문</button>
+					<input type="button" value="선택상품 주문" id="selButton">
+			<!-- <button>전체상품 주문</button> -->
+			<form action="./orderFormList" method="post" id="ordfrm">
+			<input type="hidden" value="" name="productNum" id="productNum"> 
+			<input type="hidden" value="" name="productAmount" id="productAmount"> 
+			
 			
 			</form>
 			
+			<script type="text/javascript">
+		
+			$("#selButton").click(function(){
+				
+				
+			let productNum=[];
+			let productAmount= [];
 			
 			
+			 $(".check").each(function(){
+				 if($(this).prop("checked")){
+					 productNum.push($(this).val());
+					 productAmount.push($(this).next(".productAmount").val());
+					}
+				 
+			 })
+			 
+			 
+			 	/* $.ajax({
+					type: "POST",
+					url: "./orderFormList",
+					traditional:true,
+					data: {
+						productNum:productNum,
+						productAmount:productAmount
+					},
+				 	success: function(result){
+						//success functions
+					} 
+				}); */
+			 
+			 $("#productNum").val(productNum);
+			 $("#productAmount").val(productAmount);
+				
+				
+		$("#ordfrm").submit();
+		
+			
+			
+			
+			
+			}) 
+			
+			
+			</script>
+			 
 			
 			
 		<%-- 	<form action="./orderFormList" method="post">
@@ -119,6 +172,8 @@
 
 
 
+
 </script>
+<script type="text/javascript" src="../resources/jquery/cart/cartList.js"></script>
 
 </html>

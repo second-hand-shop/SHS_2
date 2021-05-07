@@ -88,7 +88,9 @@ select *
  </select>
  
 
-
+<select id="getCouponList" parameterType="MemberDTO" resultType="CouponDTO">
+select  * from coupon where id=#{id}
+</select>
  
  <resultMap type="AddressInfoDTO" id="AddrProductResult">
  	<id property="addressNum" column="addressNum"></id>
