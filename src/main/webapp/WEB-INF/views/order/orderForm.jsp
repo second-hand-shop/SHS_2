@@ -120,7 +120,7 @@ overflow-y:scroll;
 							<td>판매가</td>
 							<td>수량</td>
 							
-							<td>배송비</td>
+							<td>배송</td>
 							<td>합계</td>
 						</tr>
 					</thead>
@@ -137,12 +137,13 @@ overflow-y:scroll;
 							<td id="productPrice"><strong>${dto.price}</strong></td>
 							<td id="productAmount">${dto.amount}</td>
 						
-							<td id="shipping" >배송비</td>
-							<td id="totalP" >합계</td>
+							<td  >일반 배송</td>
+							<td id="totalP" >배송비 뺀 합계</td>
 						</tr>
 						<tr>
-							<td colspan="5" style="text-align:right;">총 결제 금액</td>
-							<td  style="text-align:right;" id="totalPrice">합계</td>
+							<td colspan="4" style="text-align:right;">총 결제 금액</td>
+							<td  style="text-align:right;" id="shipping">배송비</td>
+							<td  style="text-align:right;" id="totalPrice">총합계</td>
 						</tr>
 
 					</tbody>
@@ -318,18 +319,19 @@ overflow-y:scroll;
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 				<script type="text/javascript">
+					
 				if(parseInt($("#productPrice").text())>=100000){			
 					$("#shipping").text("무료");
-					$("#totalP").text(parseInt($("#productPrice").text()));
+					$("#totalP").text(parseInt($("#productPrice").text())*parseInt($("#productAmount").text()));
 					$("#totalPrice").text($("#totalP").text());
 				}else{			
 					$("#shipping").text("3000");
-					$("#totalP").text(parseInt($("#productPrice").text())+3000);
-					$("#totalPrice").text($("#totalP").text());
+					$("#totalP").text(parseInt($("#productPrice").text())*parseInt($("#productAmount").text()));
+					$("#totalPrice").text(parseInt($("#totalP").text())+3000);
 				}
 				
-				$("#beforePrice").text($("#totalP").text());
-				$("#finalPrice").text($("#beforePrice").text());
+				$("#beforePrice").text($("#totalPrice").text());
+				$("#finalPrice").text($("#beforePrice").text());//쿠폰 맥이면 바꿔줘야해
 				$("#couponButton").click(function(){
 					
 					/* let orderNum = $(this).attr("title");
@@ -440,7 +442,7 @@ IMP.init("imp92233315"); // "imp00000000" 대신 발급받은 "가맹점 식별�
 
 
 /* var muid='merchant_' + new Date().getTime() //주문번호 */
-//이걸 먼저 디비에 넣으려면..?
+
 
  
 
