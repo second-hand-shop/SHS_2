@@ -468,7 +468,7 @@ function requestPay(){
 			$("#sample3_postcode").val()=="" || $("#sample3_detailAddress").val()=="" || $("#tel").val()==""){
 		alert("필수항목을 입력해주세요");
 	}
-
+	else{
 
 
 IMP.request_pay({
@@ -533,7 +533,8 @@ IMP.request_pay({
         msg += '에러내용 : ' + rsp.error_msg;
         alert(msg);
     }
-
+    
+}
    
 });
  } 
