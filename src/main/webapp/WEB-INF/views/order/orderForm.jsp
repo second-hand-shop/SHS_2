@@ -119,7 +119,7 @@ overflow-y:scroll;
 							<td>상품정보</td>
 							<td>판매가</td>
 							<td>수량</td>
-							<td>적립금</td>
+							
 							<td>배송비</td>
 							<td>합계</td>
 						</tr>
@@ -136,18 +136,25 @@ overflow-y:scroll;
 							<td id="productName">${dto.productName}</td>
 							<td id="productPrice"><strong>${dto.price}</strong></td>
 							<td id="productAmount">${dto.amount}</td>
-							<td>적립금</td>
-							<td>배송비</td>
-							<td>합계</td>
+						
+							<td id="shipping" >배송비</td>
+							<td id="totalP" >합계</td>
 						</tr>
 						<tr>
-							<td colspan="7" style="text-align:right;">합계</td>
+							<td colspan="5" style="text-align:right;">총 결제 금액</td>
+							<td  style="text-align:right;" id="totalPrice">합계</td>
 						</tr>
 
 					</tbody>
 
 				</table>
 				<input type="hidden" value="${dto.productNum}" id="productNum">
+				
+				
+
+				
+				
+				
 				
 				<br>
 				<hr>
@@ -256,7 +263,7 @@ overflow-y:scroll;
 		
 				<h1 style="margin:30px auto;">결제 예정금액</h1>
 				
-				<table style="margin-bottom:100px; border: ">
+				<table style="margin-bottom:100px; border:none; ">
 				
 				<tr>
 					<td>
@@ -270,22 +277,22 @@ overflow-y:scroll;
 					</td>
 				</tr>
 				<tr>
-					<td style="border: none;">
+					<td style="border: none;" id="beforePrice">
 						배송비 합한 금액
 					</td>
-					<td style="border:none;">
-						-붙여주는 금액
+					<td style="border:none;" id="discount">
+						-0
 					</td>
-					<td>
+					<td id="finalPrice">
 						총
 					</td>
 				</tr>
 				<tr>
 					<td>
-						적립금
+						쿠폰
 					</td>
 					<td colspan="5">
-						<input type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"> 원 (총 사용 가능 적립금:(멤버에서 받아오는 적립금) 원)
+						<input type="button" value="쿠폰조회" id="couponButton">
 
 					</td>
 				
@@ -310,6 +317,32 @@ overflow-y:scroll;
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+				<script type="text/javascript">
+				if(parseInt($("#productPrice").text())>=100000){			
+					$("#shipping").text("무료");
+					$("#totalP").text(parseInt($("#productPrice").text()));
+					$("#totalPrice").text($("#totalP").text());
+				}else{			
+					$("#shipping").text("3000");
+					$("#totalP").text(parseInt($("#productPrice").text())+3000);
+					$("#totalPrice").text($("#totalP").text());
+				}
+				
+				$("#beforePrice").text($("#totalP").text());
+				$("#finalPrice").text($("#beforePrice").text());
+				$("#couponButton").click(function(){
+					
+					/* let orderNum = $(this).attr("title");
+					window.open("./selectList?orderNum="+orderNum,"WindowName","width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+ */
+					
+				});
+				
+				
+				
+				</script>
+
+
 <script>
 	// 우편번호 찾기 찾기 화면을 넣을 element
 	var element_wrap = document.getElementById('findPostCode');
@@ -409,24 +442,32 @@ IMP.init("imp92233315"); // "imp00000000" 대신 발급받은 "가맹점 식별�
 /* var muid='merchant_' + new Date().getTime() //주문번호 */
 //이걸 먼저 디비에 넣으려면..?
 
-  
+ 
 
 
 
 
 function requestPay(){ 
 // IMP.request_pay(param, callback) 호출
+
+if($("#receiver").val()=="" || $("#email").val()=="" || $("#sample3_address").val()=="" ||
+		$("#sample3_postcode").val()=="" || $("#sample3_detailAddress").val()=="" || $("#tel").val()==""){
+	alert("필수항목을 입력해주세요");
+}
+else{
+
 IMP.request_pay({
     pg : 'html5_inicis',
     pay_method : 'card',
     merchant_uid : new Date().getTime(), //주문번호
     name : $("#productName").text(),
-    amount : 100, //가격
-    buyer_email :'test@test.com',
-    buyer_name : '창이욱',
-    buyer_tel : '010-1234-2345',
-    buyer_addr : '강남구 땅 사고싶습니다',
-    buyer_postcode : '123-345'
+    amount : $("#finalPrice").text(),
+    buyer_email :/* 'test@test.com' */$("#email").val(),
+    buyer_name : /* '창이욱' */$("#receiver").val(),
+    buyer_tel : /* '010-1234-2345' */ $("#tel").val(),
+    buyer_addr : $("#sample3_address").val()+$("#sample3_extraAddress").val()+$("#sample3_detailAddress").val()
+,
+    buyer_postcode : $("#sample3_postcode").val()
 }, function(rsp) {
     if ( rsp.success ) {
     	
@@ -470,6 +511,7 @@ IMP.request_pay({
    
 });
  } 
+}
 </script>  
 
 
