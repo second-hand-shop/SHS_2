@@ -142,12 +142,13 @@ overflow-y:scroll;
 							<td class="productPrice"><strong>${dto.price}</strong></td>
 							<td class="productAmount">${dto.amount}</td>
 						
-							<td id="shipping">배송비</td>
-							<td id="totalP">합계</td>
+							<td >일반 배송</td>
+							<td class="totalP">배송비뺀 합계</td>
 						</tr>
 						</c:forEach>
 						<tr>
-							<td colspan="5" style="text-align:right;">총 결제 금액</td>
+							<td colspan="4" style="text-align:right;">총 결제 금액</td>
+							<td  style="text-align:right;" id="shipping">배송</td>
 							<td  style="text-align:right;" id="totalPrice">합계</td>
 						</tr>
 						
@@ -290,10 +291,10 @@ overflow-y:scroll;
 				</tr>
 				<tr>
 					<td>
-						적립금
+						쿠폰
 					</td>
 					<td colspan="5">
-						<input type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"> 원 (총 사용 가능 적립금:(멤버에서 받아오는 적립금) 원)
+						<input type="button" value="쿠폰조회" id="couponButton">
 
 					</td>
 				
@@ -322,11 +323,35 @@ overflow-y:scroll;
 	
 	
 	
-	if(parseInt($("#productPrice").text())>=100000){
-					$("#shipping").text("무료");
-				}else{
-					$("#shipping").text("3000");
-				}
+let totalp=0;
+$(".productPrice").each(function(){
+	totalp=parseInt($(this).text())*$(this).nextAll(".productAmount").text()+totalp;
+	$(this).nextAll(".totalP").text(parseInt($(this).text())*$(this).nextAll(".productAmount").text());
+	
+	
+});
+
+
+
+if(totalp>=100000){
+	$("#shipping").text("무료");
+	$("#totalPrice").text(totalp)
+}else{
+	$("#shipping").text("3000");
+	$("#totalPrice").text(totalp+3000);
+}
+				
+$("#beforePrice").text($("#totalPrice").text());
+$("#finalPrice").text($("#beforePrice").text());//쿠폰 맥이면 바꿔줘야해
+$("#couponButton").click(function(){
+	
+	/* let orderNum = $(this).attr("title");
+	window.open("./selectList?orderNum="+orderNum,"WindowName","width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+*/
+	
+});
+				
+				
 				
 				</script>
 
@@ -426,8 +451,6 @@ IMP.init("imp92233315"); // "imp00000000" 대신 발급받은 "가맹점 식별�
 
 
 
-/* var muid='merchant_' + new Date().getTime() //주문번호 */
-//이걸 먼저 디비에 넣으려면..?
 var productArr= [];
 //빈 배열 생성 --> 반복문 돌려서 list 안에 있는 값 복사 ,, ?
 $(".productNum").each(function(){
@@ -440,17 +463,26 @@ $(".productNum").each(function(){
 
 function requestPay(){ 
 // IMP.request_pay(param, callback) 호출
+
+	if($("#receiver").val()=="" || $("#email").val()=="" || $("#sample3_address").val()=="" ||
+			$("#sample3_postcode").val()=="" || $("#sample3_detailAddress").val()=="" || $("#tel").val()==""){
+		alert("필수항목을 입력해주세요");
+	}
+
+
+
 IMP.request_pay({
     pg : 'html5_inicis',
     pay_method : 'card',
     merchant_uid : new Date().getTime(), //주문번호
     name : ${list.get(0).getProductNum()},
-    amount : 100, //가격
-    buyer_email :'test@test.com',
-    buyer_name : '창이욱',
-    buyer_tel : '010-1234-2345',
-    buyer_addr : '강남구 땅 사고싶습니다',
-    buyer_postcode : '123-345'
+    amount : $("#finalPrice").text(),
+    buyer_email :/* 'test@test.com' */$("#email").val(),
+    buyer_name : /* '창이욱' */$("#receiver").val(),
+    buyer_tel : /* '010-1234-2345' */ $("#tel").val(),
+    buyer_addr : $("#sample3_address").val()+$("#sample3_extraAddress").val()+$("#sample3_detailAddress").val()
+,
+    buyer_postcode : $("#sample3_postcode").val()
 }, function(rsp) {
     if ( rsp.success ) {
     	
