@@ -247,7 +247,14 @@
 				
 				<div class="div-right" align="right">	
 					<input type="button" value="CANCEL" class="button-style" onClick="location.href='./${board}List'">
-					<input type="button" id="btn" value="OK!" class="button-style">
+					
+					<c:if test="${board eq 'notice'}">
+						<input type="submit" value="OK!" class="button-style">
+					</c:if>
+					
+					<c:if test="${board ne 'notice'}">
+						<input type="button" id="btn" value="OK!" class="button-style">
+					</c:if>
 				</div>
 			</div>
 	
