@@ -56,22 +56,6 @@
 				<li class="menu_list_shop2"><a href="#">SELECT</a></li>
 			</ul>
 		</div>
-		<!-- ABOUT_MENU -->
-		<div class="Left_nav">
-			<a href="#modal-1" class="cd-btn cd-modal-trigger">ABOUT</a>
-		</div>
-		<div class="cd-modal" id="modal-1">
-			<div class="modal-content">
-				<div class="about_wrap">
-					<ul class="left">
-						<img src="#" />
-					</ul>
-					<ul class="right">
-						<li></li>
-					</ul>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
 <!--// .header -->

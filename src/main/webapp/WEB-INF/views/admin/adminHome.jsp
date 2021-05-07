@@ -62,7 +62,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><!-- @@@@@@@@@상품페이지@@@@@@@@@@ -->
+            <a class="nav-link" href="${pageContext.request.contextPath }/product/productList">
               <span data-feather="shopping-cart"></span>
               Products <!-- 상품리스트 -->
             </a>
@@ -74,7 +74,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> <!-- QnA로 -->
+            <a class="nav-link" href="${pageContext.request.contextPath }/qna/qnaList"> <!-- QnA로 -->
               <span data-feather="message-square"></span>
               Board
             </a>
@@ -98,7 +98,8 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">매출현황</h1>
+        <h5 class="h2">매출현황</h5>
+        <h1 hidden="" id="price" title="${price }">${price }</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -113,40 +114,93 @@
 
       <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
-      <h2>배송 전 상품 목록</h2>
+      <h5>배송 전 상품 목록</h5>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
               <th>주문번호</th>
               <th>주문일자</th>
-              <th>주문상품</th>
-              <th>처리상태</th>
+              <th>주문자 ID</th>
+              <th>주문처리상태</th>
               <th>취소/교환/반품</th>
             </tr>
           </thead>
           <tbody>
-          <c:forEach items="list" var="DTO">
+          <c:forEach items="${list }" var="DTO">
             <tr>
-              <td>DTO</td>
-              <td>DTO</td>
-              <td>DTO</td>
-              <td>DTO</td>
-              <td>DTO</td>
+              <td>${DTO.orderNum }</td>
+              <td>${DTO.orderDate }</td>
+              <td>${DTO.id }</td>
+              <td>${DTO.orderProcess }</td>
+              <td>${DTO.orderCondition }</td>
             </tr>
           </c:forEach>  
           </tbody>
         </table>
       </div>
+      <!-- table END -->
+      <!--------------------------- Paging ----------------------------------->
+	<!--------------------------- Paging ----------------------------------->
+	<div class="container">
+		<ul class="pagination">
+			<c:if test="${pager.previous }">
+				<li class="page-item"><a class="page-link p" href="#" title="${pager.startPage-1 }">Previous</a></li>
+			</c:if>
+			<c:forEach begin="${pager.startPage }" end="${pager.lastPage }" var="i">
+				<li class="page-item"><a class="page-link p" href="#" title="${i}">${i }</a></li>
+			</c:forEach>
+			<c:if test="${pager.next }">
+				<li class="page-item"><a class="page-link p" href="#" title="${pager.lastPage+1}">Next</a></li>
+			</c:if>
+		</ul>
+		<div class="input-group mt-3 mb-3">
+			<form action="./orderList" id="frm" class="form-inline">
+				<input type="hidden" id="curPage" name="curPage" value="1">
+				<div class="input-group-prepend">
+					<select class="form-control" id="kind" name="kind">
+						<option class="sel">주문번호</option>
+						<option class="sel">주문일자</option>
+						<option class="sel">주문자 ID</option>
+					</select>
+				</div>
+				<input type="text" class="form-control" id="search" name="search" value="${pager.search }">
+				<div class="input-group-append">
+					<button class="btn btn-success" type="submit">Search</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!--------------------------- Paging END ----------------------------------->
+	<!--------------------------- Paging END ----------------------------------->
     </main>
   </div>
 </div>
 
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
-      <!-- <script src="dashboard.js"></script> -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../resources/js/admin/adminHome.js"></script>
+    <!--Pager JS -->
+    <script type="text/javascript">
+	/*================= Pager ==============*/
+	let kind = '${pager.kind}';
+	$(".sel").each(function(){
+		let t = $(this).text();
+		if(t==kind){
+			$(this).prop("selected", true);
+		}
+	});
+	
+	$(".p").click(function(){
+		let curPage=$(this).attr("title");
+		$("#curPage").attr("value", curPage);
+		let search = '${pager.search}';
+		$("#frm").submit();
+	});
+	
+</script>
   </body>
 </html>
 

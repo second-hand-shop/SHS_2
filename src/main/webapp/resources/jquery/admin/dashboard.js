@@ -9,11 +9,6 @@
 
   feather.replace()
 
-// get price
-
-	let price = $("#price").attr("title");
-	console.log(price);
-
   // Graphs
   var ctx = document.getElementById('myChart')
   // eslint-disable-next-line no-unused-vars
@@ -29,18 +24,16 @@
         'Friday',
         'Saturday'
       ],
-// 차트 데이터 수정 ----------------------------------------------
       datasets: [{
         data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          5200,
-          price,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           12034
         ],
-// ----------------------------------------------------------------
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#007bff',
@@ -62,3 +55,4 @@
     }
   })
 })()
+
