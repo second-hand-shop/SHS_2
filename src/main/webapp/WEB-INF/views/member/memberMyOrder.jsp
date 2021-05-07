@@ -109,7 +109,7 @@
 			<th class="lines" width="8%">ORDER CONDITION</th>
 		</tr>
 		
-		<c:if test="${list eq null}">
+		<c:if test="${empty list}">
 			<tr>
 				<td colspan="6" class="lines"><p>주문하신 내역이 없습니다.</p></td>		
 			</tr>	

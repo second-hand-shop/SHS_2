@@ -74,18 +74,15 @@ public class MemberController {
 	@PostMapping("memberJoin")
 	public String memberJoin(MemberDTO memberDTO, Model model, HttpSession session) throws Exception {
 		int result = memberService.memberJoin(memberDTO, session);
-
-		String message = "회원가입 실패";
+	
 		String path = "./memberJoin";
 		if (result > 0) {
 			session.setAttribute("member", memberDTO);
-			message = "회원가입 성공";
 			path = "./memberSuccess";
 		}
-		model.addAttribute("msg", message);
 		model.addAttribute("path", path);
 
-		return "common/commonResult";
+		return "common/Result";
 	}
 
 	// join 후 성공했을 떄 페이지
