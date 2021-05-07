@@ -147,7 +147,7 @@
 					
 					<td class="lines"><a href="
 					<c:if test="${board eq 'qna' && dto.pwSet eq 'Y'}">../comments/commentsResult?num=${dto.num}&&name=qnaList</c:if>
-					<c:if test="${board ne 'qna' || dto.pwSet eq 'N'}">./${board}Select?num=${dto.num}<c:if test="${board eq 'review'}">&&reviewNum=${dto.num}</c:if></c:if>">
+					<c:if test="${board ne 'qna' || dto.pwSet eq 'N'}">../${board}/${board}Select?num=${dto.num}<c:if test="${board eq 'review'}">&&reviewNum=${dto.num}</c:if></c:if>">
 				
 						<!-- depth부분 -->
 						<c:catch>
