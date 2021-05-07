@@ -482,8 +482,7 @@ IMP.request_pay({
     buyer_email :/* 'test@test.com' */$("#email").val(),
     buyer_name : /* '창이욱' */$("#receiver").val(),
     buyer_tel : /* '010-1234-2345' */ $("#tel").val(),
-    buyer_addr : $("#sample3_address").val()+$("#sample3_extraAddress").val()+$("#sample3_detailAddress").val()
-,
+    buyer_addr : $("#sample3_address").val()+$("#sample3_extraAddress").val()+$("#sample3_detailAddress").val(),
     buyer_postcode : $("#sample3_postcode").val()
 }, function(rsp) {
     if ( rsp.success ) {
