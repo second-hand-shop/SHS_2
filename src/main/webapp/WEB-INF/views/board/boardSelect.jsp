@@ -136,8 +136,8 @@
 	
 	
 	<!-- comments 보여주기 -->
-	<c:if test="${member.id eq 'admin'}">
-		<c:if test="${board eq 'review'}">
+
+	<c:if test="${board eq 'review' || board ne 'qna' && board ne 'notice'}">
 			<c:if test="${comments ne null}">
 				<div id="table-border" style="border: 1px solid #d3d3d3; text-align: center;">					
 					<ul>					
@@ -163,7 +163,7 @@
 					</ul>					
 				</div>
 			</c:if>
-		</c:if>
+
 	
 		<!-- comments 입력폼 -->
 		<c:if test="${comments eq null}">
