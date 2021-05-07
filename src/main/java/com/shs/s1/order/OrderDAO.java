@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.shs.s1.admin.coupon.CouponDTO;
 import com.shs.s1.member.MemberDTO;
 
 @Repository
@@ -17,7 +18,9 @@ private SqlSession sqlSession;
 final String NAMESPACE = "com.shs.s1.order.OrderDAO.";	
 	
 	
-	
+	public List<CouponDTO> getCouponList(MemberDTO memberDTO)throws Exception{
+	return	sqlSession.selectList(NAMESPACE+"getCouponList", memberDTO);
+	}
 	
 public int setCartInsert(CartDTO cartDTO)throws Exception{
 		

@@ -121,7 +121,7 @@ overflow-y:scroll;
 							<td>상품정보</td>
 							<td>판매가</td>
 							<td>수량</td>
-							<td>적립금</td>
+							
 							<td>배송비</td>
 							<td>합계</td>
 						</tr>
@@ -135,17 +135,21 @@ overflow-y:scroll;
 							<td><div>
 									<img id="productImg"
 										src="../resources/upload/images/${dto.productImages[0].thumbnail}">
-								</div></td>
+								</div>
+								<input type="hidden" value="${dto.productNum}" class="productNum">
+								</td>
 							<td class="productName">${dto.productName}</td>
 							<td class="productPrice"><strong>${dto.price}</strong></td>
-							<td id="productAmount">${dto.amount}</td>
-							<td>적립금</td>
-							<td>배송비</td>
-							<td>합계<input type="hidden" value="${dto.productNum}" class="productNum"></td>
+							<td class="productAmount">${dto.amount}</td>
+						
+							<td >일반 배송</td>
+							<td class="totalP">배송비뺀 합계</td>
 						</tr>
 						</c:forEach>
 						<tr>
-							<td colspan="7" style="text-align:right;">합계</td>
+							<td colspan="4" style="text-align:right;">총 결제 금액</td>
+							<td  style="text-align:right;" id="shipping">배송</td>
+							<td  style="text-align:right;" id="totalPrice">합계</td>
 						</tr>
 						
 					</tbody>
@@ -155,6 +159,9 @@ overflow-y:scroll;
 				<hr>
 				<br>
 				<input type="hidden" value="${list}" id="productList">
+
+				
+
 
 				<!-- 세션에서 회원인지 구분하고 비회원일시 주문조회 비밀번호 받아와야한다 -->
 				<!-- 배송정보 -->
@@ -272,22 +279,22 @@ overflow-y:scroll;
 					</td>
 				</tr>
 				<tr>
-					<td style="border: none;">
+					<td style="border: none;" id="beforePrice">
 						배송비 합한 금액
 					</td>
-					<td style="border:none;">
-						-붙여주는 금액
+					<td style="border:none;" id="discount">
+						-0
 					</td>
-					<td>
+					<td id="finalPrice">
 						총
 					</td>
 				</tr>
 				<tr>
 					<td>
-						적립금
+						쿠폰
 					</td>
 					<td colspan="5">
-						<input type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"> 원 (총 사용 가능 적립금:(멤버에서 받아오는 적립금) 원)
+						<input type="button" value="쿠폰조회" id="couponButton">
 
 					</td>
 				
@@ -312,7 +319,41 @@ overflow-y:scroll;
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript">
+	
+	
+	
+let totalp=0;
+$(".productPrice").each(function(){
+	totalp=parseInt($(this).text())*$(this).nextAll(".productAmount").text()+totalp;
+	$(this).nextAll(".totalP").text(parseInt($(this).text())*$(this).nextAll(".productAmount").text());
+	
+	
+});
 
+
+
+if(totalp>=100000){
+	$("#shipping").text("무료");
+	$("#totalPrice").text(totalp)
+}else{
+	$("#shipping").text("3000");
+	$("#totalPrice").text(totalp+3000);
+}
+				
+$("#beforePrice").text($("#totalPrice").text());
+$("#finalPrice").text($("#beforePrice").text());//쿠폰 맥이면 바꿔줘야해
+$("#couponButton").click(function(){
+	
+	/* let orderNum = $(this).attr("title");
+	window.open("./selectList?orderNum="+orderNum,"WindowName","width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+*/
+	
+});
+				
+				
+				
+				</script>
 
 <script>
 	// 우편번호 찾기 찾기 화면을 넣을 element
@@ -410,8 +451,6 @@ IMP.init("imp92233315"); // "imp00000000" 대신 발급받은 "가맹점 식별�
 
 
 
-/* var muid='merchant_' + new Date().getTime() //주문번호 */
-//이걸 먼저 디비에 넣으려면..?
 var productArr= [];
 //빈 배열 생성 --> 반복문 돌려서 list 안에 있는 값 복사 ,, ?
 $(".productNum").each(function(){
@@ -424,17 +463,26 @@ $(".productNum").each(function(){
 
 function requestPay(){ 
 // IMP.request_pay(param, callback) 호출
+
+	if($("#receiver").val()=="" || $("#email").val()=="" || $("#sample3_address").val()=="" ||
+			$("#sample3_postcode").val()=="" || $("#sample3_detailAddress").val()=="" || $("#tel").val()==""){
+		alert("필수항목을 입력해주세요");
+	}
+
+
+
 IMP.request_pay({
     pg : 'html5_inicis',
     pay_method : 'card',
     merchant_uid : new Date().getTime(), //주문번호
     name : ${list.get(0).getProductNum()},
-    amount : 100, //가격
-    buyer_email :'test@test.com',
-    buyer_name : '창이욱',
-    buyer_tel : '010-1234-2345',
-    buyer_addr : '강남구 땅 사고싶습니다',
-    buyer_postcode : '123-345'
+    amount : $("#finalPrice").text(),
+    buyer_email :/* 'test@test.com' */$("#email").val(),
+    buyer_name : /* '창이욱' */$("#receiver").val(),
+    buyer_tel : /* '010-1234-2345' */ $("#tel").val(),
+    buyer_addr : $("#sample3_address").val()+$("#sample3_extraAddress").val()+$("#sample3_detailAddress").val()
+,
+    buyer_postcode : $("#sample3_postcode").val()
 }, function(rsp) {
     if ( rsp.success ) {
     	
