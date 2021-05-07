@@ -340,9 +340,24 @@ overflow-y:scroll;
 					
 				});
 				
-				
-				
 				</script>
+
+
+<!-- <script type="text/javascript">
+
+let totalp=0;
+$(".productPrice").each(function(){
+	totalp=parseInt($(this).text())+totalp;
+});
+alert(totalp);
+if(totalp>=100000){
+	$("#shipping").text("무료");
+}else{
+	$("#shipping").text("3000");
+}
+
+</script> -->
+
 
 
 <script>
