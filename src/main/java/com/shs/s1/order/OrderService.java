@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.shs.s1.admin.coupon.CouponDTO;
 import com.shs.s1.member.MemberDTO;
 
 @Service
@@ -14,6 +15,11 @@ public class OrderService {
 
 	@Autowired
 	private OrderDAO orderDAO;
+	
+	public List<CouponDTO> getCouponList(MemberDTO memberDTO)throws Exception{
+		return orderDAO.getCouponList(memberDTO);
+	}
+	
 	
 	public int setCartInsert(CartDTO cartDTO)throws Exception{
 		
