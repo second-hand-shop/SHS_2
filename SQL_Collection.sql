@@ -524,7 +524,8 @@ CREATE TABLE ORDERINFO(
     orderNum          NUMBER           NOT NULL,
     orderDate         DATE             NOT NULL, 
     orderProcess      VARCHAR2(100)    NOT NULL, 
-    orderCondition    VARCHAR2(100)    NOT NULL
+    orderCondition    VARCHAR2(100)    NOT NULL,
+    shippingNum		  NUMBER
 );
 
 --orderinfo seq
@@ -564,5 +565,33 @@ addrMessage varchar2(200)
 insert into addressInfo values (addr_seq.nextval,1,'id1',1, 'productName1',100,1,'name1','1123-123','Addr1','phone1','email1','addMessage1');
 insert into addressInfo values (addr_seq.nextval,2,'id2',2, 'productName2',100,1,'name2','232-23','Addr2','phone2','email2','addMessage2');
 insert into addressInfo values (addr_seq.nextval,3,'id3',3, 'prodeuctName3',100,1,'name3','323-332','Addr3','phone3','email3','addMessage3');
+
+commit work;
+
+-- 형수 변경사항 21.05.07
+drop table orderInfo;
+drop sequence orderInfo_seq;
+
+CREATE TABLE ORDERINFO(
+    oiNum             NUMBER           PRIMARY KEY,
+    id                VARCHAR2(100)  CONSTRAINT ORINFO_ID_FK references member(id) on delete cascade,
+    productNum        NUMBER         CONSTRAINT ORINFO_PN_FK references product(productNum)on delete cascade,
+    orderNum          NUMBER           NOT NULL,
+    orderDate         DATE             NOT NULL, 
+    orderProcess      VARCHAR2(100)    NOT NULL, 
+    orderCondition    VARCHAR2(100)    NOT NULL,
+    shippingNum		  NUMBER,
+    orderPrice		  NUMBER
+);
+
+--orderinfo seq
+CREATE SEQUENCE ORDERINFO_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+--orderinfo insert
+insert into orderinfo values(ORDERINFO_SEQ.nextval,'id1',1,1,sysdate,'orderPorocess1','orderCondition1', null, null);
+insert into orderinfo values(ORDERINFO_SEQ.nextval,'id2',2,2,sysdate,'orderPorocess2','orderCondition3', null, null);
+insert into orderinfo values(ORDERINFO_SEQ.nextval,'id3',3,3,sysdate,'orderPorocess3','orderCondition3', null, null);
 
 commit work;
