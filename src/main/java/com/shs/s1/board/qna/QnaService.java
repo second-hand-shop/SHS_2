@@ -64,9 +64,9 @@ public class QnaService implements BoardService {
 		//부모글의 ref, step depth 조회
 		BoardDTO boardDTO = qnaDAO.getSelect(qnaDTO);
 		QnaDTO parent = (QnaDTO)boardDTO;
-		System.out.println(parent.getRef());
-		System.out.println(parent.getStep());
-		System.out.println(parent.getDepth());
+		System.out.println("service ref : "+parent.getRef());
+		System.out.println("service step : "+parent.getStep());
+		System.out.println("service depth : "+parent.getDepth());
 		
 		qnaDTO.setRef(parent.getRef());
 		qnaDTO.setStep(parent.getStep()+1);

@@ -61,6 +61,19 @@ public class QnaDAO implements BoardDAO{
 	}
 	
 	public int setReply(QnaDTO qnaDTO) throws Exception{
+		
+		System.out.println("dao ref : "+qnaDTO.getRef());
+		System.out.println("dao step : "+qnaDTO.getStep());
+		System.out.println("dao depth : "+qnaDTO.getDepth());
+		
+		System.out.println("dao num : "+qnaDTO.getNum());
+		System.out.println("dao productNum : "+qnaDTO.getProductNum());
+		System.out.println("dao title : "+qnaDTO.getTitle());
+		System.out.println("dao writer : "+qnaDTO.getWriter());
+		System.out.println("dao contents : "+qnaDTO.getContents());
+		System.out.println("dao boardPw : "+qnaDTO.getBoardPw());
+		System.out.println("dao pwSet : "+qnaDTO.getPwSet());
+		
 		return sqlSession.insert(NAMESPACE+"setReply", qnaDTO);
 	}
 

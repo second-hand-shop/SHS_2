@@ -28,18 +28,18 @@
 
 
 	<!-- Qna List -->
-	<select id="getList" parameterType="BoardPager" resultType="QnaDTO">
+	<select id="getList" resultType="QnaDTO" parameterType="BoardPager">
 	
 		select * from
 			(select rownum R, Q.* from
 				(select * from qna where
 				
 				<choose>
-						<when test="kind=='글쓴이'">
+						<when test="kind == '글쓴이'">
 							title
 						</when>
 						
-						<when test="kind =='내용'">
+						<when test="kind == '내용'">
 							writer
 						</when>
 						
@@ -65,6 +65,9 @@
 																								<!-- 위에서 미리 조회해서 값 넣기 -->
 		insert into qna values(#{num}, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{num}, 0, 0, #{boardPw}, #{pwSet})
 	</insert>
+	
+	
+	
 	
 	
 	<!-- Qna Select -->
@@ -101,7 +104,11 @@
     
    	<!-- reply -->
 	<insert id="setReply" parameterType="QnaDTO">
-		insert into qna values(qna_seq.nextval, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth}, #{boardPw})
+		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+			select qna_seq.nextval from dual
+		</selectKey>
+	
+		insert into qna values(#{num}, #{productNum}, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth}, #{boardPw}, #{pwSet})
 	</insert>
 	
 	
