@@ -595,3 +595,32 @@ insert into orderinfo values(ORDERINFO_SEQ.nextval,'id2',2,2,sysdate,'orderPoroc
 insert into orderinfo values(ORDERINFO_SEQ.nextval,'id3',3,3,sysdate,'orderPorocess3','orderCondition3', null, null);
 
 commit work;
+
+-- 연아 변경사항 21.05.07
+drop table qna;
+DROP SEQUENCE qna_seq;
+
+
+create table QNA(
+   num number CONSTRAINT QNA_Number_PK PRIMARY KEY,
+   productNum number CONSTRAINT QNA_PN_FK REFERENCES PRODUCT on delete cascade not null,
+   title varchar2(100) not null,
+   writer varchar2(100) CONSTRAINT QNA_QW_FK REFERENCES MEMBER (id) on delete cascade not null,
+   contents clob,
+   regdate Date default sysdate not null,
+   hit number default 0 not null,
+   ref number default 0 not null,
+   step number default 0 not null,
+   depth number default 0 not null,
+   boardPw varchar2(100) not null,
+   pwSet char(1) not null
+);
+
+Create sequence qna_seq
+start with 1;
+
+insert into QNA values(qna_seq.nextval, 1, 'qTitle1', 'id1', 'qContents1', sysdate, 0, 1, 0, 0, 'id1', 'Y');
+insert into QNA values(qna_seq.nextval, 2, 'qTitle2', 'id2', 'qContents2', sysdate, 0, 2, 0, 0, 'id2', 'Y');
+insert into QNA values(qna_seq.nextval, 3, 'qTitle3', 'id3', 'qContents3', sysdate, 0, 3, 0, 0, 'id3', 'Y');
+
+commit work;
