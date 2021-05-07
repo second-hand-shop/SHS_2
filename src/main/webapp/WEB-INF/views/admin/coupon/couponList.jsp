@@ -45,27 +45,27 @@ tbody tr td input {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath }/admin/orderInfo/orderList">
               <span data-feather="package"></span>
               Orders <!-- 주문정보 모아보기 -->
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath }/product/productList">
               <span data-feather="shopping-cart"></span>
               Products <!-- 상품리스트 -->
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath }/admin/member/memberList">
               <span data-feather="users"></span>
               Members <!-- 회원정보 모아보기 -->
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${pageContext.request.contextPath }/qna/qnaList"> <!-- QnA로 -->
               <span data-feather="message-square"></span>
-              Messages
+              Board
             </a>
           </li>
           <li class="nav-item">
@@ -78,39 +78,6 @@ tbody tr td input {
             <a class="nav-link" href="${pageContext.request.contextPath }/admin/coupon/couponList">
               <span data-feather="percent"></span>
               Coupons
-            </a>
-          </li>
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
-          <a class="link-secondary" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Last quarter
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Social engagement
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end sale
             </a>
           </li>
         </ul>

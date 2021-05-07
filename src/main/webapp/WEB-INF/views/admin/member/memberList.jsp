@@ -47,7 +47,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><!-- @@@@@@@@@상품페이지@@@@@@@@@@ -->
+            <a class="nav-link" href="${pageContext.request.contextPath }/product/productList">
               <span data-feather="shopping-cart"></span>
               Products <!-- 상품리스트 -->
             </a>
@@ -59,7 +59,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> <!-- QnA로 -->
+            <a class="nav-link" href="${pageContext.request.contextPath }/qna/qnaList"> <!-- QnA로 -->
               <span data-feather="message-square"></span>
               Board
             </a>

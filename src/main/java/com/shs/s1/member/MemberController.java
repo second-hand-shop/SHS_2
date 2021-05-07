@@ -1,5 +1,6 @@
 package com.shs.s1.member;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shs.s1.admin.coupon.CouponDTO;
+import com.shs.s1.admin.coupon.CouponService;
 import com.shs.s1.board.qna.QnaDTO;
 import com.shs.s1.board.review.ReviewDTO;
 import com.shs.s1.order.CartDTO;
@@ -26,6 +28,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private CouponService couponService;
 	
 	
 	@GetMapping("memberPwFind")
@@ -74,7 +79,14 @@ public class MemberController {
 	@PostMapping("memberJoin")
 	public String memberJoin(MemberDTO memberDTO, Model model, HttpSession session) throws Exception {
 		int result = memberService.memberJoin(memberDTO, session);
-	
+		CouponDTO couponDTO = new CouponDTO();
+		couponDTO.setId(memberDTO.getId());
+		couponDTO.setDisRate(0);
+		couponDTO.setDisPrice(5000);
+		couponDTO.setUsage("N");
+		couponService.setInsert(couponDTO);
+
+		String message = "회원가입 실패";
 		String path = "./memberJoin";
 		if (result > 0) {
 			session.setAttribute("member", memberDTO);

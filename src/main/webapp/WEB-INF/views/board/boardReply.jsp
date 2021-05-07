@@ -156,7 +156,7 @@
 	
 	
 	<!-- Reply Insert Contents -->
-	<form id="form" action="./${board}Reply" method="post">
+	<form id="form" action="./${board}Reply" method="post" enctype="multipart/form-data">
 	
 		<div id="table-div">
 			
@@ -166,11 +166,8 @@
 				<ul>
 				
 					<li><input type="hidden" name="num" value="${param.num}"></li>
-					
-									
-					<c:if test="${board ne 'notice'}">
-						<li><input type="hidden" name="productNum" value="${param.productNum}"></li>
-					</c:if>
+
+					<li><input type="hidden" name="productNum" value="${param.productNum}"></li>
 					
 					<!-- 글쓴이 입력 -->
 					<li style="margin-bottom: 1%;">
@@ -194,22 +191,19 @@
 					</li>
 					
 					<!-- PW 입력 -->
- 					<c:if test="${board ne 'notice'}">
-						<li class="li-padding">
-							<label for="password" style="font-size: 9pt;">PASSWORD</label> 
-							<input type="password" class="pw-input-size input-line"
-							id="boardPw" name="boardPw">
-						</li>
-					</c:if>
+					<li class="li-padding">
+						<label for="password" style="font-size: 9pt;">PASSWORD</label> 
+						<input type="password" class="pw-input-size input-line"
+						id="boardPw" name="boardPw">
+					</li>
 					
 					<!-- 비밀글 / 공개글 설정 -->
-					<c:if test="${board eq 'qna'}">
-						<li class="li-padding">
-							<label for="pwSet" style="font-size: 9pt;">P/W SET</label>
-							<input type="radio" class="radio-margin" name="pwSet" value="N" checked="checked"/> 공개글
-							<input type="radio" name="pwSet" value="Y"/> 비밀글				
-						</li>
-					</c:if>
+					<li class="li-padding">
+						<label for="pwSet" style="font-size: 9pt;">P/W SET</label>
+						<input type="radio" class="radio-margin" name="pwSet" value="N" checked="checked"/> 공개글
+						<input type="radio" name="pwSet" value="Y"/> 비밀글				
+					</li>
+
 					
 				</ul>
 			
