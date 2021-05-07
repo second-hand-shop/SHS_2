@@ -150,7 +150,7 @@ overflow-y:scroll;
 
 				</table>
 				<input type="hidden" value="${dto.productNum}" id="productNum">
-				
+				<input type="hidden" value="${member.id}" id="mId">
 				
 
 				
@@ -334,9 +334,9 @@ overflow-y:scroll;
 				$("#finalPrice").text($("#beforePrice").text());//쿠폰 맥이면 바꿔줘야해
 				$("#couponButton").click(function(){
 					
-					/* let orderNum = $(this).attr("title");
-					window.open("./selectList?orderNum="+orderNum,"WindowName","width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
- */
+					 let mId = $("#mId").val();
+					window.open("./couponList?id="+mId,"WindowName","width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+ 
 					
 				});
 				

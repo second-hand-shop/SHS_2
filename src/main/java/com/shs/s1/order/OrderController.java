@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.shs.s1.admin.coupon.CouponDTO;
 import com.shs.s1.member.MemberDTO;
 import com.shs.s1.product.ProductDTO;
 import com.shs.s1.product.ProductService;
@@ -47,8 +48,8 @@ private ProductService productService;
 		//세션에 멤버가 있다면 실행해줘라~
 		memberDTO = (MemberDTO)(session.getAttribute("member"));
 		if(memberDTO!=null) {
-		List<CartDTO> ar = orderService.getCartList(memberDTO);
-		model.addAttribute("list", ar);
+			List<CartDTO> ar = orderService.getCartList(memberDTO);
+			model.addAttribute("list", ar);
 		}else {
 			model.addAttribute("list", null);
 		}
@@ -56,6 +57,22 @@ private ProductService productService;
 		
 		
 		return "order/cartList";
+	}
+	@GetMapping("order/couponList")
+	public String getCouponList(Model model,MemberDTO memberDTO,HttpSession session) throws Exception{
+		
+		//세션에 멤버가 있다면 실행해줘라~
+		memberDTO = (MemberDTO)(session.getAttribute("member"));
+		if(memberDTO!=null) {
+		List<CouponDTO> ar = orderService.getCouponList(memberDTO);
+		model.addAttribute("list", ar);
+		}else {
+			model.addAttribute("list", null);
+	}
+		
+		
+		
+		return "order/couponList";
 	}
 	
 	
