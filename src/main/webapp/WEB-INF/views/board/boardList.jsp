@@ -170,6 +170,12 @@
 				</tr>
 			</c:forEach>
 		
+			<c:if test="${empty list}">
+			<tr>
+				<td colspan="6" class="lines"><p>작성하신 글이 없습니다.</p></td>		
+			</tr>	
+		 </c:if>
+		
 		<tr>
 			<td class="lines" colspan="6">
 				

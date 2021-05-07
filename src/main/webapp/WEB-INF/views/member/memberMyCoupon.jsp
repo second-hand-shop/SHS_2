@@ -38,7 +38,7 @@
 			<th class="lines" width="8%">사용여부</th>
 		</tr>
 		
-		<c:if test="${dto eq null}">
+		<c:if test="${empty list}">
 			<td colspan="4" class="lines"><p>보유하고 계신 쿠폰 내역이 없습니다</p></td>			
 		</c:if>
 		
@@ -50,7 +50,6 @@
 				<td class="lines">${dto.usage}</td>
 			</tr>
 		</c:forEach>
-			
 	</table>
 	
 	<!-- footer -->
