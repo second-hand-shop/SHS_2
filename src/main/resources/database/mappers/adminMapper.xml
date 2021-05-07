@@ -5,7 +5,47 @@
     
  <mapper namespace="com.shs.s1.admin.AdminDAO">
  
+ 	<select id="getList" parameterType="AdminPager" resultType="OInfoDTO">
+ 		select * from (
+	 		select rowNum R, O.* from (
+		 		select * from ORDERINFO where
+		 		<choose>
+		 			<when test="kind=='주문번호'">
+		 				orderNum
+		 			</when>
+		 			<when test="kind=='주문일자'">
+		 				orderDate
+		 			</when>
+		 			<otherwise>
+		 				id
+		 			</otherwise>
+		 		</choose>
+		 		like '%'||#{search}||'%' and orderProcess='배송준비중' order by oiNum desc
+		 		) O
+	 		)
+ 		where R between #{startRow} and #{lastRow}
+ 	</select>
+ 	
+ 	<select id="getTotalCount" parameterType="AdminPager" resultType="java.lang.Long">
+ 		select count(oiNum) from ORDERINFO where
+ 		<choose>
+ 			<when test="kind=='주문번호'">
+ 				orderNum
+ 			</when>
+ 			<when test="kind=='주문일자'">
+ 				orderDate
+ 			</when>
+ 			<otherwise>
+ 				id
+ 			</otherwise>
+ 		</choose>
+ 		like '%'||#{search}||'%' and orderProcess='배송준비중'
+ 	</select>
  
- 
+ 	<select id="getPrice" resultType="java.lang.Long">
+ 		select sum(price) from addressInfo where orderNum in (
+			select orderNum from ORDERINFO where to_char(orderDate, 'YYMMDD') = '210507'
+		)
+ 	</select>
  
  </mapper>

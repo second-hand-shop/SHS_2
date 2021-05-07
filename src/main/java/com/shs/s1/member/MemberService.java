@@ -1,5 +1,6 @@
 package com.shs.s1.member;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -7,7 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.shs.s1.admin.coupon.CouponDAO;
 import com.shs.s1.admin.coupon.CouponDTO;
+import com.shs.s1.admin.coupon.CouponService;
 import com.shs.s1.board.qna.QnaDTO;
 import com.shs.s1.board.review.ReviewDTO;
 import com.shs.s1.order.CartDTO;
@@ -21,6 +24,8 @@ public class MemberService {
 	private MemberDAO memberDAO;
 		
 	public int memberJoin(MemberDTO memberDTO, HttpSession session) throws Exception {
+		
+		
 		return memberDAO.memberJoin(memberDTO);
 	}
 	
