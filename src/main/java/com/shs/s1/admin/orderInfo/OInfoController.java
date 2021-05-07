@@ -48,4 +48,36 @@ public class OInfoController {
 		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
+	
+//	setShippingNum============================================================
+	@PostMapping("shippingNumUpdate")
+	public ModelAndView setShippingNum(OInfoDTO oInfoDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = oInfoService.setShippingNum(oInfoDTO);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+//	modifyShippingNum============================================================
+	@GetMapping("shippingNumModify")
+	public ModelAndView modifyShippingNum(OInfoDTO oInfoDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = oInfoService.setShippingNum(oInfoDTO);
+		oInfoDTO = oInfoService.getShippingSelect(oInfoDTO);
+		mv.addObject("DTO", oInfoDTO);
+		mv.setViewName("admin/orderInfo/selectShipList");
+		return mv;
+	}
+	
+//	getShippingSelect============================================================
+	@GetMapping("selectShipList")
+	public ModelAndView getShippingSelect(OInfoDTO oInfoDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		oInfoDTO = oInfoService.getShippingSelect(oInfoDTO);
+		mv.addObject("DTO", oInfoDTO);
+		mv.setViewName("admin/orderInfo/selectShipList");
+		return mv;
+	}
+	
 }

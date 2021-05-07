@@ -51,5 +51,13 @@
  	<update id="setShippingUpdate" parameterType="OInfoDTO">
  		update ORDERINFO set orderProcess=#{orderProcess} where oiNum=#{oiNum}
  	</update>
+ 	
+ 	<update id="setShippingNum" parameterType="OInfoDTO">
+ 		update ORDERINFO set shippingNum=#{shippingNum} where oiNum=#{oiNum}
+ 	</update>
+ 	
+ 	<select id="getShippingSelect" parameterType="OInfoDTO" resultType="OInfoDTO">
+ 		select * from ORDERINFO where oiNum=#{oiNum}
+ 	</select>
  
  </mapper>
