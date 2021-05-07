@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.shs.s1.board.BoardDTO;
 import com.shs.s1.board.qna.QnaDTO;
+import com.shs.s1.member.MemberDTO;
 import com.shs.s1.util.BoardPager;
 
 @Controller
@@ -88,11 +89,15 @@ public class QnaController {
 			
 			ModelAndView mv = new ModelAndView();
 			QnaDTO qnaDTO = new QnaDTO();
+			MemberDTO memberDTO = new MemberDTO();
 			
 			boardDTO = qnaService.getSelect(boardDTO);
 			
 			mv.addObject("board", "qna");
 			mv.addObject("dto", boardDTO);
+			
+			mv.addObject("member", memberDTO);
+			
 			mv.setViewName("board/boardSelect");
 		
 			return mv;

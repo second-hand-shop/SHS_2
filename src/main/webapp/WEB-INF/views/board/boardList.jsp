@@ -224,9 +224,11 @@
 						  </div>
 					  </c:if>
 					  
-					  <div id="botton-div">
-							<a href="./${board}Insert<c:if test="${board ne 'notice'}">?productNum=3</c:if><c:if test="${board eq 'review'}">&&num=${num}</c:if>" class="button-style">WRITE</a>
-					  </div>
+					  <c:if test="${member.id eq 'admin'}">
+						  <div id="botton-div">
+								<a href="./${board}Insert<c:if test="${board ne 'notice'}">?productNum=3</c:if><c:if test="${board eq 'review'}">&&num=${num}</c:if>" class="button-style">WRITE</a>
+						  </div>
+					  </c:if>
 					
 					
 					  <script type="text/javascript">
