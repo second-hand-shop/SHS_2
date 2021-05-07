@@ -121,7 +121,7 @@ overflow-y:scroll;
 							<td>상품정보</td>
 							<td>판매가</td>
 							<td>수량</td>
-							<td>적립금</td>
+							
 							<td>배송비</td>
 							<td>합계</td>
 						</tr>
@@ -135,17 +135,20 @@ overflow-y:scroll;
 							<td><div>
 									<img id="productImg"
 										src="../resources/upload/images/${dto.productImages[0].thumbnail}">
-								</div></td>
+								</div>
+								<input type="hidden" value="${dto.productNum}" class="productNum">
+								</td>
 							<td class="productName">${dto.productName}</td>
 							<td class="productPrice"><strong>${dto.price}</strong></td>
-							<td id="productAmount">${dto.amount}</td>
-							<td>적립금</td>
-							<td>배송비</td>
-							<td>합계<input type="hidden" value="${dto.productNum}" class="productNum"></td>
+							<td class="productAmount">${dto.amount}</td>
+						
+							<td id="shipping">배송비</td>
+							<td id="totalP">합계</td>
 						</tr>
 						</c:forEach>
 						<tr>
-							<td colspan="7" style="text-align:right;">합계</td>
+							<td colspan="5" style="text-align:right;">총 결제 금액</td>
+							<td  style="text-align:right;" id="totalPrice">합계</td>
 						</tr>
 						
 					</tbody>
@@ -155,6 +158,9 @@ overflow-y:scroll;
 				<hr>
 				<br>
 				<input type="hidden" value="${list}" id="productList">
+
+				
+
 
 				<!-- 세션에서 회원인지 구분하고 비회원일시 주문조회 비밀번호 받아와야한다 -->
 				<!-- 배송정보 -->
@@ -272,13 +278,13 @@ overflow-y:scroll;
 					</td>
 				</tr>
 				<tr>
-					<td style="border: none;">
+					<td style="border: none;" id="beforePrice">
 						배송비 합한 금액
 					</td>
-					<td style="border:none;">
-						-붙여주는 금액
+					<td style="border:none;" id="discount">
+						-0
 					</td>
-					<td>
+					<td id="finalPrice">
 						총
 					</td>
 				</tr>
@@ -312,7 +318,17 @@ overflow-y:scroll;
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
+<script type="text/javascript">
+	
+	
+	
+	if(parseInt($("#productPrice").text())>=100000){
+					$("#shipping").text("무료");
+				}else{
+					$("#shipping").text("3000");
+				}
+				
+				</script>
 
 <script>
 	// 우편번호 찾기 찾기 화면을 넣을 element

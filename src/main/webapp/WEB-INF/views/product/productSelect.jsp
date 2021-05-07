@@ -32,8 +32,9 @@ justify-content: space-evenly;
 		<div id="container">
 			<div id="contents">
 			
-			<h1 > 상세페이지</h1>
-			<div>
+			
+			<div id="productModify" style="display: none;">
+			<input type="hidden" value="${member.id}" id="mId">
 			<a href="./productUpdate?productNum=${dto.productNum}"><button type="button" >상품 수정</button></a>
 			<a href="#" id="del" type ="button">상품 삭제</a>
 			</div>
@@ -46,7 +47,7 @@ justify-content: space-evenly;
 			
 			
 			
-				<div style="align-content: center;">
+				<div style="text-align: center;">
 	<c:forEach items="${dto.productImages}" var="file">
 		<%-- <a href="../resources/upload/images/${file.fileName}">${file.ogName}</a> --%>
 		
@@ -66,7 +67,7 @@ justify-content: space-evenly;
 			<p>contents :${dto.contents}</p>
 			<p>price : ${dto.price}</p>
 			<p>name : ${dto.productName}</p>
-			<p>amount : ${dto.amount}</p>	
+			<p id="amount" style="display: none;">amount : ${dto.amount}</p>	
 			
 			<br>
 			
@@ -122,7 +123,11 @@ justify-content: space-evenly;
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
 <script type="text/javascript">
 
-
+if($("#mId").val()=='admin'){
+	$("#productModify").css("display","block")
+	$("#amount").css("display","block")
+	
+}
 
 
  $("#buyButton").click(function(){

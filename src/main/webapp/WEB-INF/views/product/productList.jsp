@@ -82,11 +82,13 @@ flex-shrik:0;
 
 				<h1></h1>
 
-
-				<a href="./productInsert"><button type="button"
-						>상품추가</button></a>
+				<div id="productInsert" style="display: none;">
+				<a href="./productInsert"><button type="button">상품추가</button></a>
+				<input type="hidden" value="${member.id}" id="mId">
+				</div>
 				<div> <br>  </div>
 				<!-- css로 마진 패딩 채우면 없앤다 br -->
+			
 			
 
 					<div class="row">
@@ -97,14 +99,15 @@ flex-shrik:0;
 				
 					
 						<div class="col">
-							<%-- 		<c:forEach items="${dto.productImages}" var="file">
+							<%-- <c:forEach items="${dto.productImages}" var="file">
 								<img src="../resources/upload/images/${file.thumbnail}">
 							</c:forEach> --%>
 							<p><a href="./detail?productNum=${dto.productNum}">
-								<img src="../resources/upload/images/${dto.productImages[0].thumbnail}" style="max-width:370px; heigth:auto;">
+								<img src="../resources/upload/images/${dto.productImages[0].thumbnail}" id="thumbImg" onerror="javascript:noImg(this)" style="max-width:370px; heigth:auto;">
 							</a></p>
-							<p><a href="./detail?productNum=${dto.productNum}">${dto.productName}</a></p>
-							
+							<p style="text-align: center;"><a href="./detail?productNum=${dto.productNum}">${dto.productName}</a></p>
+							<p  style="text-align: center;" class="price">${dto.price}</p>
+							<input type="hidden" value="${dto.amount}" class="amount">
 						</div>
 					
 			
@@ -152,7 +155,52 @@ flex-shrik:0;
 <script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
+<script type="text/javascript">
 
+
+if($("#mId").val()=='admin'){
+	$("#productInsert").css("display","block")
+	
+}
+
+function noImg(obj){
+	  // image not found or change src like this as default image:
+
+		  if(obj!=null){
+			  
+	   obj.src = "../resources/images/insertImgplz.jpg";
+		  }
+		  
+	};
+	
+
+	
+	
+	
+	function priceToString(price) {
+	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
+
+
+$(".price").each(function(){
+	
+	var pr = $(this).text();
+	pr =priceToString(pr);
+	$(this).text(pr);
+	
+	
+	
+});
+$(".amount").each(function(){
+	
+if(parseInt($(this).val())<1){
+	$(this).prev(".price").html('<img src="../resources/images/ico_product_soldout.gif">');
+	
+	
+}
+	
+});
+</script>
 
 
 </html>
