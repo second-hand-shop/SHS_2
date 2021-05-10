@@ -161,8 +161,8 @@ overflow-y:scroll;
 				<input type="hidden" value="${list}" id="productList">
 
 				
-
-
+					
+				
 				<!-- 세션에서 회원인지 구분하고 비회원일시 주문조회 비밀번호 받아와야한다 -->
 				<!-- 배송정보 -->
 				<!-- 원래는 표를,, 넣어야 될거같다 -->
