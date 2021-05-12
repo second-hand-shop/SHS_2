@@ -568,21 +568,38 @@ insert into addressInfo values (addr_seq.nextval,3,'id3',3, 'prodeuctName3',100,
 
 commit work;
 
--- 형수 변경사항 21.05.07
+-- 형수 변경사항 21.05.12
 drop table orderInfo;
 drop sequence orderInfo_seq;
 
 CREATE TABLE ORDERINFO(
-    oiNum             NUMBER           PRIMARY KEY,
+    oiNum             NUMBER         constraint ORINFO_oiNum_PK PRIMARY KEY,
     id                VARCHAR2(100)  CONSTRAINT ORINFO_ID_FK references member(id) on delete cascade,
-    productNum        NUMBER         CONSTRAINT ORINFO_PN_FK references product(productNum)on delete cascade,
+    productNum        NUMBER         CONSTRAINT ORINFO_PN_FK references product(productNum) on delete cascade,
     orderNum          NUMBER           NOT NULL,
     orderDate         DATE             NOT NULL, 
     orderProcess      VARCHAR2(100)    NOT NULL, 
     orderCondition    VARCHAR2(100)    NOT NULL,
     shippingNum		  NUMBER,
-    orderPrice		  NUMBER
+    orderPrice		  NUMBER,
+   	productName		  VARCHAR2(100) CONSTRAINT ORINFO_PNAME_FK references product on delete cascade
 );
+
+create table ORDERINFO (
+	oiNum number constraint OINFO_oiNum_PK primary key,
+	id varchar2(100),
+	productNum number,
+	productName varchar2(100),
+	orderNum number constraint OINFO_orderNum_NN not null,
+	orderDate date constraint OINFO_orderDate_NN not null,
+	orderProcess varchar2(100) constraint OINFO_orderProcess_NN not null,
+	orderCondition varchar2(100) constraint OINFO_orderCondition_NN not null,
+	shippingNum number,
+	orderPrice number,
+	constraint OINFO_id_FK foreign key (id) references MEMBER(id) on delete cascade,
+	constraint OINFO_productNum_FK foreign key (productNum) references PRODUCT(productNum) on delete cascade
+);
+
 
 --orderinfo seq
 CREATE SEQUENCE ORDERINFO_SEQ
@@ -590,8 +607,10 @@ START WITH 1
 INCREMENT BY 1;
 
 --orderinfo insert
-insert into orderinfo values(ORDERINFO_SEQ.nextval,'id1',1,1,sysdate,'orderPorocess1','orderCondition1', null, null);
-insert into orderinfo values(ORDERINFO_SEQ.nextval,'id2',2,2,sysdate,'orderPorocess2','orderCondition3', null, null);
-insert into orderinfo values(ORDERINFO_SEQ.nextval,'id3',3,3,sysdate,'orderPorocess3','orderCondition3', null, null);
+insert into orderinfo values(ORDERINFO_SEQ.nextval, 'id1', 1, 'productName1', 1, sysdate, 'orderPorocess1', 'orderCondition1', null, null);
+insert into orderinfo values(ORDERINFO_SEQ.nextval, 'id2', 2, 'productName2', 2, sysdate, 'orderPorocess2', 'orderCondition3', null, null);
+insert into orderinfo values(ORDERINFO_SEQ.nextval, 'id3', 3, 'productName3', 3, sysdate, 'orderPorocess3', 'orderCondition3', null, null);
+
+select * from ORDERINFO;
 
 commit work;

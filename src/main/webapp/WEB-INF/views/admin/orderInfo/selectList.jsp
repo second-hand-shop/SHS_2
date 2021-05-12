@@ -25,7 +25,7 @@
 			<c:forEach items="${list }" var="DTO">
 				<tr>
 					<td>${DTO.productName }</td>
-					<td>${DTO.price }</td>
+					<td>${DTO.orderPrice }</td>
 					<td>${DTO.orderCondition }</td>
 					<td><input type="checkbox" name="deleteCheck" class="check"></td>
 				</tr>
