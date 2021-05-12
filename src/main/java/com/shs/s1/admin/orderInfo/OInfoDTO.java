@@ -15,6 +15,7 @@ public class OInfoDTO {
 	private String orderCondition;
 	private long shippingNum;
 	private String orderPrice;
+	private String productName;
 
 	public String getOrderPrice() {
 		return orderPrice;
@@ -86,6 +87,14 @@ public class OInfoDTO {
 
 	public void setShippingNum(long shippingNum) {
 		this.shippingNum = shippingNum;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 }
