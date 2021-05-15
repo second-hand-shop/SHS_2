@@ -7,11 +7,34 @@ public class OrderInfoDTO {
 	private long oinum;
 	private String id;
 	private long productNum;
+	private String productName;
 	private long ordernum;
 	private Date orderDate;
 	private String orderProcess;
 	private String orderCondition;
+	private Long shippingNum;
+	private Long orderPrice;
 	
+	
+	
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public Long getShippingNum() {
+		return shippingNum;
+	}
+	public void setShippingNum(Long shippingNum) {
+		this.shippingNum = shippingNum;
+	}
+	public Long getOrderPrice() {
+		return orderPrice;
+	}
+	public void setOrderPrice(Long orderPrice) {
+		this.orderPrice = orderPrice;
+	}
 	public long getOinum() {
 		return oinum;
 	}

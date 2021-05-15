@@ -30,11 +30,25 @@
 			</form>
 			
 			
-			
+							<div style="display: flex; flex-flow : row wrap;">
+	<c:forEach items="${dto.productImages}" var="file">
+		<%-- <a href="../resources/upload/images/${file.fileName}">${file.ogName}</a> --%>
+		<form action="./productFileDelte" method="post">
+		<div>
+		<img src="../resources/upload/images/${file.thumbnail}">
+		<input type="hidden" value="${file.imageNum}" name="imageNum">
+		<button>이미지 삭제</button>
+		</div>
+		</form>
+	</c:forEach>
 			</div>
+			
+			
+			
 			<!-- footer -->
 			<c:import url="../template/footer.jsp"></c:import>
 		</div>
+	</div>
 	</div>
 </body>
 <!------------------------------- CSS & JavaScript -------------------------------------->

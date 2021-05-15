@@ -136,9 +136,7 @@ public class ProductFileManager {
 			fileName = makeThumbnail(rootPath, datePath, fileName);
 		}
 		
-		
-		
-		
+	
 		
 		String savedFilePath = datePath + File.separator+fileName;
 	

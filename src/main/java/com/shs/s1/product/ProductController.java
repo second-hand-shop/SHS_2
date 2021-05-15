@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import com.shs.s1.util.ProductFileManager;
 import com.shs.s1.util.ProductPager;
 
 @Controller
@@ -93,18 +93,36 @@ public class ProductController {
 	}
 	
 	@PostMapping("productUpdate")
-	public String setUpdate(ProductDTO productDTO,MultipartFile[] files) throws Exception{
+	public String setUpdate(ProductDTO productDTO) throws Exception{
 		
-		int result = productService.setUpdate(productDTO,files);
+		int result = productService.setUpdate(productDTO);
 		
 		
 		if(result>0) {
 			System.out.println("성공");
 		}else {
 			System.out.println("실패");
-			System.out.println(productDTO.getProductNum());
 		}
 		return "redirect:./productList";
+	}
+	
+	@PostMapping("productFileDelte")
+	public String setFileDelte(ProductImageDTO productImageDTO) throws Exception{
+		
+		productImageDTO = productService.getFileselect(productImageDTO);
+		int result = productService.setFileDelete(productImageDTO);
+		String rtn = "redirect:./productUpdate?productNum="+productImageDTO.getProductNum();
+		
+		
+		if(result>0) {
+			System.out.println("성공");
+		}else {
+			System.out.println("실패");
+		}
+		System.out.println(productImageDTO.getProductNum());
+		
+		
+		return rtn;
 	}
 	
 	

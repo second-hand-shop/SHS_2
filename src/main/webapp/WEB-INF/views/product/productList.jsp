@@ -9,7 +9,6 @@
 
 .linePage {
 	float: left;
-/* 	border: 1px solid #ccc; */
 	margin:10px;
 }
 
@@ -32,19 +31,6 @@
 
 
 } */
-
-/* 
-.productBox{
-float:left;
-}
-
-
-.space{
-clear:left;
-}
- */
-
-
 
 
 .row{
