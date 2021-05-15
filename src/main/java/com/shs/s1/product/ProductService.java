@@ -81,21 +81,9 @@ public class ProductService {
 		
 	}
 	
-	public int setUpdate(ProductDTO productDTO,MultipartFile[] files)throws Exception{
+	public int setUpdate(ProductDTO productDTO)throws Exception{
 		
-		for(MultipartFile mf : files) {
-			ProductImageDTO productImageDTO = new ProductImageDTO();
-			
-			String fileName= fileManager.uploadFile(mf, request);
-			productImageDTO.setOgName(mf.getOriginalFilename());
-			productImageDTO.setProductNum(productDTO.getProductNum());
-			String uuidFileName = fileName.substring(0, 12) + fileName.substring(14);
-			productImageDTO.setFileName(uuidFileName);
-			productDAO.setFileInsert(productImageDTO);
-		}
-		
-		
-		
+	
 		
 		return productDAO.setUpdate(productDTO);
 	
@@ -124,6 +112,12 @@ public class ProductService {
 		productImageDTO = productDAO.getFileSelect(productImageDTO); 
 		
 		int result = productDAO.setFileDelete(productImageDTO);
+		//db에서만 삭제
+		fileManager.deleteFile(productImageDTO.getFileName(), request);
+		
+		
+		
+		
 		 
 		if(result>0){
 			fileManager.deleteFile(productImageDTO.getFileName(),request);
@@ -137,5 +131,10 @@ public class ProductService {
 	public int setMinus(ProductDTO productDTO) throws Exception{
 		return productDAO.setMinus(productDTO);
 	}
+	
+	public ProductImageDTO getFileselect(ProductImageDTO productImageDTO)throws Exception{
+		return productImageDTO = productDAO.getFileSelect(productImageDTO); 
+	}
+	
 	
 }

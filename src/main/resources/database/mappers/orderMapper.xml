@@ -56,7 +56,7 @@ select *
  
  
  <insert id="setOrderInfoInsert" parameterType="AddressInfoDTO">
- 	insert into orderInfo values(ORDERINFO_SEQ.nextval,#{id},#{productNum},#{orderNum},sysdate,'배송준비중','-',null,null)
+ 	insert into orderInfo values(ORDERINFO_SEQ.nextval,#{id},#{productNum},#{productName},#{orderNum},sysdate,'배송준비중','-',null,null)
  </insert>
  
  
