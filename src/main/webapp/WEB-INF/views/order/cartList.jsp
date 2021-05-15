@@ -31,10 +31,10 @@
 							<td>item</td>
 							<td>price</td>
 							<td>qty</td>
-							<td>적립금</td>
+						
 							<td>배송비</td>
 							<td>total</td>
-							<td>etc</td>
+						
 						</tr>
 					</thead>
 
@@ -65,10 +65,10 @@
 							
 							
 							</td>
-							<td>적립금</td>
-							<td>배송비</td>
-							<td>합계</td>
-							<td>삭제 등</td>
+					
+							<td>-</td>
+							<td>${dto.products[0].price}</td>
+					
 						</tr>
 						</c:forEach>
 					
