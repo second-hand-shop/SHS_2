@@ -77,6 +77,8 @@ $("#deleteBtn").click(function(){
 		$(".modal-title").html(couponNum);
 		$.get("./couponSelect?couponNum="+couponNum, function(result){
 			console.log(result);
+			console.log(result.couponNum);
+			$("#modal-couponNum").val(result.couponNum);
 			$("#modal-id").val(result.id);
 			$("#modal-disRate").val(result.disRate);
 			$("#modal-disPrice").val(result.disPrice);
@@ -96,9 +98,10 @@ couponSelect();
 // couponUpdate =================================================
 //===============================================================
 
-$(".updateBtn").click(function(){
-	
-});
+/*$(".updateBtn").click(function(){
+	let couponNum = $(".modal-title").html();
+	let id = 
+});*/
 
 
 

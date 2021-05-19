@@ -22,8 +22,8 @@ public class AdminController {
 	public ModelAndView adminHome(AdminPager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<OInfoDTO> ar = adminService.getList(pager);
-		long price = adminService.getPrice();
-		mv.addObject("price", price);
+//		long price = adminService.getPrice();
+//		mv.addObject("price", price);
 		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
 		mv.addObject("path", "admin/orderInfo/orderList");

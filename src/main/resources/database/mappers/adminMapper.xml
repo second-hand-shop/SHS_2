@@ -42,10 +42,10 @@
  		like '%'||#{search}||'%' and orderProcess='배송준비중'
  	</select>
  
- 	<select id="getPrice" resultType="java.lang.Long">
+ 	<!-- <select id="getPrice" resultType="java.lang.Long">
  		select sum(price) from addressInfo where orderNum in (
 			select orderNum from ORDERINFO where to_char(orderDate, 'YYMMDD') = '210507'
 		)
- 	</select>
+ 	</select> -->
  
  </mapper>

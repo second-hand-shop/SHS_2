@@ -13,6 +13,7 @@ drop table MEMBER;
 drop table product;
 drop table review;
 drop table Xmember;
+drop table reviewfiles;
 
 
 
@@ -83,7 +84,7 @@ insert into product values(product_seq.nextval,'kinds3','contents3',3,'productNa
 
 
 
-
+-- ##########################################
 --orderinfo table ========================================================================
 CREATE TABLE ORDERINFO
 (
@@ -140,7 +141,7 @@ insert into PRODUCTIMAGE values(3,3,'thumbnail3','contents3','fileName3','ogName
 create Table XMEMBER(
     xId varchar2(100) CONSTRAINT XMEMBER_ID_PK PRIMARY KEY,
     memberNum number,
-    orderNum number CONSTRAINT XMEMBER_ON_FK REFERENCES ORDERINFO(orderNum) on delete cascade not null,
+    oiNum number CONSTRAINT XMEMBER_OIN_FK REFERENCES ORDERINFO(oiNum) on delete cascade not null,
     xName varchar2(100) not null,
     orderPw varchar2(100) not null
 );
@@ -181,7 +182,7 @@ couponNum varchar2(400) constraint COUPON_CPNUM_PK primary key,
 id varchar2(100) constraint COUPON_ID_FK references member (id) on delete cascade not null,
 disRate number not null,
 disPrice number not null,
-useage varchar2(10) not null
+usage varchar2(10) not null
 );
 
 --coupon insert
@@ -572,19 +573,6 @@ commit work;
 drop table orderInfo;
 drop sequence orderInfo_seq;
 
-CREATE TABLE ORDERINFO(
-    oiNum             NUMBER         constraint ORINFO_oiNum_PK PRIMARY KEY,
-    id                VARCHAR2(100)  CONSTRAINT ORINFO_ID_FK references member(id) on delete cascade,
-    productNum        NUMBER         CONSTRAINT ORINFO_PN_FK references product(productNum) on delete cascade,
-    orderNum          NUMBER           NOT NULL,
-    orderDate         DATE             NOT NULL, 
-    orderProcess      VARCHAR2(100)    NOT NULL, 
-    orderCondition    VARCHAR2(100)    NOT NULL,
-    shippingNum		  NUMBER,
-    orderPrice		  NUMBER,
-   	productName		  VARCHAR2(100) CONSTRAINT ORINFO_PNAME_FK references product on delete cascade
-);
-
 create table ORDERINFO (
 	oiNum number constraint OINFO_oiNum_PK primary key,
 	id varchar2(100),
@@ -607,9 +595,9 @@ START WITH 1
 INCREMENT BY 1;
 
 --orderinfo insert
-insert into orderinfo values(ORDERINFO_SEQ.nextval, 'id1', 1, 'productName1', 1, sysdate, 'orderPorocess1', 'orderCondition1', null, null);
-insert into orderinfo values(ORDERINFO_SEQ.nextval, 'id2', 2, 'productName2', 2, sysdate, 'orderPorocess2', 'orderCondition3', null, null);
-insert into orderinfo values(ORDERINFO_SEQ.nextval, 'id3', 3, 'productName3', 3, sysdate, 'orderPorocess3', 'orderCondition3', null, null);
+insert into orderinfo values(ORDERINFO_SEQ.nextval, 'id1', 1, 'productName1', 1, sysdate, 'orderPorocess1', 'orderCondition1', null, 500);
+insert into orderinfo values(ORDERINFO_SEQ.nextval, 'id2', 2, 'productName2', 2, sysdate, 'orderPorocess2', 'orderCondition3', null, 100);
+insert into orderinfo values(ORDERINFO_SEQ.nextval, 'id3', 3, 'productName3', 3, sysdate, 'orderPorocess3', 'orderCondition3', null, 200);
 
 select * from ORDERINFO;
 

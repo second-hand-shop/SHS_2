@@ -63,19 +63,20 @@ public class CouponController {
 	}
 	
 	// setUpdate ===================================================	
-//	@PostMapping("couponUpdate")
-//	public ModelAndView setUpdate(CouponDTO couponDTO) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		int result = couponService.setUpdate(couponDTO);
-//		String message = "Update 실패";
-//		String path = "../coupon/couponList";
-//		if(result>0) {
-//			message = "Update 성공";
-//		}
-//		mv.addObject("message", message);
-//		mv.addObject("path", path);
-//		mv.setViewName("common/commonResult");
-//		return mv;
-//	}
+	@PostMapping("couponUpdate")
+	public ModelAndView setUpdate(CouponDTO couponDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result = couponService.setUpdate(couponDTO);
+		String message = "Update 실패";
+		String path = "../coupon/couponList";
+		if(result>0) {
+			message = "Update 성공";
+		}
+		mv.addObject("msg", message);
+		mv.addObject("path", path);
+		mv.setViewName("common/commonResult");
+		return mv;
+	}
 	
 }
