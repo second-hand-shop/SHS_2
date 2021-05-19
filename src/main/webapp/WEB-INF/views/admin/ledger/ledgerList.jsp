@@ -12,9 +12,11 @@ tbody tr td input {
 	width: 70%;
 }
 </style>
+<link rel="stylesheet" href="css/calendar.css" />
+
+<link rel="stylesheet" href="../../resources/css/admin/ledger/ledgerList.css">
 <c:import url="../../template/bootStrap.jsp"></c:import>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/css/tempusdominus-bootstrap-4.min.css" crossorigin="anonymous" />
+
 <meta charset="UTF-8">
 <title>ledgerList</title>
 </head>
@@ -86,15 +88,14 @@ tbody tr td input {
       </div>
     </nav>
  <!-------------------------- navbar END ---------------------------------->
-
-
-
-
-
+	<main>
+		<div id="calendar"></div>
 	</main>
 	</div>
-</div>
 
+
+
+</div>
 <script type="text/javascript" src="../../resources/jquery/admin/coupon/couponList.js"></script>
 <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
@@ -115,5 +116,22 @@ tbody tr td input {
 		$("#frm").submit();
 	});
 </script> -->
+<script src="/path/to/cdn/moment.min.js"></script>
+<script type="text/javascript">
+import {mockData} from './mockData.js';
+
+import {Calendar} from './calendar.js';
+
+document.addEventListener("DOMContentLoaded", async ()=>{
+	  const cal = Calendar('calendar');
+	  const spr = Spinner('calendar'); 
+	  await spr.renderSpinner().delay(0);
+	  cal.bindData(mockData);
+	  cal.render();
+	});
+</script>
+
+
+<script type="text/javascript" src="../../resources/jquery/admin/ledger/mockData.js"></script>
 </body>
 </html>
