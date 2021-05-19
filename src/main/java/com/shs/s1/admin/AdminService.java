@@ -21,7 +21,7 @@ public class AdminService {
 		return adminDAO.getList(pager);
 	}
 	
-	public long getPrice() throws Exception {
-		return adminDAO.getPrice();
-	}
+//	public long getPrice() throws Exception {
+//		return adminDAO.getPrice();
+//	}
 }

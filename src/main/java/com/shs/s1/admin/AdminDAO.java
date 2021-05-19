@@ -25,8 +25,8 @@ public class AdminDAO {
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
-	public long getPrice() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getPrice");
-	}
+//	public long getPrice() throws Exception {
+//		return sqlSession.selectOne(NAMESPACE+"getPrice");
+//	}
 
 }

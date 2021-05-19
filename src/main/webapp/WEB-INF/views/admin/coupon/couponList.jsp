@@ -171,6 +171,7 @@ tbody tr td input {
 				<!-- Modal body -->
 				<div class="modal-body">
 					<form action="./couponUpdate" method="POST">
+						<input hidden="" type="text" name="couponNum" id="modal-couponNum">
 						<div class="mb-3">
 							<label for="exampleInputEmail1" class="form-label">배정 ID</label>
 							<input type="text" class="form-control" name="id" id="modal-id">
