@@ -33,6 +33,10 @@ public class ProductDAO {
 		
 		return sqlSession.selectList(NAMESPACE+"getSelectList",productDTO);
 	}
+	public List<ProductImageDTO> getFilesSelect(ProductDTO productDTO) throws Exception {
+		
+		return sqlSession.selectList(NAMESPACE+"getFilesSelect",productDTO);
+	}
 	
 	
 	

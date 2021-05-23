@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
@@ -13,79 +14,70 @@
 		<!-- header END -->
 		<div id="container">
 			<div id="contents">
-			
-			<h1>cart list</h1>
-			
-			<c:if test="${not empty list}">
-			
-			
-			
-			
-			
-				<table id="productTable" style="margin-bottom: 40px">
 
-					<thead>
-						<tr>
-							<td style="width:70px;">전체선택</td>
-							<td>이미지</td>
-							<td>item</td>
-							<td>price</td>
-							<td>qty</td>
-						
-							<td>배송비</td>
-							<td>total</td>
-						
-						</tr>
-					</thead>
+				<h1>cart list</h1>
 
-					<tbody>
-						<!--  foreach로 장바구니에서 받아온 ar 뿌려줘야할듯-->
+				<c:if test="${not empty list}">
 
-						<c:forEach items="${list}" var="dto" varStatus="status">
-						<tr>
-							<td style="width:70px;">
-							
-							<input type="checkbox" name="productNum" value="${dto.productNum}" class="check">
-							<input class="productAmount" type="hidden" name="productAmount" value="${dto.cartStock}">
-							
-							</td>
-							<td><div>
-									<img id="productImg"
-										src="../resources/upload/images/${dto.productImages[0].thumbnail}" style="width:70px; height:auto;">
-								</div></td>
-							<td class="productName">${dto.products[0].productName}</td>
-							<td class="productPrice"><strong>${dto.products[0].price}</strong></td>
-							<td>${dto.cartStock}
-							
-							
-							
-							
-							<input type="hidden" value="${list.size()}" id="listSize">
-				
-							
-							
-							</td>
-					
-							<td>-</td>
-							<td>${dto.products[0].price}</td>
-					
-						</tr>
-						</c:forEach>
-					
-						
-					</tbody>
 
-				</table>
+
+
+
+					<table id="productTable" style="margin-bottom: 40px">
+
+						<thead>
+							<tr>
+								<td style="width: 70px;">전체선택</td>
+								<td>이미지</td>
+								<td>item</td>
+								<td>price</td>
+								<td>qty</td>
+
+								<td>배송비</td>
+								<td>total</td>
+
+							</tr>
+						</thead>
+							<!--  foreach로 장바구니에서 받아온 ar 뿌려줘야할듯-->
+
+						<tbody>
+
+							<c:forEach items="${list}" var="dto" varStatus="status">
+								<tr>
+									<td style="width: 70px;"><input type="checkbox"
+										name="productNum" value="${dto.productNum}" class="check">
+										<input class="productAmount" type="hidden"
+										name="productAmount" value="${dto.cartStock}"></td>
+									<td><div>
+											<img id="productImg"
+												src="../resources/upload/images/${dto.productImages[0].thumbnail}"
+												style="width: 70px; height: auto;">
+										</div></td>
+									<td class="productName">${dto.products[0].productName}</td>
+									<td class="productPrice"><strong>${dto.products[0].price}</strong></td>
+									<td>${dto.cartStock}<input type="hidden"
+										value="${list.size()}" id="listSize"></td>
+									<td>-</td>
+									<td>${dto.products[0].price}</td>
+
+								</tr>
+							</c:forEach>
+
+
+						</tbody>
+
+					</table>
 					<input type="button" value="선택상품 주문" id="selButton">
-			<!-- <button>전체상품 주문</button> -->
-			<form action="./orderFormList" method="post" id="ordfrm">
-			<input type="hidden" value="" name="productNum" id="productNum"> 
-			<input type="hidden" value="" name="productAmount" id="productAmount"> 
-			
-			
-			</form>
-			
-			<script type="text/javascript">
+					<!-- <button>전체상품 주문</button> -->
+					<form action="./orderFormList" method="post" id="ordfrm">
+						<input type="hidden" value="" name="productNum" id="productNum">
+						<input type="hidden" value="" name="productAmount"
+							id="productAmount">
+
+
+					</form>
+
+					<script type="text/javascript">
 		
 			$("#selButton").click(function(){
 				
@@ -103,6 +95,16 @@
 			 })
 			 
 			 
+			 
+			 $("#productNum").val(productNum);
+			 $("#productAmount").val(productAmount);
+				
+				
+		$("#ordfrm").submit();
+		
+			
+			}) 
+			
 			 	/* $.ajax({
 					type: "POST",
 					url: "./orderFormList",
@@ -115,25 +117,13 @@
 						//success functions
 					} 
 				}); */
-			 
-			 $("#productNum").val(productNum);
-			 $("#productAmount").val(productAmount);
-				
-				
-		$("#ordfrm").submit();
-		
-			
-			
-			
-			
-			}) 
 			
 			
 			</script>
-			 
-			
-			
-		<%-- 	<form action="./orderFormList" method="post">
+
+
+
+					<%-- 	<form action="./orderFormList" method="post">
 			
 			
 			<c:forEach items="${list}" var="dto">
@@ -153,10 +143,10 @@
 			<button>전체상품 주문</button>
 			
 			</form> --%>
-			
-			</c:if>
-			
-			
+
+				</c:if>
+
+
 			</div>
 			<!-- footer -->
 			<c:import url="../template/footer.jsp"></c:import>
@@ -174,6 +164,7 @@
 
 
 </script>
-<script type="text/javascript" src="../resources/jquery/cart/cartList.js"></script>
+<script type="text/javascript"
+	src="../resources/jquery/cart/cartList.js"></script>
 
 </html>

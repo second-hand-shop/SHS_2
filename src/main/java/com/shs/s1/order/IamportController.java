@@ -157,12 +157,8 @@ public class IamportController {
 		addressInfoDTO.setAddrMessage(orderMessage);
 		addressInfoDTO.setProductName(productDTO.getProductName());
 		
-		int result = orderService.setAddrInsert(addressInfoDTO); // db에 주문정보 저장
-		//상품 수량 -1 해줘야하고, 상품수량이 0일경우를 더 만들어줘야함
-	
-		result = orderService.setOrderInfoInert(addressInfoDTO); //오더인포 테이블에 저장
-		
-		//product 테이블 insert
+		int result = orderService.setAddrInsert(addressInfoDTO); // db에 주문지 정보 저장
+		result = orderService.setOrderInfoInert(addressInfoDTO); //배송추적 테이블에도 저장
 		result=productService.setMinus(productDTO); //프로덕트 테이블 수량 감소
 		
 		

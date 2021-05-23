@@ -335,9 +335,8 @@ overflow-y:scroll;
 				$("#couponButton").click(function(){
 					
 					 let mId = $("#mId").val();
-					window.open("./couponList?id="+mId,"WindowName","width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
- 
-					
+					window.open("./couponList?id="+mId,"WindowName","width=800,
+							height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");	
 				});
 				
 				</script>
@@ -467,8 +466,12 @@ IMP.init("imp92233315"); // "imp00000000" 대신 발급받은 "가맹점 식별�
 function requestPay(){ 
 // IMP.request_pay(param, callback) 호출
 
-if($("#receiver").val()=="" || $("#email").val()=="" || $("#sample3_address").val()=="" ||
-		$("#sample3_postcode").val()=="" || $("#sample3_detailAddress").val()=="" || $("#tel").val()==""){
+if($("#receiver").val()==""||
+		$("#email").val()==""||
+		$("#sample3_address").val()==""||
+		$("#sample3_postcode").val()==""||
+		$("#sample3_detailAddress").val()==""||
+		$("#tel").val()==""){
 	alert("필수항목을 입력해주세요");
 }
 else{
@@ -480,16 +483,13 @@ IMP.request_pay({
     name : $("#productName").text(),
     amount : $("#finalPrice").text(),
     buyer_email :/* 'test@test.com' */$("#email").val(),
-    buyer_name : /* '창이욱' */$("#receiver").val(),
+    buyer_name : /* '이름'' */$("#receiver").val(),
     buyer_tel : /* '010-1234-2345' */ $("#tel").val(),
-    buyer_addr : $("#sample3_address").val()+$("#sample3_extraAddress").val()+$("#sample3_detailAddress").val(),
+    buyer_addr : $("#sample3_address").val()+$("#sample3_extraAddress").val()+
+    				$("#sample3_detailAddress").val(),
     buyer_postcode : $("#sample3_postcode").val()
 }, function(rsp) {
     if ( rsp.success ) {
-    	
-    
-    	
-    	
     	
         $.ajax({
        		type:'post',
@@ -509,22 +509,14 @@ IMP.request_pay({
                 count : $("#productAmount").text()
             }
         }).done(function (data) {
-          // 가맹점 서버 결제 API 성공시 로직
-          // 밑의 결제완료 메세지 이후 출력
         	alert("결제되었습니다.");	
           location.href="../payment/payInfo?orderNum="+rsp.merchant_uid;
         });
-    	
- 
- 
-        
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
         alert(msg);
     }
-
-   
 });
  } 
 }

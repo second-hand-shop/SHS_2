@@ -16,46 +16,23 @@
 		
 			<h1>insert product</h1>
 			
-			<form action="./productInsert" method="post" enctype="multipart/form-data">
+			<form action="./productInsert" method="post" enctype="multipart/form-data" id="upFrm">
 			
 			
-			kinds<input type="text" name="kinds">
-			contents<input type="text" name="contents">
-			price<input type="text" name="price">
-			productName<input type="text" name="productName">
-			amount<input type="text" name="amount">
+			kinds<input id="kinds" type="text" name="kinds">
+			contents<input id="contentss" type="text" name="contents">
+			price<input id="price" type="text" name="price">
+			productName<input id="productName" type="text" name="productName">
+			amount<input id="amount" type="text" name="amount">
 			
-			<button> 생성</button>
+			<input type="button" value="생성" id="upButton">
 			
+			<div>
+				 <input type="file" id="gdsImg" name="files" multiple/>
+				 <%=request.getRealPath("/") %>			 
+			</div>
 			
-			
-			
-			
-			<div class="inputArea">
- <!--  <label for="gdsImg">이미지</label> -->
- <input type="file" id="gdsImg" name="files" multiple/>
- <!--  <div class="select_img"><img src="" /></div> -->
- 
- 
-  <!-- 
- <script>
-  $("#gdsImg").change(function(){
-   if(this.files && this.files[0]) {
-    var reader = new FileReader;
-    reader.onload = function(data) {
-     $(".select_img img").attr("src", data.target.result).width(500);        
-    }
-    reader.readAsDataURL(this.files[0]);
-   }
-  });
- </script>-->
- <%=request.getRealPath("/") %>
- 
- 
- 
-</div>
-			
-			
+		
 			</form>
 			
 			
@@ -75,4 +52,28 @@
 <script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
+<script type="text/javascript">
+
+
+$("#upButton").click(function(){
+	
+ 	if(
+	($("#kinds").val()!="")&&
+	($("#contentss").val()!="")&&
+	($("#price").val()!="")&&
+	($("#productName").val()!="")&&
+	($("#amount").val()!="")&&
+	($("#gdsImg").val()!="")
+	){
+		$("#upFrm").submit();
+		alert("상품 생성 성공");
+	}else{
+		alert("항목들을 모두 채워주십시오");
+	}
+	
+	
+});
+
+
+</script>
 </html>

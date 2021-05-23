@@ -6,49 +6,15 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>SHS</title>
 <style>
-
 .linePage {
 	float: left;
-	margin:10px;
+	margin: 10px;
 }
 
-/* .productImg{
- 	border: 1px solid #ccc; 
-
-            display: flex;
-
-            overflow: hidden;
-            align-items: center;
-            justify-content: center;
-
-
-	max-width: 100%;
-    	width: 400px;
-        height: 400px;
-        
-        padding: 10px;
-		margine: 10px;
-
-
-} */
-
-
-.row{
-display : flex;
-flex-direction: row;
- flex-wrap : wrap; 
-/* border: 1px solid #ccc;  */
-}
-
-
-.col{
-/* border: 1px solid #ccc;  */
-
-flex-shrik:0;
-}
-
-
-
+.thumbImg {
+	max-width: 370px;
+	heigth: auto;
+} 
 </style>
 
 </head>
@@ -61,7 +27,7 @@ flex-shrik:0;
 		<div id="container">
 			<div id="contents">
 
-			
+
 
 
 
@@ -69,45 +35,44 @@ flex-shrik:0;
 				<h1></h1>
 
 				<div id="productInsert" style="display: none;">
-				<a href="./productInsert"><button type="button">상품추가</button></a>
-				<input type="hidden" value="${member.id}" id="mId">
+					<a href="./productInsert"><button type="button">상품추가</button></a> <input
+						type="hidden" value="${member.id}" id="mId">
 				</div>
-				<div> <br>  </div>
+				<div>
+					<br>
+				</div>
 				<!-- css로 마진 패딩 채우면 없앤다 br -->
-			
-			
-
-					<div class="row">
-				<c:forEach items="${list}" var="dto">
 
 
-					
-				
-					
+
+				<div class="row">
+					<c:forEach items="${list}" var="dto">
+
+
 						<div class="col">
-							<%-- <c:forEach items="${dto.productImages}" var="file">
-								<img src="../resources/upload/images/${file.thumbnail}">
-							</c:forEach> --%>
-							<p><a href="./detail?productNum=${dto.productNum}">
-								<img src="../resources/upload/images/${dto.productImages[0].thumbnail}" id="thumbImg" onerror="javascript:noImg(this)" style="max-width:370px; heigth:auto;">
-							</a></p>
-							<p style="text-align: center;"><a href="./detail?productNum=${dto.productNum}">${dto.productName}</a></p>
-							<p  style="text-align: center;" class="price">${dto.price}</p>
+							<p>
+								<a href="./detail?productNum=${dto.productNum}"> <img
+									src="../resources/upload/images/${dto.productImages[0].thumbnail}"
+									class="thumbImg" onerror="javascript:noImg(this)">
+								</a>
+							</p>
+							<p style="text-align: center;">
+								<a href="./detail?productNum=${dto.productNum}">${dto.productName}</a>
+							</p>
+							<p style="text-align: center;" class="price">${dto.price}</p>
 							<input type="hidden" value="${dto.amount}" class="amount">
 						</div>
-					
-			
 
-				
-
-				</c:forEach>
-					</div>
+					</c:forEach>
+				</div>
 
 
-				<div><br></div>
+				<div>
+					<br>
+				</div>
 
-	
-				<ul >
+
+				<ul>
 
 					<c:if test="${pager.pre}">
 						<li class=linePage><a
@@ -142,50 +107,43 @@ flex-shrik:0;
 <script type="text/javascript" src="../resources/js/main.js"></script>
 <script type="text/javascript" src="../resources/jquery/dropdown.js"></script>
 <script type="text/javascript">
+	if ($("#mId").val() == 'admin') {
+		$("#productInsert").css("display", "block")
 
-
-if($("#mId").val()=='admin'){
-	$("#productInsert").css("display","block")
-	
-}
-
-function noImg(obj){
-	  // image not found or change src like this as default image:
-
-		  if(obj!=null){
-			  
-	   obj.src = "../resources/images/insertImgplz.jpg";
-		  }
-		  
-	};
-	
-
-	
-	
-	
-	function priceToString(price) {
-	    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 
+	function noImg(obj) {
+		// image not found or change src like this as default image:
 
-$(".price").each(function(){
-	
-	var pr = $(this).text();
-	pr =priceToString(pr);
-	$(this).text(pr);
-	
-	
-	
-});
-$(".amount").each(function(){
-	
-if(parseInt($(this).val())<1){
-	$(this).prev(".price").html('<img src="../resources/images/ico_product_soldout.gif">');
-	
-	
-}
-	
-});
+		if (obj != null) {
+
+			obj.src = "../resources/images/insertImgplz.jpg";
+		}
+
+	};
+
+	function priceToString(price) {
+		return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
+
+	$(".price").each(function() {
+
+		var pr = $(this).text();
+		pr = priceToString(pr);
+		$(this).text(pr);
+
+	});
+	$(".amount").each(
+					function() {
+						if (parseInt($(this).val()) < 1) {
+							$(this)
+									.prev(".price")
+									.html(
+											'<img src="../resources/images/ico_product_soldout.gif">');
+
+						}
+
+					});
 </script>
 
 
