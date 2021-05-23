@@ -31,13 +31,11 @@ public class ProductFileManager {
 	public String getRootPath(String fileName, HttpServletRequest request) {
 		
 		String rootPath ="/resources/upload";
-		
 		MediaType mediaType = ProductMediaUtils.getMediaType(fileName);
-		if(mediaType!=null)
+		if(mediaType!=null) {
 			return request.getSession().getServletContext().getRealPath(rootPath+"/images");
+			}
 		//사진파일 일 경우
-		
-		
 		return request.getSession().getServletContext().getRealPath(rootPath+"/files");
 		
 	}
@@ -49,10 +47,11 @@ public class ProductFileManager {
 		
 		Calendar calendar = Calendar.getInstance();
 		String yearPath = File.separator+calendar.get(Calendar.YEAR);
-		String monthPath= yearPath+File.separator+new DecimalFormat("00").format(calendar.get(Calendar.MONTH)+1);
+		String monthPath= yearPath+File.separator+
+							new DecimalFormat("00").format(calendar.get(Calendar.MONTH)+1);
 		//칼렌더의 month는 1을 더해줘야한다 ,,, 
-		String datePath = monthPath+File.separator+new DecimalFormat("00").format(calendar.get(Calendar.DATE));
-		
+		String datePath = monthPath+File.separator+
+							new DecimalFormat("00").format(calendar.get(Calendar.DATE));
 		makeDateDir(uploadPath,yearPath,monthPath,datePath);
 		return datePath;
 	}
@@ -77,7 +76,7 @@ public class ProductFileManager {
 		
 		//원본이미지 메모리에 로딩
 		BufferedImage ogImg=ImageIO.read(new File(uploadRootPath+datePath,fileName));
-		//원본이미지 축
+		//사이즈 변경
 		BufferedImage thumbImg = Scalr.resize(ogImg,Scalr.Method.AUTOMATIC,Scalr.Mode.FIT_TO_HEIGHT,450);
 		//bufferdimage 객체, 너비,높이,reisize옵션
 		String thumbnailImgName = "s_"+fileName;
@@ -114,32 +113,22 @@ public class ProductFileManager {
 	
 	public String uploadFile(MultipartFile multipartFile, HttpServletRequest request)throws Exception {
 		
-	
 		String ogFileName = multipartFile.getOriginalFilename();
 		
 		//1.중복방지처리
 		String fileName = getUUIDFileName(ogFileName);
-		
 		//2.파일 업로드 경로 설정
 		String rootPath = getRootPath(ogFileName, request);
 		String datePath = getDatePath(rootPath);
-		
 		//3.서버에 파일 저장
-		
 		File file = new File(rootPath+datePath,fileName);
 		multipartFile.transferTo(file);
-		
-		
 		//4. 이미지 파일일 경우 썸네일 생성
 		if(ProductMediaUtils.getMediaType(ogFileName)!=null) {
 			
 			fileName = makeThumbnail(rootPath, datePath, fileName);
-		}
-		
-	
-		
-		String savedFilePath = datePath + File.separator+fileName;
-	
+		}		
+		String savedFilePath = datePath + File.separator+fileName;	
 		return savedFilePath;
 	}
 	
@@ -154,12 +143,8 @@ public class ProductFileManager {
 		if(mediaType!=null) {
 			String ogImg = file.getAbsolutePath().replace("s_", "");
 			new File(ogImg).delete();
-			
 		}
-		
 		file.delete();
-		
-		
 	}
 	
 	

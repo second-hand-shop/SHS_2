@@ -53,21 +53,18 @@ public class ProductService {
 	
 	
 	public int setInsert(ProductDTO productDTO,MultipartFile[] files)throws Exception{
-		
+		//시퀀스로 선언된 프라이머리키 가져온다
 		long num =productDAO.getProductNum();
 		productDTO.setProductNum(num);
 		int result = productDAO.setInsert(productDTO);
-		
+		//파일처리
 		for(MultipartFile mf: files) {
 			
 			ProductImageDTO productImageDTO = new ProductImageDTO();
 			String fileName = fileManager.uploadFile( mf,request);	
 			productImageDTO.setProductNum(num);
 			productImageDTO.setThumbnail(fileName);
-			
 			String uuidFileName = fileName.substring(0, 12) + fileName.substring(14);
-			
-			
 			
 			productImageDTO.setFileName(uuidFileName);
 			productImageDTO.setOgName(mf.getOriginalFilename());
@@ -75,10 +72,7 @@ public class ProductService {
 						
 		}
 		
-
 		return result;
-		
-		
 	}
 	
 	public int setUpdate(ProductDTO productDTO)throws Exception{
@@ -100,7 +94,9 @@ public class ProductService {
 	
 	
 	
-	
+	public List<ProductImageDTO> getFilesSelect(ProductDTO productDTO)throws Exception{
+		return productDAO.getFilesSelect(productDTO);
+	}
 
 	
 	
@@ -110,20 +106,13 @@ public class ProductService {
 	public int setFileDelete(ProductImageDTO productImageDTO)throws Exception{
 		
 		productImageDTO = productDAO.getFileSelect(productImageDTO); 
-		
+		//db에서 삭제
 		int result = productDAO.setFileDelete(productImageDTO);
-		//db에서만 삭제
+		//파일 삭제
 		fileManager.deleteFile(productImageDTO.getFileName(), request);
-		
-		
-		
-		
-		 
-		if(result>0){
+			if(result>0){
 			fileManager.deleteFile(productImageDTO.getFileName(),request);
 		}
-		
-		
 		 return result;
 	}
 	

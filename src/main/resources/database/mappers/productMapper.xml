@@ -99,6 +99,9 @@ from
 <select	id="getFileSelect" parameterType="ProductImageDTO" resultType="ProductImageDTO">
 	select * from productImage where ImageNum=#{imageNum}
 </select>
+<select	id="getFilesSelect" parameterType="ProductDTO" resultType="ProductImageDTO">
+	select * from productImage where productNum in #{productNum}
+</select>
 
 <insert id="setFileInsert" parameterType="ProductImageDTO">
 

@@ -78,7 +78,13 @@ public class ProductController {
 	public String setDelete(ProductDTO productDTO) throws Exception{
 		
 		int result = productService.setDelete(productDTO);
-		
+		//파일 삭제
+		List<ProductImageDTO> ar = productService.getFilesSelect(productDTO);
+		if(ar!=null) {
+			for(ProductImageDTO productImage : ar) {
+				result = productService.setFileDelete(productImage);
+			}
+		}
 		return "redirect:./productList";
 		
 	}
@@ -113,15 +119,11 @@ public class ProductController {
 		int result = productService.setFileDelete(productImageDTO);
 		String rtn = "redirect:./productUpdate?productNum="+productImageDTO.getProductNum();
 		
-		
 		if(result>0) {
 			System.out.println("성공");
 		}else {
 			System.out.println("실패");
 		}
-		System.out.println(productImageDTO.getProductNum());
-		
-		
 		return rtn;
 	}
 	
